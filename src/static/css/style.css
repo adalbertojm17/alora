@@ -111,7 +111,7 @@ form{
 }
 
 
-input[type=text], input[type=email], input[type=password] {
+input[type=text] {
 	position:center;
 	background-color: white;
 	color: grey;
@@ -164,7 +164,7 @@ input[type=text], input[type=email], input[type=password] {
 	display: block;
 	color: white;
 	width: 55%;
-	padding:auto;
+	padding: auto;
 	margin: auto;
 	box-sizing: border-box;
 	border-radius: 4px;
@@ -200,8 +200,13 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 /*
-Main page css  display:inline-block;
+Main page css
 */
+
+#icon{
+	float: left;
+	overflow: hidden;
+}
 
 #mainnav{
 	overflow: hidden;
@@ -209,7 +214,19 @@ Main page css  display:inline-block;
 
 h1 {
 	text-align: center;
+	overflow: hidden;
 }
+
+
+/* Make more efficient. Center the entire div. */
+
+#mainpagenav{
+	padding: 20px;
+	margin-left: 320px;
+	margin-right: 320px;
+	overflow: hidden;
+}
+
 
 #mainpagenav #mainpage{
 	background-color: none;
@@ -219,10 +236,6 @@ h1 {
 	margin: 20px;
 	padding: 15px;
 	overflow:hidden;
-}
-
-#mainpagenav{
-	padding: 20px;
 }
 
 #mainpagenav #mainpage #miniheader{
@@ -249,3 +262,10 @@ h1 {
 .info{
 	color: gray;
 }
+
+
+footer{
+	overflow: hidden;
+}
+
+

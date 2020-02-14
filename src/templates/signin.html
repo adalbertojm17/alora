@@ -1,57 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<title>Alora Sign In </title>
-		<link rel="stylesheet" href="style.css" >
-	</head>
+<head>
+    <title>Alora Sign In </title>
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
 
-	<body>
+<body>
+{% block content %}
+    <div id="signin">
+        <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+        <p> Sign In </p>
+        <form>
+            <input type="text" name="username" value="Username"><br>
+            <input type="text" name="password" value="Password"><br>
+        </form>
 
-		<header>
-			<nav class= "mainnav">
-			<ul>
-				<li class="homepage"><a href= >Home </a> </li>
-				<li class="homepage"><a href= >About </a></li>
-				<li class="homepage"><a href= >Order Now </a></li>
-				<li class="homepage"><a href=>Services</a></li>
-				<li class="homepage"><a href=>Contact Us</a></li>
-			</ul>
-			<br />
-			</nav>
-		</header>
+        </br>
+        </br>
 
-		<div id="signin" >
-			<img id="signinicon" src= "images/logo.png" alt="Logo" class="center" width= 70 height= 70>
-			<p> Sign In </p>
-			<form>
-				<input type="text" name="username" value="Username"><br>
-				<input type="text" name="password" value="Password"><br>
-			</form>
 
-			</br>
-			</br>
 
-			<div id="button">
-			<p> Sign In </p>
-			</div>
-
-			<p> <a href= "" class="makesmall" >Forgot your password ?</a></p>
-			<p> <a href="" class="makesmall" >Sign Up </a></p>
-		</div>
+        <p><a href="" class="makesmall">Forgot your password ?</a></p>
+        <p><a href="" class="makesmall">Sign Up </a></p>
+    </div>
 
 
 
 
 
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
 
-		<footer class="footer">
-		</footer>
-	</body>
+    <footer class="footer">
+    </footer>
+{% endblock %}
+</body>
 </html>

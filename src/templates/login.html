@@ -1,25 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-
 <head>
     {% block styles %}
-        <title>Alora Sign Up </title>
+        <title>Alora Login </title>
+
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
-
     {% endblock %}
 </head>
 
 <body>
-
 {% block content %}
-    <div id="signup">
-        <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
-        <p> Sign Up </p>
+    <div id="signin">
+        <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+        <p> Sign In </p>
+
         <form method="post">{% csrf_token %}
-            {% for field in registration_form %}
+            {% for field in login_form %}
                 <p>
                     {{ field.label_tag }}
                     {{ field }}
@@ -27,17 +25,27 @@
                     {% for error in field.errors %}
                         <p style="color: red;">{{ error }}</p>
                     {% endfor %}
-                </p>
-            {% endfor %}
-            <div>
-                <button id="button" type="submit">Sign Up</button>
-            </div>
 
+                {% if login_form.non_field_errors %}
+                    <div style="color: red;">
+                        <p>{{ login_form.non_field_errors }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button id="button" type="submit">Log In</button>
         </form>
 
+        <br/>
+        <br/>
 
-        <p><a href="" class="makesmall">By signing up you agree to our Terms &amp; Conditions </a></p>
+
+        <p><a href="" class="makesmall">Forgot your password ?</a></p>
+        <p><a href="/signup/" class="makesmall">Sign Up </a></p>
     </div>
+
+
+
+
 
     <br/>
     <br/>

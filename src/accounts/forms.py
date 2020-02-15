@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate
 
 from accounts.models import Account
 
@@ -21,7 +22,7 @@ class RegistrationForm(UserCreationForm):
         max_length=254,
         help_text="Required, Add a valid email address",
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email'}),
+        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
 
     )
 
@@ -40,10 +41,31 @@ class RegistrationForm(UserCreationForm):
     password2 = forms.CharField(
         label='',
         strip=False,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'})
 
     )
 
     class Meta:
         model = Account
         fields = ('first_name', 'last_name', 'email', 'username')
+
+
+class AccountAuthenticationForm(forms.ModelForm):
+    email = forms.EmailField(
+        max_length=254,
+        help_text="Required, Add a valid email address",
+        label='',
+        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
+
+    )
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+
+    class Meta:
+        model = Account
+        fields = ('email', 'password')
+
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+        if not authenticate(email=email, password=password):
+            raise forms.ValidationError("Invalid login")

@@ -17,15 +17,22 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from pages.views import home_view
-
+from pages.views import (
+    home_view,
+    main_view
+)
 from accounts.views import (
-    registration_view
+    registration_view,
+    login_view,
+    logout_view,
 )
 
 urlpatterns = [
-    path('', registration_view, name="register"),
-    path('home/', home_view, name="home"),
+    path('signup/', registration_view, name="register"),
+    path('login/', login_view, name="login"),
+    path('logout/', logout_view, name="logout"),
+    path('', home_view, name="home"),
+    path('main/', main_view, name="main"),
     path('admin/', admin.site.urls),
 ]
 

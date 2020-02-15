@@ -1,72 +1,67 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>Alora Main Page </title>
 
-	<head>
-		<title>Alora Main Page </title>
-		<link rel="stylesheet" href="style.css" >
-	</head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
 
-	<body>
+<body>
+{% block content %}
 
-
-		<header id="topHeader">
-            <img id="icon" src= "images/logo.png" alt="Logo" class="center" width= 70 height= 70>
-
-			<nav class= "mainnav">
-			<ul id="mainnavmainpage">
-				<li class="homepage"><a href= >Home </a> </li>
-				<li class="homepage"><a href= >About </a></li>
-				<li class="homepage"><a href= >Order Now </a></li>
-				<li class="homepage"><a href=>Services</a></li>
-				<li class="homepage"><a href=>Contact Us</a></li>
-			</ul>
-			</nav>
-		</header>
+    <header id="topHeader">
+        <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+    </header>
 
 
-		<div id="mainpagenav" class="center">
-            <h1> Welcome to Alora "Username" </h1>
-			<div id="mainpage">
-				<div id="miniheader">
-					<img id="icon" src= "images/account.png" alt="account" class="center" width= 70 height=70>
-				</div>
+    <div id="mainpagenav" class="center">
+        <h1> Welcome to Alora, {% if user.is_authenticated %} {{ request.user }} {% else %}Guest{% endif %}</h1>
+        <div id="mainpage">
+            <div id="miniheader">
+                <img id="icon" src="{% static 'images/account.png' %}" alt="account" class="center" width=70 height=70>
+            </div>
 
-				<div id="info">
-					<p> <a href= >Account </a></p>
-					<p class="info">Customize your experience </p>
-				</div>
+            <div id="info">
+                <p><a href=>Account </a></p>
+                <p class="info">Customize your experience </p>
+            </div>
 
-			</div>
+        </div>
 
-			<div id="mainpage">
-				<div id="miniheader">
-					<img id="mainicon" src= "images/order.png" alt="account" class="center" width=70 height=70>
-				</div>
+        <div id="mainpage">
+            <div id="miniheader">
+                <img id="mainicon" src="{% static 'images/order.png' %}" alt="account" class="center" width=70
+                     height=70>
+            </div>
 
-				<div id="info">
-					<p> <a href= > Place Order </a></p>
-					<p class="info">We would love to do your dry cleaning and laundry. Place an order today
-					and experience a cleaning service like no other.</p>
-				</div>
+            <div id="info">
+                <p><a href=> Place Order </a></p>
+                <p class="info">We would love to do your dry cleaning and laundry. Place an order today
+                    and experience a cleaning service like no other.</p>
+            </div>
 
-			</div>
+        </div>
 
-			<div id="mainpage">
-				<div id="miniheader">
-					<img id="mainicon" src= "images/track.png" alt="account" class="center" width=70 height=70>
-				</div>
+        <div id="mainpage">
+            <div id="miniheader">
+                <img id="mainicon" src="{% static 'images/track.png' %}" alt="account" class="center" width=70
+                     height=70>
+            </div>
 
-				<div id="info">
-					<p> <a href= >Tracking </a></p>
-					<p class="info">See the process of your dry cleaning and laundry. Alora keeps you up to date.</p>
-				</div>
+            <div id="info">
+                <p><a href=>Tracking </a></p>
+                <p class="info">See the process of your dry cleaning and laundry. Alora keeps you up to date.</p>
+            </div>
 
-			</div>
-		</div>
+        </div>
+    </div>
 
 
+    <footer class="footer">
+    </footer>
 
-		<footer class="footer">
-		</footer>
-	</body>
-</html>
+{% endblock %}
+</body>

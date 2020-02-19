@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block styles %}
+        <title>Edit account </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+    <div id="signup">
+        <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+        <p> Account </p>
+        <form method="post">{% csrf_token %}
+            {% for field in account_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+            <div>
+                <button id="button" type="submit">Save Changes</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+  <footer class="footer">
+    </footer>
+{% endblock %}
+</body>
+</html>

@@ -9,20 +9,20 @@
 <body>
 <header>
     <div id="navbar">
-    <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width= 70 height= 70>
-    <nav class="mainnav">
-        <ul>
-            <li class="homepage"><a href=/index/>Home </a></li>
-            <li class="homepage"><a href=/aboutus/>About </a></li>
-            <li class="homepage"><a href=>Order Now</a></li>
-            <li class="homepage"><a href=>Services</a></li>
-             <li class="homepage"><a href=/contactus/>Contact Us </a></li>
-            {% if request.user.is_authenticated %}
-                <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
+        <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+        <nav class="mainnav">
+            <ul>
+                <li class="homepage"><a href="{% url 'home' %}">Home </a></li>
+                <li class="homepage"><a href=/aboutus/>About </a></li>
+                <li class="homepage"><a href=>Order Now</a></li>
+                <li class="homepage"><a href=>Services</a></li>
+                <li class="homepage"><a href=/contactus/>Contact Us </a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
 
-            {% else %}
-                <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
+                {% else %}
+                    <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
         </ul>
         <br/>
     </nav>

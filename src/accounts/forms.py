@@ -11,6 +11,7 @@ class RegistrationForm(UserCreationForm):
         label='',
         widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
     )
+
     last_name = forms.CharField(
         max_length=100,
         label='',

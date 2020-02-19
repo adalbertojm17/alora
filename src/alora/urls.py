@@ -19,7 +19,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from pages.views import (
     home_view,
-    main_view
+    main_view,
+    aboutus_view,
+    contactus_view
 )
 from accounts.views import (
     registration_view,
@@ -33,7 +35,12 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
+    path('aboutus/', aboutus_view, name="aboutus"),
+    path('contactus/', contactus_view, name="contactus"),
+
     path('admin/', admin.site.urls),
 ]
+
+
 
 urlpatterns += staticfiles_urlpatterns()

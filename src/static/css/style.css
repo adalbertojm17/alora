@@ -1,3 +1,4 @@
+{%load static%}
 html {
     background-color: #FFCF3B;
 }
@@ -5,6 +6,7 @@ html {
 body {
     font-family: "Lato", sans-serif;
     background-color: #FFCF3B;
+    margin:0;
 }
 
 a {
@@ -21,18 +23,40 @@ a:hover {
 }
 
 
+/*@font-face {
+    font-family: Lato;
+    /*src:'{% static 'Lato/Lato-Regular.ttf' %}';
+    src: url('../Lato/Lato-Regular.ttf');
+*/
+
 @font-face {
     font-family: Lato;
-    src: url(Lato/Lato-Regular.ttf);
+    /*src:'{% static 'Lato/Lato-Regular.ttf' %}';*/
+    src: url('../Lato/Lato-Regular.ttf');
 }
 
+
+header{
+	margin-bottom: 150px;
+}
+
+#navbar{
+    background-color: #FF5733;
+    position: fixed;
+    width: 100%;
+    top:0;
+    margin:auto;
+    padding: 0px;
+    overflow: hidden;
+
+}
 .mainnav {
     float: right;
     width: auto;
     margin-top: 10px;
     margin-left: 300px;
     margin-right: 10px;
-    margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .mainnav ul {
@@ -74,14 +98,14 @@ a:hover {
 }
 
 /*
-	CSS for sign in and sign up pages
+	CSS for sign in page
 */
 
 #signin {
     position: center;
     background-color: #FF9920;
     display: block;
-    width: 420px;
+    width: 25%;
     margin-left: auto;
     margin-right: auto;
     clear: both;
@@ -102,14 +126,13 @@ a:hover {
     color: grey;
 }
 
-form {
-    text-align: center;
-}
-
 .makesmall {
     font-size: 60%;
 }
 
+form {
+    text-align: center;
+}
 
 input[type=text], input[type=email], input[type=password] {
     position: center;
@@ -133,7 +156,7 @@ input[type=text], input[type=email], input[type=password] {
     position: center;
     background-color: #FF9920;
     display: block;
-    width: 480px;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
     clear: both;
@@ -208,50 +231,44 @@ Main page css
     overflow: hidden;
 }
 
-#mainnav {
-    overflow: hidden;
-}
-
-h1 {
+#welcome {
     text-align: center;
     overflow: hidden;
 }
 
+#mainpagenav{
+	margin:auto;
+	width: 60%;
+	overflow: hidden;
 
-/* Make more efficient. Center the entire div. */
-
-#mainpagenav {
-    padding: 20px;
-    margin-left: 320px;
-    margin-right: 320px;
-    overflow: hidden;
 }
 
 
-#mainpagenav #mainpage {
-    background-color: none;
-    float: left;
-    display: block;
-    width: 200px;
-    margin: 20px;
-    padding: 15px;
-    overflow: hidden;
+#mainpagenav #mainpage{
+	background-color: none;
+	float: left;
+	display: block;
+	width: 25%;
+	padding: 3%;
+	overflow:hidden;
 }
 
-#mainpagenav #mainpage #miniheader {
-    background-color: #FF9920;
-    width: 200px;
-    padding: 40px;
+#mainpagenav #mainpage #miniheader{
+	background-color: #FF9920;
+	padding-top: 60px;
+	padding-bottom: 60px;
+
 }
 
-#mainpagenav #mainpage #miniheader #info {
-    width: 200px;
-    padding: 40px;
+#mainpagenav #mainpage #miniheader #info{
+	width: 25%;
+	overflow:hidden;
+
 }
 
 #mainpage #miniheader img {
-    position: center;
-    padding-right: 60px;
+	position: center;
+
 }
 
 #mainpage #info p {
@@ -269,3 +286,66 @@ footer {
 }
 
 
+/*about us page css*/
+
+#abmaincontent {
+	margin:auto;
+	width:90%;
+}
+
+.ableft{
+	float: left;
+	width: 40%;
+	padding-left: 5%;
+}
+
+.abright{
+	float: left;
+	width: 40%;
+	padding-left: 5%;
+}
+
+/* Contact Us page */
+#contactus{
+	position: center;
+	display: block;
+	width: 40%;
+	margin-left:auto;
+	margin-right: auto;
+	clear:both;
+	padding: 15px;
+}
+
+#contacticon{
+	padding-top: 15px;
+}
+
+
+/* general form css */
+
+textarea{
+    position: center;
+    background-color: white;
+    color: grey;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 55%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
+select{
+    position: center;
+    background-color: white;
+    color: grey;
+    width: 55%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}

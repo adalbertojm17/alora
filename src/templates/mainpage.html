@@ -12,21 +12,18 @@
 <body>
 {% block content %}
 
-    <header id="topHeader">
-        <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
-    </header>
-
+    <h1 id="welcome"> Welcome to Alora, {% if user.is_authenticated %} {{ request.user }} {% else %}Guest{% endif %}</h1>
 
     <div id="mainpagenav" class="center">
-        <h1> Welcome to Alora, {% if user.is_authenticated %} {{ request.user }} {% else %}Guest{% endif %}</h1>
-        <div id="mainpage">
+         <div id="mainpage">
             <div id="miniheader">
-                <img id="icon" src="{% static 'images/account.png' %}" alt="account" class="center" width=70 height=70>
+                <img id="mainicon" src="{% static 'images/order.png' %}" alt="account" class="center" width=70
+                     height=70>
             </div>
 
             <div id="info">
-                <p><a href=>Account </a></p>
-                <p class="info">Customize your experience </p>
+                <p><a href=> Account </a></p>
+                <p class="info">Customize your experience</p>
             </div>
 
         </div>

@@ -27,6 +27,7 @@ from accounts.views import (
     registration_view,
     login_view,
     logout_view,
+    edit_account_view
 )
 
 urlpatterns = [
@@ -37,7 +38,7 @@ urlpatterns = [
     path('main/', main_view, name="main"),
     path('aboutus/', aboutus_view, name="aboutus"),
     path('contactus/', contactus_view, name="contactus"),
-
+    path('edit_account/', edit_account_view, name="EditAccount"),
     path('admin/', admin.site.urls),
 ]
 

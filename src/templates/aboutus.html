@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>About us </title>
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+
+        <div id="abmaincontent" class="center">
+
+			<div class="ableft">
+			<img id="icon" src="{% static 'images/banner.png' %}" alt="banner" class="center" width= 95% height= 250>
+			</div>
+
+			<div class="abright">
+				<p> Alora is dedicated to finding solutions to problems
+				concerning companies and their customers. We guide companies through
+				deep analysis and studies and create revolutionary products that are
+				trusted and respected. Today, we seek to create a product that turns
+				the hassle of doing laundry into an easy task. Our focus is to provide our
+				customers with an easy way to manage dry cleaning and laundry services. </p>
+			</div>
+		</div>
+
+
+        <footer class="footer">
+        </footer>
+    {% endblock %}
+</body>

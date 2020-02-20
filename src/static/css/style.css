@@ -230,6 +230,20 @@ input[type=text], input[type=email], input[type=password] {
     padding: 12px;
 }
 
+#editbutton{
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 70%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px;
+}
+
 #buttonmain p {
     text-align: center;
     padding: 15px;
@@ -366,3 +380,53 @@ select{
     border-radius: 4px;
     padding-left: 20px;
 }
+
+/* Account Page css*/
+
+#accountpage{
+    width:80%;
+    margin-left: 10%;
+}
+#accountpage #accountdiv{
+	background-color: none;
+	float: left;
+	display: block;
+	width: 25%;
+	padding: 3%;
+	overflow:hidden;
+}
+
+#accountpage #accountdiv #miniheader{
+	background-color: #FF9920;
+	padding-top: 80px;
+	padding-bottom: 80px;
+
+}
+
+#accountpage #accountdiv #miniheader #info{
+	width: 15%;
+	overflow:hidden;
+
+}
+
+#acccountpage #miniheader img {
+	position: center;
+
+}
+
+#accountdiv #info p {
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+}
+
+#accountinfo{
+    background-color: none;
+	float: left;
+	display: block;
+	width: 40%;
+	padding: 3%;
+	overflow:hidden;
+}
+

@@ -17,3 +17,7 @@ def aboutus_view(request, *args, **kwargs):
 def contactus_view(request, *args, **kwargs):
     my_context = {}
     return render(request, "contactus.html", my_context)
+
+def services_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "services.html", my_context)

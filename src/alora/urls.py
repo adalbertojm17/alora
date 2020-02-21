@@ -21,7 +21,8 @@ from pages.views import (
     home_view,
     main_view,
     aboutus_view,
-    contactus_view
+    contactus_view,
+    services_view
 )
 from accounts.views import (
     registration_view,
@@ -39,6 +40,7 @@ urlpatterns = [
     path('aboutus/', aboutus_view, name="aboutus"),
     path('contactus/', contactus_view, name="contactus"),
     path('edit_account/', edit_account_view, name="EditAccount"),
+    path('services/', services_view, name="Services"),
     path('admin/', admin.site.urls),
 ]
 

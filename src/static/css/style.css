@@ -430,3 +430,21 @@ select{
 	overflow:hidden;
 }
 
+/* Services page css */
+
+.headingpara{
+    margin: auto;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #FF5733;
+    width: 80%;
+}
+
+
+.headingpara p{
+    font-size: 200%;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    color: white;
+}

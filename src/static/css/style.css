@@ -435,8 +435,6 @@ select{
 .headingpara{
     margin: auto;
     border-radius: 10px;
-    border-style: solid;
-    border-color: #FF5733;
     width: 80%;
 }
 
@@ -446,5 +444,66 @@ select{
     font-weight: bold;
     text-align: center;
     font-family: "Lato", sans-serif;
-    color: white;
+    color: #FF5733;
 }
+
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+
+/* Slideshow container */
+.services{
+	width: 90%;
+	margin:auto;
+	padding: 2%;
+}
+
+.container {
+	float:left;
+	width: 50%;
+	position: relative;
+	margin: auto;
+}
+
+.insidecontainer{
+	width: 70%;
+	height: 600px;
+	margin: auto;
+	border: solid;
+    border-color: #FF5733;
+	border-radius: 10px;
+}
+
+.insidecontainer h1{
+	text-align: center;
+	font-family: "Lato", sans-serif;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #FF5733;
+  color: black;
+}
+

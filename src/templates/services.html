@@ -16,6 +16,52 @@
             <p> Here at Alora we connect you to to dry cleaning and laundry services at your finger tips</p>
             <p> Here are the services we offer:</p>
         </div>
+
+        <div class="services">
+
+        <div class="container">
+
+            <div class="insidecontainer">
+                <div class="bag">
+                 <h1> Wash and Dry Laundry Bag </h1>
+                </div>
+
+                <div class="bag">
+                <h1> Pricing </h1>
+                </div>
+
+                <div class="bag">
+                </div>
+            </div>
+
+                <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+        </div>
+
+
+        <div class="container">
+            <div class="insidecontainer">
+                <div class="dry">
+                <h1> Dry Cleaning </h1>
+                </div>
+
+                <div class="dry">
+                <h1> Pricing </h1>
+                </div>
+
+                <div class="dry">
+                </div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+        </div>
+    </div>
+
+    {% block script %}
+    <script type="text/javascript" src="{% static 'script/services.js' %}"></script>
+    {% endblock %}
+
 </body>
 {% endblock %}
 </html>

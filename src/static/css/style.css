@@ -35,6 +35,12 @@ a:hover {
     src: url('../Lato/Lato-Regular.ttf');
 }
 
+@font-face {
+    font-family: Lato-Bold;
+    /*src:'{% static 'Lato/Lato-Regular.ttf' %}';*/
+    src: url('../Lato/Lato-BoldItalic.ttf');
+}
+
 
 header{
 	margin-bottom: 150px;
@@ -435,7 +441,7 @@ select{
 .headingpara{
     margin: auto;
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
 }
 
 
@@ -443,8 +449,8 @@ select{
     font-size: 200%;
     font-weight: bold;
     text-align: center;
-    font-family: "Lato", sans-serif;
-    color: #FF5733;
+    font-family: "Lato-Bold", sans-serif;
+    color: #085f63;
 }
 
 * {box-sizing: border-box}
@@ -471,13 +477,34 @@ img {vertical-align: middle;}
 	height: 600px;
 	margin: auto;
 	border: solid;
-    border-color: #FF5733;
+    border-width: 5px;
+    border-color: #085f63;
 	border-radius: 10px;
+    background-color: #49BEB7;
+    padding:20px;
 }
 
 .insidecontainer h1{
 	text-align: center;
+	font-family: "Lato-Bold", sans-serif;
+    font-size: 300%;
+}
+
+.insidecontainer p{
+    text-align: center;
 	font-family: "Lato", sans-serif;
+    font-size: 120%;
+}
+
+.insidecontainer  li{
+	font-family: "Lato", sans-serif;
+    font-size: 120%;
+}
+
+.pcenter{
+    font-family: "Lato-Bold", sans-serif;
+    text-align: center;
+    font-size: 130%;
 }
 
 /* Next & previous buttons */
@@ -507,3 +534,31 @@ img {vertical-align: middle;}
   color: black;
 }
 
+
+/*table css */
+
+.pricing{
+    margin: auto;
+    margin-top: 20px;
+}
+
+.pricing th{
+    font-size: 200%;
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.pricing p{
+    font-size: 140%;
+}
+
+.pricing td{
+    font-size: 140%;
+    text-align: left;
+}
+
+.pricing th, td{
+    padding-left:30px;
+    padding-right: 30px;
+}

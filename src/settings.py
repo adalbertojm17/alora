@@ -24,7 +24,10 @@ SECRET_KEY = 'fujqy@2re5bsd+s%au0i*br3$twm2$s8!=ul)gtdjzkxr-gcbd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['aloradevs.ddns.net', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'aloradevs.ddns.net',
+    '127.0.0.1'
+]
 
 # Application definition
 
@@ -122,7 +125,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')

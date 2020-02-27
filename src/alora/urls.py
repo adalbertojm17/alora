@@ -22,7 +22,11 @@ from pages.views import (
     main_view,
     aboutus_view,
     contactus_view,
-    services_view
+    services_view,
+    order_view,
+    orderconfirm_view,
+    orderdestination_view,
+    vieworder_view
 )
 from accounts.views import (
     registration_view,
@@ -39,11 +43,13 @@ urlpatterns = [
     path('main/', main_view, name="main"),
     path('aboutus/', aboutus_view, name="aboutus"),
     path('contactus/', contactus_view, name="contactus"),
-    path('edit_account/', edit_account_view, name="EditAccount"),
-    path('services/', services_view, name="Services"),
+    path('edit_account/', edit_account_view, name="editaccount"),
+    path('services/', services_view, name="services"),
+    path('order/', order_view, name="Order"),
+    path('orderconfirm/', orderconfirm_view, name="orderconfirm"),
+    path('orderdestination/', orderdestination_view, name="orderdest"),
+    path('vieworder/', vieworder_view, name="vieworder"),
     path('admin/', admin.site.urls),
 ]
-
-
 
 urlpatterns += staticfiles_urlpatterns()

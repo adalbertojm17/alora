@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Alora </title>
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div id="">
+    <h2>Select the services you need</h2>
+    <form>
+
+        <label for="subject">Laundry Method</label>
+        <select id="meathod" name="Laundry Method">
+            <option value="Wash & Press">Wash & Press</option>
+            <option value="Wash & Dry">Wash & Dry</option>
+            <option value="Dry Clean">Dry Clean</option>
+        </select><br>
+
+
+        <select id="Address" name="Clothing type">
+            <option value="Laundry">Address in Database</option>
+            <option value="Dry Cleaning">Type in Address</option>
+        </select><br>
+
+
+        <label for="subject">Dropoff Address</label>
+        <select id="Address" name="Dropoff Location">
+            <option value="Laundry">Address in Database</option>
+            <option value="Dry Cleaning">Type in Address</option>
+        </select><br>
+
+        <label for="subject">Order Method</label>
+        <select id="mathod" name="Order Method">
+            <option value="Laundry">Drop Off</option>
+            <option value="Dry Cleaning">Pick up & Delivery</option>
+        </select><br>
+
+    </form>
+
+
+    <div id="buttonmain">
+        <p><a href="/orderdestination/">next </a></p>
+    </div>
+
+    <footer class="footer">
+    </footer>
+{% endblock %}
+</body>

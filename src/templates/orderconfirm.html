@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Order Confirmation</title>
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <img id="confirmicons" src="{% static 'images/ordercheck.png' %}" alt="Logo" class="center" width=100 height=100>
+
+    <div id="buttonmain">
+        <p><a href="/vieworder/">next </a></p>
+    </div>
+
+    <footer class="footer">
+    </footer>
+{% endblock %}
+</body>

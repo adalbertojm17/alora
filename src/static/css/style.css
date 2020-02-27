@@ -264,7 +264,6 @@ input[type=text], input[type=email], input[type=password] {
     color: white;
     width: 30%;
     border: 1px solid #FF5733;
-    padding: auto;
     margin: auto;
     margin-bottom: 30px;
     box-sizing: border-box;
@@ -303,6 +302,7 @@ Main page css
 
 #mainpagenav {
     margin: auto;
+    margin-left: 23%;
     width: 70%;
     overflow: hidden;
 }
@@ -505,6 +505,7 @@ img {
     width: 50%;
     position: relative;
     margin: auto;
+    margin-bottom: 200px;
 }
 
 .insidecontainer {
@@ -628,6 +629,19 @@ img {
 }
 
 #vieworder{
+    text-align: center;
     font-family: "Lato-Bold", sans-serif;
     font-size: 200%;
+}
+
+
+/*footer Css*/
+
+.footer{
+    background-color: #FF5733;
+    position: fixed;
+    bottom:0;
+    width:100%;
+    margin-top: 300px;
+    height:100px;   /* Height of the footer */
 }

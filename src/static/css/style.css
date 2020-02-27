@@ -257,6 +257,34 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 100%;
 }
 
+#buttonconfirm {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 30%;
+    border: 1px solid #FF5733;
+    padding: auto;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#buttonconfirm p {
+    text-align: center;
+    padding: 5px;
+    margin: auto;
+    font-size: 80%;
+}
+
+#buttonconfirm  p a{
+
+}
+
+
+
 /*
 Main page css
 */
@@ -572,3 +600,33 @@ img {
 
 
 /* Confirmation Pages */
+
+.confirm{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 150%;
+}
+
+.confirm p{
+     margin-bottom: 40px;
+}
+
+/* View order page */
+
+.vieworder{
+    width: 60%;
+    height: 600px;
+    margin: auto;
+    border: solid;
+    border-width: 5px;
+    border-color: #FF5733;
+    border-radius: 10px;
+    background-color: #EDDEA4;
+    padding: 20px;
+}
+
+#vieworder{
+    font-family: "Lato-Bold", sans-serif;
+    font-size: 200%;
+}

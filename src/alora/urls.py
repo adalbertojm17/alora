@@ -26,7 +26,8 @@ from pages.views import (
     order_view,
     orderconfirm_view,
     orderdestination_view,
-    vieworder_view
+    vieworder_view,
+    orderhistory_view
 )
 from accounts.views import (
     registration_view,
@@ -47,8 +48,9 @@ urlpatterns = [
     path('services/', services_view, name="services"),
     path('order/', order_view, name="Order"),
     path('orderconfirm/', orderconfirm_view, name="orderconfirm"),
-    path('orderdestination/', orderdestination_view, name="orderdest"),
+    path('orderdestination/', orderdestination_view, name="orderdestination"),
     path('vieworder/', vieworder_view, name="vieworder"),
+    path('orderhistory/', orderhistory_view, name="orderhistory"),
     path('admin/', admin.site.urls),
 ]
 

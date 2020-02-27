@@ -44,3 +44,7 @@ def orderdestination_view(request, *args, **kwargs):
 def vieworder_view(request, *args, **kwargs):
     my_context = {}
     return render(request, "vieworder.html", my_context)
+
+def orderhistory_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "orderhistory.html", my_context)

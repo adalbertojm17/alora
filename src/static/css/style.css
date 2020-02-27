@@ -616,8 +616,8 @@ img {
 /* View order page */
 
 .vieworder{
-    width: 60%;
-    height: 600px;
+    width: 50%;
+    height: 400px;
     margin: auto;
     border: solid;
     border-width: 5px;

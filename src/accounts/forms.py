@@ -73,7 +73,7 @@ class AccountAuthenticationForm(forms.ModelForm):
             raise forms.ValidationError("Invalid login")
 
 
-class Edit_Account_Form(forms.ModelForm):
+class EditAccountForm(forms.ModelForm):
     first_name = forms.CharField(
         max_length=50,
         label=mark_safe('First Name<br />'),

@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fujqy@2re5bsd+s%au0i*br3$twm2$s8!=ul)gtdjzkxr-gcbd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['aloradevs.ddns.net', '127.0.0.1']
 

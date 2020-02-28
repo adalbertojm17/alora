@@ -25,18 +25,23 @@ class FeedBackForm(forms.ModelForm):
 
     )
 
-    services = forms.ChoiceField(
-        label='',
-        initial='',
-        choices=SERVICE_CHOICES
-    )
-
     email = forms.EmailField(
         max_length=254,
         help_text="Required, Add a valid email address",
         label='',
         widget=forms.EmailInput(attrs={'placeholder': 'Email'})
 
+    )
+
+    services = forms.ChoiceField(
+        label='',
+        initial='',
+        choices=SERVICE_CHOICES
+    )
+
+    content = forms.CharField(
+        label='',
+        widget=forms.Textarea(attrs={'placeholder': 'We welcome your feedback.', 'rows': 5, 'cols': 20})
     )
 
     class Meta:

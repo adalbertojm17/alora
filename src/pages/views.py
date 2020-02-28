@@ -11,14 +11,9 @@ def main_view(request, *args, **kwargs):
     return render(request, "mainpage.html", my_context)
 
 
-def aboutus_view(request, *args, **kwargs):
+def about_view(request, *args, **kwargs):
     my_context = {}
-    return render(request, "aboutus.html", my_context)
-
-
-def contactus_view(request, *args, **kwargs):
-    my_context = {}
-    return render(request, "contactus.html", my_context)
+    return render(request, "about.html", my_context)
 
 
 def services_view(request, *args, **kwargs):
@@ -44,6 +39,7 @@ def orderdestination_view(request, *args, **kwargs):
 def vieworder_view(request, *args, **kwargs):
     my_context = {}
     return render(request, "vieworder.html", my_context)
+
 
 def orderhistory_view(request, *args, **kwargs):
     my_context = {}

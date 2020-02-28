@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-
-<!DOCTYPE html>
-
 <head>
+
     {% block styles %}
-        <title>Alora Sign Up </title>
+        <title>Contact Us</title>
+
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
 
@@ -13,13 +12,13 @@
 </head>
 
 <body>
-
 {% block content %}
-    <div id="signup">
-        <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
-        <p> Sign Up </p>
+
+    <div id="contactus">
+        <h2> Contact Us </h2>
+        <p> We love your feedback, leave us a message </p>
         <form method="post">{% csrf_token %}
-            {% for field in registration_form %}
+            {% for field in feedback_form %}
                 <p>
                     {{ field.label_tag }}
                     {{ field }}
@@ -29,21 +28,13 @@
                     {% endfor %}
             {% endfor %}
             <div>
-                <button id="buttonstandard" type="submit">Sign Up</button>
+                <button id="buttonstandard" type="submit">Submit</button>
             </div>
 
         </form>
 
-
-        <p><a href="" class="makesmall">By signing up you agree to our Terms &amp; Conditions </a></p>
     </div>
 
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-
-
 {% endblock %}
+
 </body>

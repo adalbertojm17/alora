@@ -20,8 +20,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from pages.views import (
     home_view,
     main_view,
-    aboutus_view,
-    contactus_view,
+    about_view,
     services_view,
     order_view,
     orderconfirm_view,
@@ -33,7 +32,12 @@ from accounts.views import (
     registration_view,
     login_view,
     logout_view,
-    edit_account_view
+    edit_account_view,
+)
+
+from feedback.views import (
+    feedbackconfirm_view,
+    feedback_view,
 )
 
 urlpatterns = [
@@ -42,11 +46,12 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
-    path('aboutus/', aboutus_view, name="aboutus"),
-    path('contactus/', contactus_view, name="contactus"),
+    path('aboutus/', about_view, name="about"),
+    path('contactus/', feedback_view, name="contact"),
+    path('contactconfirm/', feedbackconfirm_view, name="contconfirm"),
     path('edit_account/', edit_account_view, name="editaccount"),
     path('services/', services_view, name="services"),
-    path('order/', order_view, name="Order"),
+    path('order/', order_view, name="order"),
     path('orderconfirm/', orderconfirm_view, name="orderconfirm"),
     path('orderdestination/', orderdestination_view, name="orderdestination"),
     path('vieworder/', vieworder_view, name="vieworder"),

@@ -72,4 +72,4 @@ def edit_account_view(request):
             }
         )
     context["account_form"] = form
-    return render(request,"edit_account_page.html",context)
+    return render(request, "edit_account_page.html", context)

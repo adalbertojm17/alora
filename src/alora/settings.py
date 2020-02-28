@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Project specific
     'accounts',
     'pages',
+    'feedback',
 ]
 
 MIDDLEWARE = [

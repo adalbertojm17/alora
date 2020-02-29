@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import render, redirect
+
 from .forms import RegistrationForm, AccountAuthenticationForm, EditAccountForm
+from .models import Account
 
 
 def registration_view(request):
@@ -53,9 +55,12 @@ def logout_view(request):
 
 
 def edit_account_view(request):
+    obj = Account.objects.get(id=request.user.id)
     if not request.user.is_authenticated:
         return redirect("login")
-    context = {}
+    context = {
+        'phone': obj.phone
+    }
     if request.POST:
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -65,11 +70,14 @@ def edit_account_view(request):
     else:
         form = EditAccountForm(
             initial={
-                "email": request.user.email,
-                "username": request.user.username,
                 "first_name": request.user.first_name,
                 "last_name": request.user.last_name,
+                "phone": context['phone'],
+                "email": request.user.email,
+                "username": request.user.username,
+
             }
+
         )
     context["account_form"] = form
     return render(request, "edit_account_page.html", context)

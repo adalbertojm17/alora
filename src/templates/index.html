@@ -19,9 +19,15 @@
     <br/>
     <br/>
 
-    <div id="buttonmain">
-        <p><a href="/login/">Sign In </a></p>
-    </div>
+    {% if  request.user.is_authenticated %}
+        <div id="buttonmain">
+            <p><a href="/edit_account/">Edit Account</a></p>
+        </div>
+    {% else %}
+        <div id="buttonmain">
+            <p><a href="/login/">Sign In</a></p>
+        </div>
+    {% endif %}
 
 
 {% endblock %}

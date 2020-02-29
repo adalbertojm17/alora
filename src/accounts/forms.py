@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.utils.safestring import mark_safe
 
+
 from .models import Account
 
 
@@ -18,6 +19,13 @@ class RegistrationForm(UserCreationForm):
         label='',
         widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
 
+    )
+
+    phone = forms.CharField(
+        max_length=12,
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+        required=False
     )
 
     email = forms.EmailField(
@@ -50,7 +58,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = Account
-        fields = ('first_name', 'last_name', 'email', 'username')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'username')
 
 
 class AccountAuthenticationForm(forms.ModelForm):
@@ -86,6 +94,15 @@ class EditAccountForm(forms.ModelForm):
         label=mark_safe('Last Name<br />'),
         label_suffix='',
         widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+
+    )
+
+    phone = forms.CharField(
+        max_length=15,
+        label=mark_safe('Phone Number<br />'),
+        label_suffix='',
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}),
     )
 
     email = forms.EmailField(
@@ -106,7 +123,7 @@ class EditAccountForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ("email", "username", "first_name", "last_name")
+        fields = ("first_name", "last_name", 'phone', "email", "username")
 
     def clean_first_name(self):
         if self.is_valid():
@@ -117,6 +134,15 @@ class EditAccountForm(forms.ModelForm):
         if self.is_valid():
             last_name = self.cleaned_data["last_name"]
             return last_name
+
+    def clean_phone(self):
+        if self.is_valid():
+            phone = self.cleaned_data["phone"]
+            try:
+                account = Account.objects.exclude(pk=self.instance.pk).get(phone=phone)
+            except Account.DoesNotExist:
+                return phone
+            raise forms.ValidationError('Phone "%s"is already in use.' % account)
 
     def clean_email(self):
         if self.is_valid():

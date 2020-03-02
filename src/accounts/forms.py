@@ -11,60 +11,62 @@ class RegistrationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=50,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
+        widget=forms.TextInput(attrs={'placeholder': 'First name*'}),
     )
 
     last_name = forms.CharField(
         max_length=100,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Last name*'}),
 
     )
 
     phone = forms.CharField(
         max_length=12,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Phone number (optional)'}),
+        help_text='Enter a valid phone number (e.g. +11234567890)',
         required=False
     )
 
     email = forms.EmailField(
         max_length=254,
-        help_text="Required, Add a valid email address",
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Email*'})
 
     )
 
     username = forms.CharField(
         max_length=35,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username'})
+        widget=forms.TextInput(attrs={'placeholder': 'Username*'})
     )
 
     password1 = forms.CharField(
         label='',
         strip=False,
         max_length=32,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password*'})
     )
 
     password2 = forms.CharField(
         label='',
         strip=False,
         max_length=32,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'})
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password*'})
     )
 
     class Meta:
         model = Account
         fields = ('first_name', 'last_name', 'phone', 'email', 'username')
 
+    def clean_phone(self):
+        return self.cleaned_data['phone'] or None
+
 
 class AccountAuthenticationForm(forms.ModelForm):
     email = forms.EmailField(
         max_length=254,
-        help_text="Required, Add a valid email address",
         label='',
         widget=forms.EmailInput(attrs={'placeholder': 'Email'})
     )
@@ -86,28 +88,28 @@ class EditAccountForm(forms.ModelForm):
         max_length=50,
         label=mark_safe('First Name<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
+        widget=forms.TextInput(attrs={'placeholder': 'First name'}),
     )
 
     last_name = forms.CharField(
         max_length=100,
         label=mark_safe('Last Name<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Last name'}),
 
     )
 
     phone = forms.CharField(
         max_length=15,
-        label=mark_safe('Phone Number<br />'),
+        label=mark_safe('Phone number<br />'),
+        help_text='Enter a valid phone number (e.g. +11234567890)',
         label_suffix='',
         required=False,
-        widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Phone number'}),
     )
 
     email = forms.EmailField(
         max_length=254,
-        help_text="Required, Add a valid email address",
         label=mark_safe('Email<br />'),
         label_suffix='',
         widget=forms.EmailInput(attrs={'placeholder': 'Email'})
@@ -141,6 +143,8 @@ class EditAccountForm(forms.ModelForm):
             try:
                 account = Account.objects.exclude(pk=self.instance.pk).get(phone=phone)
             except Account.DoesNotExist:
+                if phone == "":
+                    phone = None
                 return phone
             raise forms.ValidationError('Phone "%s"is already in use.' % account)
 

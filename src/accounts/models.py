@@ -45,7 +45,7 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=35, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=100)
-    phone = PhoneNumberField( blank=True, null=True, unique=True)
+    phone = PhoneNumberField(max_length=15, blank=True, null=True, unique=True)
     date_joined = models.DateField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateField(verbose_name='last login', auto_now=True)
     is_admin = models.BooleanField(default=False)

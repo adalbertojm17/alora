@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% block styles %}
+    {% block styles %}
         <title>Edit account </title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
@@ -23,8 +23,8 @@
 
             <div id="info">
                 <p> Account</p>
-                <button id="editbutton" type="submit"> Edit </button>
-                <button id="editbutton" type="submit"> <a href="/orderhistory/"> Order History </a></button>
+                <button id="editbutton" type="submit"> Edit</button>
+                <button id="editbutton" type="submit"><a href="/orderhistory/"> Order History </a></button>
 
             </div>
         </div>
@@ -37,10 +37,12 @@
                 <p>
                     {{ field.label_tag }}
                     {{ field }}
+                <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
 
-                    {% for error in field.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
                 </p>
             {% endfor %}
             <div>
@@ -48,7 +50,7 @@
             </div>
 
         </form>
-            <p><a href="/password_change/" class="makesmall">Change password</a></p>
+        <p><a href="/password_change/" class="makesmall">Change password</a></p>
 
     </div>
 {% endblock %}

@@ -29,6 +29,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1'
 ]
 
+PHONENUMBER_DB_FORMAT = 'INTERNATIONAL'
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 

@@ -23,10 +23,10 @@
                 <p>
                     {{ field.label_tag }}
                     {{ field }}
-
-                    {% for error in field.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
+                <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
             {% endfor %}
             <div>
                 <button id="buttonstandard" type="submit">Sign Up</button>

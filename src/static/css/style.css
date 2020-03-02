@@ -628,20 +628,25 @@ img {
     margin-bottom: 30px;
 }
 
-#vieworder{
+#vieworder {
     text-align: center;
     font-family: "Lato-Bold", sans-serif;
     font-size: 200%;
 }
 
+/*required field indicator*/
+label.required::before {
+    content: ' *';
+    color: red;
+}
 
 /*footer Css*/
 
-.footer{
+.footer {
     background-color: #FF5733;
     position: fixed;
-    bottom:0;
-    width:100%;
+    bottom: 0;
+    width: 100%;
     margin-top: 300px;
-    height:100px;   /* Height of the footer */
+    height: 100px; /* Height of the footer */
 }

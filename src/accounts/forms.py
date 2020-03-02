@@ -24,8 +24,8 @@ class RegistrationForm(UserCreationForm):
     phone = forms.CharField(
         max_length=12,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Phone number (optional)'}),
-        help_text='Enter a valid phone number (e.g. +11234567890)',
+        widget=forms.TextInput(attrs={'placeholder': 'Phone number (Optional)'}),
+        help_text='Enter a valid phone number (e.g. 999-999-9999)',
         required=False
     )
 
@@ -84,6 +84,7 @@ class AccountAuthenticationForm(forms.ModelForm):
 
 
 class EditAccountForm(forms.ModelForm):
+    required_css_class = 'required'
     first_name = forms.CharField(
         max_length=50,
         label=mark_safe('First Name<br />'),
@@ -101,11 +102,10 @@ class EditAccountForm(forms.ModelForm):
 
     phone = forms.CharField(
         max_length=15,
-        label=mark_safe('Phone number<br />'),
-        help_text='Enter a valid phone number (e.g. +11234567890)',
+        label=mark_safe('Phone number (Optional)<br />'),
         label_suffix='',
         required=False,
-        widget=forms.TextInput(attrs={'placeholder': 'Phone number'}),
+        widget=forms.TextInput(attrs={'placeholder': 'e.g. 999-999-9999'}),
     )
 
     email = forms.EmailField(

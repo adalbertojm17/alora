@@ -13,6 +13,7 @@ a {
     color: white;
     text-align: center;
     text-decoration: none;
+    padding:5px;
 }
 
 /*a:hover {
@@ -229,6 +230,7 @@ input[type=text], input[type=email], input[type=password] {
     border: 1px solid #FF5733;
     padding: auto;
     margin: auto;
+    margin-top: 5px;
     margin-bottom: 30px;
     box-sizing: border-box;
     border-radius: 4px;
@@ -663,6 +665,11 @@ label.required::before {
 
 .container p{
     margin-top: 30px;
+}
+
+.reset input{
+    margin:auto;
+    width:40%;
 }
 
 /*footer Css*/

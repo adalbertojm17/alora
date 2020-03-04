@@ -65,7 +65,6 @@ def edit_account_view(request):
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("login")
     else:
         form = EditAccountForm(
             initial={

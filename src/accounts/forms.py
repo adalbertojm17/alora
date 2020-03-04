@@ -89,7 +89,6 @@ class EditAccountForm(forms.ModelForm):
         max_length=50,
         label=mark_safe('First Name<br />'),
         label_suffix='',
-        disabled=True,
         widget=forms.TextInput(attrs={'placeholder': 'First name', 'class': 'toggleenabled'}),
     )
 
@@ -97,7 +96,6 @@ class EditAccountForm(forms.ModelForm):
         max_length=100,
         label=mark_safe('Last Name<br />'),
         label_suffix='',
-        disabled=True,
         widget=forms.TextInput(attrs={'placeholder': 'Last name', 'class': 'toggleenabled'}),
 
     )
@@ -107,14 +105,12 @@ class EditAccountForm(forms.ModelForm):
         label=mark_safe('Phone number (Optional)<br />'),
         label_suffix='',
         required=False,
-        disabled=True,
         widget=forms.TextInput(attrs={'placeholder': 'e.g. 999-999-9999', 'class': 'toggleenabled'}),
     )
 
     email = forms.EmailField(
         max_length=254,
         label=mark_safe('Email<br />'),
-        disabled=True,
         label_suffix='',
         widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'toggleenabled'})
 
@@ -123,7 +119,6 @@ class EditAccountForm(forms.ModelForm):
     username = forms.CharField(
         max_length=35,
         label=mark_safe('Username<br />'),
-        disabled=True,
         label_suffix='',
         widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled'})
     )

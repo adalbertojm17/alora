@@ -1,10 +1,13 @@
+import re
+
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.utils.safestring import mark_safe
 
-
 from .models import Account
+
+EMAIL_REGEX = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
 
 class RegistrationForm(UserCreationForm):
@@ -141,27 +144,29 @@ class EditAccountForm(forms.ModelForm):
         if self.is_valid():
             phone = self.cleaned_data["phone"]
             try:
-                account = Account.objects.exclude(pk=self.instance.pk).get(phone=phone)
+                Account.objects.exclude(pk=self.instance.pk).get(phone=phone)
             except Account.DoesNotExist:
                 if phone == "":
                     phone = None
                 return phone
-            raise forms.ValidationError('Phone "%s"is already in use.' % account)
+            raise forms.ValidationError('Phone "%s" is already in use.' % phone)
 
     def clean_email(self):
         if self.is_valid():
             email = self.cleaned_data["email"]
+            if email and not re.match(EMAIL_REGEX, email):
+                raise forms.ValidationError('Invalid email format')
             try:
-                account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
+                Account.objects.exclude(pk=self.instance.pk).get(email=email)
             except Account.DoesNotExist:
                 return email
-            raise forms.ValidationError('Email "%s" is already in use.' % account)
+            raise forms.ValidationError('Email "%s" is already in use.' % email)
 
     def clean_username(self):
         if self.is_valid():
             username = self.cleaned_data["username"]
             try:
-                account = Account.objects.exclude(pk=self.instance.pk).get(username=username)
+                Account.objects.exclude(pk=self.instance.pk).get(username=username)
             except Account.DoesNotExist:
                 return username
-            raise forms.ValidationError('Username "%s"is already in use.' % account)
+            raise forms.ValidationError('Username "%s" is already in use.' % username)

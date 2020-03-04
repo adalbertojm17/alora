@@ -249,6 +249,20 @@ input[type=text], input[type=email], input[type=password] {
     padding: 12px;
 }
 
+#secondmainbutton {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 10%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px;
+}
+
 #buttonmain p {
     text-align: center;
     padding: 15px;

@@ -59,13 +59,14 @@ def edit_account_view(request):
     if not request.user.is_authenticated:
         return redirect("login")
     context = {
-        'phone': obj.phone
+        'phone': obj.phone,
+        'user': request.user
     }
     if request.POST:
         form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect("login")
+
     else:
         form = EditAccountForm(
             initial={
@@ -74,9 +75,7 @@ def edit_account_view(request):
                 "phone": context['phone'],
                 "email": request.user.email,
                 "username": request.user.username,
-
             }
-
         )
     context["account_form"] = form
     return render(request, "edit_account_page.html", context)

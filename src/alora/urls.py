@@ -40,7 +40,9 @@ from feedback.views import (
     feedbackconfirm_view,
     feedback_view,
 )
+from orders.view import (
 
+)
 urlpatterns = [
     path('signup/', registration_view, name="register"),
     path('login/', login_view, name="login"),

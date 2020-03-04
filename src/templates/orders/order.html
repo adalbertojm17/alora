@@ -20,12 +20,12 @@
 
         <label for="subject">Laundry Method</label>
         <select id="meathod" name="Laundry Method">
-            <option value="Wash & Press">Wash & Press</option>
-            <option value="Wash & Dry">Wash & Dry</option>
-            <option value="Dry Clean">Dry Clean</option>
+            {% for service in allservices.Type_service %}
+            <option value={{ service.pk }}>{{ service }}</option>
         </select><br>
+        {% endfor %}
 
-
+        <label for="subject">Item</label>
         <select id="Address" name="Clothing type">
             <option value="Laundry">Address in Database</option>
             <option value="Dry Cleaning">Type in Address</option>

@@ -27,7 +27,6 @@ class FeedBackForm(forms.ModelForm):
 
     email = forms.EmailField(
         max_length=254,
-        help_text="Required, Add a valid email address",
         label='',
         widget=forms.EmailInput(attrs={'placeholder': 'Email'})
 

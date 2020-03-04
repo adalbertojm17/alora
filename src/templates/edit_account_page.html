@@ -8,11 +8,14 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
 
+
+
     {% endblock %}
 </head>
 
 <body>
 {% block content %}
+
 
     <div id="accountpage">
         <div id="accountdiv">
@@ -23,16 +26,15 @@
 
             <div id="info">
                 <p> Account</p>
-                <button id="editbutton" type="submit"> Edit</button>
-                <button id="editbutton" type="submit"><a href="/orderhistory/"> Order History </a></button>
-
+                <button id="editbutton" type="submit">Edit Account</button>
+                <button id="orderbutton" type="submit"><a href="/orderhistory/"> Order History </a></button>
             </div>
         </div>
 
     </div>
 
     <div id="accountinfo">
-        <form method="post">{% csrf_token %}
+        <form method="post" id="editform">{% csrf_token %}
             {% for field in account_form %}
                 <p>
                     {{ field.label_tag }}
@@ -43,7 +45,6 @@
                 {% for error in field.errors %}
                     <p style="color: red;">{{ error }}</p>
                 {% endfor %}
-                </p>
             {% endfor %}
             <div>
                 <button id="buttonstandard" type="submit">Save Changes</button>
@@ -55,4 +56,27 @@
     </div>
 {% endblock %}
 </body>
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".toggleenabled").addClass("disabledfield");
+            $('#editbutton').click(function () {
+                // noinspection JSJQueryEfficiency
+                if ($('.toggleenabled').prop('disabled')) {
+                    $('.toggleenabled').prop('disabled', false);
+                    $(".toggleenabled").removeClass("disabledfield");
+                    $("#editbutton").html('Cancel');
+                } else {
+                    $('.toggleenabled').prop('disabled', true);
+                    $("#editform")[0].reset();
+                    $(".toggleenabled").addClass("disabledfield");
+                    $("#editbutton").html('Edit Account');
+
+                }
+            });
+        })
+    </script>
+{% endblock %}
 </html>

@@ -23,11 +23,7 @@ from pages.views import (
     home_view,
     main_view,
     about_view,
-    services_view,
-    orderconfirm_view,
-    orderdestination_view,
-    vieworder_view,
-    orderhistory_view
+    services_view
 )
 from accounts.views import (
     registration_view,
@@ -41,7 +37,11 @@ from feedback.views import (
     feedback_view,
 )
 from orders.views import (
-    order_view
+    order_view,
+    orderconfirm_view,
+    orderdestination_view,
+    vieworder_view,
+    orderhistory_view
 )
 
 urlpatterns = [

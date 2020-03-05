@@ -19,7 +19,6 @@ class Service(models.Model):
         return self.service_Name
 
 class Order_Adress(models.Model):
-    adress_order = models.ForeignKey(Order, on_delete=models.CASCADE)
     type = models.Choices("Dropoff","Pickup")
     street = models.CharField(max_length=30)
     city = models.CharField(max_length=30)

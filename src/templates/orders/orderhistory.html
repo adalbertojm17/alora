@@ -20,14 +20,25 @@
             <th> Order Status</th>
             <th> Date</th>
             <th> Pick Up Location </th>
-            <th> Pick Up Time </th>
             <th> Drop Off Location </th>
+            <th> Pick Up Time </th>
             <th> Drop Off Time </th>
             <th> Store Name</th>
         </tr>
 
-        <tr>
-        </tr>
+
+        {% for i in orders_order %}
+            <tr>
+                <td> {{ i.id }}</td>
+                <td> </td>
+                <td> </td>
+                <td> {{ i.pickup_Location }}</td>
+                <td> {{ i.dropoff_location }}</td>
+                <td> {{ i.pickup_Time  }}</td>
+                <td> {{ i.dropOff_Time  }}</td>
+                <td></td>
+            </tr>
+        {%  endfor %}
 
     </table>
     <div id="buttonmain">

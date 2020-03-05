@@ -1,6 +1,8 @@
 from django.contrib import admin
-from  .models import Service
+from  .models import Service, Order, Order_Adress
 
 
 admin.site.register(Service)
-# Register your models here.
+admin.site.register(Order)
+admin.site.register(Order_Adress)
+

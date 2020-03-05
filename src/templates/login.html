@@ -2,18 +2,13 @@
 {% load static %}
 
 <head>
-    {% block styles %}
         <title>Alora Login </title>
-
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
-    {% endblock %}
 </head>
 
 <body>
 {% block content %}
     <div id="signin">
-        <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=70>
+        <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
         <p> Sign In </p>
 
         <form method="post">{% csrf_token %}

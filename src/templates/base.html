@@ -3,6 +3,8 @@
 <html>
 <head>
     {% block styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
 </head>
 
@@ -13,6 +15,7 @@
         <nav class="mainnav">
             <ul>
                 <li class="homepage"><a href="{% url 'home' %}">Home </a></li>
+                <li class="homepage"><a href=/main/>Main</a></li>
                 <li class="homepage"><a href=/order/>Order Now</a></li>
                 <li class="homepage"><a href=>Tracking</a></li>
                 <li class="homepage"><a href=/services/>Services</a></li>
@@ -37,8 +40,8 @@
  {% block script %}
  {% endblock %}
 
-    <footer class="footer">
+{% comment %}<footer class="footer">
 
-    </footer>
+    </footer>{% endcomment %}
 </body>
 </html>

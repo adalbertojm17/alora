@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    <title>Tracking- No Order</title>
+</head>
+
+<body>
+{% block content %}
+
+    <div class="confirm">
+        <img id="confirmicons" src="{% static 'images/x.png' %}" alt="Logo" class="center" width=120
+             height=120>
+        <p> You currently have no orders in progress</p>
+        <div id="buttonconfirm">
+            <p><a href="/main/"> Go Back </a></p>
+        </div>
+    </div>
+
+
+{% endblock %}
+</body>

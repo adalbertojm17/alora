@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'pages',
     'feedback',
     'phonenumber_field',
+    'orders',
 ]
 
 MIDDLEWARE = [

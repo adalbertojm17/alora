@@ -21,9 +21,7 @@ def services_view(request, *args, **kwargs):
     return render(request, "services.html", my_context)
 
 
-def order_view(request, *args, **kwargs):
-    my_context = {}
-    return render(request, "orders/order.html", my_context)
+
 
 
 def orderconfirm_view(request, *args, **kwargs):

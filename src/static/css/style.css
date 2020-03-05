@@ -628,7 +628,26 @@ img {
      margin-bottom: 40px;
 }
 
-/* View order page */
+/* View order pages */
+
+.orderhistorytable{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.orderhistorytable td, .orderhistorytable th{
+    border: 2px solid #ddd;
+    padding: 8px;
+}
+
+.orderhistorytable th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #FF5733;
+    color: white;
+}
 
 .vieworder{
     width: 50%;

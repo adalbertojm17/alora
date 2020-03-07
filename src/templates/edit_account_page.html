@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit account </title>
+    {% block styles %}
+        <title>Edit account </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
 </head>
 
 <body>

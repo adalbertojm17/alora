@@ -19,7 +19,7 @@
 
             <div id="info">
                 <p> Account</p>
-                <button id="editbutton" type="submit">Cancel</button>
+                <button id="editbutton" type="submit">Edit Account</button>
                 <button id="editbutton" type="submit"><a href="/orderhistory/"> Order History </a></button>
                 <button id="editbutton" type="submit"><a href="/password_change/"> Change Password</a></button>
 
@@ -54,16 +54,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('.toggleenabled').prop('disabled', true);
+            $(".toggleenabled").addClass("disabledfield");
+
+
             $('#editbutton').click(function () {
                 // noinspection JSJQueryEfficiency
                 if ($('.toggleenabled').prop('disabled')) {
                     $('.toggleenabled').prop('disabled', false);
                     $(".toggleenabled").removeClass("disabledfield");
                     $("#editbutton").html('Cancel');
+
                 } else {
                     $('.toggleenabled').prop('disabled', true);
-                    $("#editform")[0].reset();
                     $(".toggleenabled").addClass("disabledfield");
+                    $("#editform")[0].reset();
                     $("#editbutton").html('Edit Account');
 
                 }

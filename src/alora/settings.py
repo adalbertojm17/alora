@@ -92,6 +92,8 @@ TEMPLATES = [
 ]
 
 AUTH_USER_MODEL = 'accounts.Account'
+AUTHENTICATION_BACKENDS = (
+    'accounts.backends.EmailOrUsernameModelBackend', 'django.contrib.auth.backends.ModelBackend',)
 
 WSGI_APPLICATION = 'alora.wsgi.application'
 

@@ -1,4 +1,5 @@
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, logout
+from .backends import authenticate
 from django.shortcuts import render, redirect
 
 from .forms import RegistrationForm, AccountAuthenticationForm, EditAccountForm
@@ -11,10 +12,11 @@ def registration_view(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            email = form.cleaned_data.get('email')
+            username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            account = authenticate(email=email, password=raw_password)
-            login(request, account)
+            account = authenticate(username=username, password=raw_password)
+            login(request, account, backend='accounts.backends.EmailOrUsernameModelBackend')
+
             return redirect('main')
         else:
             context['registration_form'] = form
@@ -34,12 +36,12 @@ def login_view(request):
     if request.POST:
         form = AccountAuthenticationForm(request.POST)
         if form.is_valid():
-            email = request.POST['email']
+            username = request.POST['username']
             password = request.POST['password']
-            user = authenticate(email=email, password=password)
+            user = authenticate(username=username, password=password)
 
             if user:
-                login(request, user)
+                login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
                 return redirect('main')
 
     else:

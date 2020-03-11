@@ -1,7 +1,7 @@
 import re
 
 from django import forms
-from django.contrib.auth import authenticate
+from .backends import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.safestring import mark_safe
 
@@ -42,7 +42,10 @@ class RegistrationForm(UserCreationForm):
     username = forms.CharField(
         max_length=35,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username*'})
+        widget=forms.TextInput(attrs={'placeholder': 'Username*', 'pattern': '[0-9A-Za-z ]+', 'title': ' alphanumeric '
+                                                                                                       'characters '
+                                                                                                       'only '
+                                                                                                       'please'})
     )
 
     password1 = forms.CharField(
@@ -68,21 +71,22 @@ class RegistrationForm(UserCreationForm):
 
 
 class AccountAuthenticationForm(forms.ModelForm):
-    email = forms.EmailField(
-        max_length=254,
+    username = forms.CharField(
+        max_length=35,
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
+        widget=forms.TextInput(attrs={'placeholder': 'Email or Username'})
     )
+
     password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
     class Meta:
         model = Account
-        fields = ('email', 'password')
+        fields = ('username', 'password')
 
     def clean(self):
-        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        if not authenticate(email=email, password=password):
+        if not authenticate(username=username, password=password):
             raise forms.ValidationError("Invalid login")
 
 
@@ -123,7 +127,10 @@ class EditAccountForm(forms.ModelForm):
         max_length=35,
         label=mark_safe('Username<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled'})
+        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled', 'pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters only '
+                                               'please'})
     )
 
     class Meta:

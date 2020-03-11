@@ -4,7 +4,11 @@
 <!DOCTYPE html>
 
 <head>
+    {% block styles %}
         <title>Alora Sign Up </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
 </head>
 
 <body>

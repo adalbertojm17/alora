@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>Tracking- No Order</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="confirm">
+        <img id="confirmicons" src="{% static 'images/x.png' %}" alt="Logo" class="center" width=100
+             height=100>
+        <p> You currently have no orders in progress.</p>
+        <div id="buttonconfirm">
+            <p><a href="/main/"> Go Back </a></p>
+        </div>
+    </div>
+
+
+{% endblock %}
+</body>

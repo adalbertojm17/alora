@@ -649,6 +649,10 @@ img {
     color: white;
 }
 
+#viewordertitle{
+    text-align: center;
+}
+
 .vieworder{
     width: 50%;
     height: 400px;

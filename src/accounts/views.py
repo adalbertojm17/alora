@@ -62,7 +62,7 @@ def edit_account_view(request):
         return redirect("login")
     context = {
         'phone': obj.phone,
-        'user': request.user
+        'user': request.user,
     }
     if request.POST:
         form = EditAccountForm(request.POST, instance=request.user)
@@ -76,6 +76,7 @@ def edit_account_view(request):
                 "last_name": request.user.last_name,
                 "phone": context['phone'],
                 "email": request.user.email,
+                "email2": request.user.email,
                 "username": request.user.username,
             }
         )

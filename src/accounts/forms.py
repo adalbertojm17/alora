@@ -1,5 +1,5 @@
 import re
-
+from django.core.validators import validate_email
 from django import forms
 from .backends import authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -35,7 +35,14 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(
         max_length=254,
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email*'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Email address*'})
+
+    )
+
+    email2 = forms.EmailField(
+        max_length=254,
+        label='',
+        widget=forms.EmailInput(attrs={'placeholder': 'Confirm Email*'})
 
     )
 
@@ -64,10 +71,16 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = Account
-        fields = ('first_name', 'last_name', 'phone', 'email', 'username')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'email2', 'username')
 
     def clean_phone(self):
         return self.cleaned_data['phone'] or None
+
+    def clean_email2(self):
+        email = self.cleaned_data.get('email')
+        email2 = self.cleaned_data.get('email2')
+        if email != email2:
+            raise forms.ValidationError('Emails must match')
 
 
 class AccountAuthenticationForm(forms.ModelForm):
@@ -123,6 +136,14 @@ class EditAccountForm(forms.ModelForm):
 
     )
 
+    email2 = forms.EmailField(
+        max_length=254,
+        label=mark_safe('Confirm Email<br />'),
+        label_suffix='',
+        widget=forms.EmailInput(attrs={'placeholder': 'Confirm Email*', 'class': 'toggleenabled'})
+
+    )
+
     username = forms.CharField(
         max_length=35,
         label=mark_safe('Username<br />'),
@@ -135,7 +156,7 @@ class EditAccountForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ("first_name", "last_name", 'phone', "email", "username")
+        fields = ("first_name", "last_name", 'phone', "email", "email2", "username")
 
     def clean_first_name(self):
         if self.is_valid():
@@ -161,13 +182,22 @@ class EditAccountForm(forms.ModelForm):
     def clean_email(self):
         if self.is_valid():
             email = self.cleaned_data["email"]
-            if email and not re.match(EMAIL_REGEX, email):
-                raise forms.ValidationError('Invalid email format')
+            try:
+                validate_email(email)
+                valid_email = True
+            except validate_email.ValidationError:
+                valid_email = False
             try:
                 Account.objects.exclude(pk=self.instance.pk).get(email=email)
             except Account.DoesNotExist:
                 return email
             raise forms.ValidationError('Email "%s" is already in use.' % email)
+
+    def clean_email2(self):
+        email = self.cleaned_data.get('email')
+        email2 = self.cleaned_data.get('email2')
+        if email != email2:
+            raise forms.ValidationError('Emails must match')
 
     def clean_username(self):
         if self.is_valid():

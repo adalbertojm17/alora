@@ -30,6 +30,10 @@ from .permissions import (
     IsOwner,
 )
 
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+
 User = get_user_model()
 
 
@@ -58,11 +62,24 @@ class UserLoginAPIView(APIView):
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 
+class MyAuthToken(ObtainAuthToken):
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'username': user.username,
+            'email': user.email
+        })
+
 # class UserUpdateAPIView(UpdateAPIView):
 #     permission_classes = [IsOwner]
 #     serializer_class = UserCreateUpdateSerializer
 #     queryset = User.objects.all()
-
-'''
-curl -X POST -d "username=mahd&password=Super@RandomPass_38" http://localhost:8000/api/auth/token
-'''

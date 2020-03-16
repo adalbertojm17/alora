@@ -1,0 +1,100 @@
+@font-face {
+    font-family: Lato;
+    /*src:'{% static 'Lato/Lato-Regular.ttf' %}';*/
+    src: url('../Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: Lato-Bold;
+    /*src:'{% static 'Lato/Lato-Regular.ttf' %}';*/
+    src: url('../Lato/Lato-BoldItalic.ttf');
+}
+
+html {
+    background-color: #FFCF3B;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #FFCF3B;
+    margin: 0;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.businessnav ul li img{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.businessnav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color:#FF9920;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.businessnav ul li a{
+    display: block;
+    color: black;
+    padding: 10px 16px;
+    font-size: 130%;
+    text-decoration: none;
+}
+
+.businessnav li a.active {
+  background-color:#FFCF3B;
+  color: white;
+}
+
+.businessnav li a:hover:not(.active) {
+  background-color: #FF5733;
+  color: white;
+}
+
+.content{
+    margin-left: 20%;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+#h1generalinfo{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 200%;
+}
+
+#pcenter{
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.content .section1{
+    background-color: #FFD555;
+    height: 500px;
+}
+
+.content .section2{
+    background-color: #FFE081;
+    height: 500px;
+}
+
+.content .section3{
+    background-color: #FFD555;
+    height: 500px;
+}
+
+.content h1 {
+    text-align: center;
+    font-family: "Lato-Bold", sans-serif;
+    font-size: 300%;
+}

@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'feedback',
     'phonenumber_field',
     'orders',
+    'business'
 ]
 
 MIDDLEWARE = [

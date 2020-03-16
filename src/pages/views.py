@@ -23,3 +23,7 @@ def services_view(request, *args, **kwargs):
 def no_order_view(request, *args, **kwargs):
     my_context = {}
     return render(request, "no_order_to_track.html", my_context)
+
+def staffhome_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "home.html", my_context)

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block styles %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="businessnavbar">
+            <nav class="businessnav">
+                <ul>
+                    <li class="center"><img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70></li>
+                    <li ><a href="{% url 'staffhome' %}">Home </a></li>
+                    <li ><a href=/currentorders/>Current Orders</a></li>
+                    <li class="homepage"><a href=/storeorders/>Order History</a></li>
+                    <li class="homepage"><a href=/staff/>Staff</a></li>
+                    <li class="homepage"><a href=/generalinfo/>General Information</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
+
+                    {% else %}
+                        <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block content %}
+        Failed to replace content
+    {% endblock %}
+
+    {% block script %}
+    {% endblock %}
+
+     {% comment %}
+     <footer class="footer">
+
+    </footer>{% endcomment %}
+</body>
+</html>

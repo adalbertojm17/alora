@@ -37,6 +37,15 @@ from feedback.views import (
     feedbackconfirm_view,
     feedback_view,
 )
+
+from business.views import (
+    staffhome_view,
+    current_orders_view,
+    general_info_view,
+    staff_view,
+    store_orderhistory_view
+)
+
 from orders.views import (
     order_view,
     orderconfirm_view,
@@ -44,6 +53,8 @@ from orders.views import (
     vieworder_view,
     orderhistory_view
 )
+
+
 
 urlpatterns = [
     path('signup/', registration_view, name="register"),
@@ -63,7 +74,12 @@ urlpatterns = [
     path('orderdestination/', orderdestination_view, name="orderdestination"),
     path('vieworder/', vieworder_view, name="vieworder"),
     path('orderhistory/', orderhistory_view, name="orderhistory"),
-    path('noorder/', no_order_view, name="orderhistory"),
+    path('noorder/', no_order_view, name="noorder"),
+    path('home/', staffhome_view, name="staffhome"),
+    path('currentorders/', current_orders_view, name="currentorders"),
+    path('generalinfo/', general_info_view, name="generalinfo"),
+    path('staff/', staff_view, name="staff"),
+    path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
 
 

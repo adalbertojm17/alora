@@ -30,8 +30,8 @@ def login_view(request):
     context = {}
     user = request.user
     if user.is_authenticated:
-       # if user.is_business:
-          #  return redirect('staffhome')
+        if user.is_business:
+            return redirect('staffhome')
         return redirect('main')
 
     if request.POST:
@@ -43,6 +43,8 @@ def login_view(request):
 
             if user:
                 login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
+                if user.is_business:
+                    return redirect('staffhome')
                 return redirect('main')
 
     else:

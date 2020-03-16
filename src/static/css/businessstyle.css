@@ -47,7 +47,7 @@ body {
     display: block;
     color: black;
     padding: 10px 16px;
-    font-size: 130%;
+    font-size: 120%;
     text-decoration: none;
 }
 
@@ -61,9 +61,13 @@ body {
   color: white;
 }
 
+#welcome{
+    padding-top: 30px;
+}
+
 .content{
     margin-left: 20%;
-    padding: 1px 16px;
+    padding: 1px 0px;
     height: 1000px;
 }
 
@@ -80,21 +84,49 @@ body {
 
 .content .section1{
     background-color: #FFD555;
-    height: 500px;
+    height: 650px;
 }
 
 .content .section2{
     background-color: #FFE081;
-    height: 500px;
+    height: 650px;
 }
 
 .content .section3{
     background-color: #FFD555;
-    height: 500px;
+    height: 650px;
 }
 
 .content h1 {
     text-align: center;
     font-family: "Lato-Bold", sans-serif;
-    font-size: 300%;
+    font-size: 200%;
+}
+
+.insidecontent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.insidecontent h1{
+    text-align: left;
+}
+
+table{
+    padding: 20px;
+}
+
+th, td{
+    border: 1px solid black;
+}
+
+td{
+    padding: 5px;
+}
+
+.shiftright{
+    padding-left: 50px;
 }

@@ -12,11 +12,11 @@
             <nav class="businessnav">
                 <ul>
                     <li class="center"><img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70></li>
-                    <li ><a href="{% url 'staffhome' %}">Home </a></li>
-                    <li ><a href=/currentorders/>Current Orders</a></li>
-                    <li class="homepage"><a href=/storeorders/>Order History</a></li>
-                    <li class="homepage"><a href=/staff/>Staff</a></li>
-                    <li class="homepage"><a href=/generalinfo/>General Information</a></li>
+                    <li> <a href="{% url 'staffhome' %}"> Home </a></li>
+                    <li><a href=/currentorders/>Current Orders</a></li>
+                    <li><a href=/storeorders/>Order History</a></li>
+                    <li><a href=/staff/>Staff</a></li>
+                    <li><a href=/generalinfo/>General Information</a></li>
                     {% if request.user.is_authenticated %}
                         <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
 

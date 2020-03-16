@@ -28,9 +28,10 @@ def registration_view(request):
 
 def login_view(request):
     context = {}
-
     user = request.user
     if user.is_authenticated:
+       # if user.is_business:
+          #  return redirect('staffhome')
         return redirect('main')
 
     if request.POST:

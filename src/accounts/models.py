@@ -43,6 +43,7 @@ class AccountManager(BaseUserManager):
             last_name=last_name,
         )
 
+
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -60,7 +61,7 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_business = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
@@ -75,3 +76,42 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class CustomerManager(models.Manager):
+    def get_queryset(self):
+        return super(CustomerManager, self).get_queryset().filter(is_staff=False, is_manager=False)
+
+
+class BusinessOwnerManager(models.Manager):
+    def get_queryset(self):
+        return super(BusinessOwnerManager, self).get_queryset().filter(is_manager=True)
+
+
+class StaffManager(models.Manager):
+    def get_queryset(self):
+        return super(StaffManager, self).get_queryset().filter(is_staff=True)
+
+
+class CustomerAccount(Account):
+    customer = CustomerManager()
+
+    class Meta:
+        verbose_name = 'Customer'
+        proxy = True
+
+
+class StaffAccount(Account):
+    staff = StaffManager()
+
+    class Meta:
+        verbose_name_plural = 'Alora Staff'
+        proxy = True
+
+
+class ManagerAccount(Account):
+    manager = BusinessOwnerManager()
+
+    class Meta:
+        verbose_name = 'Manager'
+        proxy = True

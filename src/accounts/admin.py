@@ -5,7 +5,7 @@ from rest_framework.authtoken.admin import TokenAdmin
 
 
 class AccountAdmin(UserAdmin):
-    list_display = ('username', 'email', 'date_joined', 'last_login', 'is_admin', 'is_staff')
+    list_display = ('username', 'email', 'date_joined', 'last_login', 'is_business', 'is_staff')
     search_fields = ('email', 'username',),
     readonly_fields = ('date_joined', 'last_login', 'is_superuser')
 

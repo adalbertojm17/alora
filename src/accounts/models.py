@@ -43,7 +43,6 @@ class AccountManager(BaseUserManager):
             last_name=last_name,
         )
 
-        user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -58,7 +57,6 @@ class Account(AbstractBaseUser):
     phone = PhoneNumberField(max_length=15, blank=True, null=True, unique=True)
     date_joined = models.DateField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateField(verbose_name='last login', auto_now=True)
-    is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -73,7 +71,7 @@ class Account(AbstractBaseUser):
         return self.username
 
     def has_perm(self, perm, obj=None):
-        return self.is_admin
+        return self.is_staff
 
     def has_module_perms(self, app_label):
         return True

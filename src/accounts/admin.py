@@ -67,6 +67,7 @@ class CustomTokenAdmin(TokenAdmin):
 
 
 TokenAdmin.raw_id_fields = ['user']
+TokenAdmin.readonly_fields = ['user']
 
 admin.site.unregister(Group)
 admin.site.register(CustomerAccount, CustomerAdmin)

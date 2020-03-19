@@ -43,7 +43,6 @@ class AccountManager(BaseUserManager):
             last_name=last_name,
         )
 
-
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)

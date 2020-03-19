@@ -3,6 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from .models import CustomerAccount, StaffAccount, ManagerAccount
 from rest_framework.authtoken.admin import TokenAdmin
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.admin import Group
 
 
 class AccountAdmin(UserAdmin):
@@ -13,6 +15,15 @@ class AccountAdmin(UserAdmin):
     filter_horizontal = ()
     list_filter = ()
     fieldsets = ()
+
+    def has_add_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_superuser
 
 
 class CustomerAdmin(AccountAdmin):
@@ -44,8 +55,22 @@ class StaffAdmin(AccountAdmin):
     list_display = ('username', 'email', 'date_joined', 'last_login', 'is_superuser', 'delete_button')
 
 
+class CustomTokenAdmin(TokenAdmin):
+    def has_add_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+
 TokenAdmin.raw_id_fields = ['user']
 
+admin.site.unregister(Group)
 admin.site.register(CustomerAccount, CustomerAdmin)
 admin.site.register(StaffAccount, StaffAdmin)
 admin.site.register(ManagerAccount, ManagerAdmin)
+admin.site.unregister(Token)
+admin.site.register(Token, CustomTokenAdmin)

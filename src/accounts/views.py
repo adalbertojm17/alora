@@ -60,9 +60,9 @@ def logout_view(request):
 
 
 def edit_account_view(request):
-    obj = Account.objects.get(id=request.user.id)
     if not request.user.is_authenticated:
         return redirect("login")
+    obj = Account.objects.get(id=request.user.id)
     context = {
         'phone': obj.phone,
         'user': request.user,

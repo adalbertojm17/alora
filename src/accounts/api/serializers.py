@@ -1,13 +1,9 @@
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from rest_framework import serializers
 from rest_framework.serializers import (
     CharField,
     EmailField,
-    HyperlinkedIdentityField,
     ModelSerializer,
-    SerializerMethodField,
     ValidationError
 )
 
@@ -15,75 +11,50 @@ User = get_user_model()
 
 
 class UserCreateUpdateSerializer(ModelSerializer):
-    email2 = EmailField(label='Confirm Email')
-    password2 = CharField(max_length=32, label='Confirm Password')
+    password = CharField(max_length=32, label='Password', write_only=True)
+    password2 = CharField(max_length=32, label='Confirm Password', write_only=True)
 
     class Meta:
         model = User
         fields = [
             'first_name',
             'last_name',
-            'phone',
             'email',
-            'email2',
             'username',
             'password',
             'password2'
         ]
-        extra_kwargs = {'password':
-                            {'write_only': True},
-                        'password2':
-                            {'write_only': True}
-                        }
-
-    def validate_email(self, value):
-        data = self.get_initial()
-        email1 = data.get('email2')
-        email2 = value
-        if email1 != email2:
-            raise ValidationError('Emails must match')
-        return value
-
-    def validate_email2(self, value):
-        data = self.get_initial()
-        email1 = data.get('email')
-        email2 = value
-        if email1 != email2:
-            raise ValidationError('Emails must match')
-        return value
 
     def validate_password(self, value):
         data = self.get_initial()
         password1 = data.get('password2')
-        email2 = value
-        if password1 != email2:
+        password2 = value
+        if password1 != password2:
             raise ValidationError('Passwords must match')
         return value
 
     def validate_password2(self, value):
         data = self.get_initial()
         password1 = data.get('password')
-        email2 = value
-        if password1 != email2:
+        password2 = value
+        if password1 != password2:
             raise ValidationError('Passwords must match')
         return value
 
     def create(self, validated_data):
         first_name = validated_data['first_name']
         last_name = validated_data['last_name']
-        phone = validated_data['phone']
         email = validated_data['email']
         username = validated_data['username']
         password = validated_data['password']
         user_obj = User(
             first_name=first_name,
             last_name=last_name,
-            phone=phone,
             email=email,
             username=username
         )
-        user_obj.save()
         user_obj.set_password(password)
+        user_obj.save()
         return validated_data
 
 

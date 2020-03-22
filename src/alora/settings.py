@@ -110,8 +110,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aloradb',
         'USER': 'root',
-        'PASSWORD': 's3cur3p455@aloradevz',
-        'HOST': 'aloradb.ddns.net',
+        'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
+        'HOST': 'aloradevs.ddns.net',
         'PORT': '3306',
     }
 }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Order, Order_Adress
+from .models import Service, Order, Adress,OrderDetails,Status
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -59,6 +59,8 @@ class OrderAddressAdmin(admin.ModelAdmin):
         return request.user.is_superuser
 
 
-admin.site.register(Service, ServiceAdmin)
-admin.site.register(Order, OrderAdmin)
-admin.site.register(Order_Adress, OrderAddressAdmin)
+admin.site.register(Service)
+admin.site.register(Order)
+admin.site.register(Adress)
+admin.site.register(OrderDetails)
+admin.site.register(Status)

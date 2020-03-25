@@ -1,58 +1,56 @@
 from django.db import models
 
-
-class Order(models.Model):
-    name = models.CharField(max_length=300)
-    pickup_Location = models.IntegerField()
-    dropoff_Location = models.IntegerField()
-    pickup_Time = models.TimeField()
-    dropoff_Time = models.TimeField()
-
-    def __str__(self):
-        return self.id
+from accounts.models import Account
 
 
 class Service(models.Model):
-    service_Type = models.CharField(max_length=35)
-    service_Cost = models.FloatField()
-    service_Name = models.CharField(max_length=35)
+    serviceType = models.CharField(max_length=50)
+    serviceCost = models.FloatField()
+    serviceName = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.service_Name
+        return self.serviceName
 
 
-class Order_Adress(models.Model):
-    type = models.Choices("Dropoff", "Pickup")
-    street = models.CharField(max_length=30)
-    city = models.CharField(max_length=30)
-    state = models.CharField(max_length=30)
-    zipcode = models.IntegerField()
+class Order(models.Model):
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    pickupTime = models.TimeField()
+    dropoffTime = models.TimeField()
+    dateCreated= models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.account)
 
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    service = models.ForeignKey(Service,on_delete=models.CASCADE)
+    quantity =  models.FloatField()
+    def __str__(self):
+        return str(self.service)
 
 class Status(models.Model):
-    status_Order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    current_Status = models.Choices("waiting", "complete")
-    delivery_Status = models.BooleanField()
-    pickup_Status = models.NullBooleanField()
-    payment_Status = models.BooleanField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    currentStatus = models.BooleanField(default=False)
+    deliveryStatus = models.BooleanField(default=False)
+    pickupStatus = models.BooleanField(default=False)
+    paymentStatus = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.current_status
+        return str(self.id)
 
 
-class FeedBack(models.Model):
-    feedback_Order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    feedback_text = models.CharField(max_length=300)
 
-    def __str__(self):
-        return self.id
-
+class Adress(models.Model):
+    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    street = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    zipcode = models.IntegerField()
 
 class Item(models.Model):
-    item_Order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    item_Weigth = models.FloatField(default=0)
-    item_Type = models.CharField(max_length=200)
-    item_Cost = models.FloatField(max_length=200)
+    Order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service,on_delete=models.CASCADE)
+    pickupDate = models.DateTimeField()
+    dropoffDate = models.DateTimeField()
 
     def __str__(self):
-        return self.item_Type
+        return self.service

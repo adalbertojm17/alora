@@ -51,7 +51,8 @@ from orders.views import (
     orderconfirm_view,
     orderdestination_view,
     vieworder_view,
-    orderhistory_view
+    orderhistory_view,
+    load_service_view
 )
 
 
@@ -81,6 +82,7 @@ urlpatterns = [
     path('staff/', staff_view, name="staff"),
     path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
+    path('ajax/load-names/',load_service_view , name='ajax_load_names'),
 
 
     path('password_change/done/',

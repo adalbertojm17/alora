@@ -365,23 +365,32 @@ footer {
 
 
 /*about us page css*/
-
-#abmaincontent {
-    margin: auto;
-    width: 90%;
+.me{
+    text-align: center;
+}
+.content{
+    margin:auto;
+    margin-top: 5%;
 }
 
-.ableft {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section1{
+    background-color: #FFD555;
+    height: 650px;
 }
 
-.abright {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section2 {
+    background-color: #FFE081;
+    height: 650px;
 }
+
+.insidecontent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
 
 /* Contact Us page */
 #contactus {

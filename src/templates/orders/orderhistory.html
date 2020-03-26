@@ -18,7 +18,6 @@
         <tr>
             <th> Order ID</th>
             <th> Order Status</th>
-            <th> Date</th>
             <th> Pick Up Location </th>
             <th> Drop Off Location </th>
             <th> Pick Up Time </th>
@@ -26,17 +25,16 @@
             <th> Store Name</th>
         </tr>
 
-
-        /*load order details information on the database */
-        {% for i in orders_order %}
+        {% for i in orders %}
             <tr>
-                <td> {{ i.id }}</td>
-                <td> </td>
-                <td> </td>
+                <td> {{ i.pk }}</td>
+                {% if i.pk.equals == status.pk%}
+                    <td> {{status.status }}</td>
+                {% endif %}
                 <td> {{ i.pickup_Location }}</td>
                 <td> {{ i.dropoff_location }}</td>
-                <td> {{ i.pickup_Time  }}</td>
-                <td> {{ i.dropOff_Time  }}</td>
+                <td> {{ i.pickupTime  }}</td>
+                <td> {{ i.dropoffTime  }}</td>
                 <td></td>
             </tr>
         {%  endfor %}

@@ -69,7 +69,15 @@ def vieworder_view(request, *args, **kwargs):
 
 def orderhistory_view(request, *args, **kwargs):
     orders_order= Order.objects.all()
-    my_context = {}
+    addresses=Adress.objects.all()
+    status=Status.objects.all()
+    my_context = {"orders": orders_order, "address": addresses, "status": status}
     return render(request, "orders/orderhistory.html", my_context)
 
+def tracking_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "orders/tracking.html", my_context)
 
+def no_order_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "orders/no_order_to_track.html", my_context)

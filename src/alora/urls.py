@@ -23,8 +23,7 @@ from pages.views import (
     home_view,
     main_view,
     about_view,
-    services_view,
-    no_order_view
+    services_view
 )
 from accounts.views import (
     registration_view,
@@ -52,7 +51,9 @@ from orders.views import (
     orderdestination_view,
     vieworder_view,
     orderhistory_view,
-    load_service_view
+    load_service_view,
+    tracking_view,
+    no_order_view
 )
 
 
@@ -83,6 +84,8 @@ urlpatterns = [
     path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
     path('ajax/load-names/',load_service_view , name='ajax_load_names'),
+    path('tracking/', tracking_view, name="tracking"),
+
 
 
     path('password_change/done/',

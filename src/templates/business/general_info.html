@@ -1,0 +1,98 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>General Information</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+    <div class="content">
+        <h1 id="h1generalinfo">General Information</h1>
+        <p id="pcenter">More about how Alora helps you meet your company goals.</p>
+        <div class="section1">
+            <div class="insidecontent">
+                <h1> Services </h1>
+                <p> The following are the services your company offers along with Alora. Please note that these services reflect those your
+                customers are able to order at any given time. Contact our main office to make changes to your services when needed.</p>
+
+                <div class="shiftright">
+                <h3> Laundry </h3>
+                <ul class="list">
+                    <li> Weight 30lbs  Price: $20</li>
+                    <li> Weight 40lbs  Price: $30</li>
+                    <li> Weight 50lbs  Price: $40</li>
+                </ul>
+
+                <h3> Dry Cleaning </h3>
+                <p> Clothing Items: </p>
+                <ul class="list">
+                    <li> 2 Piece Suit  Price: $10</li>
+                    <li> 3 Piece Suit  Price: $12</li>
+                    <li> Blazer        Price: $6</li>
+                    <li> Dress         Price: $10</li>
+                    <li> Sweaters      Price: $6</li>
+                    <li> Blouse        Price: $5</li>
+                    <li> Skirt         Price: $5</li>
+                    <li> Pants         Price: $5</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section2">
+            <div class="insidecontent">
+                <h1> Updating Company and Order Information </h1>
+                <p> The following provides instructions on how to make changes to your company and order information. </p>
+
+            </div>
+        </div>
+
+        <div class="section3">
+            <div class="insidecontent">
+            <h1> Tracking Information</h1>
+            <table>
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order Processed</td>
+                    <td> Order have been received by the company. </td>
+                </tr>
+
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order Picked Up</td>
+                    <td> Order has been picked up by a driver from customer's pick up location </td>
+                </tr>
+
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order Cleaned</td>
+                    <td> Order has been cleaned or is in the process of being cleaned</td>
+                </tr>
+
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order Complete</td>
+                    <td> Order is completed and ready to be delivered. </td>
+                </tr>
+
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order En route</td>
+                    <td> Order is en route to the customer's drop off location</td>
+                </tr>
+
+                <tr>
+                    <td> <img src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=100 height=70> </td>
+                    <td> Order Delivered</td>
+                    <td> Order has been delivered. </td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>

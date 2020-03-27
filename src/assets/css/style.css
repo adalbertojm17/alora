@@ -10,16 +10,16 @@ body {
 
 a {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
-    padding: 10px;
     text-decoration: none;
+    padding:5px;
 }
 
-a:hover {
+/*a:hover {
     background-color: #FF9920;
-    border-radius: 15px;
-}
+    border-radius: 5px;
+}*/
 
 
 /*@font-face {
@@ -143,7 +143,7 @@ form {
 input[type=text], input[type=email], input[type=password] {
     position: center;
     background-color: white;
-    color: grey;
+    color: black;
     width: 55%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -230,18 +230,33 @@ input[type=text], input[type=email], input[type=password] {
     border: 1px solid #FF5733;
     padding: auto;
     margin: auto;
+    margin-top: 5px;
     margin-bottom: 30px;
     box-sizing: border-box;
     border-radius: 4px;
     padding: 12px;
 }
 
-#editbutton {
+#editbutton, #orderbutton {
     position: center;
     background-color: #FF5733;
     display: block;
     color: white;
     width: 70%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+#secondmainbutton {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 10%;
     border: 1px solid #FF5733;
     margin: auto;
     margin-bottom: 30px;
@@ -264,7 +279,6 @@ input[type=text], input[type=email], input[type=password] {
     color: white;
     width: 30%;
     border: 1px solid #FF5733;
-    padding: auto;
     margin: auto;
     margin-bottom: 30px;
     box-sizing: border-box;
@@ -279,9 +293,10 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 80%;
 }
 
-#buttonconfirm p a {
+#buttonconfirm  p a{
 
 }
+
 
 
 /*
@@ -302,6 +317,7 @@ Main page css
 
 #mainpagenav {
     margin: auto;
+    margin-left: 23%;
     width: 70%;
     overflow: hidden;
 }
@@ -349,23 +365,32 @@ footer {
 
 
 /*about us page css*/
-
-#abmaincontent {
-    margin: auto;
-    width: 90%;
+.me{
+    text-align: center;
+}
+.content{
+    margin:auto;
+    margin-top: 5%;
 }
 
-.ableft {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section1{
+    background-color: #FFD555;
+    height: 650px;
 }
 
-.abright {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section2 {
+    background-color: #FFE081;
+    height: 650px;
 }
+
+.insidecontent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
 
 /* Contact Us page */
 #contactus {
@@ -499,11 +524,12 @@ img {
     padding: 2%;
 }
 
-.container {
+.maincontainer {
     float: left;
     width: 50%;
     position: relative;
     margin: auto;
+    margin-bottom: 200px;
 }
 
 .insidecontainer {
@@ -600,22 +626,45 @@ img {
 
 /* Confirmation Pages */
 
-.confirm {
+.confirm{
     margin: auto;
     width: 50%;
     text-align: center;
     font-size: 150%;
 }
 
-.confirm p {
-    margin-bottom: 40px;
+.confirm p{
+     margin-bottom: 40px;
 }
 
-/* View order page */
+/* View order pages */
 
-.vieworder {
-    width: 60%;
-    height: 600px;
+.orderhistorytable{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.orderhistorytable td, .orderhistorytable th{
+    border: 2px solid #ddd;
+    padding: 8px;
+}
+
+.orderhistorytable th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #FF5733;
+    color: white;
+}
+
+#viewordertitle{
+    text-align: center;
+}
+
+.vieworder{
+    width: 50%;
+    height: 400px;
     margin: auto;
     border: solid;
     border-width: 5px;
@@ -623,9 +672,49 @@ img {
     border-radius: 10px;
     background-color: #EDDEA4;
     padding: 20px;
+    margin-bottom: 30px;
 }
 
 #vieworder {
+    text-align: center;
     font-family: "Lato-Bold", sans-serif;
     font-size: 200%;
+}
+
+/*required field indicator*/
+label.required::before {
+    content: ' *';
+    color: red;
+}
+
+/*Registration Css*/
+.container{
+    margin:auto;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-size: 150%;
+}
+
+.container p{
+    margin-top: 30px;
+}
+
+.reset input{
+    margin:auto;
+    width:40%;
+}
+
+/*footer Css*/
+
+.footer {
+    background-color: #FF5733;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 300px;
+    height: 100px; /* Height of the footer */
+}
+
+.disabledfield {
+    background-color: gainsboro !important;
 }

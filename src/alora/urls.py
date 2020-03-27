@@ -14,20 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
+from rest_framework_jwt.views import obtain_jwt_token
 
 from pages.views import (
     home_view,
     main_view,
     about_view,
-    services_view,
-    order_view,
-    orderconfirm_view,
-    orderdestination_view,
-    vieworder_view,
-    orderhistory_view
+    services_view
 )
 from accounts.views import (
     registration_view,
@@ -41,12 +37,35 @@ from feedback.views import (
     feedback_view,
 )
 
+from business.views import (
+    staffhome_view,
+    current_orders_view,
+    general_info_view,
+    staff_view,
+    store_orderhistory_view
+)
+
+from orders.views import (
+    order_view,
+    orderconfirm_view,
+    orderdestination_view,
+    vieworder_view,
+    orderhistory_view,
+    load_service_view,
+    tracking_view,
+    no_order_view
+)
+
+
+
 urlpatterns = [
     path('signup/', registration_view, name="register"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
+    path('api/auth/token/', obtain_jwt_token),
+    path('api/users/', include('accounts.api.urls'), name='users-api'),
     path('aboutus/', about_view, name="about"),
     path('contactus/', feedback_view, name="contact"),
     path('contactconfirm/', feedbackconfirm_view, name="contconfirm"),
@@ -57,7 +76,17 @@ urlpatterns = [
     path('orderdestination/', orderdestination_view, name="orderdestination"),
     path('vieworder/', vieworder_view, name="vieworder"),
     path('orderhistory/', orderhistory_view, name="orderhistory"),
+    path('noorder/', no_order_view, name="noorder"),
+    path('home/', staffhome_view, name="staffhome"),
+    path('currentorders/', current_orders_view, name="currentorders"),
+    path('generalinfo/', general_info_view, name="generalinfo"),
+    path('staff/', staff_view, name="staff"),
+    path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
+    path('ajax/load-names/',load_service_view , name='ajax_load_names'),
+    path('tracking/', tracking_view, name="tracking"),
+
+
 
     path('password_change/done/',
          auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),

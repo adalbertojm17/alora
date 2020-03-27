@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 <head>
+
     {% block styles %}
         <title>Main Page </title>
-
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
@@ -12,10 +12,11 @@
 <body>
 {% block content %}
 
-    <h1 id="welcome"> Welcome to Alora, {% if user.is_authenticated %} {{ request.user }} {% else %}Guest{% endif %}</h1>
+    <h1 id="welcome"> Welcome to Alora, {% if user.is_authenticated %} {{ request.user.first_name }} {% else %}
+        Guest{% endif %}</h1>
 
     <div id="mainpagenav" class="center">
-         <div id="mainpage">
+        <div id="mainpage">
             <div id="miniheader">
                 <img id="mainicon" src="{% static 'images/account.png' %}" alt="account" class="center" width=75
                      height=75>
@@ -35,7 +36,7 @@
             </div>
 
             <div id="info">
-                <p><a href=\order\> Place Order </a></p>
+                <p><a href=/order/> Place Order </a></p>
                 <p class="info">We would love to do your dry cleaning and laundry. Place an order today
                     and experience a cleaning service like no other.</p>
             </div>
@@ -49,7 +50,7 @@
             </div>
 
             <div id="info">
-                <p><a href=>Tracking </a></p>
+                <p><a href=/tracking/>Tracking </a></p>
                 <p class="info">See the process of your dry cleaning and laundry. Alora keeps you up to date.</p>
             </div>
 

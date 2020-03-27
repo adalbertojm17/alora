@@ -10,16 +10,16 @@ body {
 
 a {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
-    padding: 10px;
     text-decoration: none;
+    padding:5px;
 }
 
-a:hover {
+/*a:hover {
     background-color: #FF9920;
-    border-radius: 15px;
-}
+    border-radius: 5px;
+}*/
 
 
 /*@font-face {
@@ -143,7 +143,7 @@ form {
 input[type=text], input[type=email], input[type=password] {
     position: center;
     background-color: white;
-    color: grey;
+    color: black;
     width: 55%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -230,18 +230,33 @@ input[type=text], input[type=email], input[type=password] {
     border: 1px solid #FF5733;
     padding: auto;
     margin: auto;
+    margin-top: 5px;
     margin-bottom: 30px;
     box-sizing: border-box;
     border-radius: 4px;
     padding: 12px;
 }
 
-#editbutton {
+#editbutton, #orderbutton {
     position: center;
     background-color: #FF5733;
     display: block;
     color: white;
     width: 70%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+#secondmainbutton {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 10%;
     border: 1px solid #FF5733;
     margin: auto;
     margin-bottom: 30px;
@@ -351,22 +366,34 @@ footer {
 
 /*about us page css*/
 
-#abmaincontent {
-    margin: auto;
-    width: 90%;
+.content{
+    margin:auto;
 }
 
-.ableft {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section1{
+    margin:auto;
+    height: 350px;
 }
 
-.abright {
-    float: left;
-    width: 40%;
-    padding-left: 5%;
+.content .section2 {
+    background-color: #FFD555;
+    height: 650px;
 }
+
+.section1 img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.insidecontent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
 
 /* Contact Us page */
 #contactus {
@@ -500,7 +527,7 @@ img {
     padding: 2%;
 }
 
-.container {
+.maincontainer {
     float: left;
     width: 50%;
     position: relative;
@@ -613,7 +640,30 @@ img {
      margin-bottom: 40px;
 }
 
-/* View order page */
+/* View order pages */
+
+.orderhistorytable{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.orderhistorytable td, .orderhistorytable th{
+    border: 2px solid #ddd;
+    padding: 8px;
+}
+
+.orderhistorytable th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #FF5733;
+    color: white;
+}
+
+#viewordertitle{
+    text-align: center;
+}
 
 .vieworder{
     width: 50%;
@@ -640,7 +690,109 @@ label.required::before {
     color: red;
 }
 
-/*footer Css*/
+/*************************Registration Css*********************************/
+.container{
+    margin:auto;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-size: 150%;
+}
+
+.container p{
+    margin-top: 30px;
+}
+
+.reset input{
+    margin:auto;
+    width:40%;
+}
+
+/****************************Tracking*************************************/
+
+.hidden{
+	display:none;
+}
+
+#trackh1{
+	text-align:center;
+    font-size: 150%;
+}
+
+button{
+	padding: 5px 10px;
+	border: 1px solid black;
+	transition: 250ms background-color;
+}
+
+button:hover{
+	cursor: pointer;
+	background-color: black;
+	color: white;
+}
+
+button:disabled:hover{
+	opacity:0.6;
+	cursor: not-allowed;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.container{
+	max-width:800px;
+	margin: 150px auto 0 auto;
+	padding: 40px;
+}
+
+#stepProgressBar{
+	display:flex;
+	width: 800px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.step{
+	text-align:center;
+}
+
+.step-text{
+	margin-bottom: 10px;
+	color: black;
+    font-size: 70%;
+}
+
+.bullet{
+    font-size: 60%;
+	height: 20px;
+	width: 20px;
+	border-radius: 100%;
+	border: 1px solid black;
+	color: black;
+	display: inline-block;
+	position: relative;
+	transition: background-color 500ms;
+	line-height: 20px;
+}
+
+.bullet.completed{
+	color: white;
+	background-color: black;
+}
+
+.bullet.completed::after{
+	content: '';
+	position:absolute;
+	height:1px;
+	width: 110px;
+	background-color: black;
+	right: -115px;
+	bottom: 10px;
+}
+
+/********************************Footer Css*************************************/
 
 .footer {
     background-color: #FF5733;
@@ -649,4 +801,8 @@ label.required::before {
     width: 100%;
     margin-top: 300px;
     height: 100px; /* Height of the footer */
+}
+
+.disabledfield {
+    background-color: gainsboro !important;
 }

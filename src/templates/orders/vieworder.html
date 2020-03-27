@@ -13,9 +13,14 @@
 
 <body>
 {% block content %}
-    <h1 id="vieworder"> Order Details </h1>
+    <h1 id="viewordertitle"> Order Details </h1>
     <div class="vieworder">
 
+            {%for key ,value in item.items  %}
+                {%if  forloop.counter > 1  %}
+                <p>{{ key}} : {{ value }}</p>
+                {% endif %}
+            {% endfor %}
     </div>
     <div id="buttonmain">
         <p><a href="/orderconfirm/"> Confirm Order </a></p>

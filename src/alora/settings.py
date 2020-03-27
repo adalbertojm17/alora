@@ -54,11 +54,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Project specific
+    # Third-Party Apps
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    # Local Apps
     'accounts',
     'pages',
     'feedback',
     'phonenumber_field',
+    'orders',
+    'business'
 ]
 
 MIDDLEWARE = [
@@ -91,6 +97,8 @@ TEMPLATES = [
 ]
 
 AUTH_USER_MODEL = 'accounts.Account'
+AUTHENTICATION_BACKENDS = (
+    'accounts.backends.EmailOrUsernameModelBackend', 'django.contrib.auth.backends.ModelBackend',)
 
 WSGI_APPLICATION = 'alora.wsgi.application'
 
@@ -102,8 +110,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aloradb',
         'USER': 'root',
-        'PASSWORD': 's3cur3p455@aloradevz',
-        'HOST': 'aloradb.ddns.net',
+        'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
+        'HOST': 'aloradevs.ddns.net',
         'PORT': '3306',
     }
 }
@@ -148,3 +156,20 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}

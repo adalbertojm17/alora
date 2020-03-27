@@ -1,6 +1,16 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
+from rest_framework.authtoken.models import Token
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 class AccountManager(BaseUserManager):
@@ -33,7 +43,6 @@ class AccountManager(BaseUserManager):
             last_name=last_name,
         )
 
-        user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -48,21 +57,60 @@ class Account(AbstractBaseUser):
     phone = PhoneNumberField(max_length=15, blank=True, null=True, unique=True)
     date_joined = models.DateField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateField(verbose_name='last login', auto_now=True)
-    is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    is_manager = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
 
     objects = AccountManager()
 
     def __str__(self):
-        return self.first_name
+        return self.username
 
     def has_perm(self, perm, obj=None):
-        return self.is_admin
+        return self.is_staff
 
     def has_module_perms(self, app_label):
         return True
+
+
+class CustomerManager(models.Manager):
+    def get_queryset(self):
+        return super(CustomerManager, self).get_queryset().filter(is_staff=False, is_manager=False)
+
+
+class BusinessOwnerManager(models.Manager):
+    def get_queryset(self):
+        return super(BusinessOwnerManager, self).get_queryset().filter(is_manager=True)
+
+
+class StaffManager(models.Manager):
+    def get_queryset(self):
+        return super(StaffManager, self).get_queryset().filter(is_staff=True)
+
+
+class CustomerAccount(Account):
+    customer = CustomerManager()
+
+    class Meta:
+        verbose_name = 'Customer'
+        proxy = True
+
+
+class StaffAccount(Account):
+    staff = StaffManager()
+
+    class Meta:
+        verbose_name_plural = 'Alora Staff'
+        proxy = True
+
+
+class ManagerAccount(Account):
+    manager = BusinessOwnerManager()
+
+    class Meta:
+        verbose_name = 'Manager'
+        proxy = True

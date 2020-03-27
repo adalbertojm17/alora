@@ -1,8 +1,0 @@
-Create Account Test Case: Selenium run attempt
-First Name: Eddie pass
-Last Name: Jacobs pass
-Phone Number: 8567892310 fail *on website there is no optional message displayed
-Email: j.mister12@gmail.com pass
-Username: ejacobs95 pass
-Password: P@kemon12 pass
-Confirmation Password: P@kemon12 pass

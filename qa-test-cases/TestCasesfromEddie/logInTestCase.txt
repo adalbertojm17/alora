@@ -1,0 +1,10 @@
+***Each test case has been tested, and will recieve a Pass/Fail next to each information passed through the test.***
+***These test are conducted and ran through Eclispse, a java IDE***
+
+TEST CASE #2: Login
+User Name: j.mister12@gmail.com
+Password: P@kemon12--pass
+
+QA Comments - everything runs smooth
+
+__________________________________________________________________________________________________

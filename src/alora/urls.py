@@ -42,7 +42,8 @@ from business.views import (
     current_orders_view,
     general_info_view,
     staff_view,
-    store_orderhistory_view
+    store_orderhistory_view,
+    inventory_view
 )
 
 from orders.views import (
@@ -85,6 +86,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ajax/load-names/',load_service_view , name='ajax_load_names'),
     path('tracking/', tracking_view, name="tracking"),
+    path('inventory/', inventory_view, name="tracking"),
 
 
 

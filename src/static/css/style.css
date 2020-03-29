@@ -53,7 +53,7 @@ header {
     margin: auto;
     padding: 0px;
     overflow: hidden;
-
+    z-index: 3;
 }
 
 .mainnav {
@@ -63,6 +63,7 @@ header {
     margin-left: 300px;
     margin-right: 10px;
     overflow: hidden;
+    z-index: 3;
 }
 
 .mainnav ul {
@@ -70,10 +71,12 @@ header {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    z-index: 3;
 }
 
 .mainnav li {
     float: left;
+    z-index: 3;
 }
 
 

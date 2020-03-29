@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Order,Item,Status,Service,OrderDetails,Adress
 from  .forms import OrderDetailsForm
 
@@ -9,6 +9,8 @@ def load_service_view(request):
     return render(request, 'orders/serviceName_dropdown_list_options.html', {'serviceNames': serviceNames})
 
 def order_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
 
     form = OrderDetailsForm(request.POST or None)
     my_context = {
@@ -75,9 +77,14 @@ def orderhistory_view(request, *args, **kwargs):
     return render(request, "orders/orderhistory.html", my_context)
 
 def tracking_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
     my_context = {}
     return render(request, "orders/tracking.html", my_context)
 
 def no_order_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
     my_context = {}
     return render(request, "orders/no_order_to_track.html", my_context)

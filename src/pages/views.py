@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def home_view(request, *args, **kwargs):
@@ -7,6 +7,8 @@ def home_view(request, *args, **kwargs):
 
 
 def main_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
     my_context = {}
     return render(request, "mainpage.html", my_context)
 

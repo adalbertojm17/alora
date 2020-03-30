@@ -1,56 +1,65 @@
-from django.db import models
-
 from accounts.models import Account
+from django.db import models
 
 
 class Service(models.Model):
-    serviceType = models.CharField(max_length=50)
-    serviceCost = models.FloatField()
-    serviceName = models.CharField(max_length=50)
+    service_type = models.CharField(max_length=50)
+    service_cost = models.FloatField()
+    service_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.serviceName
+        return self.service_name
 
 
 class Order(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    pickupTime = models.TimeField()
-    dropoffTime = models.TimeField()
-    dateCreated= models.DateTimeField(auto_now_add=True)
+    pickup_time = models.TimeField()
+    dropoff_time = models.TimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return str(self.account)
 
+
 class OrderDetails(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE)
-    service = models.ForeignKey(Service,on_delete=models.CASCADE)
-    quantity =  models.FloatField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    quantity = models.FloatField()
+
+    class Meta:
+        verbose_name_plural = "Order Details"
+
     def __str__(self):
         return str(self.service)
 
+
 class Status(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    currentStatus = models.BooleanField(default=False)
-    deliveryStatus = models.BooleanField(default=False)
-    pickupStatus = models.BooleanField(default=False)
-    paymentStatus = models.BooleanField(default=False)
+    current_status = models.BooleanField(default=False)
+    delivery_status = models.BooleanField(default=False)
+    pickup_status = models.BooleanField(default=False)
+    payment_status = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "Status"
 
     def __str__(self):
         return str(self.id)
 
 
-
-class Adress(models.Model):
-    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+class Address(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     street = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     zipcode = models.IntegerField()
 
+
 class Item(models.Model):
-    Order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    service = models.ForeignKey(Service,on_delete=models.CASCADE)
-    pickupDate = models.DateTimeField()
-    dropoffDate = models.DateTimeField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    pickup_date = models.DateTimeField()
+    dropoff_date = models.DateTimeField()
 
     def __str__(self):
         return self.service

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Service, Order, Adress,OrderDetails,Status
+
+from .models import Service, Order, Address, OrderDetails, Status
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -22,9 +23,9 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('service_Name', 'service_Type', 'service_Cost')
-    search_fields = ('service_Name', 'service_Type', 'service_Cost'),
-    readonly_fields = ('service_Name', 'service_Type', 'service_Cost')
+    list_display = ('service_name', 'service_type', 'service_cost')
+    search_fields = ('service_name', 'service_type', 'service_cost'),
+    readonly_fields = ('service_name', 'service_type', 'service_cost')
 
     filter_horizontal = ()
     list_filter = ()
@@ -61,6 +62,6 @@ class OrderAddressAdmin(admin.ModelAdmin):
 
 admin.site.register(Service)
 admin.site.register(Order)
-admin.site.register(Adress)
+admin.site.register(Address)
 admin.site.register(OrderDetails)
 admin.site.register(Status)

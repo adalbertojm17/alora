@@ -255,6 +255,15 @@ input[type=text], input[type=email], input[type=password] {
     padding: 12px;
 }
 
+#editbutton a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding:5px;
+    font-family: "Lato", sans-serif;
+}
+
 #secondmainbutton {
     position: center;
     background-color: #FF5733;
@@ -321,13 +330,12 @@ Main page css
 
 #mainpagenav {
     margin: auto;
-    margin-left: 23%;
+    margin-left: 16%;
     width: 70%;
     overflow: hidden;
 }
 
 #mainpagenav #mainpage {
-    background-color: none;
     float: left;
     display: block;
     width: 25%;

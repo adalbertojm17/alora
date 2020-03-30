@@ -57,15 +57,21 @@ INSTALLED_APPS = [
     # Third-Party Apps
     'rest_framework',
     'rest_framework.authtoken',
+    'phonenumber_field',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
 
     # Local Apps
     'accounts',
     'pages',
     'feedback',
-    'phonenumber_field',
     'orders',
     'business'
 ]
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -166,7 +172,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
     ],
 
     'DEFAULT_PERMISSION_CLASSES': [

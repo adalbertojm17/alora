@@ -1,3 +1,4 @@
+# noinspection PyUnresolvedReferences
 from accounts.models import Account
 from django.db import models
 
@@ -13,8 +14,8 @@ class Service(models.Model):
 
 class Order(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    pickup_time = models.TimeField()
-    dropoff_time = models.TimeField()
+    pickup_time = models.DateTimeField(null=False, blank=False)
+    dropoff_time = models.DateTimeField(null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

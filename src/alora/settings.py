@@ -113,14 +113,11 @@ WSGI_APPLICATION = 'alora.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aloradb',
-        'USER': 'root',
-        'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
-        'HOST': 'aloradevs.ddns.net',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

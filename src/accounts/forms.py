@@ -35,7 +35,7 @@ class RegistrationForm(UserCreationForm):
     email = forms.EmailField(
         max_length=254,
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email address*'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Email addresses*'})
 
     )
 

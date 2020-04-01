@@ -16,7 +16,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class AccountManager(BaseUserManager):
     def create_user(self, email, username, first_name, last_name, password=None):
         if not email:
-            raise ValueError("Users must have an email address")
+            raise ValueError("Users must have an email addresses")
         if not username:
             raise ValueError("Users must have a username")
         if not first_name:

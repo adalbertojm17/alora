@@ -19,12 +19,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
 from rest_framework_jwt.views import obtain_jwt_token
 
+# noinspection PyUnresolvedReferences
 from pages.views import (
     home_view,
     main_view,
     about_view,
     services_view
 )
+# noinspection PyUnresolvedReferences
 from accounts.views import (
     registration_view,
     login_view,
@@ -32,11 +34,13 @@ from accounts.views import (
     edit_account_view,
 )
 
+# noinspection PyPackageRequirements,PyUnresolvedReferences
 from feedback.views import (
     feedbackconfirm_view,
     feedback_view,
 )
 
+# noinspection PyUnresolvedReferences
 from business.views import (
     staffhome_view,
     current_orders_view,
@@ -46,16 +50,6 @@ from business.views import (
     inventory_view
 )
 
-from orders.views import (
-    order_view,
-    orderconfirm_view,
-    orderdestination_view,
-    vieworder_view,
-    orderhistory_view,
-    load_service_view,
-    tracking_view,
-    no_order_view
-)
 
 
 
@@ -71,22 +65,12 @@ urlpatterns = [
     path('contactus/', feedback_view, name="contact"),
     path('contactconfirm/', feedbackconfirm_view, name="contconfirm"),
     path('edit_account/', edit_account_view, name="editaccount"),
-    path('services/', services_view, name="services"),
-    path('order/', order_view, name="order"),
-    path('orderconfirm/', orderconfirm_view, name="orderconfirm"),
-    path('orderdestination/', orderdestination_view, name="orderdestination"),
-    path('vieworder/', vieworder_view, name="vieworder"),
-    path('orderhistory/', orderhistory_view, name="orderhistory"),
-    path('noorder/', no_order_view, name="noorder"),
     path('home/', staffhome_view, name="staffhome"),
     path('currentorders/', current_orders_view, name="currentorders"),
     path('generalinfo/', general_info_view, name="generalinfo"),
     path('staff/', staff_view, name="staff"),
     path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
-    path('ajax/load-names/',load_service_view , name='ajax_load_names'),
-    path('tracking/', tracking_view, name="tracking"),
-    path('inventory/', inventory_view, name="tracking"),
 
 
 

@@ -1,5 +1,5 @@
-var slideIndex = [1,1];
-var slideId = ["bag", "dry"]
+var slideIndex = [1, 1];
+var slideId = ["bags", "dry"]
 showSlides(1, 0);
 showSlides(1, 1);
 

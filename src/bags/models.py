@@ -1,11 +1,10 @@
 # noinspection PyUnresolvedReferences
 from accounts.models import Account
 # noinspection PyUnresolvedReferences,PyPackageRequirements
-from address.models import Address
+from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.models import Store
 # noinspection PyUnresolvedReferences
-from clothes.models import ClothingItem
 from django.db import models
 
 
@@ -14,14 +13,15 @@ class Service(models.Model):
     service_type = models.CharField(max_length=50)
     service_cost = models.FloatField()
     service_name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.service_name
 
-
-class OrderItem(models.Model):
-    service = models.OneToOneField(Service, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField()
-    pickup_date_time = models.DateTimeField()
-    dropoff_date_time = models.DateTimeField()
-
+class Status(models.Model):
+    name = models.CharField(max_length= 100)
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'Statuses'
 
 class Order(models.Model):
     account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
@@ -30,3 +30,17 @@ class Order(models.Model):
     pickup_date_time = models.DateTimeField()
     dropoff_date_time = models.DateTimeField()
     date_created = models.DateTimeField(auto_now_add=True)
+    status =  models.OneToOneField(Status,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.account
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    service = models.OneToOneField(Service, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField()
+    def __str__(self):
+        return self.service + self.quantity
+    class Meta:
+        verbose_name_plural = 'Order Items'
+
+

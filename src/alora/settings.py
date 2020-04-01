@@ -65,8 +65,9 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'feedback',
-    'orders',
-    'business'
+    'business',
+    'bags',
+    'addresses'
 ]
 
 BOOTSTRAP4 = {

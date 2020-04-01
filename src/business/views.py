@@ -46,6 +46,7 @@ def store_orderhistory_view(request, *args, **kwargs):
         return HttpResponseForbidden()
     return render(request, "business/store_orderhistory.html", my_context)
 
+
 def inventory_view(request, *args, **kwargs):
     my_context = {}
     if not request.user.is_authenticated:

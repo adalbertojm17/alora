@@ -111,6 +111,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+/alora/
 
 # Spyder project settings
 .spyderproject
@@ -130,4 +131,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/alora/
+

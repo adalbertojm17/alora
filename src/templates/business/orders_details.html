@@ -10,15 +10,15 @@
 </head>
 <body>
 {% block content %}
-    <div class="content">
-                    <p> {{ order}}</p>
-                    <p>{{ order.pickup_location }}</p>
-                      <p>{{ order.dropoff_location }}</p>
+        <div class="content">
+                <p> {{ order}}</p>
+                <p>{{ order.pickup_location }}</p>
+                <p>{{ order.dropoff_location }}</p>
                 <p>Status: {{ order.status }}</p>
                 {% for details in orderdetails %}
-        <p>  Item:{{ details.service }} quantity: {{ details.quantity }} </p>
+                    <p>  Item:{{ details.service }} quantity: {{ details.quantity }} </p>
                 {% endfor %}
-    </div>
+        </div>
 {% endblock %}
 </body>
 </html>

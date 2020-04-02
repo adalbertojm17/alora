@@ -130,3 +130,44 @@ td{
 .shiftright{
     padding-left: 50px;
 }
+
+/******************* Current Order Page ****************************/
+
+.currentOrders{
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 1000px;
+}
+
+.insidecurrent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.insidecurrent h1{
+    text-align: center;
+}
+
+/****** Table CSS ********/
+
+.currentOrdersTable{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.currentOrdersTable td, .currentOrdersTable th{
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.currentOrdersTable th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+}

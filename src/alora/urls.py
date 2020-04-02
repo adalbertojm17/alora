@@ -47,8 +47,10 @@ from business.views import (
     general_info_view,
     staff_view,
     store_orderhistory_view,
-    inventory_view
+    inventory_view,
+    orders_details_view
 )
+
 
 
 
@@ -67,6 +69,7 @@ urlpatterns = [
     path('edit_account/', edit_account_view, name="editaccount"),
     path('home/', staffhome_view, name="staffhome"),
     path('currentorders/', current_orders_view, name="currentorders"),
+    path('order_details/', orders_details_view, name="order_details"),
     path('generalinfo/', general_info_view, name="generalinfo"),
     path('staff/', staff_view, name="staff"),
     path('storeorders/', store_orderhistory_view, name="storeorders"),

@@ -9,6 +9,6 @@ class Address(models.Model):
     zip_code = models.CharField(max_length=6)
 
     def __str__(self):
-        return self.street.__str__() + self.city.__str__()
+        return self.street.__str__() +" "+ self.city.__str__()
     class Meta:
         verbose_name_plural = 'Addresses'

@@ -1,0 +1,24 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+     {% block styles %}
+         <title>Order Details</title>
+        <title>Current Orders</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="content">
+                    <p> {{ order}}</p>
+                    <p>{{ order.pickup_location }}</p>
+                      <p>{{ order.dropoff_location }}</p>
+                <p>Status: {{ order.status }}</p>
+                {% for details in orderdetails %}
+        <p>  Item:{{ details.service }} quantity: {{ details.quantity }} </p>
+                {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

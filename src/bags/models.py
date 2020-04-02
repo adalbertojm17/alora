@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Service(models.Model):
-    store = models.OneToOneField(Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
     service_type = models.CharField(max_length=50)
     service_cost = models.FloatField(blank=True)
     service_name = models.CharField(max_length=50)
@@ -30,20 +30,21 @@ class Status(models.Model):
 
 class Order(models.Model):
     account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
+    Store = models.ForeignKey(Store,on_delete=models.SET_NULL, null=True)
     pickup_location = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     dropoff_location = models.ForeignKey(Address, related_name='+', on_delete=models.SET_NULL, null=True)
     pickup_at = models.DateTimeField()
     dropoff_at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.OneToOneField(Status, on_delete=models.CASCADE)
+    status = models.ForeignKey(Status,on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.account
+        return str(self.account)
 
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    service = models.OneToOneField(Service, on_delete=models.SET_NULL, null=True)
+    service = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=1)
 
     def __str__(self):

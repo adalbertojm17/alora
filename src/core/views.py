@@ -1,8 +1,14 @@
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
-from django.shortcuts import render, redirect
+# noinspection PyUnresolvedReferences
+from addresses.models import Address
+# noinspection PyUnresolvedReferences
+from business.models import Store
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from django.utils import timezone
 
-from .models import Order
+from .models import Item, OrderItem, Order
 
 
 # view for user to monitor their order history
@@ -47,7 +53,68 @@ def no_order_view(request, *args, **kwargs):
     return render(request, "orders/no_order_to_track.html", my_context)
 
 
-# view commented out pending adjustment
+def add_item_view(request):
+    print("place order view reached")
+    if not request.user.is_authenticated:
+        return redirect("login")
+    my_context = {}
+    return render(request, "orders/order.html", my_context)
+
+
+# def add_to_order(request, pk):
+#     print("add-to-order view reached")
+#
+#     item = get_object_or_404(Item, pk=pk)
+#     order_item = OrderItem.objects.create(item=item)
+#     order_qs = Order.objects.filter(account=request.user, current_status='P' or 'PU')
+#     if order_qs.exists():
+#         order = order_qs[0]
+#         # check if the order item is in the order
+#         if order.items.filter(item__pk=item.pk):
+#             order_item.quantity += 1
+#             order_item.save()
+#     else:
+#         print("new order created")
+#         pickup_at = timezone.now()
+#         dropoff_at = timezone.now()
+#
+#         pickup_location = Address.objects.create(
+#             street='1 N. Norfolk Ave',
+#             city='Bloomfield',
+#             state='New Jersey',
+#             country='US',
+#             zip_code='01854'
+#         )
+#         dropoff_location = Address.objects.create(
+#             street='69 N. Norfolk Ave',
+#             city='New York',
+#             state='New York',
+#             country='US',
+#             zip_code='01854'
+#         )
+#
+#         store = Store.objects.create(
+#             name='Benny\'s Billions',
+#             manager=request.user,
+#             address=dropoff_location
+#         )
+#
+#         order = Order.objects.create(
+#             user=request.user,
+#             store=store,
+#             pickup_at=pickup_at,
+#             dropoff_at=dropoff_at,
+#             pickup_location=pickup_location,
+#             dropoff_location=dropoff_location,
+#             current_status='P'
+#         )
+#         order.items.add(order_item)
+#     return reverse('core:order', kwargs={
+#         'pk': pk
+#     })
+
+
+# view disabled out pending adjustment
 """def vieworder_view(request, *args, **kwargs):
     my_context = {}
     my_context = {

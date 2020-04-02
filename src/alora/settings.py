@@ -68,7 +68,6 @@ INSTALLED_APPS = [
     'core',
     'feedback',
     'pages',
-    'products',
 ]
 
 BOOTSTRAP4 = {

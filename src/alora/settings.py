@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     'pages',
     'feedback',
     'business',
-    'bags',
+    'core',
     'addresses'
 ]
 

@@ -30,13 +30,13 @@ class Status(models.Model):
 
 class Order(models.Model):
     account = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
-    Store = models.ForeignKey(Store,on_delete=models.SET_NULL, null=True)
+    store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True)
     pickup_location = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     dropoff_location = models.ForeignKey(Address, related_name='+', on_delete=models.SET_NULL, null=True)
     pickup_at = models.DateTimeField()
     dropoff_at = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
-    status = models.ForeignKey(Status,on_delete=models.SET_NULL, null=True)
+    status = models.ForeignKey(Status, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return str(self.account)

@@ -13,12 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.auth import views as auth_views
-from rest_framework_jwt.views import obtain_jwt_token
 
+from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.urls import path, include
+# noinspection PyPackageRequirements,PyUnresolvedReferences
+from feedback.views import (
+    feedbackconfirm_view,
+    feedback_view,
+)
 # noinspection PyUnresolvedReferences
 from pages.views import (
     home_view,
@@ -26,74 +29,20 @@ from pages.views import (
     about_view,
     services_view
 )
-# noinspection PyUnresolvedReferences
-from accounts.views import (
-    registration_view,
-    login_view,
-    logout_view,
-    edit_account_view,
-)
-
-# noinspection PyPackageRequirements,PyUnresolvedReferences
-from feedback.views import (
-    feedbackconfirm_view,
-    feedback_view,
-)
-
-# noinspection PyUnresolvedReferences
-from business.views import (
-    staffhome_view,
-    current_orders_view,
-    general_info_view,
-    staff_view,
-    store_orderhistory_view,
-    inventory_view,
-    orders_details_view
-)
-
-
-
-
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
-    path('signup/', registration_view, name="register"),
-    path('login/', login_view, name="login"),
-    path('logout/', logout_view, name="logout"),
+
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
     path('api/auth/token/', obtain_jwt_token),
     path('api/users/', include('accounts.api.urls'), name='users-api'),
+    path('', include('accounts.urls'), name='accounts'),
+    path('', include('business.urls'), name='business'),
     path('aboutus/', about_view, name="about"),
     path('contactus/', feedback_view, name="contact"),
     path('contactconfirm/', feedbackconfirm_view, name="contconfirm"),
-    path('edit_account/', edit_account_view, name="editaccount"),
-    path('home/', staffhome_view, name="staffhome"),
-    path('currentorders/', current_orders_view, name="currentorders"),
-    path('order_details/', orders_details_view, name="order_details"),
-    path('generalinfo/', general_info_view, name="generalinfo"),
-    path('staff/', staff_view, name="staff"),
-    path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('admin/', admin.site.urls),
-
-
-
-    path('password_change/done/',
-         auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),
-         name='password_change_done'),
-
-    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html'),
-         name='password_change'),
-
-    path('password_reset/done/',
-         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_done.html'),
-         name='password_reset_done'),
-
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-
-    path('reset/done/',
-         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
-         name='password_reset_complete'),
 
 ]
 

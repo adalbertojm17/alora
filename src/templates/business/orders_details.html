@@ -11,13 +11,56 @@
 <body>
 {% block content %}
         <div class="content">
-                <p> {{ order}}</p>
-                <p>{{ order.pickup_location }}</p>
-                <p>{{ order.dropoff_location }}</p>
-                <p>Status: {{ order.status }}</p>
-                {% for details in orderdetails %}
-                    <p>  Item:{{ details.service }} quantity: {{ details.quantity }} </p>
-                {% endfor %}
+            <h1> Order Details </h1>
+            <table class="orderDetailsTable">
+                <tr>
+                    <th> Details</th>
+                    <th> Data</th>
+                </tr>
+
+                <tr>
+                    <th> Order #</th>
+                    <td> {{ order.pk}}</td>
+                </tr>
+
+                <tr>
+                    <th> Name </th>
+                    <td> {{order}}</td>
+                </tr>
+
+                <tr>
+                    <th> Pick Up Location</th>
+                    <td> {{order.pickup_location}}</td>
+                </tr>
+
+                <tr>
+                    <th> Drop Off Location</th>
+                    <td> {{order.pickup_location}}</td>
+                </tr>
+
+                 <tr>
+                    <th> Pick Up Date/Time</th>
+                    <td> {{order.pickup_at}}</td>
+                </tr>
+
+                 <tr>
+                    <th> Drop Off Date/Time</th>
+                    <td> {{order.dropoff_at}}</td>
+                </tr>
+
+                <tr>
+                    <th> Status</th>
+                    <td>{{ order.status }}</td>
+                </tr>
+
+                <tr>
+                    <th> Items</th>
+                    <td>{% for details in orderdetails %}
+                        Item:{{ details.service }} Quantity: {{ details.quantity }}
+                        <br>
+                    {% endfor %}</td>
+                </tr>
+            </table>
         </div>
 {% endblock %}
 </body>

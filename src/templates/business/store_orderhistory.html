@@ -8,33 +8,33 @@
     {% endblock %}
 </head>
 
-<body>
+<div>
 {% block content %}
-    <table class="orderhistorytable" >
-        <tr>
-            <th> Order ID</th>
-            <th> Order Status</th>
-            <th> Pick Up Location </th>
-            <th> Drop Off Location </th>
-            <th> Pick Up Time </th>
-            <th> Drop Off Time </th>
-            <th> Store Name</th>
-        </tr>
-
-        {% for i in orders %}
+    <div class="content">
+        <h1> Company Order History </h1>
+        <table class="storeOrderHistoryTable" >
             <tr>
-                <td> {{ i.pk }}</td>
-                {% if i.pk.equals == status.pk%}
-                    <td> {{status.status }}</td>
-                {% endif %}
-                <td> {{ i.pickup_Location }}</td>
-                <td> {{ i.dropoff_location }}</td>
-                <td> {{ i.pickupTime  }}</td>
-                <td> {{ i.dropoffTime  }}</td>
-                <td></td>
+                <th> Order ID</th>
+                <th> Name</th>
+                <th> Pick Up Location </th>
+                <th> Drop Off Location </th>
+                <th> Pick Up Time/Date </th>
+                <th> Drop Off Time/Date </th>
+                <th> Order Status</th>
             </tr>
-        {%  endfor %}
 
-    </table>
+           {% for order in orders %}
+                <tr>
+                    <td>{{ order.pk }}</td>
+                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                    <td>{{order.pickup_location}}</td>
+                    <td>{{order.dropoff_location}}</td>
+                    <td>{{order.pickup_at}}</td>
+                    <td>{{order.dropoff_at}}</td>
+                    <td>{{order.status}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
 </body>

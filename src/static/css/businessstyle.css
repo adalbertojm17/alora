@@ -191,3 +191,24 @@ td{
     text-align: left;
     color: black;
 }
+
+
+/******* Store Order history Page **********/
+.storeOrderHistoryTable{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.storeOrderHistoryTable td, .storeOrderHistoryTable th{
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.storeOrderHistoryTable th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+}

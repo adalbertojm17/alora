@@ -10,14 +10,29 @@
 
 <body>
 {% block content %}
-    <div class="content">
-    {% for order in orders %}
-        {% if order.status.name != 'Order delivered' %}
-            <p> Customer :<a href=/order_details/?order={{ order.id }}> {{ order }} </a>  Status:{{ order.status.name }}  </p>
+    <div class="currentOrders">
+        <div class="insidecurrent">
+            <h1> Order Details </h1>
 
-            <br>
-        {% endif %}
-    {% endfor %}
+            <table class="currentOrdersTable">
+                <tr>
+                    <th>Order #</th>
+                    <th> Name </th>
+                    <th> Status </th>
+                </tr>
+
+                {% for order in orders %}
+                    {% if order.status.name != 'Order delivered' %}
+                        <tr>
+                            <td>{{ order.pk }}</td>
+                            <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                            <td> {{ order.status.name }} </td>
+                        </tr>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock %}
 </body>

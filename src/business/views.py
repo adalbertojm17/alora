@@ -1,7 +1,9 @@
-from django.http import HttpResponseForbidden
-from django.shortcuts import render, redirect
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
+from django.http import HttpResponseForbidden
+from django.shortcuts import render, redirect
+
+from .models import Service
 
 
 def orders_details_view(request, *args, **kwargs):
@@ -17,6 +19,7 @@ def orders_details_view(request, *args, **kwargs):
     elif not request.user.is_manager:
         return HttpResponseForbidden()
     return render(request, "business/orders_details.html", my_context)
+
 
 def staffhome_view(request, *args, **kwargs):
     my_context = {}
@@ -73,3 +76,9 @@ def inventory_view(request, *args, **kwargs):
     elif not request.user.is_manager:
         return HttpResponseForbidden()
     return render(request, "business/inventory.html", my_context)
+
+
+def load_service_view(request):
+    service = request.GET.get('type')
+    service_names = Service.objects.values_list('service_name', flat=True).filter(serviceType=service)
+    return render(request, 'orders/serviceName_dropdown_list_options.html', {'serviceNames': service_names})

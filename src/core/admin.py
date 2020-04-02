@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from .models import Service, Status, Order, OrderItem
+from .models import Order, OrderItem
 
-admin.site.register(Service)
 admin.site.register(Order)
 admin.site.register(OrderItem)
-admin.site.register(Status)

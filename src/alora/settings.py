@@ -55,19 +55,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third-Party Apps
-    'rest_framework',
-    'rest_framework.authtoken',
-    'phonenumber_field',
     'bootstrap4',
     'bootstrap_datepicker_plus',
+    'phonenumber_field',
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # Local Apps
     'accounts',
-    'pages',
-    'feedback',
+    'addresses',
     'business',
     'core',
-    'addresses'
+    'feedback',
+    'pages',
+    'products',
 ]
 
 BOOTSTRAP4 = {

@@ -1,5 +1,5 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
-from core.models import Order
+from orders.models import Order
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 

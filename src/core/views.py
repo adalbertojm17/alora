@@ -9,8 +9,7 @@ from .models import Order
 def orderhistory_view(request, *args, **kwargs):
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
-    status = Order.get_status()
-    my_context = {"orders": customer_orders, "address": addresses, "status": status}
+    my_context = {"orders": customer_orders, "address": addresses}
     return render(request, "orders/orderhistory.html", my_context)
 
 
@@ -41,7 +40,10 @@ def no_order_view(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    my_context = {}
+    customer_orders = Order.objects.all()
+    addresses = Address.objects.all()
+    status = Order.get_status()
+    my_context = {"orders": customer_orders, "address": addresses, "status": status}
     return render(request, "orders/no_order_to_track.html", my_context)
 
 

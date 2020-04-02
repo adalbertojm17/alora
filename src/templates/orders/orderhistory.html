@@ -13,33 +13,28 @@
 
 <body>
 {% block content %}
+    <div class="content">
+        <h1> Order Details </h1>
 
-    <table class="orderhistorytable">
-        <tr>
-            <th> Order ID</th>
-            <th> Name</th>
-            <th> Pick Up Location</th>
-            <th> Drop Off Location</th>
-            <th> Pick Up Time</th>
-            <th> Drop Off Time</th>
-            <th> Order Status</th>
-        </tr>
-
-        {% for i in orders %}
+        <table class="customerOrdersTable">
             <tr>
-                <td> {{ i.pk }}</td>
-                {% if i.pk.equals == status.pk %}
-                    <td> {{ status.status }}</td>
-                {% endif %}
-                <td> {{ i.pickup_Location }}</td>
-                <td> {{ i.dropoff_location }}</td>
-                <td> {{ i.pickupTime }}</td>
-                <td> {{ i.dropoffTime }}</td>
-                <td></td>
+            <th>Order #</th>
+            <th> Name </th>
+            <th> Status </th>
             </tr>
-        {% endfor %}
 
-    </table>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.pk }}</td>
+                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                    <td> {{ order.status.name }} </td>
+                </tr>
+                <br>
+            {% endfor %}
+        </table>
+    </div>
+
+
     <div id="buttonmain">
         <p><a href="/edit_account/"> Back </a></p>
     </div>

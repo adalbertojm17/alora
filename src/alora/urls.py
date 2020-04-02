@@ -32,7 +32,6 @@ from pages.views import (
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
-
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
     path('api/auth/token/', obtain_jwt_token),
@@ -42,6 +41,7 @@ urlpatterns = [
     path('aboutus/', about_view, name="about"),
     path('contactus/', feedback_view, name="contact"),
     path('contactconfirm/', feedbackconfirm_view, name="contconfirm"),
+    path('', include('core.urls'), name="core"),
     path('admin/', admin.site.urls),
 
 ]

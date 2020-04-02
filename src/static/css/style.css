@@ -584,26 +584,51 @@ select {
      margin-bottom: 40px;
 }
 
-/* View order pages */
+/****** Customer order history Table CSS ********/
+.content h1 {
+    text-align: center;
+}
 
-.orderhistorytable{
+.customerOrdersTable {
     margin: auto;
     width: 90%;
     margin-bottom: 50px;
+    border-collapse: collapse;
 }
 
-.orderhistorytable td, .orderhistorytable th{
-    border: 2px solid #ddd;
-    padding: 8px;
+.customerOrdersTable  td, .customerOrdersTable  th {
+    border: 2px solid black;
+    padding: 20px;
 }
 
-.orderhistorytable th{
+.customerOrdersTable  th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #FF5733;
-    color: white;
+    color: black;
 }
+
+/******* Order Details Page **********/
+.orderDetailsTable {
+    margin: auto;
+    width: 70%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.orderDetailsTable td, .orderDetailsTable th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.orderDetailsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+}
+
+/******* View Order Page *********/
 
 #viewordertitle{
     text-align: center;

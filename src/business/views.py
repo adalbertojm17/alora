@@ -61,7 +61,9 @@ def staff_view(request, *args, **kwargs):
 
 
 def store_orderhistory_view(request, *args, **kwargs):
-    my_context = {}
+    my_context = {
+        'orders': Order.objects.all()
+    }
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:

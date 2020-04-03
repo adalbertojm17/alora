@@ -1,25 +1,26 @@
 html {
-    background-color: #FFCF3B;
+    background-color: #F7E498;
 }
 
 body {
     font-family: "Lato", sans-serif;
-    background-color: #FFCF3B;
+    background-color: #F7E498;
     margin: 0;
 }
 
 a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     text-decoration: none;
-    padding:5px;
+    padding: 5px;
+    font-family: "Lato", sans-serif;
 }
 
-/*a:hover {
-    background-color: #FF9920;
+#mainb a:hover {
+    background-color: #FF5733;
     border-radius: 5px;
-}*/
+}
 
 
 /*@font-face {
@@ -53,7 +54,7 @@ header {
     margin: auto;
     padding: 0px;
     overflow: hidden;
-
+    z-index: 3;
 }
 
 .mainnav {
@@ -63,6 +64,7 @@ header {
     margin-left: 300px;
     margin-right: 10px;
     overflow: hidden;
+    z-index: 3;
 }
 
 .mainnav ul {
@@ -70,10 +72,12 @@ header {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    z-index: 3;
 }
 
 .mainnav li {
     float: left;
+    z-index: 3;
 }
 
 
@@ -251,6 +255,15 @@ input[type=text], input[type=email], input[type=password] {
     padding: 12px;
 }
 
+#editbutton a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    font-family: "Lato", sans-serif;
+}
+
 #secondmainbutton {
     position: center;
     background-color: #FF5733;
@@ -317,13 +330,12 @@ Main page css
 
 #mainpagenav {
     margin: auto;
-    margin-left: 23%;
+    margin-left: 16%;
     width: 70%;
     overflow: hidden;
 }
 
 #mainpagenav #mainpage {
-    background-color: none;
     float: left;
     display: block;
     width: 25%;
@@ -332,7 +344,7 @@ Main page css
 }
 
 #mainpagenav #mainpage #miniheader {
-    background-color: #FF9920;
+    background-color: #FF5733;
     padding-top: 60px;
     padding-bottom: 60px;
 
@@ -365,30 +377,33 @@ footer {
 
 
 /*about us page css*/
-.me{
-    text-align: center;
-}
+
 .content{
     margin:auto;
-    margin-top: 5%;
 }
 
-.content .section1{
-    background-color: #FFD555;
-    height: 650px;
+.content .section1 {
+    margin: auto;
+    height: 350px;
 }
 
 .content .section2 {
-    background-color: #FFE081;
+    background-color: #FF5733;
     height: 650px;
 }
 
-.insidecontent{
+.section1 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.insidecontent {
     padding-top: 20px;
     padding-bottom: 20px;
-    margin:auto;
-    padding-left: 20%;
-    padding-right: 20%;
+    margin: auto;
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
 
@@ -489,180 +504,138 @@ select {
 
 /* Services page css */
 
-.headingpara {
-    margin: auto;
-    border-radius: 10px;
-    width: 70%;
-}
-
-
-.headingpara p {
-    font-size: 200%;
-    font-weight: bold;
-    text-align: center;
-    font-family: "Lato-Bold", sans-serif;
-    color: #085f63;
-}
-
-* {
-    box-sizing: border-box
-}
-
-.mySlides1, .mySlides2 {
-    display: none
-}
-
-img {
-    vertical-align: middle;
-}
-
-
-/* Slideshow container */
 .services {
-    width: 90%;
-    margin: auto;
-    padding: 2%;
+    width: 100%;
+    overflow: hidden;
+    height: 500px;
 }
 
-.maincontainer {
+.servicesec1 {
     float: left;
-    width: 50%;
-    position: relative;
-    margin: auto;
-    margin-bottom: 200px;
-}
-
-.insidecontainer {
-    width: 70%;
-    height: 600px;
-    margin: auto;
-    border: solid;
-    border-width: 5px;
-    border-color: #085f63;
-    border-radius: 10px;
+    width: 60%;
+    height: 500px;
     background-color: #49BEB7;
-    padding: 20px;
 }
 
-.insidecontainer h1 {
-    text-align: center;
-    font-family: "Lato-Bold", sans-serif;
-    font-size: 300%;
-}
-
-.insidecontainer p {
-    text-align: center;
-    font-family: "Lato", sans-serif;
-    font-size: 120%;
-}
-
-.insidecontainer li {
-    font-family: "Lato", sans-serif;
-    font-size: 120%;
-}
-
-.pcenter {
-    font-family: "Lato-Bold", sans-serif;
-    text-align: center;
-    font-size: 130%;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: black;
-    font-weight: bold;
-    font-size: 40px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-}
-
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a grey background color */
-.prev:hover, .next:hover {
-    background-color: #FF5733;
-    color: black;
-}
-
-
-/*table css */
-
-.pricing {
+.sec1text {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 15%;
+    width: 40%;
 }
 
-.pricing th {
-    font-size: 200%;
-    padding-bottom: 5px;
+.sec1text p {
+    text-align: center;
+    font-size: 150%;
     font-weight: bold;
-    text-decoration: underline;
 }
 
-.pricing p {
-    font-size: 140%;
+#serviceprice p a {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: black;
+    width: 45%;
+    padding: 15px 20px;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 70%;
 }
 
-.pricing td {
-    font-size: 140%;
-    text-align: left;
+
+#serviceprice p a:hover {
+    background-color: #FF9920;
+    color: white;
 }
 
-.pricing th, td {
-    padding-left: 30px;
-    padding-right: 30px;
+.servicesec2 {
+    background-color: #085f63;
+    float: left;
+    width: 40%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.servicesec2 img {
+    margin-top: 10%;
+}
+
+.servicesec3 {
+    height: 600px;
+    margin-top: 10%;
+}
+
+#serviceprice {
+
 }
 
 
 /* Confirmation Pages */
 
-.confirm{
+.confirm {
     margin: auto;
     width: 50%;
     text-align: center;
     font-size: 150%;
 }
 
-.confirm p{
-     margin-bottom: 40px;
+.confirm p {
+    margin-bottom: 40px;
 }
 
-/* View order pages */
-
-.orderhistorytable{
-    margin: auto;
-    width: 90%;
-    margin-bottom: 50px;
-}
-
-.orderhistorytable td, .orderhistorytable th{
-    border: 2px solid #ddd;
-    padding: 8px;
-}
-
-.orderhistorytable th{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #FF5733;
-    color: white;
-}
-
-#viewordertitle{
+/****** Customer order history Table CSS ********/
+.content h1 {
     text-align: center;
 }
 
-.vieworder{
+.customerOrdersTable {
+    margin: auto;
+    width: 90%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.customerOrdersTable td, .customerOrdersTable th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.customerOrdersTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+}
+
+/******* Order Details Page **********/
+.orderDetailsTable {
+    margin: auto;
+    width: 70%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.orderDetailsTable td, .orderDetailsTable th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.orderDetailsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+}
+
+/******* View Order Page *********/
+
+#viewordertitle {
+    text-align: center;
+}
+
+.vieworder {
     width: 50%;
     height: 400px;
     margin: auto;
@@ -687,7 +660,7 @@ label.required::before {
     color: red;
 }
 
-/*Registration Css*/
+/*************************Registration Css*********************************/
 .container{
     margin:auto;
     text-align: center;
@@ -695,16 +668,101 @@ label.required::before {
     font-size: 150%;
 }
 
-.container p{
+.container p {
     margin-top: 30px;
 }
 
-.reset input{
-    margin:auto;
-    width:40%;
+.reset input {
+    margin: auto;
+    width: 40%;
 }
 
-/*footer Css*/
+/****************************Tracking*************************************/
+
+.hidden {
+    display: none;
+}
+
+#trackh1 {
+    text-align: center;
+    font-size: 150%;
+}
+
+button {
+    padding: 5px 10px;
+    border: 1px solid black;
+    transition: 250ms background-color;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+button:disabled:hover {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 150px auto 0 auto;
+    padding: 40px;
+}
+
+#stepProgressBar {
+    display: flex;
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-text {
+    margin-bottom: 10px;
+    color: black;
+    font-size: 70%;
+}
+
+.bullet {
+    font-size: 60%;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    border: 1px solid black;
+    color: black;
+    display: inline-block;
+    position: relative;
+    transition: background-color 500ms;
+    line-height: 20px;
+}
+
+.bullet.completed {
+    color: white;
+    background-color: black;
+}
+
+.bullet.completed::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 110px;
+    background-color: black;
+    right: -115px;
+    bottom: 10px;
+}
+
+/********************************Footer Css*************************************/
 
 .footer {
     background-color: #FF5733;

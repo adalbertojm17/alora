@@ -1,5 +1,5 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
-from orders.models import Order
+from core.models import Order
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 
@@ -80,7 +80,13 @@ def inventory_view(request, *args, **kwargs):
     return render(request, "business/inventory.html", my_context)
 
 
+def services_view(request):
+    service = request.GET.get('type')
+    service_names = Service.objects.values_list('name', flat=True).filter(store=service)
+    return render(request, 'services.html', {'service_names': service_names})
+
+
 def load_service_view(request):
     service = request.GET.get('type')
     service_names = Service.objects.values_list('service_name', flat=True).filter(serviceType=service)
-    return render(request, 'orders/serviceName_dropdown_list_options.html', {'serviceNames': service_names})
+    return render(request, 'orders/serviceName_dropdown_list_options.html', {'service_names': service_names})

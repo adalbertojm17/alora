@@ -6,7 +6,8 @@ from business.views import (
     staff_view,
     store_orderhistory_view,
     inventory_view,
-    orders_details_view
+    orders_details_view,
+    services_view
 )
 from django.urls import path
 
@@ -23,5 +24,6 @@ urlpatterns = [
     path('storeorders/', store_orderhistory_view, name="storeorders"),
     path('services/', services_view, name="services"),
     path('ajax/load-names/', load_service_view, name='ajax_load_names'),
+    path('services/', services_view, name="services"),
 
 ]

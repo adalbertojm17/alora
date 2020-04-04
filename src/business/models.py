@@ -1,6 +1,6 @@
 # noinspection PyUnresolvedReferences
-# noinspection PyUnresolvedReferences
 from accounts.models import Account
+# noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django.db import models
 
@@ -19,7 +19,6 @@ class Store(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=50)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.name

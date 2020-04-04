@@ -1,16 +1,17 @@
-import re
-from django.core.validators import validate_email
+# noinspection PyUnresolvedReferences
+from addresses.models import Address
 from django import forms
-from .backends import authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.core.validators import validate_email
 from django.utils.safestring import mark_safe
 
+from .backends import authenticate
 from .models import Account
 
 EMAIL_REGEX = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
 
-class RegistrationForm(UserCreationForm):
+class BasicRegistrationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=50,
         label='',
@@ -47,17 +48,22 @@ class RegistrationForm(UserCreationForm):
     )
 
     username = forms.CharField(
+        min_length=5,
         max_length=35,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username*', 'pattern': '[0-9A-Za-z ]+', 'title': ' alphanumeric '
-                                                                                                       'characters '
-                                                                                                       'only '
-                                                                                                       'please'})
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Username*',
+            'pattern': '[0-9A-Za-z ]+',
+            'title': ' alphanumeric '
+                     'characters '
+                     'only '
+                     'please'})
     )
 
     password1 = forms.CharField(
         label='',
         strip=False,
+        min_length=6,
         max_length=32,
         widget=forms.PasswordInput(attrs={'placeholder': 'Password*'})
     )
@@ -65,6 +71,7 @@ class RegistrationForm(UserCreationForm):
     password2 = forms.CharField(
         label='',
         strip=False,
+        min_length=6,
         max_length=32,
         widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password*'})
     )
@@ -81,6 +88,12 @@ class RegistrationForm(UserCreationForm):
         email2 = self.cleaned_data.get('email2')
         if email != email2:
             raise forms.ValidationError('Emails must match')
+
+
+class AddressRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = '__all__'
 
 
 class AccountAuthenticationForm(forms.ModelForm):

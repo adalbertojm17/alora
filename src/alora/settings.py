@@ -68,6 +68,8 @@ INSTALLED_APPS = [
     'core',
     'feedback',
     'pages',
+    'formtools',
+    'multiselectfield',
 ]
 
 BOOTSTRAP4 = {

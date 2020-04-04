@@ -1,15 +1,51 @@
 from django.contrib.auth import login, logout
-from .backends import authenticate
 from django.shortcuts import render, redirect
 
-from .forms import RegistrationForm, AccountAuthenticationForm, EditAccountForm
+from .backends import authenticate
+from .forms import BasicRegistrationForm, AddressRegistrationForm, AccountAuthenticationForm, EditAccountForm
 from .models import Account
+
+# Disabled pending modification
+# TODO: implement login on signup
+# Multi-step registration form (Basic information and address information)
+'''FORMS = [
+    ("basic", BasicRegistrationForm),
+    ("address", AddressRegistrationForm),
+]
+
+TEMPLATES = 
+    "basic": "signup-basic.html",
+    "address": "order-address.html",
+}
+
+class RegistrationView(SessionWizardView):
+    instance = None
+    form_list = [BasicRegistrationForm, AddressRegistrationForm]
+
+    def get_template_names(self):
+        return ['signup-basic.html'.format(self.steps.current)]
+
+    def get_form_instance(self, step):
+        if self.instance is None:
+            self.instance = Account()
+        return self.instance
+
+    def get(self, request, *args, **kwargs):
+        try:
+            return self.render(self.get_form())
+        except KeyError:
+            return super().get(request, *args, **kwargs)
+
+    def done(self, form_list, **kwargs):
+        self.instance.save()
+        return render(self.request, 'mainpage.html')
+'''
 
 
 def registration_view(request):
     context = {}
     if request.POST:
-        form = RegistrationForm(request.POST)
+        form = BasicRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -21,9 +57,9 @@ def registration_view(request):
         else:
             context['registration_form'] = form
     else:
-        form = RegistrationForm()
+        form = BasicRegistrationForm()
         context['registration_form'] = form
-    return render(request, 'signup.html', context)
+    return render(request, 'signup-basic.html', context)
 
 
 def login_view(request):

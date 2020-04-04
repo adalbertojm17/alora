@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Order Confirmation</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+    <div class="container">
+        <h1 id="trackh1"> Track Your Order </h1>
+        <div id="stepProgressBar">
+            <div class="step">
+                <p class="step-text"> Order processed </p>
+                <div class="bullet completed"> 1</div>
+            </div>
+
+            <div class="step">
+                <p class="step-text"> Order Picked Up</p>
+                <div class="bullet completed"> 2</div>
+            </div>
+
+            <div class="step">
+                <p class="step-text"> Order Cleaning </p>
+                <div class="bullet completed "> 3</div>
+            </div>
+
+            <div class="step">
+                <p class="step-text"> Order Complete </p>
+                <div class="bullet"> 4</div>
+            </div>
+
+            <div class="step">
+                <p class="step-text"> Order Enroute</p>
+                <div class="bullet"> 5</div>
+            </div>
+
+            <div class="step">
+                <p class="step-text"> Order Delivered</p>
+                <div class="bullet"> 6</div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="script/tracking.js"></script>
+
+{% endblock %}
+</body>

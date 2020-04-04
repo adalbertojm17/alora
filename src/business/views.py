@@ -62,7 +62,7 @@ def staff_view(request, *args, **kwargs):
 
 def store_orderhistory_view(request, *args, **kwargs):
     my_context = {
-        'orders': Order.objects.all()
+        'core': Order.objects.all()
     }
     if not request.user.is_authenticated:
         return redirect('login')
@@ -89,4 +89,4 @@ def services_view(request):
 def load_service_view(request):
     service = request.GET.get('type')
     service_names = Service.objects.values_list('service_name', flat=True).filter(serviceType=service)
-    return render(request, 'orders/serviceName_dropdown_list_options.html', {'service_names': service_names})
+    return render(request, 'core/serviceName_dropdown_list_options.html', {'service_names': service_names})

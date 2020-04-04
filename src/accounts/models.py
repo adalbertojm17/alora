@@ -1,10 +1,13 @@
 from django.conf import settings
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework.authtoken.models import Token
+
+# noinspection PyUnresolvedReferences
+from addresses.models import Address
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
@@ -54,6 +57,7 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=35, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=100)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     phone = PhoneNumberField(max_length=15, blank=True, null=True, unique=True)
     date_joined = models.DateField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateField(verbose_name='last login', auto_now=True)

@@ -18,15 +18,15 @@
 
         <table class="customerOrdersTable">
             <tr>
-            <th>Order #</th>
-            <th> Name </th>
-            <th> Status </th>
+                <th>Order #</th>
+                <th> Name</th>
+                <th> Status</th>
             </tr>
 
             {% for order in orders %}
                 <tr>
                     <td>{{ order.pk }}</td>
-                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>
                     <td> {{ order.status.name }} </td>
                 </tr>
                 <br>

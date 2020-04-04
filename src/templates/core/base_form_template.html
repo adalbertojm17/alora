@@ -1,0 +1,16 @@
+{% block styles %}
+    <title>Alora Sign Up </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% block content %}
+    <form style="height:inherit;" action="" method="post">
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        {{ wizard.form.errors }}
+        {{ wizard.form.non_field_errors }}
+        {% block custom_form %}
+        {% endblock %}
+    </form>
+{% endblock content %}

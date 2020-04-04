@@ -1,0 +1,54 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>services</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+
+
+
+
+    <div class="currentOrders">
+
+    <div class="insidecontent">
+                <h1> Services </h1>
+                <p> The following are the services your company offers along with Alora. Please note that these services reflect those your
+                customers are able to order at any given time. Contact our main office to make changes to your services when needed.</p>
+
+                <div class="shiftright">
+                    {% for service in services %}
+                <h3> {{ service }} </h3>
+                <ul class="list">
+                    {% for item in items %}
+                        {% if item.service == service %}
+                    <li> {{ item }}</li>
+                        {% endif %}
+                       {% endfor %}
+                </ul>
+
+                   {% endfor %}
+                </div>
+
+    <div class="insidecurrent">
+
+        <h2> Created new service</h2>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button id="buttonstandard" type="submit">create</button>
+
+        </form>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+</body>
+</html>

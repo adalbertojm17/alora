@@ -71,3 +71,4 @@ class Order(models.Model):
 
     def get_status(self):
         return self.current_status
+   

@@ -2,8 +2,10 @@
 from core.models import Order
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
-
+from .forms import ServiceCreationForm
 from .models import Service
+from.models import Store
+from core.models import Item
 
 
 def orders_details_view(request, *args, **kwargs):
@@ -90,3 +92,26 @@ def load_service_view(request):
     service = request.GET.get('type')
     service_names = Service.objects.values_list('service_name', flat=True).filter(serviceType=service)
     return render(request, 'orders/serviceName_dropdown_list_options.html', {'service_names': service_names})
+
+
+def services_view(request):
+    context = {}
+    store = Store.objects.get(manager= request.user)
+    service = Service.objects.get(store= store)
+    items = Item.objects.get(service=service)
+    context={
+        'services':service,
+        'items':items
+    }
+    if request.POST:
+        form = ServiceCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = ServiceCreationForm()
+
+    context ['form']=form
+
+    return render(request, 'business/services.html', context)
+

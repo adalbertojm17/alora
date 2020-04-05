@@ -1,0 +1,12 @@
+TEST CASE #1 Signing Up
+
+First Name: Bryan-passed	
+Last Name: Santos-passed
+Phone Number: 9175192813-passed
+Email: Ray98@gmail.com -passed
+Username: Bry -passed
+Password: iknowbecause -passed
+confirmation password: iknowbecause  -passed
+
+Expected Reults: Fail to login because the password did not include these characters- underscores,one numerical character(0-9), uppercase(A-Z), at least one special character(^!@&%$*)..
+Actual Result: Directed to the Main page.

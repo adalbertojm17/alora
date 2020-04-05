@@ -1,0 +1,10 @@
+TEST CASE #3 Services Page
+
+Step #1: Select Find Prices: Guides user to choose company - passed
+Step #2: Selects arrow to the right of company: options of different companies appear -passed
+ Step #3: Selected the state: New York - Passed
+Step #4: Clicked on Search Bar
+
+Expected Results: See all the stores and different services provided within the state selected.
+
+Actual Results: Displayed no Result

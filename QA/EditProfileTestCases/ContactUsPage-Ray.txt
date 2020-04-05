@@ -1,0 +1,16 @@
+TEST CASE #5 Contact Us Page
+
+Account Page states user info: User is logged in as "Bryan"
+First name:Bryan
+Last Name: Santos
+Email: Ray98@gmail.com
+Clicks on Contact Page
+Enters first Name: Sandra
+enters Last name: Angela
+Email:Angela64@gmail.com
+clicks services: Dry cleaning
+Enters feedback
+Submits
+
+Predicted Result: An error notifcation pops up informing user their first/last name and email does not match 
+Actual Result: System crashes as an error

@@ -1,0 +1,7 @@
+TEST CASE #4: Contact Us Page
+
+User has to fill in First/ last name and email to submit a feedback when already logged in
+
+Expected Result: If user is already logged in, user is required to fill in service type and should be a tab that displays location where there service was done was being processed at.
+
+Actual Result: After filling in required information, when submitting feedback it crashes.

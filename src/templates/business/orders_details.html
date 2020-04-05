@@ -50,17 +50,31 @@
 
             <tr>
                 <th> Status</th>
-                <td>{{ order.status }}</td>
+                <td>{{ order.current_status }}</td>
             </tr>
 
             <tr>
                 <th> Items</th>
                 <td>{% for details in orderdetails %}
-                    Item:{{ details.service }} Quantity: {{ details.quantity }}
+                    Item:{{ details }}
                     <br>
                 {% endfor %}</td>
             </tr>
         </table>
+    </div>
+
+
+    <div class="currentOrders">
+    <div class="insidecurrent">
+
+        <h2> add items to order</h2>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button id="buttonstandard" type="submit">add</button>
+
+        </form>
+    </div>
     </div>
 {% endblock %}
 </body>

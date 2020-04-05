@@ -10,8 +10,34 @@
 
 <body>
 {% block content %}
+
     <div class="currentOrders">
         <div class="insidecurrent">
+            <div>
+                <form method="get">
+                    <input type="text" class="form-control" name="q"id="id_q" placeholder="search order"value="{{ query }}">
+                </form>
+            </div>
+
+                {% if query %}
+                    <table class="currentOrdersTable">
+                <tr>
+                    <th>Order #</th>
+                    <th> Name </th>
+                    <th> Status </th>
+                </tr>
+                    {% for order in SearchOrder %}
+                        <tr>
+                            <td>{{ order.pk }}</td>
+                            <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                            <td> {{ order.current_status }} </td>
+                        </tr>
+                        <br>
+
+                {% endfor %}
+            </table>
+
+                {% endif %}
             <h1> Order Details </h1>
 
             <table class="currentOrdersTable">

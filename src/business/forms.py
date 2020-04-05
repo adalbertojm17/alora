@@ -1,6 +1,9 @@
 from django import forms
 from .models import Service
-from business.models import Store
+from .models import Store
+from core.models import OrderItem
+from core.models import Item
+
 
 class ServiceCreationForm(forms.ModelForm):
 
@@ -12,15 +15,10 @@ class ServiceCreationForm(forms.ModelForm):
         queryset= Store.objects.all(),
         label = 'store',
     )
-    price = forms.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        label= 'price'
-    )
 
     class Meta:
         model = Service
-        fields = ('name','store','price')
+        fields = ('name','store')
 
     def clean_name(self):
         if self.is_valid():
@@ -29,4 +27,19 @@ class ServiceCreationForm(forms.ModelForm):
                 Service.objects.get(name=name)
             except Service.DoesNotExist:
                 return name
-            raise forms.ValidationError('name "%s" is already in use.' % name)
+            raise forms.ValidationError('service "%s" is already in use.' % name)
+
+
+class AddingOrderItemForm(forms.ModelForm):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+   # def clean_item(self):
+    #    if self.is_valid():
+     #       item = self.cleaned_data["item"]
+      #      try:
+       #         OrderItem.objects.get(item=item)
+         #   except Service.DoesNotExist:
+          #      return item
+           # raise forms.ValidationError('service "%s" is already in use.' % item)

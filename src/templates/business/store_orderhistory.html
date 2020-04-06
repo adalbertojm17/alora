@@ -12,9 +12,11 @@
     <div class="content">
 
         <h1> Company Order History </h1>
-            <div>
+            <div class="searchpart1">
                 <form method="get">
                     <input type="text" class="form-control" name="q"id="id_q" placeholder="search order"value="{{ query }}">
+                    <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
+                 height=30></button>
                 </form>
             </div>
     {% if query %}

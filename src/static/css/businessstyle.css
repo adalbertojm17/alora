@@ -132,22 +132,38 @@ td {
 }
 
 
-/****** Search Form *******/
-form {
-    text-align: left;
-    margin-left: 8%;
+td a{
+    color: #FF5733;
 }
 
-input[type=text], input[type=email], input[type=password] {
-    position: center;
-    background-color: white;
-    color: black;
-    width: 40%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid #FF5733;
-    border-radius: 4px;
-    padding-left: 20px;
+
+/****** Search Form *******/
+
+.searchpart1 {
+    float: left;
+    margin-left: 5%;
+}
+
+.searchpart1 input[type=text] {
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart1 button {
+    float: right;
+    padding: 3px 7px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart1 button:hover {
+    background: #ccc;
 }
 
 /******************* Current Order Page ****************************/
@@ -189,6 +205,7 @@ input[type=text], input[type=email], input[type=password] {
     padding-bottom: 12px;
     text-align: left;
     color: black;
+    background-color:#FF9920;
 }
 
 /******* Order Details Page **********/
@@ -209,6 +226,7 @@ input[type=text], input[type=email], input[type=password] {
     padding-bottom: 12px;
     text-align: left;
     color: black;
+    background-color:#FF9920;
 }
 
 
@@ -230,4 +248,5 @@ input[type=text], input[type=email], input[type=password] {
     padding-bottom: 12px;
     text-align: left;
     color: black;
+    background-color:#FF9920;
 }

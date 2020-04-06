@@ -1,38 +1,29 @@
 from django.contrib.auth import get_user_model
-
+from django.shortcuts import get_object_or_404
+from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.generics import (
     CreateAPIView,
-    DestroyAPIView,
-    ListAPIView,
-    UpdateAPIView,
-    RetrieveAPIView,
     RetrieveUpdateAPIView,
+    ListAPIView,
 )
-
+from rest_framework.permissions import (
+    AllowAny,
+    IsAdminUser,
+)
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
-from rest_framework.permissions import (
-    AllowAny,
-    IsAuthenticated,
-    IsAdminUser,
-    IsAuthenticatedOrReadOnly,
-)
-
-from .serializers import (
-    UserCreateUpdateSerializer,
-    UserDetailSerializer,
-    UserLoginSerializer,
-)
-
 from .permissions import (
     IsOwner,
 )
-
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
-from rest_framework.response import Response
+from .serializers import (
+    UserCreateUpdateSerializer,
+    UserProfileSerializer,
+    UserDetailSerializer,
+    UserLoginSerializer,
+)
 
 User = get_user_model()
 
@@ -79,7 +70,14 @@ class MyAuthToken(ObtainAuthToken):
             'email': user.email
         })
 
-# class UserUpdateAPIView(UpdateAPIView):
-#     permission_classes = [IsOwner]
-#     serializer_class = UserCreateUpdateSerializer
-#     queryset = User.objects.all()
+
+class UserProfileAPIView(RetrieveUpdateAPIView):
+    permission_classes = [IsOwner]
+    serializer_class = UserProfileSerializer
+
+    def get_object(self):
+        pk = self.request.user.pk
+        return get_object_or_404(User, pk=pk)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)

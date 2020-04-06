@@ -9,7 +9,7 @@ from .views import (
     UserCreateAPIView,
     UserListAPIView,
     UserLoginAPIView,
-    # UserUpdateAPIView,
+    UserProfileAPIView,
 )
 
 urlpatterns = [
@@ -17,5 +17,5 @@ urlpatterns = [
     path('get-user-auth-token/', MyAuthToken.as_view(), name='get_user_auth_token'),
     path('login/', UserLoginAPIView.as_view(), name='api-login'),
     path('register/', UserCreateAPIView.as_view(), name='register'),
-    # path('update/', UserUpdateAPIView.as_view(), name='update'),
+    path('profile/', UserProfileAPIView.as_view(), name='profile'),
 ]

@@ -10,6 +10,12 @@ from rest_framework.serializers import (
 User = get_user_model()
 
 
+class UserDetailSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
 class UserCreateUpdateSerializer(ModelSerializer):
     password = CharField(max_length=32, label='Password', write_only=True)
     password2 = CharField(max_length=32, label='Confirm Password', write_only=True)
@@ -19,6 +25,7 @@ class UserCreateUpdateSerializer(ModelSerializer):
         fields = [
             'first_name',
             'last_name',
+            'phone',
             'email',
             'username',
             'password',
@@ -58,17 +65,37 @@ class UserCreateUpdateSerializer(ModelSerializer):
         return validated_data
 
 
-class UserDetailSerializer(ModelSerializer):
+class UserProfileSerializer(ModelSerializer):
+    password = CharField(max_length=32, label='Password', write_only=True)
+    password2 = CharField(max_length=32, label='Confirm Password', write_only=True)
+
     class Meta:
         model = User
         fields = [
-            'id',
             'first_name',
             'last_name',
             'phone',
             'email',
             'username',
+            'password',
+            'password2'
         ]
+
+    def validate_password(self, value):
+        data = self.get_initial()
+        password1 = data.get('password2')
+        password2 = value
+        if password1 != password2:
+            raise ValidationError('Passwords must match')
+        return value
+
+    def validate_password2(self, value):
+        data = self.get_initial()
+        password1 = data.get('password')
+        password2 = value
+        if password1 != password2:
+            raise ValidationError('Passwords must match')
+        return value
 
 
 class UserLoginSerializer(ModelSerializer):
@@ -89,7 +116,6 @@ class UserLoginSerializer(ModelSerializer):
                         }
 
     def validate(self, data):
-        user_obj = None
         email = data.get('email')
         username = data.get('username')
         password = data["password"]

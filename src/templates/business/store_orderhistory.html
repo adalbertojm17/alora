@@ -10,7 +10,38 @@
 
 {% block content %}
     <div class="content">
+
         <h1> Company Order History </h1>
+            <div>
+                <form method="get">
+                    <input type="text" class="form-control" name="q"id="id_q" placeholder="search order"value="{{ query }}">
+                </form>
+            </div>
+    {% if query %}
+             <table class="storeOrderHistoryTable">
+                 <tr>
+                <th> Order ID</th>
+                <th> Name</th>
+                <th> Pick Up Location</th>
+                <th> Drop Off Location</th>
+                <th> Pick Up Time/Date</th>
+                <th> Drop Off Time/Date</th>
+                <th> Order Status</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.pk }}</td>
+                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>
+                    <td>{{ order.pickup_location }}</td>
+                    <td>{{ order.dropoff_location }}</td>
+                    <td>{{ order.pickup_at }}</td>
+                    <td>{{ order.dropoff_at }}</td>
+                    <td>{{ order.current_status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <br>
         <table class="storeOrderHistoryTable">
             <tr>
                 <th> Order ID</th>
@@ -30,7 +61,7 @@
                     <td>{{ order.dropoff_location }}</td>
                     <td>{{ order.pickup_at }}</td>
                     <td>{{ order.dropoff_at }}</td>
-                    <td>{{ order.status }}</td>
+                    <td>{{ order.current_status }}</td>
                 </tr>
             {% endfor %}
         </table>

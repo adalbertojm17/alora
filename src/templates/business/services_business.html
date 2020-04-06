@@ -22,13 +22,7 @@
                 <div class="shiftright">
                     {% for service in services %}
                 <h3> {{ service }} </h3>
-                <ul class="list">
-                    {% for item in items %}
-                        {% if item.service == service %}
-                    <li> {{ item }}</li>
-                        {% endif %}
-                       {% endfor %}
-                </ul>
+
 
                    {% endfor %}
                 </div>

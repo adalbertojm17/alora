@@ -131,6 +131,25 @@ td {
     padding-left: 50px;
 }
 
+
+/****** Search Form *******/
+form {
+    text-align: left;
+    margin-left: 8%;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    position: center;
+    background-color: white;
+    color: black;
+    width: 40%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
 /******************* Current Order Page ****************************/
 
 .currentOrders {

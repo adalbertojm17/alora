@@ -13,8 +13,10 @@
 
     <div class="currentOrders">
         <div class="insidecurrent">
+            <h1> Current Orders</h1>
+
             <div>
-                <form method="get">
+                <form id="searchbar"  method="get">
                     <input type="text" class="form-control" name="q"id="id_q" placeholder="search order"value="{{ query }}">
                 </form>
             </div>
@@ -38,7 +40,6 @@
             </table>
 
                 {% endif %}
-            <h1> Order Details </h1>
 
             <table class="currentOrdersTable">
                 <tr>

@@ -1,0 +1,13 @@
+First name numeric denial
+
+Steps:
+1.Enter data into required fields
+Data Test:
+First Name: 3-- Failed
+
+
+Expected Result: to deny numeric input.
+
+Actual Result: Allowed creation
+
+Tester Comments: What I found when signing up to become a user, I can input a numeric number for the first name input to see if the system would deny it, but it proceeded to make the account.

@@ -1,0 +1,13 @@
+Last name numeric denial
+
+Steps:
+1.Enter data into required fields
+
+Data Tested:
+Last Name: 3  --Failed
+
+Expected Result: to deny numeric input.
+
+Actual Result: Allowed creation
+
+Tester Comments: Upon making an account, I decided to try a numeric input to see if the system would deny it, but it proceeded to make the account.

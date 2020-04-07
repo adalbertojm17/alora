@@ -1,7 +1,5 @@
 # noinspection PyUnresolvedReferences
-# noinspection PyUnresolvedReferences
 from accounts.models import Account
-from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
@@ -26,32 +24,35 @@ TEMPLATES = {
 
 
 class OrderWizard(SessionWizardView):
-    form_list = FORMS
-
-    def get_template_names(self):
-        return [TEMPLATES[self.steps.current]]
-
     def get(self, request, *args, **kwargs):
         user = request.user
         if not user.is_authenticated:
             return redirect('login')
         return super(OrderWizard, self).get(request, *args, **kwargs)
 
+    form_list = FORMS
+
+    def get_template_names(self):
+        return [TEMPLATES[self.steps.current]]
+
     def done(self, form_list, **kwargs):
-        form_dict1 = self.get_cleaned_data_for_step(1)
+        form_dict1 = self.get_cleaned_data_for_step('services')
         services = form_dict1.get('services')
-        form_dict2 = self.get_cleaned_data_for_step(2)
+        form_dict2 = self.get_cleaned_data_for_step('pickup')
         pickup_street = form_dict2.get('street')
         pickup_apt = form_dict2.get('apt')
         pickup_city = form_dict2.get('city')
         pickup_state = form_dict2.get('state')
         pickup_zip_code = form_dict2.get('zip_code')
-        form_dict3 = self.get_cleaned_data_for_step(3)
+        pickup_at = form_dict2.get('pickup_at')
+        form_dict3 = self.get_cleaned_data_for_step('dropoff')
         dropoff_street = form_dict3.get('street')
         dropoff_apt = form_dict3.get('apt')
         dropoff_city = form_dict3.get('city')
         dropoff_state = form_dict3.get('state')
         dropoff_zip_code = form_dict3.get('zip_code')
+        dropoff_at = form_dict3.get('dropoff_at')
+
         pickup_location, created = Address.objects.get_or_create(
             street=pickup_street,
             apt=pickup_apt,
@@ -63,21 +64,27 @@ class OrderWizard(SessionWizardView):
             street=dropoff_street,
             apt=dropoff_apt,
             city=dropoff_city,
-            state=dropoff_zip_code,
-            zip_code=pickup_zip_code
+            state=dropoff_state,
+            zip_code=dropoff_zip_code
         )
 
-        order = Order.objects.get_or_create(
+        Order.objects.create(
             account=get_object_or_404(Account, pk=self.request.user.pk),
             store=get_object_or_404(Store, pk=self.request.user.pk),
-
+            pickup_location=pickup_location,
+            dropoff_location=dropoff_location,
+            pickup_at=pickup_at,
+            dropoff_at=dropoff_at
         )
 
-        return redirect('main')
+        return redirect('orderconfirm')
 
 
 # view for user to monitor their order history
 def orderhistory_view(request, *args, **kwargs):
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
     my_context = {"core": customer_orders, "address": addresses}
@@ -86,12 +93,18 @@ def orderhistory_view(request, *args, **kwargs):
 
 # view to confirm that the order was successfully placed
 def orderconfirm_view(request, *args, **kwargs):
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')
     my_context = {}
     return render(request, "core/orderconfirm.html", my_context)
 
 
 # view to allow user to choose their destination
 def orderdestination_view(request, *args, **kwargs):
+    user = request.user
+    if not user.is_authenticated:
+        return redirect('login')
     my_context = {}
     print(request.GET)
     print(request.POST)
@@ -102,6 +115,9 @@ def orderdestination_view(request, *args, **kwargs):
 def tracking_view(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login")
+    order_qs = Order.objects.all().filter(account=request.user)
+    if not order_qs.exists():
+        return redirect('no-order')
     my_context = {}
     return render(request, "core/tracking.html", my_context)
 

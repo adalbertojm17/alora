@@ -68,7 +68,7 @@ body {
 .content{
     margin-left: 20%;
     padding: 1px 0px;
-    height: 1000px;
+    height: 800px;
 }
 
 #h1generalinfo{
@@ -250,3 +250,84 @@ td a{
     color: black;
     background-color:#FF9920;
 }
+
+
+
+/************** Add Items ****************/
+
+.contentadditems{
+    margin-left: 42%;
+    padding: 1px 0px;
+    height: 400px;
+    width: 30%;
+}
+
+.insideadditems {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: 3px solid black;
+
+}
+
+.insideadditems h2{
+    text-align: center;
+}
+
+#insideadditems h2 form input[type=text] {
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    border: none;
+    background-color: #FF5733;
+}
+
+.insideadditems #addbutton{
+    position: center;
+    background-color: #FF9920;
+    display: block;
+    color: white;
+    width: 20%;
+    border: 1px solid #FF9920;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+
+/***** Add Items button *****/
+.additem{
+    border: none;
+    background-color: #FF9920;
+    width: 10%;
+    border-radius: 50%;
+    padding: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: right;
+    margin:auto;
+    margin-bottom: 5%;
+}
+
+.additem p{
+    text-align: center;
+}
+
+.additem p a{
+    color: black;
+}
+.additem p a:hover{
+    color: white;
+}
+
+
+
+
+
+

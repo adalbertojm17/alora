@@ -1,3 +1,4 @@
+
 const bullets= [...document.querySelectorAll('.bullet')];
 
 const MAX_STEPS=6;

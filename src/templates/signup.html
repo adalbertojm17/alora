@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+
+<head>
+    {% block styles %}
+        <title>Alora Sign Up </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+    <div id="signup">
+        <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
+        <p> Sign Up </p>
+        <form method="post">{% csrf_token %}
+            {{ wizard.management_form }}
+            {% if wizard.form.forms %}
+                {{ wizard.form.management_form }}
+                {% for form in wizard.form.forms %}
+                    {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </p>
+                        <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
+                        {% for error in field.errors %}
+                            <p style="color: red;">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            {% else %}
+                {% for field in wizard.form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </p>
+                    <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            {% if wizard.steps.prev %}
+                <button formnovalidate="formnovalidate" id="buttonstandard" name="wizard_goto_step" type="submit"
+                        value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
+            {% endif %}
+            <button id="buttonstandard" type="submit">{% trans "Continue" %}</button>
+        </form>
+
+
+        <p><a href="" class="makesmall">By signing up you agree to our Terms &amp; Conditions </a></p>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+{% endblock %}
+</body>

@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import validate_email
 from django.utils.safestring import mark_safe
+from localflavor.us.forms import USStateField, USZipCodeField, USStateSelect
+from localflavor.us.us_states import STATE_CHOICES
 
 from .backends import authenticate
 from .models import Account
@@ -11,17 +13,31 @@ from .models import Account
 EMAIL_REGEX = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 
 
-class BasicRegistrationForm(UserCreationForm):
+class UserSignUpForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=50,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'First name*'}),
+        widget=forms.TextInput(attrs={
+            'placeholder': 'First name*',
+            'pattern': '[A-Za-z ]+',
+            'title': ' alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
     )
 
     last_name = forms.CharField(
         max_length=100,
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Last name*'}),
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Last name*',
+            'pattern': '[A-Za-z ]+',
+            'title': 'alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
 
     )
 
@@ -65,7 +81,9 @@ class BasicRegistrationForm(UserCreationForm):
         strip=False,
         min_length=6,
         max_length=32,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password*'})
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Password*',
+        })
     )
 
     password2 = forms.CharField(
@@ -90,7 +108,36 @@ class BasicRegistrationForm(UserCreationForm):
             raise forms.ValidationError('Emails must match')
 
 
-class AddressRegistrationForm(forms.ModelForm):
+class UserAddressForm(forms.ModelForm):
+    street = forms.CharField(
+        label='',
+        max_length=120,
+        widget=forms.TextInput(attrs={'placeholder': 'Street*'})
+    )
+    apt = forms.CharField(
+        label='',
+        required=False,
+        max_length=50,
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite'})
+
+    )
+    city = forms.CharField(
+        label='',
+        max_length=120,
+        widget=forms.TextInput(attrs={'placeholder': 'City*'})
+
+    )
+    MODDED_STATE_CHOICES = list(STATE_CHOICES)
+    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State'))
+    state = USStateField(
+        label='',
+        widget=forms.Select(choices=MODDED_STATE_CHOICES))
+
+    zip_code = USZipCodeField(
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
+    )
+
     class Meta:
         model = Address
         fields = '__all__'

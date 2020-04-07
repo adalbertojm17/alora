@@ -3,6 +3,7 @@ from core.models import Order
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from .models import Store,Service
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Item
 from .forms import ServiceCreationForm
 from .forms import AddingOrderItemForm

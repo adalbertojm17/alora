@@ -7,7 +7,7 @@ from django.db import models
 
 # model to represent a physical store
 class Store(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=150)
     manager = models.ManyToManyField(Account)
     address = models.OneToOneField(Address, on_delete=models.SET_NULL, null=True)
 

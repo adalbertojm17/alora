@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
+    'formtools',
+    'multiselectfield',
 
     # Local Apps
     'accounts',
@@ -68,8 +70,7 @@ INSTALLED_APPS = [
     'core',
     'feedback',
     'pages',
-    'formtools',
-    'multiselectfield',
+
 ]
 
 BOOTSTRAP4 = {
@@ -176,7 +177,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 
     'DEFAULT_PERMISSION_CLASSES': [

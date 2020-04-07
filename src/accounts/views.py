@@ -1,65 +1,61 @@
+# noinspection PyUnresolvedReferences
+from addresses.models import Address
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
+from formtools.wizard.views import SessionWizardView
 
 from .backends import authenticate
-from .forms import BasicRegistrationForm, AddressRegistrationForm, AccountAuthenticationForm, EditAccountForm
+from .forms import UserSignUpForm, UserAddressForm, AccountAuthenticationForm, EditAccountForm
 from .models import Account
 
-# Disabled pending modification
-# TODO: implement login on signup
-# Multi-step registration form (Basic information and address information)
-'''FORMS = [
-    ("basic", BasicRegistrationForm),
-    ("address", AddressRegistrationForm),
-]
-
-TEMPLATES = 
-    "basic": "signup-basic.html",
-    "address": "order-address.html",
-}
 
 class RegistrationView(SessionWizardView):
-    instance = None
-    form_list = [BasicRegistrationForm, AddressRegistrationForm]
-
-    def get_template_names(self):
-        return ['signup-basic.html'.format(self.steps.current)]
-
-    def get_form_instance(self, step):
-        if self.instance is None:
-            self.instance = Account()
-        return self.instance
+    template_name = "signup.html"
+    form_list = [UserSignUpForm, UserAddressForm]
 
     def get(self, request, *args, **kwargs):
-        try:
-            return self.render(self.get_form())
-        except KeyError:
-            return super().get(request, *args, **kwargs)
+        user = request.user
+        if user.is_authenticated:
+            if user.is_manager:
+                return redirect('staffhome')
+            return redirect('main')
+        return super(RegistrationView, self).get(request, *args, **kwargs)
 
     def done(self, form_list, **kwargs):
-        self.instance.save()
-        return render(self.request, 'mainpage.html')
-'''
+        form_dict = self.get_all_cleaned_data()
+        first_name = form_dict.get('first_name')
+        last_name = form_dict.get('last_name')
+        email = form_dict.get('email')
+        phone = form_dict.get('phone')
+        username = form_dict.get('username')
+        raw_password = form_dict.get('password1')
+        street = form_dict.get('street')
+        apt = form_dict.get('apt')
+        city = form_dict.get('city')
+        state = form_dict.get('state')
+        zip_code = form_dict.get('zip_code')
+        address, created = Address.objects.get_or_create(
+            street=street,
+            apt=apt,
+            city=city,
+            state=state,
+            zip_code=zip_code
+        )
 
+        user = Account.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            email=email,
+            username=username,
+            address=address,
+        )
+        user.set_password(raw_password=raw_password)
+        user.save()
+        account = authenticate(username=username, password=raw_password)
+        login(self.request, account, backend='accounts.backends.EmailOrUsernameModelBackend')
 
-def registration_view(request):
-    context = {}
-    if request.POST:
-        form = BasicRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            account = authenticate(username=username, password=raw_password)
-            login(request, account, backend='accounts.backends.EmailOrUsernameModelBackend')
-
-            return redirect('main')
-        else:
-            context['registration_form'] = form
-    else:
-        form = BasicRegistrationForm()
-        context['registration_form'] = form
-    return render(request, 'signup-basic.html', context)
+        return redirect('main')
 
 
 def login_view(request):

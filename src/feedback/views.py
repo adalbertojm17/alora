@@ -10,7 +10,7 @@ def feedback_view(request):
         form = FeedBackForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contconfirm')
+            return redirect('contact-confirm')
         else:
             context['feedback_form'] = form
     else:

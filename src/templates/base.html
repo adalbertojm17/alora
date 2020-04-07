@@ -2,6 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load bootstrap4 %} {# imports bootstrap4 #}
+    {% bootstrap_css %} {# Embeds Bootstrap CSS #}
+    {% bootstrap_javascript %} {# Embeds Bootstrap JS #}
+    {% block extrahead %}       {# Embeds Extra Resources #}
+    {% endblock %}              {# Ends Extra Resources #}
+
     {% block styles %}
 
     {% endblock %}
@@ -15,11 +21,11 @@
             <ul>
                 <li class="homepage"><a href="{% url 'home' %}">Home </a></li>
 
-                     {% if request.user.is_authenticated %}
-                         <li class="homepage"><a href=/main/>Main</a></li>
-                         <li class="homepage"><a href=/place-order/>Order Now</a></li>
-                         <li class="homepage"><a href=/no-order/>Tracking</a></li>
-                     {% endif %}
+                {% if request.user.is_authenticated %}
+                    <li class="homepage"><a href=/main/>Main</a></li>
+                    <li class="homepage"><a href=/place-order/>Order Now</a></li>
+                    <li class="homepage"><a href=/no-order/>Tracking</a></li>
+                {% endif %}
                 <li class="homepage"><a href=/services/>Services</a></li>
                 <li class="homepage"><a href=/about-us/>About Us </a></li>
                 <li class="homepage"><a href=/contact-us/>Contact Us </a></li>
@@ -29,9 +35,9 @@
                 {% else %}
                     <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
-        </ul>
-        <br/>
-    </nav>
+            </ul>
+            <br/>
+        </nav>
     </div>
 </header>
 
@@ -39,8 +45,8 @@
     Failed to replace content
 {% endblock %}
 
- {% block script %}
- {% endblock %}
+{% block script %}
+{% endblock %}
 
 {% comment %}<footer class="footer">
 

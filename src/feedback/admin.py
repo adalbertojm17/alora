@@ -1,10 +1,11 @@
 from django.contrib import admin
+
 from .models import Feedback
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'services', 'content')
-    search_fields = ('first_name', 'last_name', 'email', 'services'),
+    list_display = ('store', 'subject')
+    search_fields = ('store', 'subject'),
     readonly_fields = list_display
 
     filter_horizontal = ()

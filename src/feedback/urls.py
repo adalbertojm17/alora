@@ -7,6 +7,6 @@ from .views import (
 
 urlpatterns = [
     path('contact-us/', feedback_view, name="contact"),
-    path('contact-confirm/', feedbackconfirm_view, name="cont-confirm"),
+    path('contact-confirm/', feedbackconfirm_view, name="contact-confirm"),
 
 ]

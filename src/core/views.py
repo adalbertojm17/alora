@@ -1,10 +1,12 @@
 # noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences
+from accounts.models import Account
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.models import Store, Service
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from formtools.wizard.views import SessionWizardView
 
 from .forms import DropOffForm, PickupForm, ServiceForm
@@ -29,10 +31,49 @@ class OrderWizard(SessionWizardView):
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]
 
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        if not user.is_authenticated:
+            return redirect('login')
+        return super(OrderWizard, self).get(request, *args, **kwargs)
+
     def done(self, form_list, **kwargs):
-        return render(self.request, 'core/orderconfirm.html', {
-            'form_data': [form.cleaned_data for form in form_list],
-        })
+        form_dict1 = self.get_cleaned_data_for_step(1)
+        services = form_dict1.get('services')
+        form_dict2 = self.get_cleaned_data_for_step(2)
+        pickup_street = form_dict2.get('street')
+        pickup_apt = form_dict2.get('apt')
+        pickup_city = form_dict2.get('city')
+        pickup_state = form_dict2.get('state')
+        pickup_zip_code = form_dict2.get('zip_code')
+        form_dict3 = self.get_cleaned_data_for_step(3)
+        dropoff_street = form_dict3.get('street')
+        dropoff_apt = form_dict3.get('apt')
+        dropoff_city = form_dict3.get('city')
+        dropoff_state = form_dict3.get('state')
+        dropoff_zip_code = form_dict3.get('zip_code')
+        pickup_location, created = Address.objects.get_or_create(
+            street=pickup_street,
+            apt=pickup_apt,
+            city=pickup_city,
+            state=pickup_state,
+            zip_code=pickup_zip_code
+        )
+        dropoff_location, created = Address.objects.get_or_create(
+            street=dropoff_street,
+            apt=dropoff_apt,
+            city=dropoff_city,
+            state=dropoff_zip_code,
+            zip_code=pickup_zip_code
+        )
+
+        order = Order.objects.get_or_create(
+            account=get_object_or_404(Account, pk=self.request.user.pk),
+            store=get_object_or_404(Store, pk=self.request.user.pk),
+
+        )
+
+        return redirect('main')
 
 
 # view for user to monitor their order history

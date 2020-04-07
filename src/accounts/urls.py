@@ -2,16 +2,14 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from .views import (
-    # RegistrationView,
+    RegistrationView,
     login_view,
     logout_view,
     edit_account_view,
-    registration_view
 )
 
 urlpatterns = [
-    path('signup-basic/', registration_view, name="signup-basic"),
-    # path('signup-address/', address_registration_view, name="signup-address"),
+    path('signup/', RegistrationView.as_view(), name="signup"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
     path('edit_account/', edit_account_view, name="editaccount"),

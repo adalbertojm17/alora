@@ -1,0 +1,11 @@
+Order Now 
+version 0.1
+
+Steps: 
+Step 1: User logs into account --passed
+Step 2: User clicks on nav bar, Order Now --passed
+Step 3: User does not select any fields that are required, to create order and selects submit -- failed
+
+Expected Results: Notification appears informing usering to fulfill all required fields in order to complete an order
+
+Result: System crashes

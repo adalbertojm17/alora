@@ -28,7 +28,11 @@
                 {% endif %}
                 <li class="homepage"><a href=/services/>Services</a></li>
                 <li class="homepage"><a href=/about-us/>About Us </a></li>
+
+                {% if request.user.is_authenticated %}
                 <li class="homepage"><a href=/contact-us/>Contact Us </a></li>
+                {% endif %}
+
                 {% if request.user.is_authenticated %}
                     <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
 

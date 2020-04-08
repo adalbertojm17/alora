@@ -14,13 +14,12 @@
     <div class="currentOrders">
         <div class="insidecurrent">
             <h1> Current Orders</h1>
-
             <div class="searchadd">
                 <div class="searchpart1">
                     <form id="searchbar"  method="get">
                         <input type="text" class="form-control" name="q"id="id_q" placeholder="search order..."value="{{ query }}">
                         <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
-                 height=30></button>
+                        height=30></button>
                     </form>
                 </div>
             </div>
@@ -59,7 +58,6 @@
                             <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
                             <td> {{ order.current_status }} </td>
                         </tr>
-                        <br>
                     {% endif %}
                 {% endfor %}
             </table>

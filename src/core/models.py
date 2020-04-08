@@ -22,18 +22,14 @@ STATUS_CHOICES = (
     ('CP', 'Complete'),
     ('ER', 'Enroute'),
     ('D', 'Delivered'),
+    ('C', 'Completed')
 )
 
 
 # model for a single product item (e.g. clothing or a bag)
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    services = MultiSelectField(choices=[(
-        service.id,
-        service.name,
-    )
-        for service in Service.objects.all()
-    ])
+    services = models.ForeignKey(Service,on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
@@ -60,7 +56,7 @@ class Order(models.Model):
     current_status = models.CharField(choices=STATUS_CHOICES, max_length=2, default='P')
 
     def __str__(self):
-        return self.pk + ' ' + self.account.name
+        return self.account.username
 
     def get_status(self):
         return self.current_status

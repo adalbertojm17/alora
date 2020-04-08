@@ -113,18 +113,28 @@ body {
 
 .insidecontent h1{
     text-align: left;
+    margin-bottom: 30px;
 }
 
-table{
-    padding: 20px;
+/******* Tracking Info **********/
+.trackinginfo {
+    margin: auto;
+    width: 110%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
 }
 
-th, td{
-    border: 1px solid black;
+.trackinginfo td, .trackinginfo th {
+    border: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-td {
-    padding: 5px;
+.orderDetailsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
 }
 
 .shiftright {

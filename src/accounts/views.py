@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from formtools.wizard.views import SessionWizardView
 
 from .backends import authenticate
-from .forms import UserSignUpForm, UserAddressForm, AccountAuthenticationForm, EditAccountForm
+from .forms import UserSignUpForm, UserAddressForm, AccountAuthenticationForm, AccountForm
 from .models import Account
 
 
@@ -91,7 +91,7 @@ def logout_view(request):
     return redirect('home')
 
 
-def edit_account_view(request):
+def account_view(request):
     if not request.user.is_authenticated:
         return redirect("login")
     obj = Account.objects.get(id=request.user.id)
@@ -100,12 +100,12 @@ def edit_account_view(request):
         'user': request.user,
     }
     if request.POST:
-        form = EditAccountForm(request.POST, instance=request.user)
+        form = AccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
 
     else:
-        form = EditAccountForm(
+        form = AccountForm(
             initial={
                 "first_name": request.user.first_name,
                 "last_name": request.user.last_name,
@@ -116,4 +116,4 @@ def edit_account_view(request):
             }
         )
     context["account_form"] = form
-    return render(request, "edit_account_page.html", context)
+    return render(request, "account_page.html", context)

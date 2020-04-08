@@ -14,7 +14,7 @@
 {% block content %}
     <div id="signin">
         <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
-        <p> Sign In </p>
+        <h1> Sign In </h1>
 
         <form method="post">{% csrf_token %}
             {% for field in login_form %}

@@ -5,14 +5,14 @@ from .views import (
     RegistrationView,
     login_view,
     logout_view,
-    edit_account_view,
+    account_view,
 )
 
 urlpatterns = [
     path('signup/', RegistrationView.as_view(), name="signup"),
     path('login/', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
-    path('edit_account/', edit_account_view, name="editaccount"),
+    path('account/', account_view, name="account"),
 
     path('password_change/done/',
          auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),

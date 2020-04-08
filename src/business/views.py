@@ -7,6 +7,7 @@ from .models import Store,Service
 from core.models import Item
 from .forms import ServiceCreationForm
 from .forms import AddingOrderItemForm
+from .forms import AddingItemForm
 from django.db.models import Q
 from .models import Service
 
@@ -15,16 +16,20 @@ def orders_details_view(request, *args, **kwargs):
     form = AddingOrderItemForm
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
+    print(request.POST.get('status'))
     my_context = {
         'order': order,
         'orderdetails': order.orderitem_set.all()
     }
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
         return HttpResponseForbidden()
     if request.POST:
         form = AddingOrderItemForm(request.POST)
+        order.current_status = request.POST.get('status')
+        order.save()
         if form.is_valid():
             form.save()
 
@@ -54,8 +59,10 @@ def current_orders_view(request, *args, **kwargs):
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
+
     SearchOrder = get_order_queryset(query)
     my_context['SearchOrder'] =SearchOrder
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
@@ -91,6 +98,7 @@ def store_orderhistory_view(request, *args, **kwargs):
         my_context['query'] = query
     SearchOrder = get_order_queryset(query)
     my_context['SearchOrder'] = SearchOrder
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
@@ -108,9 +116,18 @@ def inventory_view(request, *args, **kwargs):
 
 
 def services_view(request):
-    service = request.GET.get('type')
-    service_names = Service.objects.values_list('name', flat=True).filter(store=service)
-    return render(request, 'services.html', {'service_names': service_names})
+    my_context = {}
+    stores = Store.objects.all()
+    my_context['stores'] = stores
+
+    SerchStore = request.GET.get('company')
+    services =Service.objects.all().filter(store__name=SerchStore)
+    items = []
+    for service in services:
+        items.append(Item.objects.all().filter(services=service))
+    my_context['itemsQuery'] = items
+    my_context['services'] = services
+    return render(request, 'services.html', my_context)
 
 
 def load_service_view(request):
@@ -122,9 +139,12 @@ def services_business_view(request):
     context = {}
     store = Store.objects.get(manager= request.user)
     services = Service.objects.all().filter(store= store)
-    context={
-        'services':services
-    }
+    items =[]
+    for service in services:
+        items.append(Item.objects.all().filter( services = service))
+    context['itemsQuery']=items
+    context['services']=services
+
     if request.POST:
         form = ServiceCreationForm(request.POST)
         if form.is_valid():
@@ -134,6 +154,17 @@ def services_business_view(request):
         form = ServiceCreationForm()
 
     context ['form']=form
+
+    if request.POST:
+        form2 = AddingItemForm(request.POST)
+        if form2.is_valid():
+            form2.save()
+
+    else:
+        form2 = AddingItemForm()
+
+    context ['form2']=form2
+
 
     return render(request, 'business/services_business.html', context)
 

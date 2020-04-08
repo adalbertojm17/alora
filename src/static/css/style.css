@@ -8,6 +8,15 @@ body {
     margin: 0;
 }
 
+p{
+    font-family: "Lato", sans-serif;
+}
+
+h1{
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+}
+
 a {
     display: block;
     color: black;
@@ -17,9 +26,15 @@ a {
     font-family: "Lato", sans-serif;
 }
 
+#mainb a{
+
+}
+
 #mainb a:hover {
     background-color: #FF5733;
     border-radius: 5px;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -60,7 +75,7 @@ header {
 .mainnav {
     float: right;
     width: auto;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-left: 300px;
     margin-right: 10px;
     overflow: hidden;
@@ -73,11 +88,14 @@ header {
     padding: 0;
     overflow: hidden;
     z-index: 3;
+    padding-top: 0;
 }
 
 .mainnav li {
     float: left;
     z-index: 3;
+    padding: 0;
+    padding-top: 5px;
 }
 
 
@@ -91,7 +109,7 @@ header {
     display: block;
     color: white;
     text-align: center;
-    padding: 16px;
+    padding: 10px;
     text-decoration: none;
 }
 
@@ -128,12 +146,20 @@ header {
 
 #signin p {
     text-align: center;
-    font-size: 140%;
+    font-size: 100%;
     padding: 0;
 }
 
 #signin p a {
     color: grey;
+    font-size: 110%;
+}
+
+#signin h1{
+    font-size:130%;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
 }
 
 .makesmall {
@@ -144,12 +170,16 @@ form {
     text-align: center;
 }
 
+label {
+    display: block;
+}
+
 input[type=text], input[type=email], input[type=password] {
     position: center;
     background-color: white;
     color: black;
     width: 55%;
-    padding: 12px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 1px solid #FF5733;
@@ -157,10 +187,17 @@ input[type=text], input[type=email], input[type=password] {
     padding-left: 20px;
 }
 
+.changepass{
+    width: 70%;
+    margin: auto;
+}
 
-/*
-	CSS for sign up page
-*/
+.changepass form{
+    text-align: center;
+    width: 90%;
+}
+
+/********************* CSS for sign up page ********************/
 
 #signup {
     position: center;
@@ -179,12 +216,20 @@ input[type=text], input[type=email], input[type=password] {
 
 #signup p {
     text-align: center;
-    font-size: 140%;
+    font-size: 100%;
     padding: 0;
 }
 
 #signup p a {
     color: grey;
+    font-size: 105%;
+}
+
+#signup h1{
+    font-size:130%;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
 }
 
 /*
@@ -197,7 +242,6 @@ input[type=text], input[type=email], input[type=password] {
     display: block;
     color: white;
     width: 55%;
-    padding: auto;
     margin: auto;
     box-sizing: border-box;
     border-radius: 4px;
@@ -232,7 +276,6 @@ input[type=text], input[type=email], input[type=password] {
     color: white;
     width: 55%;
     border: 1px solid #FF5733;
-    padding: auto;
     margin: auto;
     margin-top: 5px;
     margin-bottom: 30px;
@@ -307,10 +350,9 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 #buttonconfirm  p a{
-
+    color: white;
+    text-decoration: none;
 }
-
-
 
 /*
 Main page css
@@ -325,12 +367,13 @@ Main page css
 
 #welcome {
     text-align: center;
+    font-family: "Lato", sans-serif;
     overflow: hidden;
 }
 
 #mainpagenav {
     margin: auto;
-    margin-left: 16%;
+    margin-left: 23%;
     width: 70%;
     overflow: hidden;
 }
@@ -347,7 +390,7 @@ Main page css
     background-color: #FF5733;
     padding-top: 60px;
     padding-bottom: 60px;
-
+    margin-bottom: 10px;
 }
 
 #mainpagenav #mainpage #miniheader #info {
@@ -406,6 +449,12 @@ footer {
     padding-right: 25%;
 }
 
+.insidecontent h1{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-weight: bold;
+}
+
 
 /* Contact Us page */
 #contactus {
@@ -439,7 +488,7 @@ textarea {
     padding-left: 20px;
 }
 
-select {
+select{
     position: center;
     background-color: white;
     color: grey;
@@ -452,20 +501,24 @@ select {
     padding-left: 20px;
 }
 
-/* Account Page css*/
+/********************* Account Page css ********************/
 
 #accountpage {
     width: 80%;
-    margin-left: 10%;
+    margin:auto;
 }
 
 #accountpage #accountdiv {
-    background-color: none;
     float: left;
     display: block;
-    width: 25%;
+    width: 30%;
     padding: 3%;
     overflow: hidden;
+}
+
+#movedown{
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 #accountpage #accountdiv #miniheader {
@@ -494,10 +547,9 @@ select {
 }
 
 #accountinfo {
-    background-color: none;
     float: left;
     display: block;
-    width: 40%;
+    width: 60%;
     padding: 3%;
     overflow: hidden;
 }
@@ -584,14 +636,15 @@ select {
      margin-bottom: 40px;
 }
 
-/****** Customer order history Table CSS ********/
-.content h1 {
+/************* Customer order history Table CSS **************/
+#headinghistory {
     text-align: center;
+    margin: 25px;
 }
 
 .customerOrdersTable {
     margin: auto;
-    width: 90%;
+    width: 70%;
     margin-bottom: 50px;
     border-collapse: collapse;
 }
@@ -606,19 +659,20 @@ select {
     padding-bottom: 12px;
     text-align: left;
     color: black;
+    background-color: #FF5733;
 }
 
-/******* Order Details Page **********/
+/***************** Order Details Page ******************/
 .orderDetailsTable {
     margin: auto;
-    width: 70%;
+    width: 50%;
     margin-bottom: 50px;
     border-collapse: collapse;
 }
 
 .orderDetailsTable td, .orderDetailsTable th {
     border: 2px solid black;
-    padding: 20px;
+    padding: 15px;
 }
 
 .orderDetailsTable th {
@@ -676,6 +730,60 @@ label.required::before {
     width:40%;
 }
 
+/******************************* Ordering *******************************/
+
+#orderingheading{
+    font-size: 120%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ordering{
+    border: 3px solid #FF5733;
+    width: 40%;
+    margin: auto;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.ordering form {
+    text-align: center;
+    font-size: 90%;
+}
+
+.ordering form label {
+    display: block;
+}
+
+.ordering input[type=text], input[type=email], input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
+#orderingbutton {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 55%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+
 /****************************Tracking*************************************/
 
 .hidden{
@@ -711,7 +819,6 @@ button:disabled:hover{
 .container{
 	max-width:800px;
 	margin: 150px auto 0 auto;
-	padding: 40px;
 }
 
 #stepProgressBar{

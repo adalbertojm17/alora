@@ -43,3 +43,7 @@ class AddingOrderItemForm(forms.ModelForm):
          #   except Service.DoesNotExist:
           #      return item
            # raise forms.ValidationError('service "%s" is already in use.' % item)
+class AddingItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = '__all__'

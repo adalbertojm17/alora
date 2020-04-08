@@ -1,16 +1,10 @@
-from django.db import models
-
 # noinspection PyUnresolvedReferences
 from business.models import Store
+from django.db import models
 
 
 class Feedback(models.Model):
-    store = models.CharField(max_length=150, choices=[(
-        store.id,
-        store.name,
-    )
-        for store in Store.objects.all()
-    ], null=True, blank=True)
+    store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True)
     subject = models.CharField(max_length=250)
     content = models.TextField(max_length=500)
 

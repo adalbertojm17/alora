@@ -30,7 +30,7 @@
                 <th> Drop Off Time/Date</th>
                 <th> Order Status</th>
             </tr>
-            {% for order in orders %}
+            {% for order in SearchOrder %}
                 <tr>
                     <td>{{ order.pk }}</td>
                     <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>

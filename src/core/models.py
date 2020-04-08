@@ -22,6 +22,7 @@ STATUS_CHOICES = (
     ('CP', 'Complete'),
     ('ER', 'Enroute'),
     ('D', 'Delivered'),
+    ('C', 'Completed')
 )
 
 

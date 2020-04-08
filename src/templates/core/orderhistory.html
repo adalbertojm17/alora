@@ -13,30 +13,31 @@
 
 <body>
 {% block content %}
-            <div class="content">
-                <h1> Your Order History</h1>
+        <div class="content">
+            <h1 id="headinghistory"> Your Order History</h1>
+            <table class="customerOrdersTable">
 
-                <table class="customerOrdersTable">
-                    <tr>
-                        <th>Order #</th>
-                        <th> Name</th>
-                        <th> Status</th>
-                    </tr>
+                <tr>
+                    <th>Order #</th>
+                    <th> Name</th>
+                    <th> Status</th>
+                </tr>
 
-                    {% for order in orders %}
+                {% for order in core %}
+                    {% if request.user.id == order.account_id %}
                         <tr>
                             <td>{{ order.pk }}</td>
-                            <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>
-                            <td> {{ order.status.name }} </td>
+                            <td><a href=/customer-details/?order={{ order.id }}> {{ order }} </a></td>
+                            <td> {{ order.current_status}} </td>
                         </tr>
-                        <br>
-                    {% endfor %}
-                </table>
-            </div>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
 
 
     <div id="buttonmain">
-        <p><a href="/edit_account/"> Back </a></p>
+        <p><a href="/account/"> Back </a></p>
     </div>
 
 {% endblock %}

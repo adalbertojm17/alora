@@ -88,7 +88,7 @@ def orderhistory_view(request, *args, **kwargs):
         return redirect('login')
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
-    my_context = {"core": customer_orders, "address": addresses}
+    my_context = {"core": customer_orders, "address": addresses, "user": user}
     return render(request, "core/orderhistory.html", my_context)
 
 
@@ -131,9 +131,27 @@ def no_order_view(request, *args, **kwargs):
     return render(request, "core/no_order_to_track.html", my_context)
 
 
+def customer_details_view(request, *args, **kwargs):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    order_id = request.GET.get('order')
+    order = Order.objects.get(id=order_id)
+
+    my_context = {
+        'order': order,
+        'orderdetails': order.orderitem_set.all()
+    }
+    return render(request, "core/customer_order_details.html", my_context)
+
+
 # allows user to view order details after submitting
 def vieworder_view(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login")
-    my_context = {}
+
+    customer_orders = Order.objects.all()
+    addresses = Address.objects.all()
+    my_context = {"core": customer_orders, "address": addresses}
     return render(request, "core/vieworder.html", my_context)

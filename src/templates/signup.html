@@ -17,7 +17,7 @@
 {% block content %}
     <div id="signup">
         <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
-        <p> Sign Up </p>
+        <h1> Sign Up </h1>
         <form method="post">{% csrf_token %}
             {{ wizard.management_form }}
             {% if wizard.form.forms %}

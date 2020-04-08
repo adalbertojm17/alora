@@ -7,6 +7,7 @@ from .views import (
     vieworder_view,
     orderconfirm_view,
     OrderWizard,
+    customer_details_view
 
 )
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path('order-confirm/', orderconfirm_view, name="orderconfirm"),
     path('tracking/', tracking_view, name="tracking"),
     path('vieworder/', vieworder_view, name="vieworder"),
+    path('customer-details/', customer_details_view, name="vieworder")
 ]

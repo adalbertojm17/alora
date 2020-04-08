@@ -53,51 +53,55 @@
     <script type="text/javascript">
         const bullets= [...document.querySelectorAll('.bullet')];
         var i;
-        var myId= self.request.id;
 
-        {% for order in orders %}
-            {% if myId == order.pk%}
-                {% if order.current_status == "P" %}
-                    const currentBullet= bullets[0];
-                    currentBullet.classList.add('completed');
-                {% endif %}
+        {% for order in core %}
+            {% if request.user.id == order.account_id %}
 
-                {% if order.current_status == "PU" %}
-                    for(i=0; i<2;i++) {
-                        const currentBullet = bullets[i];
+                {% if order.current_status != "C" %}
+
+                    {% if order.current_status == "P" %}
+                        const currentBullet= bullets[0];
                         currentBullet.classList.add('completed');
-                    }
-                {% endif %}
+                    {% endif %}
 
-                {% if order.current_status == "CL" %}
-                     for(i=0; i<3;i++) {
-                        const currentBullet = bullets[i];
-                        currentBullet.classList.add('completed');
-                    }
-                {% endif %}
+                    {% if order.current_status == "PU" %}
+                        for(i=0; i<2;i++) {
+                            const currentBullet = bullets[i];
+                            currentBullet.classList.add('completed');
+                        }
+                    {% endif %}
 
-                {% if order.current_status == "CP" %}
-                    for(i=0; i<4;i++) {
-                        const currentBullet = bullets[i];
-                        currentBullet.classList.add('completed');
-                    }
-                {% endif %}
+                    {% if order.current_status == "CL" %}
+                         for(i=0; i<3;i++) {
+                            const currentBullet = bullets[i];
+                            currentBullet.classList.add('completed');
+                        }
+                    {% endif %}
 
-                {% if order.current_status == "ER" %}
-                     for(i=0; i<5;i++) {
-                        const currentBullet = bullets[i];
-                        currentBullet.classList.add('completed');
-                    }
-                {% endif %}
+                    {% if order.current_status == "CP" %}
+                        for(i=0; i<4;i++) {
+                            const currentBullet = bullets[i];
+                            currentBullet.classList.add('completed');
+                        }
+                    {% endif %}
 
-                {% if order.current_status == "D" %}
-                     for(i=0; i<6;i++) {
-                        const currentBullet = bullets[i];
-                        currentBullet.classList.add('completed');
-                    }
+                    {% if order.current_status == "ER" %}
+                         for(i=0; i<5;i++) {
+                            const currentBullet = bullets[i];
+                            currentBullet.classList.add('completed');
+                        }
+                    {% endif %}
+
+                    {% if order.current_status == "D" %}
+                         for(i=0; i<6;i++) {
+                            const currentBullet = bullets[i];
+                            currentBullet.classList.add('completed');
+                        }
+                    {% endif %}
+
                 {% endif %}
-            {{% endif %}}
-        {{% endfor %}}
+            {% endif %}
+        {% endfor %}
 
     </script>
 {% endblock %}

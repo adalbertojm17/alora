@@ -16,9 +16,9 @@
     <div class="services">
         <div class="servicesec1">
             <div class="sec1text">
-                <p> Here at Alora we connect you to dry cleaning and laundry services at your finger tips !</p>
+                <p> Here at Alora we connect you to Dry cleaning and Laundry services at your finger tips !</p>
                 <div id="serviceprice">
-                    <p><a href="#servicesec3"> Find Prices </a></p>
+                    <p><a href="#findprice"> Find Prices </a></p>
                 </div>
             </div>
         </div>
@@ -28,24 +28,28 @@
     </div>
 
     <div class="servicesec3" id="servicesec3">
-        <form id="searchbar"  method="get">
 
-            <label for="company">Company</label>
-                <select id="company" name="company" >
-                    <option value=""> ------</option>
-                    {% for store in stores %}
-                    <option value="{{ store }}">{{ store }}</option>
-                   {% endfor %}
-                </select>
+            <div class="searchprice"  id="findprice" >
+                <form id="searchbar" method="get">
 
-            <div>
-                <button id="buttonstandard" type="submit">Search</button>
+                    <label for="company">Company</label>
+                        <select id="company" name="company" >
+                            <option value=""> ------</option>
+                            {% for store in stores %}
+                            <option value="{{ store }}">{{ store }}</option>
+                           {% endfor %}
+                        </select>
+
+                    <div>
+                        <button id="buttonstandard" type="submit">Search</button>
+                    </div>
+                </form>
             </div>
-        </form>
 
+            <div class="servicespopup">
            {% for service in services %}
-                <h3> {{ service }} </h3>
-                <table class="table">
+                <h3 id="servicehead"> {{ service }} </h3>
+                <table class="servicestable">
                          <tr>
                              <th>Item</th>
                              <th> Price</th>
@@ -64,7 +68,8 @@
 
                         {% endfor %}
                  </table>
-                   {% endfor %}
+            {% endfor %}
+            </div>
 
     </div>
 

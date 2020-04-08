@@ -615,13 +615,52 @@ select{
 }
 
 .servicesec3{
-    height: 600px;
-    margin-top: 10%;
+    height: 300px;
+    margin-top: 5%;
 }
 #serviceprice{
 
 }
 
+/***************** Services Table******************/
+
+.searchprice{
+    margin: auto;
+    width:40%;
+}
+
+#servicehead{
+    margin-left: 15%;
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+
+.servicespopup{
+    width:80%;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.servicestable {
+    margin: auto;
+    width: 70%;
+    margin-bottom: 80px;
+    border-collapse: collapse;
+}
+
+.servicestable td, .servicestable th {
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.servicestable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color: #49BEB7;
+}
 
 /* Confirmation Pages */
 

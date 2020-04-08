@@ -128,7 +128,7 @@ class UserAddressForm(forms.ModelForm):
 
     )
     MODDED_STATE_CHOICES = list(STATE_CHOICES)
-    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State'))
+    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State (Optional)'))
     state = USStateField(
         label='',
         widget=forms.Select(choices=MODDED_STATE_CHOICES))
@@ -163,7 +163,7 @@ class AccountAuthenticationForm(forms.ModelForm):
             raise forms.ValidationError("Invalid login")
 
 
-class EditAccountForm(forms.ModelForm):
+class AccountForm(forms.ModelForm):
     required_css_class = 'required'
     first_name = forms.CharField(
         max_length=50,
@@ -196,27 +196,16 @@ class EditAccountForm(forms.ModelForm):
 
     )
 
-    email2 = forms.EmailField(
-        max_length=254,
-        label=mark_safe('Confirm Email<br />'),
-        label_suffix='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Confirm Email*', 'class': 'toggleenabled'})
-
-    )
-
     username = forms.CharField(
         max_length=35,
         label=mark_safe('Username<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled', 'pattern': '[0-9A-Za-z ]+',
-                                      'title': ' alphanumeric '
-                                               'characters only '
-                                               'please'})
+        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled'})
     )
 
     class Meta:
         model = Account
-        fields = ("first_name", "last_name", 'phone', "email", "email2", "username")
+        fields = ("first_name", "last_name", 'phone', "email", "username")
 
     def clean_first_name(self):
         if self.is_valid():
@@ -242,22 +231,13 @@ class EditAccountForm(forms.ModelForm):
     def clean_email(self):
         if self.is_valid():
             email = self.cleaned_data["email"]
-            try:
-                validate_email(email)
-                valid_email = True
-            except validate_email.ValidationError:
-                valid_email = False
+            if email and not re.match(EMAIL_REGEX, email):
+                raise forms.ValidationError('Invalid email format')
             try:
                 Account.objects.exclude(pk=self.instance.pk).get(email=email)
             except Account.DoesNotExist:
                 return email
             raise forms.ValidationError('Email "%s" is already in use.' % email)
-
-    def clean_email2(self):
-        email = self.cleaned_data.get('email')
-        email2 = self.cleaned_data.get('email2')
-        if email != email2:
-            raise forms.ValidationError('Emails must match')
 
     def clean_username(self):
         if self.is_valid():

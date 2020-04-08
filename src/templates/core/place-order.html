@@ -10,7 +10,7 @@
         {% block extrahead %}   {# Extra Resources Start #}
             {{ form.media }}        {# Form required JS and CSS #}
         {% endblock %}          {# Extra Resources End #}
-        <title>Alora Sign Up </title>
+        <title>Place Your Order</title>
 
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
@@ -22,9 +22,13 @@
 
 {% block content %}
     <p>
+        {% if wizard.steps.step1 == 1 %}
+            Where would you like to place your order?
+        {% endif %}
         {% if wizard.steps.step1 == 2 %}
             Schedule Your Pickup
-        {% else %}
+        {% endif %}
+        {% if wizard.steps.step1 == 3 %}
             Schedule Your Drop-off
         {% endif %}
 

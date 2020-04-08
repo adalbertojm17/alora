@@ -6,7 +6,32 @@ from .models import Order, OrderItem, Item
 
 class ItemAdmin(admin.ModelAdmin):
     search_fields = ('id', 'name'),
-    readonly_fields = ('id', 'name')
+    readonly_fields = ()
+
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+    def has_add_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def has_delete_permission(self, request, obj=None):
+        return request.user.is_superuser
+
+    def delete_button(self, obj):
+        return format_html('<a class="btn" href="/admin/core/item/{}/delete/">Delete</a>', obj.id)
+
+    delete_button.allow_tags = Item
+    delete_button.short_description = 'Delete Account'
+    list_display = ('id', 'name', 'price', 'delete_button')
+
+
+class OrderAdmin(admin.ModelAdmin):
+    search_fields = ('id', 'account', 'store' 'created_at', 'current_status'),
+    readonly_fields = ('created_at',)
 
     filter_horizontal = ()
     list_filter = ()
@@ -24,31 +49,6 @@ class ItemAdmin(admin.ModelAdmin):
     def delete_button(self, obj):
         return format_html('<a class="btn" href="/admin/core/order/{}/delete/">Delete</a>', obj.id)
 
-    delete_button.allow_tags = Item
-    delete_button.short_description = 'Delete Account'
-    list_display = ('id', 'name', 'price', 'delete_button')
-
-
-class OrderAdmin(admin.ModelAdmin):
-    search_fields = ('id', 'account', 'store' 'created_at', 'current_status'),
-    readonly_fields = ('id', 'account', 'created_at')
-
-    filter_horizontal = ()
-    list_filter = ()
-    fieldsets = ()
-
-    def has_add_permission(self, request, obj=None):
-        return request.user.is_superuser
-
-    def has_change_permission(self, request, obj=None):
-        return request.user.is_superuser
-
-    def has_delete_permission(self, request, obj=None):
-        return request.user.is_superuser
-
-    def delete_button(self, obj):
-        return format_html('<a class="btn" href="/admin/accounts/core/orderitem/{}/delete/">Delete</a>', obj.id)
-
     delete_button.allow_tags = True
     delete_button.short_description = 'Delete Order'
     list_display = ('id', 'account', 'created_at', 'current_status', 'delete_button')
@@ -56,7 +56,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ('item', 'order'),
-    readonly_fields = ('id',)
+    readonly_fields = ()
 
     filter_horizontal = ()
     list_filter = ()
@@ -72,7 +72,7 @@ class OrderItemAdmin(admin.ModelAdmin):
         return request.user.is_superuser
 
     def delete_button(self, obj):
-        return format_html('<a class="btn" href="/admin/accounts/customeraccount/{}/delete/">Delete</a>', obj.id)
+        return format_html('<a class="btn" href="/admin/core/orderitem/{}/delete/">Delete</a>', obj.id)
 
     delete_button.allow_tags = True
     delete_button.short_description = 'Delete Order Item'

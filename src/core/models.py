@@ -55,7 +55,7 @@ class Order(models.Model):
     current_status = models.CharField(choices=STATUS_CHOICES, max_length=2, default='P')
 
     def __str__(self):
-        return self.pk + ' ' + self.account.name
+        return str(self.pk) + ' ' + self.account.username
 
     def get_status(self):
         return self.current_status

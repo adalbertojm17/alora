@@ -2,73 +2,68 @@
 {% load static %}
 <head>
     {% block styles %}
-        <title>services</title>
+        <title>Services</title>
         <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
     {% endblock %}
 </head>
 <body>
 {% block content %}
 
+    <div class="servicespage">
+        <div class="servicecontent">
+            <h1> Services </h1>
+            <p> The following are the services your company offers along with Alora. Please note that these services reflect those your
+                customers are able to order at any given time. Contact our main office to make changes to your services when needed. This can
+                also be done below using our add service function.</p>
 
+            <div class="additem" >
+            <p><a href="#contentaddservice">Edit Services</a> </p>
+            </div>
 
+                {% for service in services %}
+                    <h3 class="shift"> {{ service }} </h3>
+                        <table class="servicestable">
+                             <tr>
+                                 <th>Item</th>
+                                 <th> Price</th>
+                             </tr>
 
-    <div class="currentOrders">
-
-    <div class="insidecontent">
-                <h1> Services </h1>
-                <p> The following are the services your company offers along with Alora. Please note that these services reflect those your
-                customers are able to order at any given time. Contact our main office to make changes to your services when needed.</p>
-
-                <div class="shiftright">
-                    {% for service in services %}
-                <h3> {{ service }} </h3>
-                        <table class="table">
-                         <tr>
-                             <th>Item</th>
-                             <th> Price</th>
-                         </tr>
-                        <tr>
-                    {%  for itemlist in itemsQuery %}
-                        {% for item in itemlist %}
-                            {% if item.services == service %}
-                                <tr>
-                                    <td>{{item}}</td>
-                                    <td> {{ item.price }}</td>
-                                 </tr>
-                            {% endif%}
-                        {% endfor %}
-
-                        {% endfor %}
+                            {%  for itemlist in itemsQuery %}
+                                {% for item in itemlist %}
+                                    {% if item.services == service %}
+                                        <tr>
+                                            <td>{{item}}</td>
+                                            <td> {{ item.price }}</td>
+                                         </tr>
+                                    {% endif%}
+                                {% endfor %}
+                            {% endfor %}
                         </table>
-                   {% endfor %}
+                {% endfor %}
+
+
+                <div id="contentaddservice" class="contentaddservice">
+                    <h2 class="center"> Add New Service</h2>
+                    <form method="post" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                     <button id="addbutton" type="submit">Create</button>
+                    </form>
                 </div>
 
-    <div class="insidecurrent">
+                <div id="contentaddservice" class="contentaddservice">
+                    <h2 class="center" > Add New Item</h2>
+                    <form method="post" >
+                    {% csrf_token %}
+                    {{ form2.as_p }}
+                     <button id="addbutton" type="submit">Add</button>
+                    </form>
+                </div>
 
-        <h2> Created new service</h2>
-    <form method="post" >
-        {% csrf_token %}
-        {{ form.as_p }}
-         <button id="buttonstandard" type="submit">create</button>
 
-        </form>
-    </div>
-
-    <div class="insidecurrent">
-
-        <h2> Created Add items</h2>
-    <form method="post" >
-        {% csrf_token %}
-        {{ form2.as_p }}
-         <button id="buttonstandard" type="submit">Add</button>
-
-        </form>
-    </div>
-    </div>
-
+        </div>
     </div>
 {% endblock %}
-
 
 
 </body>

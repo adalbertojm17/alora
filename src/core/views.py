@@ -7,19 +7,19 @@ from business.models import Store, Service
 from django.shortcuts import render, redirect, get_object_or_404
 from formtools.wizard.views import SessionWizardView
 
-from .forms import DropOffForm, PickupForm, ServiceForm
+from .forms import DropOffForm, PickupForm, StoreForm
 from .models import Order
 
 FORMS = [
-    ("services", ServiceForm),
+    ("store", StoreForm),
     ("pickup", PickupForm),
     ("dropoff", DropOffForm)
 ]
 
 TEMPLATES = {
-    "services": "core/order.html",
-    "pickup": "core/order-address.html",
-    "dropoff": "core/order-address.html"
+    "store": "core/place-order.html",
+    "pickup": "core/place-order.html",
+    "dropoff": "core/place-order.html"
 }
 
 
@@ -36,8 +36,8 @@ class OrderWizard(SessionWizardView):
         return [TEMPLATES[self.steps.current]]
 
     def done(self, form_list, **kwargs):
-        form_dict1 = self.get_cleaned_data_for_step('services')
-        services = form_dict1.get('services')
+        form_dict1 = self.get_cleaned_data_for_step('store')
+        store = form_dict1.get('store')
         form_dict2 = self.get_cleaned_data_for_step('pickup')
         pickup_street = form_dict2.get('street')
         pickup_apt = form_dict2.get('apt')
@@ -70,12 +70,13 @@ class OrderWizard(SessionWizardView):
 
         Order.objects.create(
             account=get_object_or_404(Account, pk=self.request.user.pk),
-            store=get_object_or_404(Store, pk=self.request.user.pk),
+            store=store,
             pickup_location=pickup_location,
             dropoff_location=dropoff_location,
             pickup_at=pickup_at,
             dropoff_at=dropoff_at
         )
+        self.request.session['form-submitted'] = True
 
         return redirect('orderconfirm')
 
@@ -96,19 +97,10 @@ def orderconfirm_view(request, *args, **kwargs):
     user = request.user
     if not user.is_authenticated:
         return redirect('login')
-    my_context = {}
-    return render(request, "core/orderconfirm.html", my_context)
-
-
-# view to allow user to choose their destination
-def orderdestination_view(request, *args, **kwargs):
-    user = request.user
-    if not user.is_authenticated:
-        return redirect('login')
-    my_context = {}
-    print(request.GET)
-    print(request.POST)
-    return render(request, "core/orderdestination.html", my_context)
+    if not request.session.get('form-submitted', False):
+        return redirect('place-order')
+    request.session['form-submitted'] = False
+    return render(request, "core/orderconfirm.html")
 
 
 # view to allow user to track the progress of their order
@@ -118,7 +110,12 @@ def tracking_view(request, *args, **kwargs):
     order_qs = Order.objects.all().filter(account=request.user)
     if not order_qs.exists():
         return redirect('no-order')
-    my_context = {}
+
+    customer_orders = Order.objects.all()
+    addresses = Address.objects.all()
+    status = Order.current_status
+    my_context = {"core": customer_orders, "address": addresses, "status": status}
+
     return render(request, "core/tracking.html", my_context)
 
 
@@ -132,3 +129,11 @@ def no_order_view(request, *args, **kwargs):
     status = Order.current_status
     my_context = {"core": customer_orders, "address": addresses, "status": status}
     return render(request, "core/no_order_to_track.html", my_context)
+
+
+# allows user to view order details after submitting
+def vieworder_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    my_context = {}
+    return render(request, "core/vieworder.html", my_context)

@@ -4,28 +4,13 @@ from django import forms
 
 from .models import Feedback
 
-LAUNDRY = 'LA'
-DRY_CLEANING = 'DC'
-
-SERVICE_CHOICES = (
-    ('', 'Services'),
-    (LAUNDRY, 'Laundry'),
-    (DRY_CLEANING, 'Dry Cleaning')
-)
-
 
 class FeedBackForm(forms.ModelForm):
-    MODDED_STORE_CHOICES = list([(
-        store.id,
-        store.name,
-    )
-        for store in Store.objects.all()
-    ])
-    MODDED_STORE_CHOICES.insert(0, ('', 'Choose a Store'))
-    store = forms.ChoiceField(
+    store = forms.ModelChoiceField(
+        empty_label='Choose a Store (Optional)',
         label='',
         required=False,
-        choices=MODDED_STORE_CHOICES
+        queryset=Store.objects.all()
     )
 
     content = forms.CharField(
@@ -55,6 +40,3 @@ class FeedBackForm(forms.ModelForm):
         model = Feedback
         fields = ['store', 'subject', 'content']
 
-    def __init__(self, *args, **kwargs):
-        super(FeedBackForm, self).__init__(*args, **kwargs)
-        self.fields['store'].choices = self.MODDED_STORE_CHOICES

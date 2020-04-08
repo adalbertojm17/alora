@@ -4,7 +4,7 @@ from .views import (
     tracking_view,
     no_order_view,
     orderhistory_view,
-    # vieworder_view,
+    vieworder_view,
     orderconfirm_view,
     OrderWizard,
 
@@ -17,5 +17,5 @@ urlpatterns = [
     path('place-order/', OrderWizard.as_view(), name="place-order"),
     path('order-confirm/', orderconfirm_view, name="orderconfirm"),
     path('tracking/', tracking_view, name="tracking"),
-    # path('vieworder/', vieworder_view, name="vieworder"),
+    path('vieworder/', vieworder_view, name="vieworder"),
 ]

@@ -1,0 +1,12 @@
+Contact Us Page 
+
+Steps:
+step 1: Clicked on Contact Us page --passed
+step 2: choose a store: User did not select one --passed
+step 3: Entered a subject: User inputs "Crash"--passed
+step 4: Enter a feedback: user inputs :Crash"--passed
+step 5: submits feedback --passed
+
+Expected Results: A notification error pops up informing user to please select a store"
+
+Actual Results: "Feedback Received!"

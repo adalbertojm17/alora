@@ -5,23 +5,20 @@ from addresses.models import Address
 from bootstrap_datepicker_plus import DateTimePickerInput
 # noinspection PyUnresolvedReferences
 from business.models import Service
+# noinspection PyUnresolvedReferences
+from business.models import Store
 from django import forms
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
-from multiselectfield import MultiSelectFormField
 
 
-class ServiceForm(forms.Form):
-    services = MultiSelectFormField(choices=[(
-        service.id,
-        service.name
+class StoreForm(forms.Form):
+    store = forms.ModelChoiceField(
+        empty_label='Choose a Store',
+        label='',
+        required=True,
+        queryset=Store.objects.all()
     )
-        for service in Service.objects.all()
-    ])
-
-    def __init__(self, *args, **kwargs):
-        super(ServiceForm, self).__init__(*args, **kwargs)
-        self.fields['services'].choices = [(service.id, service.name) for service in Service.objects.all()]
 
 
 class PickupForm(forms.ModelForm):

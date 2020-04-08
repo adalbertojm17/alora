@@ -1,0 +1,41 @@
+
+Project Name Alora
+Module Name  Services
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/6/2020
+
+
+                                           Services Page
+
+
+Test ID          Test case Disciption                  Pre-Condition                                   Test Steps                            test data                          Expected result                            Pass/Fail   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ts_Lora_010      Laundry check mark box test          Laundry check box should accept check mark      click on laundry check box             check mark on laundry box          check mark on laundry box accepted              Pass
+
+Ts_Lora_020      Laundry check mark box test          Laundry check box should accept check mark      click on laundry check box             check mark on laundry box           check mark on laundry box does not accept       Fail
+
+Ts_Lora_030      dry cleaning check mark box test      Dry cleaning check box should accept check mark    click on dry cleaningy check box     check mark on dry cleaning box       check mark on dry cleaning box accepted       Pass
+
+Ts_Lora_040      dry cleaning check mark box test        Dry cleaning check box should accept check mark    click on dry cleaning check box     check mark on dry cleaning box     check mark on dry cleaning box does not accept  Fail
+
+Ts_Lora_050      Elephant check mark box test          Elephant check box should accept check mark        click on Elephant check box             check mark on elephant box         check mark on elephant box accepted          Pass
+
+Ts_Lora_060      Elephant check mark box test          elephantcheck box should accept check mark    click on dry cleaningy check box     check mark on dry cleaning box            check mark on elephant box does not accept     Fail
+
+Ts_Lora_070      Pizza hunter check mark box test        pizza hunter check box should accept check mark    click on pizza hunter check box     check mark on pizza hunter box       check mark on pizz hunter box accepted         Pass
+
+Ts_Lora_080      Pizza hunter check mark box test        pizza hunter check box should accept check mark    click on pizza hunter check box     check mark on pizza hunter box     check mark on pizza hunter box does not accept   Fail
+
+Ts_Lora_090      Data check mark box test               Data check box should accept check mark             click on data check box               check mark on data box             check mark on data box accepted               Pass
+
+Ts_Lora_010      Data check mark box test               Data check box should accept check mark             click on data check box          check mark on Data box                   check mark on data box does not accept        Fail
+
+Ts_Lora_011      New check mark box test                New check box should accept check mark              click on New check box            check mark on new box                   check mark on new box accepted                Pass
+
+Ts_Lora_012      click on continue tab                  Continue  tab should be activated                  Push continue tab                  continue tab activated                     Continue tab nevigate to the next page      Pass
+
+
+
+  Remarks : no problem found

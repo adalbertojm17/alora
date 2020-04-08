@@ -6,6 +6,7 @@ from .models import Order, OrderItem, Item
 
 class ItemAdmin(admin.ModelAdmin):
     search_fields = ('id', 'name'),
+    readonly_fields = ()
 
     filter_horizontal = ()
     list_filter = ()

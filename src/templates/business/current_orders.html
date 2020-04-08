@@ -31,21 +31,21 @@
 
                 {% if query %}
                     <table class="currentOrdersTable">
-                <tr>
-                    <th>Order #</th>
-                    <th> Name </th>
-                    <th> Status </th>
-                </tr>
-                    {% for order in SearchOrder %}
                         <tr>
-                            <td>{{ order.pk }}</td>
-                            <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
-                            <td> {{ order.current_status }} </td>
+                            <th>Order #</th>
+                            <th> Name </th>
+                            <th> Status </th>
                         </tr>
-                        <br>
+                        {% for order in SearchOrder %}
+                            <tr>
+                                <td>{{ order.pk }}</td>
+                                <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                                <td> {{ order.current_status }} </td>
+                            </tr>
+                            <br>
 
-                {% endfor %}
-            </table>
+                         {% endfor %}
+                    </table>
 
                 {% endif %}
 

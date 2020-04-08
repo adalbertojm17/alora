@@ -616,7 +616,7 @@ select{
 
 .customerOrdersTable {
     margin: auto;
-    width: 90%;
+    width: 70%;
     margin-bottom: 50px;
     border-collapse: collapse;
 }

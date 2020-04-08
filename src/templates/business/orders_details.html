@@ -15,7 +15,20 @@
         <div class="additem" >
         <p><a href="#insideadditems">Add Item</a> </p>
         </div>
-
+              <h2>updated status</h2>
+    <form method="post">
+        {% csrf_token %}
+         <select id="status" name="status" >
+             <option value=""> ------</option>
+             <option value="P"> Processed</option>
+             <option value="PU"> Picked up</option>
+             <option value="CL"> Cleaning</option>
+             <option value="CP"> Complete</option>
+             <option value="ER"> Enroute</option>
+             <option value="D"> Delivered</option>
+         </select>
+        <button  type="submit">updated</button>
+    </form>
         <table class="orderDetailsTable">
             <tr>
                 <th> Details</th>
@@ -77,6 +90,7 @@
                  <button id="addbutton" type="submit">Add</button>
             </form>
         </div>
+
     </div>
 {% endblock %}
 </body>

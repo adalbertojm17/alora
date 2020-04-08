@@ -1,5 +1,7 @@
+
 {% extends 'base.html' %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +26,9 @@
             <div id="info">
                 <p id="movedown"> Account</p>
                 <button id="editbutton" type="submit"><a>Edit Account</a></button>
+                {% if user.is_manager != True %}
                 <button id="editbutton" type="submit"><a href="/order-history/"> Order History </a></button>
+                 {% endif %}
                 <button id="editbutton" type="submit"><a href="/password_change/"> Change Password</a></button>
 
             </div>

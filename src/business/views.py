@@ -16,16 +16,20 @@ def orders_details_view(request, *args, **kwargs):
     form = AddingOrderItemForm
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
+    print(request.POST.get('status'))
     my_context = {
         'order': order,
         'orderdetails': order.orderitem_set.all()
     }
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
         return HttpResponseForbidden()
     if request.POST:
         form = AddingOrderItemForm(request.POST)
+        order.current_status = request.POST.get('status')
+        order.save()
         if form.is_valid():
             form.save()
 
@@ -115,8 +119,13 @@ def services_view(request):
     my_context = {}
     stores = Store.objects.all()
     my_context['stores'] = stores
+
     SerchStore = request.GET.get('company')
     services =Service.objects.all().filter(store__name=SerchStore)
+    items = []
+    for service in services:
+        items.append(Item.objects.all().filter(services=service))
+    my_context['itemsQuery'] = items
     my_context['services'] = services
     return render(request, 'services.html', my_context)
 

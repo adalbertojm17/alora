@@ -22,14 +22,24 @@
                 <div class="shiftright">
                     {% for service in services %}
                 <h3> {{ service }} </h3>
+                        <table class="table">
+                         <tr>
+                             <th>Item</th>
+                             <th> Price</th>
+                         </tr>
+                        <tr>
                     {%  for itemlist in itemsQuery %}
                         {% for item in itemlist %}
                             {% if item.services == service %}
-                        <P>{{item}} {{ item.price }}</P>
+                                <tr>
+                                    <td>{{item}}</td>
+                                    <td> {{ item.price }}</td>
+                                 </tr>
                             {% endif%}
                         {% endfor %}
 
                         {% endfor %}
+                        </table>
                    {% endfor %}
                 </div>
 

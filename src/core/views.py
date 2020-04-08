@@ -132,12 +132,17 @@ def no_order_view(request, *args, **kwargs):
 
 
 def customer_details_view(request, *args, **kwargs):
+
     if not request.user.is_authenticated:
         return redirect("login")
 
-    customer_orders = Order.objects.all()
-    addresses = Address.objects.all()
-    my_context = {"core": customer_orders, "address": addresses}
+    order_id = request.GET.get('order')
+    order = Order.objects.get(id=order_id)
+
+    my_context = {
+        'order': order,
+        'orderdetails': order.orderitem_set.all()
+    }
     return render(request, "core/customer_order_details.html", my_context)
 
 

@@ -28,18 +28,25 @@
     </div>
 
     <div class="servicesec3" id="servicesec3">
-        <form>
+        <form id="searchbar"  method="get">
+
             <label for="company">Company</label>
-                <select id="company" name="company">
-                    <option value="New Jersey">New Jersey</option>
-                    <option value="New York">New York</option>
-                    <option value="Florida">Florida</option>
+                <select id="company" name="company" >
+                    <option value=""> ------</option>
+                    {% for store in stores %}
+                    <option value="{{ store }}">{{ store }}</option>
+                   {% endfor %}
                 </select>
 
             <div>
                 <button id="buttonstandard" type="submit">Search</button>
             </div>
         </form>
+
+          {% for service in services %}
+                <h3> {{ service }} </h3>
+        {% endfor %}
+
     </div>
 
 </body>

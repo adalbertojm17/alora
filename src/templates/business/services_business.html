@@ -22,8 +22,14 @@
                 <div class="shiftright">
                     {% for service in services %}
                 <h3> {{ service }} </h3>
+                    {%  for itemlist in itemsQuery %}
+                        {% for item in itemlist %}
+                            {% if item.services == service %}
+                        <P>{{item}} {{ item.price }}</P>
+                            {% endif%}
+                        {% endfor %}
 
-
+                        {% endfor %}
                    {% endfor %}
                 </div>
 
@@ -34,6 +40,17 @@
         {% csrf_token %}
         {{ form.as_p }}
          <button id="buttonstandard" type="submit">create</button>
+
+        </form>
+    </div>
+
+    <div class="insidecurrent">
+
+        <h2> Created Add items</h2>
+    <form method="post" >
+        {% csrf_token %}
+        {{ form2.as_p }}
+         <button id="buttonstandard" type="submit">Add</button>
 
         </form>
     </div>

@@ -110,7 +110,12 @@ def tracking_view(request, *args, **kwargs):
     order_qs = Order.objects.all().filter(account=request.user)
     if not order_qs.exists():
         return redirect('no-order')
-    my_context = {}
+
+    customer_orders = Order.objects.all()
+    addresses = Address.objects.all()
+    status = Order.current_status
+    my_context = {"core": customer_orders, "address": addresses, "status": status}
+
     return render(request, "core/tracking.html", my_context)
 
 

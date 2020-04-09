@@ -1,4 +1,6 @@
 # noinspection PyUnresolvedReferences
+import re
+
 from addresses.models import Address
 from django import forms
 from django.contrib.auth.forms import UserCreationForm

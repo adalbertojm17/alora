@@ -1,0 +1,12 @@
+Order Now page Test Case
+Version 0.1
+
+Steps
+
+Step 1: user logs in -- passed
+Step 2: User selects Order Now on the Navigation bar --passed
+Step 3: User selects type: -- Failed
+Step 4: User attempts to input their name: --Failed
+
+Expected Results: User should be able to fill in those fields
+Actual Result: User is not able to place in the fields, Type, or Name

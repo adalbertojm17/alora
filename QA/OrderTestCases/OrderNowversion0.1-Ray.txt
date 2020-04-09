@@ -1,0 +1,11 @@
+Order Now 
+version 0.1
+
+Steps: 
+Step 1: User logs into account --passed
+Step 2: User clicks on nav bar, Order Now --passed
+Step 3: User selects quantity and is able to select the down arrow and have negative amount of quantities. --Failed
+
+Expected Results: User should not be able to have negative amount of quantities(items) .
+
+Result: If user selects down arrow when the quantity is at zero the number of quantity should not be less than 1 in order to for a customer to complete an order

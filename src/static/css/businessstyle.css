@@ -130,7 +130,7 @@ body {
     padding-right: 20px;
 }
 
-.orderDetailsTable th {
+.trackinginfo th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -154,7 +154,8 @@ td a{
     margin-left: 5%;
 }
 
-.searchpart1 input[type=text] {
+#searchbar input[type=text] {
+    width: 79%;
     padding: 10px;
     margin-top: 8px;
     margin-bottom: 15px;
@@ -219,6 +220,31 @@ td a{
 }
 
 /******* Order Details Page **********/
+
+.detailspage{
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 800px;
+}
+
+.detailscontent{
+    width: 80%;
+    margin:auto;
+}
+
+.contentadd{
+    float: left;
+    border: 3px solid black;
+    padding: 20px;
+    width: 42%;
+    margin: 10px;
+    margin-bottom: 50px;
+    height: 400px;
+}
+.detailscontent h1{
+    text-align: center;
+}
+
 .orderDetailsTable {
     margin: auto;
     width: 70%;
@@ -262,41 +288,63 @@ td a{
 }
 
 
+/************** Services Page *****************/
 
-/************** Add Items ****************/
-
-.contentadditems{
-    margin-left: 42%;
+.servicespage{
+    margin-left: 20%;
     padding: 1px 0px;
-    height: 400px;
-    width: 30%;
+    height: 800px;
 }
 
-.insideadditems {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: auto;
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-    border: 3px solid black;
-
+.servicecontent{
+    width: 70%;
+    margin:auto;
 }
 
-.insideadditems h2{
+.servicecontent h1{
     text-align: center;
 }
 
-#insideadditems h2 form input[type=text] {
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    font-size: 17px;
-    border: none;
-    background-color: #FF5733;
+.servicestable {
+    width: 70%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
 }
 
-.insideadditems #addbutton{
+.servicestable td, .servicestable th {
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.servicestable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color:#FF9920;
+}
+
+.contentaddservice{
+    float: left;
+    border: 3px solid black;
+    padding: 20px;
+    width: 42%;
+    margin: 10px;
+    margin-bottom: 50px;
+    height: 400px;
+}
+
+.center{
+    text-align: center;
+}
+
+/************** Add Items ****************/
+
+.insideadditems h2 {
+    text-align: center;
+}
+
+#addbutton{
     position: center;
     background-color: #FF9920;
     display: block;
@@ -315,7 +363,7 @@ td a{
 .additem{
     border: none;
     background-color: #FF9920;
-    width: 10%;
+    width: 20%;
     border-radius: 50%;
     padding: 4px;
     padding-top: 1px;
@@ -331,9 +379,48 @@ td a{
 
 .additem p a{
     color: black;
+    text-decoration: none;
 }
 .additem p a:hover{
     color: white;
+}
+
+
+/**************** form fields **********************/
+
+form{
+    text-align: center;
+}
+select{
+    position: center;
+    background-color: white;
+    color: grey;
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #FFCF3B;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-left: 15%;
+}
+
+input[type=text], input[type=number]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 75%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #FFCF3B;
+    border-radius: 4px;
+    padding-left: 20px;
 }
 
 

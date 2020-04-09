@@ -10,80 +10,67 @@
 </head>
 <body>
 {% block content %}
-    <div class="content">
+    <div class="detailspage">
+        <div class="detailscontent">
+
         <h1> Order Details </h1>
-        <div class="additem" >
-        <p><a href="#insideadditems">Add Item</a> </p>
-        </div>
-              <h2>updated status</h2>
-    <form method="post">
-        {% csrf_token %}
-         <select id="status" name="status" >
-             <option value=""> ------</option>
-             <option value="P"> Processed</option>
-             <option value="PU"> Picked up</option>
-             <option value="CL"> Cleaning</option>
-             <option value="CP"> Complete</option>
-             <option value="ER"> Enroute</option>
-             <option value="D"> Delivered</option>
-         </select>
-        <button  type="submit">updated</button>
-    </form>
-        <table class="orderDetailsTable">
-            <tr>
-                <th> Details</th>
-                <th> Data</th>
-            </tr>
+            <div class="additem" >
+            <p><a href="#contentadd">Add Item</a> </p>
+            </div>
 
-            <tr>
-                <th> Order #</th>
-                <td> {{ order.pk }}</td>
-            </tr>
+            <table class="orderDetailsTable">
+                <tr>
+                    <th> Details</th>
+                    <th> Data</th>
+                </tr>
 
-            <tr>
-                <th> Name</th>
-                <td> {{ order }}</td>
-            </tr>
+                <tr>
+                    <th> Order #</th>
+                    <td> {{ order.pk }}</td>
+                </tr>
 
-            <tr>
-                <th> Pick Up Location</th>
-                <td> {{ order.pickup_location }}</td>
-            </tr>
+                <tr>
+                    <th> Name</th>
+                    <td> {{ order }}</td>
+                </tr>
 
-            <tr>
-                <th> Drop Off Location</th>
-                <td> {{ order.dropoff_location }}</td>
-            </tr>
+                <tr>
+                    <th> Pick Up Location</th>
+                    <td> {{ order.pickup_location }}</td>
+                </tr>
 
-            <tr>
-                <th> Pick Up Date/Time</th>
-                <td> {{ order.pickup_at }}</td>
-            </tr>
+                <tr>
+                    <th> Drop Off Location</th>
+                    <td> {{ order.dropoff_location }}</td>
+                </tr>
 
-            <tr>
-                <th> Drop Off Date/Time</th>
-                <td> {{ order.dropoff_at }}</td>
-            </tr>
+                <tr>
+                    <th> Pick Up Date/Time</th>
+                    <td> {{ order.pickup_at }}</td>
+                </tr>
 
-            <tr>
-                <th> Status</th>
-                <td>{{ order.current_status }}</td>
-            </tr>
+                <tr>
+                    <th> Drop Off Date/Time</th>
+                    <td> {{ order.dropoff_at }}</td>
+                </tr>
 
-            <tr>
-                <th> Items</th>
-                <td>{% for details in orderdetails %}
-                    Item:{{ details }}
-                    <br>
-                {% endfor %}</td>
-            </tr>
-        </table>
-    </div>
+                <tr>
+                    <th> Status</th>
+                    <td>{{ order.current_status }}</td>
+                </tr>
+
+                <tr>
+                    <th> Items</th>
+                    <td>{% for details in orderdetails %}
+                        Item:{{ details }}
+                        <br>
+                    {% endfor %}</td>
+                </tr>
+            </table>
 
 
-    <div class="contentadditems">
-        <div class="insideadditems" id="insideadditems">
-            <h2> Add items to order</h2>
+        <div class="contentadd" id="contentadd">
+            <h2 class="center" > Add Items to Order</h2>
             <form method="post" >
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -91,7 +78,24 @@
             </form>
         </div>
 
-    </div>
+        <div class="contentadd" id="contentadd">
+            <h2 class="center" >Update Status</h2>
+            <form method="post">
+                {% csrf_token %}
+                 <select id="status" name="status" >
+                     <option value=""> ------</option>
+                     <option value="P"> Processed</option>
+                     <option value="PU"> Picked up</option>
+                     <option value="CL"> Cleaning</option>
+                     <option value="CP"> Complete</option>
+                     <option value="ER"> Enroute</option>
+                     <option value="D"> Delivered</option>
+                 </select>
+                <button id="addbutton"  type="submit">Update</button>
+            </form>
+             </div>
+         </div>
+     </div>
 {% endblock %}
 </body>
 </html>

@@ -1,0 +1,18 @@
+Order Now Page
+(City)
+
+Steps:
+Step 1: User logged in --Passed 
+Step 2: User selects on navigation bar Order Now Page --passed
+Step 3: filled in field "Street":  123 --passed
+step 4: filled in field "apt/suite": Austin 23 --passed
+Step 5: filled in field "City":  Broadstreetroom207 --passed
+Step 6: filled in "Country": Alabama --passed
+Step 7: enter "Zip Code": 11111 --passed
+Step 8: Clicks on calander option: April 03, 2019 --passed
+Step 9: clicks on the tab continue  
+Step 10: User is directed to schedule drop off time
+
+Expected Results: A notification should appear informing the user to input a valid City, no numbers are applied in this field
+
+Actual Results: User is directed to a new page called Schedule a drop off time.

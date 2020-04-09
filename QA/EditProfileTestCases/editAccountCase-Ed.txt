@@ -17,4 +17,4 @@ Phone Number: 8567892310
 Email: ejacobs@student.cccnj.edu
 Username: experiment626
 
-QA Comments - Everything Passed, only bug found was email was not being updated but now is fixed. 
+QA Comments - Everything Passed, only bug found was email was not being updated but now is fixed. Test Case Pass

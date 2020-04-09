@@ -1,0 +1,8 @@
+***This test was conducted and ran through Eclispse, a java IDE***
+
+TEST CASE #2: Reset Password Request
+Email: j.mister12@gmail.com
+
+QA Comments - database error
+Test case: fail
+__________________________________________________________________________________________________

@@ -10,7 +10,7 @@ Username: ejacobs95--pass
 Password: P@kemon12--pass
 Confirmation Password: P@kemon12--pass
 
-QA Comments - Early stages, phone number did not display "Optional" Message. Now it is fixed
+QA Comments - Early stages, phone number did not display "Optional" Message. Now it is fixed, test case - passed
 
 __________________________________________________________________________________________________
 

@@ -17,6 +17,7 @@
 <header>
     <div id="navbar">
         <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70>
+        {% if user.is_manager != True %}
         <nav class="mainnav">
             <ul>
                 <li class="homepage"><a href="{% url 'home' %}">Home </a></li>
@@ -38,6 +39,7 @@
             </ul>
             <br/>
         </nav>
+    {% endif %}
     </div>
 </header>
 

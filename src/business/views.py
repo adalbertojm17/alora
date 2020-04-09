@@ -10,6 +10,8 @@ from .forms import AddingOrderItemForm
 from .forms import AddingItemForm
 from django.db.models import Q
 from .models import Service
+from accounts.forms import AccountForm
+from accounts.models import Account
 
 
 def orders_details_view(request, *args, **kwargs):
@@ -176,3 +178,34 @@ def get_order_queryset(query= None):
         for post in posts:
             queryset.append(post)
     return list(set(queryset))
+
+def business_account_view(request, *args, **kwargs):
+
+    if not request.user.is_authenticated:
+        return redirect("login")
+    obj = Account.objects.get(id=request.user.id)
+    context = {
+        'phone': obj.phone,
+        'user': request.user,
+    }
+    if request.POST:
+        form = AccountForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = AccountForm(
+            initial={
+                "first_name": request.user.first_name,
+                "last_name": request.user.last_name,
+                "phone": context['phone'],
+                "email": request.user.email,
+                "email2": request.user.email,
+                "username": request.user.username,
+            }
+        )
+    context["form"] = form
+
+
+
+    return render(request, "business/business_account.html", context)

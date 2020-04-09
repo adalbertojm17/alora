@@ -1,0 +1,36 @@
+Project name  Alora
+Module name  Mobile App Edit Page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/7/2020
+
+
+                                                                                                         Edit Page
+
+
+Test ID                             Test Case Discription                                        Pre-Condition                                Test Steps                                                         Test Data                                                    Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check response when user name is enterd                              Name space should be activated                enter the user name                                               majidmasood                                                      name enter successfully                        Pass
+
+TS_Alora_01                check response when user name is enterd                              Name space should be activated                Name space does not activate                                                                                                      name does not enter successfully                Fail
+
+TS_Alora_01                check response when user name is enterd                              Name space should be activated                enter the user name                                               ksfdvdvdi@123g                                                   name does not recgonize                          Fail
+
+TS_Alora_01                check response when first name is enterd                              Name space should be activated                enter the first name                                               majid                                                         name enter successfully                          Pass
+   
+TS_Alora_02                check response when Last name is enterd                              Name space should be activated                enter the Last name                                             masood                                                          name enter successfully                              Pass
+
+TS_Alora_03                enter the user email address                                          Enter the valid email address                  enter email                                                  majid_masood@bloomfield.edu                                    email address valid                                 pass
+
+TS_Alora_04                enter the user email address                                          Enter the valid email address                  enter email                                                   rtegettg@bloomfield.edu                                         email address invalid                             Fail
+
+Ts_Alora_02                enter new password                                                    valid password should be accepted              enter valid password                                          **********                                                       valid password                                     Pass
+
+Ts_Alora_02                enter new password                                                    invalid password should not be accepted          enter invalid password                                          **********                                                      invalid password                                 Fail
+
+TS_Alora_08                check response on save changes tab                                      save changes tab should response                 push save changes tab                                          submit information                                             accepted                                       Pass   
+
+
+  Remarks: no problem found
+

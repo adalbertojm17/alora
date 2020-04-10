@@ -1,3 +1,4 @@
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView
@@ -15,6 +16,7 @@ from ..models import Order
 
 
 class CreateOrderAPIView(CreateAPIView):
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = OrderSerializer
 
@@ -28,6 +30,7 @@ class CreateOrderAPIView(CreateAPIView):
 
 
 class DisplayOrderAPIView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwner]
     serializer_class = OrderSerializer
 

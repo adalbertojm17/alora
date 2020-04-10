@@ -10,8 +10,6 @@ from .forms import AddingOrderItemForm
 from .forms import AddingItemForm
 from django.db.models import Q
 from .models import Service
-from accounts.forms import AccountForm
-from accounts.models import Account
 
 
 def orders_details_view(request, *args, **kwargs):

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="865da574-ac79-4688-b0d3-7a43f9c84307" name="Alora Development" url="https://aloradevs.ddns.net">
+        <fileTransfer host="aloradevs.ddns.net" port="22" rootFolder="/home/ubuntu" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="813df1c7-2a07-40af-9bf9-c3bf3216e5ee" name="Alora Testers" url="https://aloraqa.ddns.net">
+        <fileTransfer host="aloraqa.ddns.net" port="22" rootFolder="/home/ahmad" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

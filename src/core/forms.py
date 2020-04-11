@@ -8,6 +8,7 @@ from business.models import Service
 # noinspection PyUnresolvedReferences
 from business.models import Store
 from django import forms
+from django.core.exceptions import ValidationError
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
 
@@ -57,7 +58,9 @@ class PickupForm(forms.ModelForm):
         widget=DateTimePickerInput(
             format="%m%m %d, %Y %I:%M",
             attrs={'placeholder': 'Pickup  Date/Time*'},
-
+            options={
+                'minDate': (datetime.datetime.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00'),
+            }
         )
     )
 
@@ -101,13 +104,9 @@ class DropOffForm(forms.ModelForm):
         label='',
         widget=DateTimePickerInput(
             attrs={
-                'placeholder': 'Dropoff Date/Time*',
+                'placeholder': 'Drop-off Date/Time*',
             },
             format="%m%m %d, %Y %I:%M",
-            options={
-                'minDate': (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'),
-                'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
-            }
         ),
         initial=None
     )
@@ -115,3 +114,15 @@ class DropOffForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+
+    def clean_dropoff_at(self):
+        cleaned_data = super(DropOffForm, self).clean()
+        date_limit = self.initial['context']['pickup_date'] + datetime.timedelta(days=1)
+        dropoff_date = cleaned_data['dropoff_at']
+
+        if dropoff_date < date_limit :
+            raise ValidationError("Drop-off date must not be earlier than 1 day after the pickup date")
+        return dropoff_date
+
+
+'''' '''

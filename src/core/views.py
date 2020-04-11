@@ -28,12 +28,22 @@ class OrderWizard(SessionWizardView):
         user = request.user
         if not user.is_authenticated:
             return redirect('login')
+        data = self.get_context_data('dat_from_step_2')
+
         return super(OrderWizard, self).get(request, *args, **kwargs)
 
     form_list = FORMS
 
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]
+
+    def get_form_initial(self, step):
+        if step == 'dropoff':
+            step2 = self.get_cleaned_data_for_step('pickup')
+            res = super(OrderWizard, self).get_form_initial(step)
+            res['context'] = {}
+            res['context']['pickup_date'] = step2['pickup_at']
+            return res
 
     def done(self, form_list, **kwargs):
         form_dict1 = self.get_cleaned_data_for_step('store')
@@ -132,7 +142,6 @@ def no_order_view(request, *args, **kwargs):
 
 
 def customer_details_view(request, *args, **kwargs):
-
     if not request.user.is_authenticated:
         return redirect("login")
 

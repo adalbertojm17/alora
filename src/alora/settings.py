@@ -56,12 +56,12 @@ INSTALLED_APPS = [
 
     # Third-Party Apps
     'bootstrap4',
+    'bootstrap_datepicker_plus',
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
     'formtools',
     'multiselectfield',
-    'datetimepicker',
 
     # Local Apps
     'accounts',

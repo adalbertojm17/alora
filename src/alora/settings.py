@@ -56,12 +56,12 @@ INSTALLED_APPS = [
 
     # Third-Party Apps
     'bootstrap4',
-    'bootstrap_datepicker_plus',
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
     'formtools',
     'multiselectfield',
+    'datetimepicker',
 
     # Local Apps
     'accounts',
@@ -142,6 +142,14 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {'NAME': 'accounts.validators.NumberValidator',
+     'OPTIONS': {
+         'min_digits': 1,
+     }
+     },
+    {'NAME': 'accounts.validators.UppercaseValidator', },
+    {'NAME': 'accounts.validators.LowercaseValidator', },
+    {'NAME': 'accounts.validators.SymbolValidator', },
 ]
 
 # Internationalization

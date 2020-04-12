@@ -1,0 +1,19 @@
+Sign Up page
+(Sign up)
+
+Steps:
+Step 1: inputs first name: Capcap --passed
+Step 2: inputs last name: colada --passed
+Step 3: Email address: seagrams@gmail.com --passed
+Step 4 confirm address: seagrams@gmail.com -- passed
+Step 5: Password: Nysclub22 --passed
+Step 6: Confirm password: Nysclub22 --passed
+Step 7: Street: i dont know --passed
+Step 8: Apt: 3A --passed
+Step 9: City: myfeet-passed
+Step 10: Country: california -passed
+Step 11: sign up --passed
+
+Expected Results: Notification should appear notifying user to input a valid street name and city.
+
+Actual Results: Directed to the main page.

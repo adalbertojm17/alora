@@ -1,0 +1,13 @@
+***These test are conducted and ran through Eclispse, a java IDE***
+
+TEST CASE #2: Ordering, dropoff/pickup
+Pickup Street - Siebel Street
+Pickup Apt - 40
+Pickup City - Bridgeton
+State - New Jersey
+Zipcode - 08302
+Pickup Date - April 15 2020, 5:23 a.m
+Drop Off - April 17,  2020 1:15 a.m
+
+QA Comments - Every thing works smooth for basic ordering
+Test Case: pass

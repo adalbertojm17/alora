@@ -24,6 +24,13 @@ h1, h2{
     padding:50px;
 }
 
+.orderpages{
+    background-image: url('../images/orderbackground.jpg') ;
+    background-size: cover;
+    padding:50px;
+    height:1000px;
+}
+
 .defaultpage{
     background-size: cover;
     padding-top:50px;
@@ -825,6 +832,7 @@ label.required::before {
 
 .ordering{
     border: 3px solid #FF5733;
+    background-color: rgba(247,228,152,.9);
     width: 40%;
     margin: auto;
     padding: 40px;

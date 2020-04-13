@@ -22,6 +22,7 @@
 
 {% block content %}
 
+    <div class="orderpages">
     <div class="ordering">
         <h1 id="orderingheading">
             {% if wizard.steps.step1 == 1 %}
@@ -87,6 +88,7 @@
             {% endif %}
             <button id="orderingbutton" type="submit">{% trans "Continue" %}</button>
         </form>
+    </div>
     </div>
 {% endblock %}
 </body>

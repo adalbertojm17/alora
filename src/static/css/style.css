@@ -9,29 +9,42 @@ body {
     margin-top: 80px;
 }
 
+p{
+    font-family: "Lato", sans-serif;
+}
+
+h1, h2{
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+}
+
 .indexpage{
     background-image: url('../images/background4.jpg') ;
     background-size: cover;
     padding:50px;
 }
 
+.defaultpage{
+    background-size: cover;
+    padding-top:50px;
+}
+
 .signinpage, .signuppage{
     background-image: url('../images/signinbackground.jpg') ;
     background-size: cover;
-    padding:50px;
+    padding-top:50px;
+}
+
+.mainmainpage {
+    background-image: url('../images/mainbackground.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+    padding-bottom:50px;
+    height:800px;
 }
 
 .servicespage{
     padding-top:80px;
-}
-
-p{
-    font-family: "Lato", sans-serif;
-}
-
-h1{
-    font-weight: bold;
-    font-family: "Lato", sans-serif;
 }
 
 a {
@@ -390,27 +403,37 @@ Main page css
 
 #mainpagenav {
     margin: auto;
-    margin-left: 23%;
     width: 70%;
     overflow: hidden;
 }
 
-#mainpagenav #mainpage {
+#mainpagecenter{
+    margin: auto;
+    border: 0px solid black;
+    border-radius: 20px;
+    background-color:rgba(247,228,152,.7);
+    width:80%;
+    height: 500px;
+    padding-top: 50px;
+    margin-top: 30px;
+}
+
+#mainpagecenter #mainpage {
     float: left;
     display: block;
-    width: 25%;
+    width: 33%;
     padding: 3%;
     overflow: hidden;
 }
 
-#mainpagenav #mainpage #miniheader {
+#mainpagecenter #mainpage #miniheader {
     background-color: #FF5733;
     padding-top: 60px;
     padding-bottom: 60px;
     margin-bottom: 10px;
 }
 
-#mainpagenav #mainpage #miniheader #info {
+#mainpagecenter #mainpage #miniheader #info {
     width: 25%;
     overflow: hidden;
 
@@ -701,6 +724,7 @@ select{
 #headinghistory {
     text-align: center;
     margin: 25px;
+    padding-top: 50px;
 }
 
 .customerOrdersTable {

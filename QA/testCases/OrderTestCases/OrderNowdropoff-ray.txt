@@ -1,0 +1,23 @@
+Order Now page 
+Schedule drop off
+
+Steps:
+
+Step 1: user selects Order Now on nav bar and is directed to order now page schedule pick up page--passed
+Step 2: user inputs street name for the field street: dryclean
+step3:user inputs apt/suite: *&^%
+Step 4:user inputs city: lebron -passed
+Step 5: user slects country:Guam -passed
+Step 6: inputs zipcode: 19289
+step 7: user inputs picks up date: thursday april 15 05:07pm --passed
+Step 8: User selects on tab continue: directed to schedule drop-off section-passed
+Step9: inputs street name: dryclean
+Step 10: inputs suite/apt: *&^%
+step 11: inputs city: lebron
+step 12: selects country: idaho
+step 13: inputs zipcode: 19289
+step 14: user inputs drop off date: wednesday april 14th 2020, 05:07pm
+
+Expected result: notification should appear to user informing user to select a valid drop off date being that their pick up is april 15th their drop off date cannot be april 14th.
+
+Actual results: server crashes

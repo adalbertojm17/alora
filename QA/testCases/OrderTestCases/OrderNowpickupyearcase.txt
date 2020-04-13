@@ -1,0 +1,17 @@
+Order Now page 
+Schedule pickup
+
+Steps:
+
+Step 1: user selects Order Now on nav bar and is directed to order now page schedule pick up page--passed
+Step 2: user inputs street name for the field street: dryclean
+step3:user inputs apt/suite: *&^%
+Step 4:user inputs city: my feet -passed
+Step 5: user slects country:Guam -passed
+Step 6: 19289
+step 7: user inputs picks up date: Saturday May 07, 2026 05:07pm --passed
+Step 8: User selects on tab continue -passed
+
+Expected Results: Should be required to put valid pick up date based on the actual year and not have the option to input a pick up date 6 years from now.
+
+Actual Results: User is directed to schedule drop-off section

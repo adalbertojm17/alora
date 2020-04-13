@@ -6,6 +6,23 @@ body {
     font-family: "Lato", sans-serif;
     background-color: #F7E498;
     margin: 0;
+    margin-top: 80px;
+}
+
+.indexpage{
+    background-image: url('../images/background4.jpg') ;
+    background-size: cover;
+    padding:50px;
+}
+
+.signinpage, .signuppage{
+    background-image: url('../images/signinbackground.jpg') ;
+    background-size: cover;
+    padding:50px;
+}
+
+.servicespage{
+    padding-top:80px;
 }
 
 p{
@@ -58,7 +75,7 @@ a {
 
 
 header {
-    margin-bottom: 150px;
+
 }
 
 #navbar {
@@ -131,7 +148,7 @@ header {
 
 #signin {
     position: center;
-    background-color: #FF9920;
+    background-color: rgba(255,153,32,0.9);
     display: block;
     width: 25%;
     margin-left: auto;
@@ -201,7 +218,7 @@ input[type=text], input[type=email], input[type=password] {
 
 #signup {
     position: center;
-    background-color: #FF9920;
+    background-color: rgba(255,153,32,0.9);
     display: block;
     width: 30%;
     margin-left: auto;
@@ -427,7 +444,9 @@ footer {
 
 .content .section1 {
     margin: auto;
-    height: 350px;
+    height: 400px;
+    background-image: url('../images/aboutcover.png') ;
+    background-size: cover;
 }
 
 .content .section2 {
@@ -567,18 +586,21 @@ select{
     width: 60%;
     height: 500px;
     background-color: #49BEB7;
+    background-image: url('../images/servicebackground.png') ;
+    background-size: cover;
 }
 
 .sec1text{
     margin: auto;
     margin-top: 15%;
-    width: 40%;
+    width: 60%;
 }
 
 .sec1text p{
     text-align: center;
     font-size: 150%;
     font-weight: bold;
+    color: white;
 }
 
 #serviceprice p a{

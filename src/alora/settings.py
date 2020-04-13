@@ -57,11 +57,12 @@ INSTALLED_APPS = [
     # Third-Party Apps
     'bootstrap4',
     'bootstrap_datepicker_plus',
+    'cities_light',
+    'formtools',
+    'multiselectfield',
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
-    'formtools',
-    'multiselectfield',
 
     # Local Apps
     'accounts',
@@ -76,6 +77,14 @@ INSTALLED_APPS = [
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
+
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['US']
+CITIES_LIGHT_INCLUDE_CITY_TYPES = [
+    'PPL', 'PPLA', 'PPLA2', 'PPLA3',
+    'PPLA4', 'PPLC', 'PPLF', 'PPLG',
+    'PPLL', 'PPLR', 'PPLS', 'STLMT',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,6 +132,7 @@ DATABASES = {
         'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
         'HOST': 'aloradevs.ddns.net',
         'PORT': '3306',
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
@@ -157,7 +167,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Eastern'
 
 USE_I18N = True
 
@@ -177,12 +187,12 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-    ],
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    # ],
+    # 'DEFAULT_PARSER_CLASSES': [
+    #     'rest_framework.parsers.JSONParser',
+    # ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
     ],

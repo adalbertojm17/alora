@@ -20,7 +20,7 @@ from .permissions import (
     IsOwner,
 )
 from .serializers import (
-    UserCreateUpdateSerializer,
+    UserCreateSerializer,
     UserProfileSerializer,
     UserDetailSerializer,
 )
@@ -29,7 +29,7 @@ User = get_user_model()
 
 
 class UserCreateAPIView(CreateAPIView):
-    serializer_class = UserCreateUpdateSerializer
+    serializer_class = UserCreateSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]
     authentication_classes = [TokenAuthentication]
@@ -66,12 +66,9 @@ class UserProfileAPIView(RetrieveUpdateAPIView):
     permission_classes = [IsOwner]
     serializer_class = UserProfileSerializer
 
-    def get_object(self):
-        pk = self.request.user.pk
-        return get_object_or_404(User, pk=pk)
+    def update(self, request, *args, **kwargs):
+        pass
 
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
 
 
 class UserLogoutAPIView(APIView):

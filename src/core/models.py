@@ -11,8 +11,6 @@ from django.db import models
 # noinspection PyUnresolvedReferences
 from django.urls import reverse
 
-from multiselectfield import MultiSelectField
-
 # tuple of possible statuses of an order
 # emulates a static table
 STATUS_CHOICES = (
@@ -29,7 +27,7 @@ STATUS_CHOICES = (
 # model for a single product item (e.g. clothing or a bag)
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    services = models.ForeignKey(Service,on_delete=models.SET_NULL, null=True)
+    services = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):

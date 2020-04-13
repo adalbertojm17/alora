@@ -52,13 +52,14 @@ class PickupForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
     pickup_at = forms.DateTimeField(
-        input_formats=("%B %d, %Y %I:%M",),
+        input_formats=("%a %B %d, %Y %I:%M %p",),
         localize=True,
         label='',
         widget=DateTimePickerInput(
-            format="%m%m %d, %Y %I:%M",
+            format="ddd %m%m %d, %Y %I:%M A",
             attrs={'placeholder': 'Pickup  Date/Time*'},
             options={
+                'locale': 'en',
                 'minDate': (datetime.datetime.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00'),
             }
         )
@@ -98,17 +99,18 @@ class DropOffForm(forms.ModelForm):
         label='',
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
-    dropoff_at = forms.DateTimeField(
-
-        input_formats=("%B %d, %Y %I:%M",),
+    drop_off_at = forms.DateTimeField(
+        input_formats=("%a %B %d, %Y %I:%M %p",),
+        localize=True,
         label='',
+        initial=None,
         widget=DateTimePickerInput(
-            attrs={
-                'placeholder': 'Drop-off Date/Time*',
-            },
-            format="%m%m %d, %Y %I:%M",
-        ),
-        initial=None
+            format="ddd %m%m %d, %Y %I:%M A",
+            attrs={'placeholder': 'Pickup  Date/Time*'},
+            options={
+                'minDate': (datetime.datetime.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00'),
+            }
+        )
     )
 
     class Meta:
@@ -118,9 +120,9 @@ class DropOffForm(forms.ModelForm):
     def clean_dropoff_at(self):
         cleaned_data = super(DropOffForm, self).clean()
         date_limit = self.initial['context']['pickup_date'] + datetime.timedelta(days=1)
-        dropoff_date = cleaned_data['dropoff_at']
+        dropoff_date = cleaned_data['drop_off_at']
 
-        if dropoff_date < date_limit :
+        if dropoff_date < date_limit:
             raise ValidationError("Drop-off date must not be earlier than 1 day after the pickup date")
         return dropoff_date
 

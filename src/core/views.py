@@ -28,8 +28,8 @@ class OrderWizard(SessionWizardView):
         user = request.user
         if not user.is_authenticated:
             return redirect('login')
-        data = self.get_context_data('dat_from_step_2')
-
+        self.storage.reset()
+        self.storage.current_step = self.steps.first
         return super(OrderWizard, self).get(request, *args, **kwargs)
 
     form_list = FORMS
@@ -61,7 +61,7 @@ class OrderWizard(SessionWizardView):
         dropoff_city = form_dict3.get('city')
         dropoff_state = form_dict3.get('state')
         dropoff_zip_code = form_dict3.get('zip_code')
-        dropoff_at = form_dict3.get('dropoff_at')
+        dropoff_at = form_dict3.get('drop_off_at')
 
         pickup_location, created = Address.objects.get_or_create(
             street=pickup_street,
@@ -86,8 +86,9 @@ class OrderWizard(SessionWizardView):
             pickup_at=pickup_at,
             dropoff_at=dropoff_at
         )
+        self.storage.reset()
+        self.storage.current_step = self.steps.first
         self.request.session['form-submitted'] = True
-
         return redirect('orderconfirm')
 
 

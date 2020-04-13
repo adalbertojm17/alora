@@ -16,7 +16,7 @@ class UserDetailSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class UserCreateUpdateSerializer(ModelSerializer):
+class UserCreateSerializer(ModelSerializer):
     password = CharField(max_length=32, label='Password', write_only=True)
     password2 = CharField(max_length=32, label='Confirm Password', write_only=True)
 
@@ -133,7 +133,5 @@ class UserLoginSerializer(ModelSerializer):
         if user_obj:
             if not user_obj.check_password(password):
                 raise ValidationError("Incorrect credentials, please try again.")
-
-        data["token"] = "SOME RANDOM TOKEN"
 
         return data

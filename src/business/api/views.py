@@ -1,34 +1,38 @@
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.generics import (
-    CreateAPIView,
     ListAPIView,
-    RetrieveUpdateDestroyAPIView,
 )
 from rest_framework.permissions import (
-    AllowAny,
-    IsAdminUser,
     IsAuthenticated)
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
-from .permissions import (
-    IsOwner,
-)
 from .serializers import (
-    ServiceDetailSerializer
+    ServiceDetailSerializer,
+    StoreSerializer,
 )
-from ..models import Service
+from ..models import Service, Store
+
+
+class StoreListAPIView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Store.objects.all().order_by('name')
+    serializer_class = StoreSerializer
+
+    def __init__(self, **kwargs):
+        super(StoreListAPIView).__init__(**kwargs)
+        self.object_list = self.filter_queryset(self.get_queryset())
+
+    def list(self, request, *args, **kwargs):
+        serializer = self.get_serializer(self.object_list, many=True)
+        return Response({'data': serializer.data})
 
 
 class ServiceListAPIView(ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = Service.objects.all().order_by('id')
+    queryset = Service.objects.all().order_by('name')
     serializer_class = ServiceDetailSerializer
 
 

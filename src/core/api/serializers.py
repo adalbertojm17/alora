@@ -1,6 +1,3 @@
-import abc
-from abc import ABC
-
 # noinspection PyUnresolvedReferences
 from accounts.models import Account
 # noinspection PyUnresolvedReferences
@@ -9,53 +6,51 @@ from addresses.models import Address
 from business.models import Service, Store
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
-from localflavor.us.forms import USStateField, USZipCodeField
-from localflavor.us.us_states import STATE_CHOICES
-from rest_framework.fields import CharField, DateTimeField
-from rest_framework.generics import get_object_or_404
 from rest_framework.serializers import (
-    Serializer,
-    ChoiceField
+    ModelSerializer
 )
 
 
-class OrderSerializer(Serializer):
-    store = ChoiceField(choices=[(store.id, store.name) for store in Store.objects.all()])
-    pickup_street = CharField(
-        max_length=120, )
-
-    pickup_apt = CharField(
-        required=False,
-        max_length=50, )
-
-    pickup_city = CharField(
-        max_length=120, )
-
-    MODDED_STATE_CHOICES = list(STATE_CHOICES)
-    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State'))
-    pickup_state = USStateField()
-    pickup_zip_code = USZipCodeField()
-    pickup_at = DateTimeField(
-        input_formats=("%B %d, %Y %I:%M %p",)
-    )
-    dropoff_street = CharField(
-        max_length=120, )
-
-    dropoff_apt = CharField(
-        required=False,
-        max_length=50, )
-
-    dropoff_city = CharField(
-        max_length=120, )
-
-    MODDED_STATE_CHOICES = list(STATE_CHOICES)
-    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State'))
-    dropoff_state = USStateField()
-    dropoff_zip_code = USZipCodeField()
-    dropoff_at = DateTimeField(
-        input_formats=("%B %d, %Y %I:%M %p",)
-    )
-
-    class Meta(abc.ABCMeta):
+class AddressSerializer(ModelSerializer):
+    class Meta:
         model = Address
         fields = '__all__'
+
+    def create(self, validated_data):
+        address_instance = Address.objects.create(
+            **validated_data
+        )
+        return address_instance
+
+
+# noinspection PyCompatibility
+class OrderSerializer(ModelSerializer):
+    pickup_location = AddressSerializer()
+    dropoff_location = AddressSerializer()
+
+    class Meta:
+        model = Order
+        fields = (
+            'pickup_location', 'dropoff_location', 'store',
+            'account', 'pickup_at', 'dropoff_at'
+        )
+
+    def _user(self, obj):
+        request = getattr(self.context, 'request', None)
+        if request:
+            return request.user
+
+    def create(self, validated_data):
+        pickup_location_data = validated_data.pop('pickup_location')
+        dropoff_location_data = validated_data.pop('dropoff_location')
+        if pickup_location_data:
+            pickup_location = Address.objects.get_or_create(**pickup_location_data)[0]
+            validated_data['pickup_location'] = pickup_location
+
+        if dropoff_location_data:
+            dropoff_location = Address.objects.get_or_create(**dropoff_location_data)[0]
+            validated_data['dropoff_location'] = dropoff_location
+
+        return Order.objects.create(
+            **validated_data
+        )

@@ -6,6 +6,6 @@ from .views import (
 )
 
 urlpatterns = [
-    path('create', CreateOrderAPIView.as_view(), name='api-place-order'),
-    path('details/', DisplayOrderAPIView.as_view(), name='api-order-details'),
+    path('place-order', CreateOrderAPIView.as_view(), name='api-place-order'),
+    path('order-details/', DisplayOrderAPIView.as_view(), name='api-order-details'),
 ]

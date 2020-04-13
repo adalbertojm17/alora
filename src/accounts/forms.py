@@ -1,12 +1,11 @@
-# noinspection PyUnresolvedReferences
 import re
 
+# noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.core.validators import validate_email
 from django.utils.safestring import mark_safe
-from localflavor.us.forms import USStateField, USZipCodeField, USStateSelect
+from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
 
 from .backends import authenticate
@@ -75,7 +74,8 @@ class UserSignUpForm(UserCreationForm):
             'title': ' alphanumeric '
                      'characters '
                      'only '
-                     'please'})
+                     'please'
+        })
     )
 
     password1 = forms.CharField(
@@ -171,14 +171,30 @@ class AccountForm(forms.ModelForm):
         max_length=50,
         label=mark_safe('First Name<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'First name', 'class': 'toggleenabled'}),
+        widget=forms.TextInput(attrs={
+            'placeholder': 'First name',
+            'class': 'toggleenabled',
+            'pattern': '[A-Za-z ]+',
+            'title': ' alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
     )
 
     last_name = forms.CharField(
         max_length=100,
         label=mark_safe('Last Name<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Last name', 'class': 'toggleenabled'}),
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Last name',
+            'class': 'toggleenabled',
+            'pattern': '[A-Za-z ]+',
+            'title': ' alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
 
     )
 
@@ -202,7 +218,15 @@ class AccountForm(forms.ModelForm):
         max_length=35,
         label=mark_safe('Username<br />'),
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'toggleenabled'})
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Username',
+            'class': 'toggleenabled',
+            'pattern': '[0-9A-Za-z ]+',
+            'title': ' alphanumeric '
+                     'characters '
+                     'only '
+                     'please'
+        })
     )
 
     class Meta:

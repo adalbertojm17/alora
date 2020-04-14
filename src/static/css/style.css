@@ -306,6 +306,15 @@ input[type=text], input[type=email], input[type=password] {
     padding: 1px;
 }
 
+#buttonmain p a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding:5px;
+    font-family: "Lato", sans-serif;
+}
+
 #buttonstandard {
     position: center;
     background-color: #FF5733;
@@ -509,7 +518,7 @@ footer {
 #contactus {
     position: center;
     display: block;
-    width: 40%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     clear: both;
@@ -518,6 +527,23 @@ footer {
 
 #contacticon {
     padding-top: 15px;
+}
+
+.contactpage{
+    margin: auto;
+    border: 0px solid black;
+    border-radius: 20px;
+    background-color:rgba(247,228,152,.7);
+    width: 80%;
+    padding-top: 30px;
+    margin-top: 20px;
+}
+
+.contactbackground{
+    background-image: url('../images/contact.jpg') ;
+    background-size: cover;
+    padding:50px;
+    padding-top: 20px;
 }
 
 

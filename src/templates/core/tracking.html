@@ -56,7 +56,6 @@
 
         {% for order in core %}
             {% if request.user.id == order.user_id %}
-
                 {% if order.current_status != "C" %}
 
                     {% if order.current_status == "P" %}

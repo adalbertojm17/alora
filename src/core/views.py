@@ -120,7 +120,7 @@ def orderconfirm_view(request, *args, **kwargs):
 def tracking_view(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login")
-    order_qs = Order.objects.all().filter(account=request.user)
+    order_qs = Order.objects.all().filter(user=request.user)
     if not order_qs.exists():
         return redirect('no-order')
 

@@ -20,6 +20,9 @@ class CreateOrderAPIView(CreateAPIView):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class DisplayOrderAPIView(ListAPIView):
     authentication_classes = [TokenAuthentication]
@@ -27,4 +30,4 @@ class DisplayOrderAPIView(ListAPIView):
     serializer_class = OrderSerializer
 
     def get(self, request, *args, **kwargs):
-        return Order.objects.all().filter(account_id=request.user.id)
+        return Order.objects.all().filter(user_id=request.user.id)

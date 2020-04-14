@@ -113,18 +113,28 @@ body {
 
 .insidecontent h1{
     text-align: left;
+    margin-bottom: 30px;
 }
 
-table{
-    padding: 20px;
+/******* Tracking Info **********/
+.trackinginfo {
+    margin: auto;
+    width: 110%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
 }
 
-th, td{
-    border: 1px solid black;
+.trackinginfo td, .trackinginfo th {
+    border: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-td {
-    padding: 5px;
+.trackinginfo th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
 }
 
 .shiftright {
@@ -132,7 +142,7 @@ td {
 }
 
 
-td a {
+td a{
     color: #FF5733;
 }
 
@@ -144,7 +154,8 @@ td a {
     margin-left: 5%;
 }
 
-.searchpart1 input[type=text] {
+#searchbar input[type=text] {
+    width: 79%;
     padding: 10px;
     margin-top: 8px;
     margin-bottom: 15px;
@@ -205,10 +216,35 @@ td a {
     padding-bottom: 12px;
     text-align: left;
     color: black;
-    background-color: #FF9920;
+    background-color:#FF9920;
 }
 
 /******* Order Details Page **********/
+
+.detailspage{
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 800px;
+}
+
+.detailscontent{
+    width: 80%;
+    margin:auto;
+}
+
+.contentadd{
+    float: left;
+    border: 3px solid black;
+    padding: 20px;
+    width: 42%;
+    margin: 10px;
+    margin-bottom: 50px;
+    height: 400px;
+}
+.detailscontent h1{
+    text-align: center;
+}
+
 .orderDetailsTable {
     margin: auto;
     width: 70%;
@@ -226,7 +262,7 @@ td a {
     padding-bottom: 12px;
     text-align: left;
     color: black;
-    background-color: #FF9920;
+    background-color:#FF9920;
 }
 
 
@@ -248,44 +284,67 @@ td a {
     padding-bottom: 12px;
     text-align: left;
     color: black;
-    background-color: #FF9920;
+    background-color:#FF9920;
 }
 
+
+/************** Services Page *****************/
+
+.servicespage{
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 800px;
+}
+
+.servicecontent{
+    width: 70%;
+    margin:auto;
+}
+
+.servicecontent h1{
+    text-align: center;
+}
+
+.servicestable {
+    width: 70%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.servicestable td, .servicestable th {
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.servicestable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color:#FF9920;
+}
+
+.contentaddservice{
+    float: left;
+    border: 3px solid black;
+    padding: 20px;
+    width: 42%;
+    margin: 10px;
+    margin-bottom: 50px;
+    height: 400px;
+}
+
+.center{
+    text-align: center;
+}
 
 /************** Add Items ****************/
-
-.contentadditems {
-    margin-left: 42%;
-    padding: 1px 0px;
-    height: 400px;
-    width: 30%;
-}
-
-.insideadditems {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: auto;
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-    border: 3px solid black;
-
-}
 
 .insideadditems h2 {
     text-align: center;
 }
 
-#insideadditems h2 form input[type=text] {
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-    font-size: 17px;
-    border: none;
-    background-color: #FF5733;
-}
-
-.insideadditems #addbutton {
+#addbutton{
     position: center;
     background-color: #FF9920;
     display: block;
@@ -301,29 +360,67 @@ td a {
 
 
 /***** Add Items button *****/
-.additem {
+.additem{
     border: none;
     background-color: #FF9920;
-    width: 10%;
+    width: 20%;
     border-radius: 50%;
     padding: 4px;
     padding-top: 1px;
     padding-bottom: 1px;
     text-align: right;
-    margin: auto;
+    margin:auto;
     margin-bottom: 5%;
 }
 
-.additem p {
+.additem p{
     text-align: center;
 }
 
-.additem p a {
+.additem p a{
     color: black;
+    text-decoration: none;
+}
+.additem p a:hover{
+    color: white;
 }
 
-.additem p a:hover {
-    color: white;
+
+/**************** form fields **********************/
+
+form{
+    text-align: center;
+}
+select{
+    position: center;
+    background-color: white;
+    color: grey;
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #FFCF3B;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-left: 15%;
+}
+
+input[type=text], input[type=number]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 75%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #FFCF3B;
+    border-radius: 4px;
+    padding-left: 20px;
 }
 
 

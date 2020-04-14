@@ -30,8 +30,8 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    search_fields = ('id', 'account', 'store' 'created_at', 'current_status'),
-    readonly_fields = ('id', 'account', 'created_at')
+    search_fields = ('id', 'user', 'store' 'created_at', 'current_status'),
+    readonly_fields = ('id', 'user', 'created_at')
 
     filter_horizontal = ()
     list_filter = ()
@@ -51,7 +51,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     delete_button.allow_tags = True
     delete_button.short_description = 'Delete Order'
-    list_display = ('id', 'account', 'created_at', 'current_status', 'delete_button')
+    list_display = ('id', 'user', 'created_at', 'current_status', 'delete_button')
 
 
 class OrderItemAdmin(admin.ModelAdmin):

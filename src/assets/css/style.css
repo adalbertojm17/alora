@@ -6,15 +6,52 @@ body {
     font-family: "Lato", sans-serif;
     background-color: #F7E498;
     margin: 0;
+    margin-top: 80px;
 }
 
-p {
+p{
     font-family: "Lato", sans-serif;
 }
 
-h1 {
+h1, h2{
     font-weight: bold;
     font-family: "Lato", sans-serif;
+}
+
+.indexpage{
+    background-image: url('../images/background4.jpg') ;
+    background-size: cover;
+    padding:50px;
+}
+
+.orderpages{
+    background-image: url('../images/orderbackground.jpg') ;
+    background-size: cover;
+    padding:50px;
+    height:1000px;
+}
+
+.defaultpage{
+    background-size: cover;
+    padding-top:50px;
+}
+
+.signinpage, .signuppage{
+    background-image: url('../images/signinbackground.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+}
+
+.mainmainpage {
+    background-image: url('../images/mainbackground.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+    padding-bottom:50px;
+    height:800px;
+}
+
+.servicespage{
+    padding-top:80px;
 }
 
 a {
@@ -22,11 +59,11 @@ a {
     color: black;
     text-align: center;
     text-decoration: none;
-    padding: 5px;
+    padding:5px;
     font-family: "Lato", sans-serif;
 }
 
-#mainb a {
+#mainb a{
 
 }
 
@@ -58,7 +95,7 @@ a {
 
 
 header {
-    margin-bottom: 150px;
+
 }
 
 #navbar {
@@ -75,7 +112,7 @@ header {
 .mainnav {
     float: right;
     width: auto;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-left: 300px;
     margin-right: 10px;
     overflow: hidden;
@@ -88,11 +125,14 @@ header {
     padding: 0;
     overflow: hidden;
     z-index: 3;
+    padding-top: 0;
 }
 
 .mainnav li {
     float: left;
     z-index: 3;
+    padding: 0;
+    padding-top: 5px;
 }
 
 
@@ -106,7 +146,7 @@ header {
     display: block;
     color: white;
     text-align: center;
-    padding: 16px;
+    padding: 10px;
     text-decoration: none;
 }
 
@@ -128,7 +168,7 @@ header {
 
 #signin {
     position: center;
-    background-color: #FF9920;
+    background-color: rgba(255,153,32,0.9);
     display: block;
     width: 25%;
     margin-left: auto;
@@ -143,12 +183,20 @@ header {
 
 #signin p {
     text-align: center;
-    font-size: 105%;
+    font-size: 100%;
     padding: 0;
 }
 
 #signin p a {
     color: grey;
+    font-size: 110%;
+}
+
+#signin h1{
+    font-size:130%;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
 }
 
 .makesmall {
@@ -168,7 +216,7 @@ input[type=text], input[type=email], input[type=password] {
     background-color: white;
     color: black;
     width: 55%;
-    padding: 12px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 1px solid #FF5733;
@@ -176,13 +224,21 @@ input[type=text], input[type=email], input[type=password] {
     padding-left: 20px;
 }
 
-/*
-	CSS for sign up page
-*/
+.changepass{
+    width: 70%;
+    margin: auto;
+}
+
+.changepass form{
+    text-align: center;
+    width: 90%;
+}
+
+/********************* CSS for sign up page ********************/
 
 #signup {
     position: center;
-    background-color: #FF9920;
+    background-color: rgba(255,153,32,0.9);
     display: block;
     width: 30%;
     margin-left: auto;
@@ -197,12 +253,20 @@ input[type=text], input[type=email], input[type=password] {
 
 #signup p {
     text-align: center;
-    font-size: 105%;
+    font-size: 100%;
     padding: 0;
 }
 
 #signup p a {
     color: grey;
+    font-size: 105%;
+}
+
+#signup h1{
+    font-size:130%;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
 }
 
 /*
@@ -276,7 +340,7 @@ input[type=text], input[type=email], input[type=password] {
     color: white;
     text-align: center;
     text-decoration: none;
-    padding: 5px;
+    padding:5px;
     font-family: "Lato", sans-serif;
 }
 
@@ -322,7 +386,7 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 80%;
 }
 
-#buttonconfirm  p a {
+#buttonconfirm  p a{
     color: white;
     text-decoration: none;
 }
@@ -346,27 +410,37 @@ Main page css
 
 #mainpagenav {
     margin: auto;
-    margin-left: 23%;
     width: 70%;
     overflow: hidden;
 }
 
-#mainpagenav #mainpage {
+#mainpagecenter{
+    margin: auto;
+    border: 0px solid black;
+    border-radius: 20px;
+    background-color:rgba(247,228,152,.7);
+    width:80%;
+    height: 500px;
+    padding-top: 50px;
+    margin-top: 30px;
+}
+
+#mainpagecenter #mainpage {
     float: left;
     display: block;
-    width: 25%;
+    width: 33%;
     padding: 3%;
     overflow: hidden;
 }
 
-#mainpagenav #mainpage #miniheader {
+#mainpagecenter #mainpage #miniheader {
     background-color: #FF5733;
     padding-top: 60px;
     padding-bottom: 60px;
     margin-bottom: 10px;
 }
 
-#mainpagenav #mainpage #miniheader #info {
+#mainpagecenter #mainpage #miniheader #info {
     width: 25%;
     overflow: hidden;
 
@@ -400,7 +474,9 @@ footer {
 
 .content .section1 {
     margin: auto;
-    height: 350px;
+    height: 400px;
+    background-image: url('../images/aboutcover.png') ;
+    background-size: cover;
 }
 
 .content .section2 {
@@ -408,21 +484,21 @@ footer {
     height: 650px;
 }
 
-.section1 img {
+.section1 img{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.insidecontent {
+.insidecontent{
     padding-top: 20px;
     padding-bottom: 20px;
-    margin: auto;
+    margin:auto;
     padding-left: 25%;
     padding-right: 25%;
 }
 
-.insidecontent h1 {
+.insidecontent h1{
     padding-top: 40px;
     padding-bottom: 40px;
     font-weight: bold;
@@ -461,7 +537,7 @@ textarea {
     padding-left: 20px;
 }
 
-select {
+select{
     position: center;
     background-color: white;
     color: grey;
@@ -474,11 +550,11 @@ select {
     padding-left: 20px;
 }
 
-/* Account Page css*/
+/********************* Account Page css ********************/
 
 #accountpage {
     width: 80%;
-    margin: auto;
+    margin:auto;
 }
 
 #accountpage #accountdiv {
@@ -489,7 +565,7 @@ select {
     overflow: hidden;
 }
 
-#movedown {
+#movedown{
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -529,32 +605,35 @@ select {
 
 /* Services page css */
 
-.services {
+.services{
     width: 100%;
     overflow: hidden;
     height: 500px;
 }
 
-.servicesec1 {
+.servicesec1{
     float: left;
     width: 60%;
     height: 500px;
     background-color: #49BEB7;
+    background-image: url('../images/servicebackground.png') ;
+    background-size: cover;
 }
 
-.sec1text {
+.sec1text{
     margin: auto;
     margin-top: 15%;
-    width: 40%;
+    width: 60%;
 }
 
-.sec1text p {
+.sec1text p{
     text-align: center;
     font-size: 150%;
     font-weight: bold;
+    color: white;
 }
 
-#serviceprice p a {
+#serviceprice p a{
     position: center;
     background-color: #FF5733;
     display: block;
@@ -575,7 +654,7 @@ select {
     color: white;
 }
 
-.servicesec2 {
+.servicesec2{
     background-color: #085f63;
     float: left;
     width: 40%;
@@ -583,51 +662,91 @@ select {
     overflow: hidden;
 }
 
-.servicesec2 img {
+.servicesec2 img{
     margin-top: 10%;
 }
 
-.servicesec3 {
-    height: 600px;
-    margin-top: 10%;
+.servicesec3{
+    height: 300px;
+    margin-top: 5%;
+}
+#serviceprice{
+
 }
 
-#serviceprice {
+/***************** Services Table******************/
 
+.searchprice{
+    margin: auto;
+    width:40%;
 }
 
+#servicehead{
+    margin-left: 15%;
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+
+.servicespopup{
+    width:80%;
+    margin:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.servicestable {
+    margin: auto;
+    width: 70%;
+    margin-bottom: 80px;
+    border-collapse: collapse;
+}
+
+.servicestable td, .servicestable th {
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.servicestable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color: #49BEB7;
+}
 
 /* Confirmation Pages */
 
-.confirm {
+.confirm{
     margin: auto;
     width: 50%;
     text-align: center;
     font-size: 150%;
 }
 
-.confirm p {
-    margin-bottom: 40px;
+.confirm p{
+     margin-bottom: 40px;
 }
 
-/****** Customer order history Table CSS ********/
-.content h1 {
+/************* Customer order history Table CSS **************/
+#headinghistory {
     text-align: center;
+    margin: 25px;
+    padding-top: 50px;
 }
 
 .customerOrdersTable {
     margin: auto;
-    width: 90%;
+    width: 70%;
     margin-bottom: 50px;
     border-collapse: collapse;
 }
 
-.customerOrdersTable td, .customerOrdersTable th {
+.customerOrdersTable  td, .customerOrdersTable  th {
     border: 2px solid black;
     padding: 20px;
 }
 
-.customerOrdersTable th {
+.customerOrdersTable  th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -635,17 +754,17 @@ select {
     background-color: #FF5733;
 }
 
-/******* Order Details Page **********/
+/***************** Order Details Page ******************/
 .orderDetailsTable {
     margin: auto;
-    width: 70%;
+    width: 50%;
     margin-bottom: 50px;
     border-collapse: collapse;
 }
 
 .orderDetailsTable td, .orderDetailsTable th {
     border: 2px solid black;
-    padding: 20px;
+    padding: 15px;
 }
 
 .orderDetailsTable th {
@@ -657,11 +776,11 @@ select {
 
 /******* View Order Page *********/
 
-#viewordertitle {
+#viewordertitle{
     text-align: center;
 }
 
-.vieworder {
+.vieworder{
     width: 50%;
     height: 400px;
     margin: auto;
@@ -694,98 +813,152 @@ label.required::before {
     font-size: 150%;
 }
 
-.container p {
+.container p{
     margin-top: 30px;
 }
 
-.reset input {
-    margin: auto;
-    width: 40%;
+.reset input{
+    margin:auto;
+    width:40%;
 }
+
+/******************************* Ordering *******************************/
+
+#orderingheading{
+    font-size: 120%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ordering{
+    border: 3px solid #FF5733;
+    background-color: rgba(247,228,152,.9);
+    width: 40%;
+    margin: auto;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.ordering form {
+    text-align: center;
+    font-size: 90%;
+}
+
+.ordering form label {
+    display: block;
+}
+
+.ordering input[type=text], input[type=email], input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
+#orderingbutton {
+    position: center;
+    background-color: #FF5733;
+    display: block;
+    color: white;
+    width: 55%;
+    border: 1px solid #FF5733;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 10px;
+}
+
 
 /****************************Tracking*************************************/
 
-.hidden {
-    display: none;
+.hidden{
+	display:none;
 }
 
-#trackh1 {
-    text-align: center;
+#trackh1{
+	text-align:center;
     font-size: 150%;
 }
 
-button {
-    padding: 5px 10px;
-    border: 1px solid black;
-    transition: 250ms background-color;
+button{
+	padding: 5px 10px;
+	border: 1px solid black;
+	transition: 250ms background-color;
 }
 
-button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
+button:hover{
+	cursor: pointer;
+	background-color: black;
+	color: white;
 }
 
-button:disabled:hover {
-    opacity: 0.6;
-    cursor: not-allowed;
+button:disabled:hover{
+	opacity:0.6;
+	cursor: not-allowed;
 }
 
-.text-center {
-    text-align: center;
+.text-center{
+	text-align: center;
 }
 
-.container {
-    max-width: 800px;
-    margin: 150px auto 0 auto;
-    padding: 40px;
+.container{
+	max-width:800px;
+	margin: 150px auto 0 auto;
 }
 
-#stepProgressBar {
-    display: flex;
-    width: 800px;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    justify-content: space-between;
-    align-items: flex-end;
+#stepProgressBar{
+	display:flex;
+	width: 800px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	justify-content: space-between;
+	align-items: flex-end;
 }
 
-.step {
-    text-align: center;
+.step{
+	text-align:center;
 }
 
-.step-text {
-    margin-bottom: 10px;
-    color: black;
+.step-text{
+	margin-bottom: 10px;
+	color: black;
     font-size: 70%;
 }
 
-.bullet {
+.bullet{
     font-size: 60%;
-    height: 20px;
-    width: 20px;
-    border-radius: 100%;
-    border: 1px solid black;
-    color: black;
-    display: inline-block;
-    position: relative;
-    transition: background-color 500ms;
-    line-height: 20px;
+	height: 20px;
+	width: 20px;
+	border-radius: 100%;
+	border: 1px solid black;
+	color: black;
+	display: inline-block;
+	position: relative;
+	transition: background-color 500ms;
+	line-height: 20px;
 }
 
-.bullet.completed {
-    color: white;
-    background-color: black;
+.bullet.completed{
+	color: white;
+	background-color: black;
 }
 
-.bullet.completed::after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 110px;
-    background-color: black;
-    right: -115px;
-    bottom: 10px;
+.bullet.completed::after{
+	content: '';
+	position:absolute;
+	height:1px;
+	width: 110px;
+	background-color: black;
+	right: -115px;
+	bottom: 10px;
 }
 
 /********************************Footer Css*************************************/

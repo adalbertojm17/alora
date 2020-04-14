@@ -18,8 +18,7 @@ from rest_framework.serializers import (
     ChoiceField
 )
 
-# noinspection PyUnresolvedReferences
-from feedback.models import Feedback
+from ..models import Feedback
 
 
 class FeedbackSerializer(ModelSerializer):

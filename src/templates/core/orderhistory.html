@@ -24,7 +24,7 @@
                 </tr>
 
                 {% for order in core %}
-                    {% if request.user.id == order.account_id %}
+                    {% if request.user.id == order.user_id %}
                         <tr>
                             <td>{{ order.pk }}</td>
                             <td><a href=/customer-details/?order={{ order.id }}> {{ order }} </a></td>

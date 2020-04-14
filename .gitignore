@@ -26,7 +26,7 @@ pip-selfcheck.json
 
 # Generated files
 .idea/**/contentModel.xml
-
+.idea
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -126,3 +126,32 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+!/.idea/
+src/__pycache__/
+src/accounts/__pycache__/backends.cpython-38.pyc
+src/accounts/__pycache__/urls.cpython-38.pyc
+src/accounts/__pycache__/validators.cpython-38.pyc
+src/accounts/api/__pycache__/
+src/accounts/migrations/0001_initial.py
+src/addresses/__pycache__/
+src/addresses/migrations/0001_initial.py
+src/addresses/migrations/__pycache__/
+src/alora/__pycache__/__init__.cpython-38.pyc
+src/alora/__pycache__/settings.cpython-38.pyc
+src/alora/__pycache__/urls.cpython-38.pyc
+src/alora/__pycache__/wsgi.cpython-38.pyc
+src/assets/images/location.png
+src/assets/images/store.png
+src/business/__pycache__/
+src/business/api/__pycache__/
+src/business/migrations/0001_initial.py
+src/business/migrations/__pycache__/
+src/core/__pycache__/
+src/core/api/__pycache__/
+src/core/migrations/0001_initial.py
+src/core/migrations/__pycache__/
+src/feedback/__pycache__/
+src/feedback/api/__pycache__/
+src/feedback/migrations/0001_initial.py
+src/feedback/migrations/__pycache__/
+src/pages/__pycache__/urls.cpython-38.pyc

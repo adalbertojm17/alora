@@ -7,6 +7,8 @@ from business.models import Store, Service
 from django.shortcuts import render, redirect, get_object_or_404
 from formtools.wizard.views import SessionWizardView
 
+# noinspection PyUnresolvedReferences
+from alora import settings
 from .forms import DropOffForm, PickupForm, StoreForm
 from .models import Order
 
@@ -79,7 +81,7 @@ class OrderWizard(SessionWizardView):
         )
 
         Order.objects.create(
-            account=get_object_or_404(Account, pk=self.request.user.pk),
+            user=get_object_or_404(Account, pk=self.request.user.pk),
             store=store,
             pickup_location=pickup_location,
             dropoff_location=dropoff_location,

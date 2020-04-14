@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -22,7 +21,7 @@ from .permissions import (
 from .serializers import (
     UserCreateSerializer,
     UserProfileSerializer,
-    UserDetailSerializer,
+    UserSerializer,
 )
 
 User = get_user_model()
@@ -38,7 +37,7 @@ class UserCreateAPIView(CreateAPIView):
 class UserListAPIView(ListAPIView):
     permission_classes = [IsAdminUser]
     queryset = User.objects.all().order_by('id')
-    serializer_class = UserDetailSerializer
+    serializer_class = UserSerializer
     authentication_classes = [TokenAuthentication]
 
 
@@ -64,11 +63,15 @@ class MyAuthToken(ObtainAuthToken):
 class UserProfileAPIView(RetrieveUpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwner]
+    queryset = User.objects.all()
+    lookup_field = 'pk'
     serializer_class = UserProfileSerializer
 
     def update(self, request, *args, **kwargs):
-        pass
-
+        serializer = self.serializer_class(request.user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class UserLogoutAPIView(APIView):

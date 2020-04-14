@@ -27,7 +27,7 @@ urlpatterns = [
     path('api/users/', include('accounts.api.urls'), name='users-api'),
     path('api/business/', include('business.api.urls'), name='business'),
     path('api/core/', include('core.api.urls'), name='core'),
-    path('api/feedback/', include('feedback.api.urls'), name='feedback'),
+    path('api/', include('feedback.api.urls'), name='feedback'),
     path('admin/', admin.site.urls),
 
 ]

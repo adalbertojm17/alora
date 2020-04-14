@@ -32,7 +32,7 @@ class OrderSerializer(ModelSerializer):
         model = Order
         fields = (
             'pickup_location', 'dropoff_location', 'store',
-            'account', 'pickup_at', 'dropoff_at'
+            'user', 'pickup_at', 'dropoff_at'
         )
 
     def _user(self, obj):

@@ -126,5 +126,3 @@ class DropOffForm(forms.ModelForm):
             raise ValidationError("Drop-off date must not be earlier than 1 day after the pickup date")
         return dropoff_date
 
-
-'''' '''

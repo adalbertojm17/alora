@@ -5,5 +5,5 @@ from .views import (
 )
 
 urlpatterns = [
-    path('send-feedback', SendFeedbackAPIView.as_view(), name='api-place-order'),
+    path('send-feedback/', SendFeedbackAPIView.as_view(), name='api-send-fedback'),
 ]

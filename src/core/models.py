@@ -11,9 +11,6 @@ from django.db import models
 # noinspection PyUnresolvedReferences
 from django.urls import reverse
 
-# noinspection PyUnresolvedReferences
-from alora import settings
-
 # tuple of possible statuses of an order
 # emulates a static table
 STATUS_CHOICES = (
@@ -47,7 +44,7 @@ class Item(models.Model):
 
 # model for a complete customer order
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     store = models.ForeignKey(Store, on_delete=models.SET_NULL, null=True)
     pickup_location = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
     dropoff_location = models.ForeignKey(Address, related_name='+', on_delete=models.SET_NULL, null=True)
@@ -61,9 +58,6 @@ class Order(models.Model):
 
     def get_status(self):
         return self.current_status
-
-    def get_total_price(self):
-        return models.Sum(self.items.price)
 
 
 # model for a single item in an order

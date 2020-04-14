@@ -172,7 +172,7 @@ def get_order_queryset(query= None):
     queryset =[]
     queires = query.split(" ")
     for q in queires:
-        posts = Order.objects.filter(Q(account__username__icontains =q)|Q(id__icontains=q)).distinct()
+        posts = Order.objects.filter(Q(user__username__icontains =q)|Q(id__icontains=q)).distinct()
         for post in posts:
             queryset.append(post)
     return list(set(queryset))

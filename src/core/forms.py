@@ -2,13 +2,14 @@ import datetime
 
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
-from bootstrap_datepicker_plus import DateTimePickerInput
 # noinspection PyUnresolvedReferences
 from business.models import Service
 # noinspection PyUnresolvedReferences
 from business.models import Store
+from datetimepicker.widgets import DateTimePicker
 from django import forms
 from django.core.exceptions import ValidationError
+from django.utils.timezone import now
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
 
@@ -52,15 +53,17 @@ class PickupForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
     pickup_at = forms.DateTimeField(
-        input_formats=("%a %B %d, %Y %I:%M %p",),
+        input_formats=("%a %b %d, %Y %I:%M %p",),
         localize=True,
         label='',
-        widget=DateTimePickerInput(
-            format="ddd %m%m %d, %Y %I:%M A",
-            attrs={'placeholder': 'Pickup  Date/Time*'},
+        widget=DateTimePicker(
             options={
-                'locale': 'en',
-                'minDate': (datetime.datetime.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00'),
+                'validateOnBlur': False,
+                'twelveHoursFormat': True,
+                'format': 'D M d, Y g:i a',
+                'formatTime': 'g:i a',
+                'lang': 'en-us',
+                'minDate': 0,
             }
         )
     )
@@ -68,6 +71,14 @@ class PickupForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+
+    def clean_pickup_at(self):
+        cleaned_data = super(PickupForm, self).clean()
+        pickup_date = cleaned_data['pickup_at']
+
+        if pickup_date < (now() + datetime.timedelta(days=0, hours=1, minutes=0)):
+            raise ValidationError("Pick-up date/time must not be earlier than 1 hour from now.")
+        return pickup_date
 
 
 class DropOffForm(forms.ModelForm):
@@ -100,16 +111,18 @@ class DropOffForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
     drop_off_at = forms.DateTimeField(
-        input_formats=("%a %B %d, %Y %I:%M %p",),
+        input_formats=("%a %b %d, %Y %I:%M %p",),
         localize=True,
         label='',
         initial=None,
-        widget=DateTimePickerInput(
-            format="ddd %m%m %d, %Y %I:%M A",
-            attrs={'placeholder': 'Pickup  Date/Time*'},
+        widget=DateTimePicker(
             options={
-                'minDate': (datetime.datetime.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00'),
-            }
+                'validateOnBlur': False,
+                'twelveHoursFormat': True,
+                'format': 'D M d, Y g:i a',
+                'formatTime': 'g:i a',
+                'language': 'en-us',
+            },
         )
     )
 
@@ -117,12 +130,11 @@ class DropOffForm(forms.ModelForm):
         model = Address
         fields = '__all__'
 
-    def clean_dropoff_at(self):
+    def clean_drop_off_at(self):
         cleaned_data = super(DropOffForm, self).clean()
         date_limit = self.initial['context']['pickup_date'] + datetime.timedelta(days=1)
         dropoff_date = cleaned_data['drop_off_at']
 
         if dropoff_date < date_limit:
-            raise ValidationError("Drop-off date must not be earlier than 1 day after the pickup date")
+            raise ValidationError("Drop-off date/time must not be earlier than 1 day after the Pick-up date/time")
         return dropoff_date
-

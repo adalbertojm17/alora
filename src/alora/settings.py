@@ -56,8 +56,8 @@ INSTALLED_APPS = [
 
     # Third-Party Apps
     'bootstrap4',
-    'bootstrap_datepicker_plus',
     'cities_light',
+    'datetimepicker',
     'formtools',
     'multiselectfield',
     'phonenumber_field',

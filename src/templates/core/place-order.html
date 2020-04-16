@@ -19,6 +19,64 @@
 <body>
 
 {% block content %}
+    {% if wizard.steps.step1 == 1 %}
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Welcome to our order page!</p>
+              <p> Schedule pick and delivery for your laundry and dry cleaning. </p>
+              <p> Click on the drop down bar labeled "Choose a store" to select a store for your intended order.</p>
+              <p> Click "Continue" to progress in creating your order. </p>
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if wizard.steps.step1 == 2 %}
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+            <span class="popuptext" id="myPopup" style="width: 350px">
+
+            <p> Schedule Pick Up</p>
+                <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
+                <p> Enter your apt/suite number in the field labeled "APT/Suite". e.g. 100 </p>
+                <p> Enter your the name of your city in the field labeled "City". e.g. Bloomfield </p>
+                <p> Click the drop down field and select a state in the field
+                    labeled "Select a State". e.g. New Jersey  </p>
+                <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
+                <p> Click the field labeled "Date/Time" to select a date and time for pick up. e.g. Thu Apr 16, 2020 12:00 pm</p>
+                <p> Click the "continue" button to schedule your drop off date and time or the "back" button to change the store. </p>
+            <hr>
+
+            </span>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if wizard.steps.step1 == 3 %}
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+            <span class="popuptext" id="myPopup" style="width: 350px">
+
+            <p> Schedule Drop Off</p>
+                <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
+                <p> Enter your apt/suite number in the field labeled "APT/Suite". e.g. 100 </p>
+                <p> Enter your the name of your city in the field labeled "City". e.g. Bloomfield </p>
+                <p> Click the drop down field and select a state in the field
+                    labeled "Select a State". e.g. New Jersey  </p>
+                <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
+                <p> Click the field labeled "Date/Time" to select a date and time for drop off. e.g. Thu Apr 16, 2020 12:00 pm</p>
+                <p> Click the "confirm" button to place your order or the "back" button to change your pick up date and time. </p>
+            <hr>
+
+            </span>
+        </div>
+    </div>
+    {% endif %}
 
     <div class="orderpages">
     <div class="ordering">
@@ -88,5 +146,8 @@
         </form>
     </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

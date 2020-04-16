@@ -15,6 +15,49 @@
 <body>
 
 {% block content %}
+
+
+    {% if wizard.steps.step1 == 1 %}
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" style="width:350px" id="myPopup">
+
+              <p> Sign Up</p>
+              <p> Enter your first name and last name in the appropriate fields. </p>
+              <p> Enter your phone number. This is optional. e.g. 999-999-9999</p>
+              <p> Enter your email address and confirm your email in the appropriate fields.
+              e.g. test@email.com</p>
+              <p> Create a password and confirm the password in the appropriate fields.
+              Ensure that the password has a capital letter and contains special characters.
+              e.g. Test!857@H</p>
+              <p> Click "continue" to progress in the sign up progress.</p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if wizard.steps.step1 == 2 %}
+        <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" style="width:350px" id="myPopup">
+
+                <p> Main Address</p>
+                <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
+                <p> Enter your apt/suite number in the field labeled "APT/Suite". e.g. 100 </p>
+                <p> Enter your the name of your city in the field labeled "City". e.g. Bloomfield </p>
+                <p> Click the drop down field and select a state in the field
+                labeled "Select a State". e.g. New Jersey  </p>
+                <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
+                <p> Click "continue" to confirm and login into Alora.</p>
+                <hr>
+
+          </span>
+        </div>
+    </div>
+    {%endif %}
+
     <div class="signuppage">
     <div id="signup">
         <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
@@ -66,4 +109,9 @@
 
     </div>
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
 </body>

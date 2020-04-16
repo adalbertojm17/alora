@@ -10,6 +10,20 @@
 
 <body>
 {% block content %}
+     <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+                <p> Click the drop down field to select a store for your intended message. </p>
+                <p> Enter the subject of the matter in the text box labeled "Enter your subject". e.g. "Laundry" or "Dry Cleaning"</p>
+                <p> Type your message in the text box labeled "We welcome your feedback".</p>
+                <p> Click "Submit" to send your message.</p>
+              <hr>
+
+          </span>
+        </div>
+
+    </div>
     <div class="contactbackground">
     <div class="contactpage">
     <div id="contactus">
@@ -35,4 +49,7 @@
     </div>
 {% endblock %}
 
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
 </body>

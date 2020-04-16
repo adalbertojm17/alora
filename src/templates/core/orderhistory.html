@@ -13,6 +13,21 @@
 
 <body>
 {% block content %}
+
+
+        <div class="moveright">
+            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+              <span class="popuptext" id="myPopup">
+
+                    <p> This page lists all of your orders. </p>
+                    <p> Click on the order name to view the order details of that order.</p>
+                    <p> Click the "Back" button to go back to your account.</p>
+                  <hr>
+
+              </span>
+            </div>
+        </div>
+
         <div class="content">
             <h1 id="headinghistory"> Your Order History</h1>
             <table class="customerOrdersTable">
@@ -40,5 +55,9 @@
         <p><a href="/account/"> Back </a></p>
     </div>
 
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

@@ -9,6 +9,20 @@
 </head>
 <body>
 {% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+                <p> This page displays all the details of an order. </p>
+                <p> Click "back" to go back to all your previous orders.</p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
+
     <div class="defaultpage">
         <div class="content">
             <h1 id="headinghistory"> Order Details </h1>
@@ -69,5 +83,10 @@
 
     </div>
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
 </body>
 </html>

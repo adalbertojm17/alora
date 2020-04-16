@@ -885,6 +885,36 @@ label.required::before {
     margin-top: 30px;
 }
 
+.resetpage{
+    padding-top:50px;
+}
+
+.reset{
+    width: 70%;
+    margin: auto;
+}
+
+.reset form{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+
+.reset input[type=email], input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
 .reset input{
     margin:auto;
     width:40%;

@@ -1,0 +1,17 @@
+Sign up
+
+Steps
+Step 1: user selects sign up --passed
+step 2: user fills in first name and last name
+step 3: user inputs email and confirm email
+step 4: user inputs username and password/confirm password
+step 5: user selects on continue tab
+step 6: user inputs street name: i forgot
+step 7: user enters apt/suite: cap)(
+step 8: user inputs state: Georgia
+step 9: user inputs zip code: 30049
+step 10: user select continue and is redirected to home page --passed
+
+Expected results: Notification popping up to inform the user there is no special characters included when inputting the Apt/Suite name, only numbers and a name.
+
+Actual results: User is now a member of the Alora website

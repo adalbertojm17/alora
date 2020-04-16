@@ -1,0 +1,11 @@
+Placing an Order
+
+Steps
+
+Step 1:user logs into their account
+step 2: user selects order now on navigation bar
+step 3: user cannot find an help option to know how to correctly place an order
+
+Expected results: A help option appears when selecting order now page for those users who may need help to understand how to place an order.
+
+Actual results: User is mandated to fill in the required fields that are displayed on the order now page

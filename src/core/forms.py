@@ -11,6 +11,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
+from cities_light.models import Region
 
 
 class StoreForm(forms.Form):
@@ -126,5 +127,15 @@ class DropOffForm(forms.ModelForm):
             raise ValidationError("Drop-off date must not be earlier than 1 day after the pickup date")
         return dropoff_date
 
+    def clean_city(self):
+        if self.is_valid():
+            print(self.cleaned_data['state'])
+            city = self.cleaned_data["city"]
 
+            try:
+                Region.objects.get().filter(city = city)
+
+            except Region.DoesNotExist:
+                return city
+            raise forms.ValidationError('city "%s" is not in the chosen state.' % city)
 '''' '''

@@ -1,6 +1,7 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
 from django.http import HttpResponseForbidden
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Store,Service
 # noinspection PyUnresolvedReferences,PyPackageRequirements
@@ -21,21 +22,22 @@ def orders_details_view(request, *args, **kwargs):
         'order': order,
         'orderdetails': order.orderitem_set.all()
     }
-
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
         return HttpResponseForbidden()
-    if request.POST:
-        form = AddingOrderItemForm(request.POST)
-        order.current_status = request.POST.get('status')
-        order.save()
+
+    if 'button1'in request.POST:
+        form = AddingOrderItemForm(request.user,order,request.POST)
         if form.is_valid():
             form.save()
-
+            form = AddingOrderItemForm(user =request.user,order = order)
     else:
-        form = AddingOrderItemForm()
+        form = AddingOrderItemForm(user =request.user,order = order)
 
+    if 'button2' in request.POST:
+        order.current_status = request.POST.get('status')
+        order.save()
     my_context ['form']=form
 
     return render(request, "business/orders_details.html", my_context)
@@ -145,23 +147,24 @@ def services_business_view(request):
     context['itemsQuery']=items
     context['services']=services
 
-    if request.POST:
-        form = ServiceCreationForm(request.POST)
+    if 'submit1'in request.POST:
+        form = ServiceCreationForm(request.user,request.POST)
         if form.is_valid():
             form.save()
-
+            form = ServiceCreationForm(user= request.user)
     else:
-        form = ServiceCreationForm()
+        form = ServiceCreationForm(user=request.user)
 
     context ['form']=form
 
-    if request.POST:
-        form2 = AddingItemForm(request.POST)
+    if 'submit2' in request.POST:
+        form2 = AddingItemForm(request.user,request.POST)
         if form2.is_valid():
             form2.save()
+            form2 = AddingItemForm(user=request.user)
 
     else:
-        form2 = AddingItemForm()
+        form2 = AddingItemForm(user=request.user)
 
     context ['form2']=form2
 
@@ -172,7 +175,7 @@ def get_order_queryset(query= None):
     queryset =[]
     queires = query.split(" ")
     for q in queires:
-        posts = Order.objects.filter(Q(account__username__icontains =q)|Q(id__icontains=q)).distinct()
+        posts = Order.objects.filter(Q(user__username__icontains =q)|Q(id__icontains=q)).distinct()
         for post in posts:
             queryset.append(post)
     return list(set(queryset))

@@ -26,7 +26,7 @@ pip-selfcheck.json
 
 # Generated files
 .idea/**/contentModel.xml
-.idea
+.idea/
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -155,3 +155,18 @@ src/feedback/api/__pycache__/
 src/feedback/migrations/0001_initial.py
 src/feedback/migrations/__pycache__/
 src/pages/__pycache__/urls.cpython-38.pyc
+/.idea/
+/.idea/dataSources/
+/.idea/httpRequests/
+/.idea/inspectionProfiles/
+/.idea/shelf/
+/.idea/alora.iml
+/.idea/dataSources.local.xml
+/.idea/dataSources.xml
+/.idea/deployment.xml
+/.idea/jsLibraryMappings.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/webServers.xml
+/.idea/workspace.xml

@@ -11,6 +11,23 @@
 
 <body>
 {% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p>Welcome to Alora!</p>
+              <p> Click on "Account" to view your account information.</p>
+              <p> Click on "Order Now" to schedule pick up and delivery for your laundry or drying cleaning</p>
+              <p> Click on "Tracking" to track your orders. </p>
+              <p> Click on "Contact Us" to send our Alora team is a message. </p>
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
     <div class="mainmainpage">
 
         <div id="mainpagenav" class="center">
@@ -19,8 +36,8 @@
                  Guest{% endif %}</h1>
                 <div id="mainpage">
                     <div id="miniheader">
-                        <img id="mainicon" src="{% static 'images/account.png' %}" alt="account" class="center" width=75
-                             height=75>
+                        <a href=/account/><img id="mainicon" src="{% static 'images/account.png' %}" alt="account" class="center" width=75
+                             height=75></a>
                     </div>
 
                     <div id="info">
@@ -32,12 +49,12 @@
 
                 <div id="mainpage">
                     <div id="miniheader">
-                        <img id="mainicon" src="{% static 'images/order.png' %}" alt="account" class="center" width=70
-                             height=70>
+                        <a href=/place-order/> <img id="mainicon" src="{% static 'images/order.png' %}" alt="account" class="center" width=70
+                                                    height=70></a>
                     </div>
 
                     <div id="info">
-                        <p id="mainb" ><a href=/place-order/> Place Order </a></p>
+                        <p id="mainb" ><a href=/place-order/> Order Now </a></p>
                         <p class="info">We would love to do your dry cleaning and laundry. Place an order today
                             and experience a cleaning service like no other.</p>
                     </div>
@@ -46,8 +63,8 @@
 
                 <div id="mainpage">
                     <div id="miniheader">
-                        <img id="mainicon" src="{% static 'images/tracking.png' %}" alt="account" class="center" width=70
-                             height=70>
+                       <a href=/tracking/> <img id="mainicon" src="{% static 'images/tracking.png' %}" alt="account" class="center" width=70
+                                                height=70></a>
                     </div>
 
                     <div id="info">
@@ -59,6 +76,10 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 
 </body>

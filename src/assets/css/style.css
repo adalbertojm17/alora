@@ -1,10 +1,15 @@
 html {
-    background-color: #F7E498;
+    /*background-color: #F7E498;*/
+    background-image: url('../images/sand.jpg') ;
+    background-repeat: repeat;
 }
 
 body {
     font-family: "Lato", sans-serif;
-    background-color: #F7E498;
+   /* background-color: #F7E498;*/
+    background-image: url('../images/sand.jpg') ;
+    background-repeat: repeat;
+   /* background-size: cover;*/
     margin: 0;
     margin-top: 80px;
 }
@@ -33,6 +38,10 @@ h1, h2{
 
 .defaultpage{
     background-size: cover;
+    padding-top:50px;
+}
+
+.changepasspage{
     padding-top:50px;
 }
 
@@ -232,6 +241,22 @@ input[type=text], input[type=email], input[type=password] {
 .changepass form{
     text-align: center;
     width: 90%;
+    margin: auto;
+}
+
+.changepass input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
 }
 
 /********************* CSS for sign up page ********************/
@@ -306,6 +331,22 @@ input[type=text], input[type=email], input[type=password] {
     padding: 1px;
 }
 
+#buttonmain p {
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    font-size: 100%;
+}
+
+#buttonmain p a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding:5px;
+    font-family: "Lato", sans-serif;
+}
+
 #buttonstandard {
     position: center;
     background-color: #FF5733;
@@ -349,20 +390,30 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #FF5733;
     display: block;
     color: white;
-    width: 10%;
+    width: 40%;
     border: 1px solid #FF5733;
     margin: auto;
     margin-bottom: 30px;
+    margin-top: 30px;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 12px;
+    padding: 8px;
 }
 
-#buttonmain p {
+#secondmainbutton p {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     margin: auto;
-    font-size: 100%;
+    font-size: 70%;
+}
+
+#secondmainbutton a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding:5px;
+    font-family: "Lato", sans-serif;
 }
 
 #buttonconfirm {
@@ -509,7 +560,7 @@ footer {
 #contactus {
     position: center;
     display: block;
-    width: 40%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     clear: both;
@@ -518,6 +569,23 @@ footer {
 
 #contacticon {
     padding-top: 15px;
+}
+
+.contactpage{
+    margin: auto;
+    border: 0px solid black;
+    border-radius: 20px;
+    background-color:rgba(247,228,152,.7);
+    width: 80%;
+    padding-top: 30px;
+    margin-top: 20px;
+}
+
+.contactbackground{
+    background-image: url('../images/contact.jpg') ;
+    background-size: cover;
+    padding:50px;
+    padding-top: 20px;
 }
 
 
@@ -831,8 +899,9 @@ label.required::before {
 }
 
 .ordering{
-    border: 3px solid #FF5733;
-    background-color: rgba(247,228,152,.9);
+    border: 2px solid #FF5733;
+    border-radius: 10px;
+    background-color: rgba(247,228,152,.8);
     width: 40%;
     margin: auto;
     padding: 40px;

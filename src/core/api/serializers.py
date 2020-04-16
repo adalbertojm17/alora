@@ -5,6 +5,7 @@ from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.models import Service, Store
 # noinspection PyUnresolvedReferences,PyPackageRequirements
+from cities_light.models import Region
 from core.models import Order
 from rest_framework.serializers import (
     ModelSerializer
@@ -32,7 +33,7 @@ class OrderSerializer(ModelSerializer):
         model = Order
         fields = (
             'pickup_location', 'dropoff_location', 'store',
-            'account', 'pickup_at', 'dropoff_at'
+            'user', 'pickup_at', 'dropoff_at'
         )
 
     def _user(self, obj):
@@ -54,3 +55,9 @@ class OrderSerializer(ModelSerializer):
         return Order.objects.create(
             **validated_data
         )
+
+
+class RegionSerializer(ModelSerializer):
+    class Meta:
+        model = Region
+        fields = '__all__'

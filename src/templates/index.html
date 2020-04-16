@@ -12,12 +12,25 @@
 
 <body>
 {% block content %}
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Click the "sign in" button to login into your account.</p>
+              <p> Use navigation bar at the TOP RIGHT corner to view our
+              services and learn more about Alora.</p>
+
+              <hr>
+              <img src="{% static 'images/button.png' %}" alt="Logo" class="center" width=90 height=35>
+          </span>
+        </div>
+    </div>
+
     <div class="indexpage">
+
     <img id="mainpageicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=500 height=500>
-
     <br/>
     <br/>
-
     {% if  request.user.is_authenticated %}
         <div id="buttonmain">
             <p><a href="/account/">View Account</a></p>
@@ -29,5 +42,9 @@
     {% endif %}
 
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

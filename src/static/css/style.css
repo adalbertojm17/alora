@@ -1,12 +1,22 @@
 html {
-    background-color: #F7E498;
+    /*background-color: #F7E498;*/
+    background-image: url('../images/sand.jpg') ;
+    background-repeat: repeat;
 }
 
 body {
     font-family: "Lato", sans-serif;
-    background-color: #F7E498;
+   /* background-color: #F7E498;*/
+    background-image: url('../images/sand.jpg') ;
+    background-repeat: repeat;
+   /* background-size: cover;*/
     margin: 0;
     margin-top: 80px;
+}
+
+hr{
+    border-top: 2px solid white;
+    width: 90%;
 }
 
 p{
@@ -21,18 +31,23 @@ h1, h2{
 .indexpage{
     background-image: url('../images/background4.jpg') ;
     background-size: cover;
-    padding:50px;
+    padding-top:50px;
+    padding-bottom:50px;
 }
 
 .orderpages{
     background-image: url('../images/orderbackground.jpg') ;
     background-size: cover;
-    padding:50px;
+    padding-top:50px;
     height:1000px;
 }
 
 .defaultpage{
     background-size: cover;
+    padding-top:50px;
+}
+
+.changepasspage{
     padding-top:50px;
 }
 
@@ -232,6 +247,22 @@ input[type=text], input[type=email], input[type=password] {
 .changepass form{
     text-align: center;
     width: 90%;
+    margin: auto;
+}
+
+.changepass input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
 }
 
 /********************* CSS for sign up page ********************/
@@ -306,6 +337,13 @@ input[type=text], input[type=email], input[type=password] {
     padding: 1px;
 }
 
+#buttonmain p {
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    font-size: 100%;
+}
+
 #buttonmain p a {
     display: block;
     color: white;
@@ -358,20 +396,30 @@ input[type=text], input[type=email], input[type=password] {
     background-color: #FF5733;
     display: block;
     color: white;
-    width: 10%;
+    width: 40%;
     border: 1px solid #FF5733;
     margin: auto;
     margin-bottom: 30px;
+    margin-top: 30px;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 12px;
+    padding: 8px;
 }
 
-#buttonmain p {
+#secondmainbutton p {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     margin: auto;
-    font-size: 100%;
+    font-size: 70%;
+}
+
+#secondmainbutton a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding:5px;
+    font-family: "Lato", sans-serif;
 }
 
 #buttonconfirm {
@@ -843,6 +891,36 @@ label.required::before {
     margin-top: 30px;
 }
 
+.resetpage{
+    padding-top:50px;
+}
+
+.reset{
+    width: 70%;
+    margin: auto;
+}
+
+.reset form{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+
+.reset input[type=email], input[type=password]{
+    position: center;
+    background-color: white;
+    color: black;
+    width: 55%;
+    padding: 8px 20px;
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    border: 1px solid #FF5733;
+    border-radius: 4px;
+    padding-left: 20px;
+}
+
 .reset input{
     margin:auto;
     width:40%;
@@ -857,8 +935,9 @@ label.required::before {
 }
 
 .ordering{
-    border: 3px solid #FF5733;
-    background-color: rgba(247,228,152,.9);
+    border: 2px solid #FF5733;
+    border-radius: 10px;
+    background-color: rgba(247,228,152,.8);
     width: 40%;
     margin: auto;
     padding: 40px;
@@ -987,6 +1066,83 @@ button:disabled:hover{
 	bottom: 10px;
 }
 
+
+/*********************Tool tip *************************/
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 40px;
+    padding-top: 20px;
+
+}
+
+.popuptext p{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.moveright{
+	text-align: right;
+    position: fixed;
+    padding-top: 0;
+    padding-right: 10%;
+
+}
+
+.popuptext ul{
+    list-style-type: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: rgba(0, 0, 0, .6);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 100%;
+  margin-left: -20px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
 /********************************Footer Css*************************************/
 
 .footer {

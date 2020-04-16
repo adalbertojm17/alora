@@ -10,9 +10,12 @@
 
 <body>
 {% block content %}
+
+    <div class="indexpage">
     <div class="content">
          <h1 id="welcome"> Welcome to Alora, {% if user.is_authenticated %} {{ request.user.first_name }} {% else %}
         Guest{% endif %}</h1>
+    </div>
     </div>
 {% endblock %}
 </body>

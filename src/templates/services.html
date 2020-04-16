@@ -12,7 +12,22 @@
 
 ]{% block content %}
 <body>
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Click "Find Prices" to discover laundry and dry cleaning prices at our partner companies.</p>
+              <p> Click on the drop down to choose a store.</p>
+              <p> Click "Search" to view their prices.</p>
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
     <div class="servicespage">
+
     <div class="services">
         <div class="servicesec1">
             <div class="sec1text">
@@ -75,4 +90,9 @@
     </div>
 </body>
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
 </html>

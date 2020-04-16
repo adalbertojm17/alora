@@ -1,0 +1,13 @@
+Test Case: Business Side Add items
+
+Steps Took: 
+1.Log into admin account - admin1, P@ssword1
+2.View a current order
+3.Edit item section
+4.Chose 3 for number of items
+5.Chose processed for timer
+6.Sumbit
+
+Expected Results: to go through and update
+Actual Results: Server crashed, "cannot be left null". nothing was left null
+Test Case: Fail

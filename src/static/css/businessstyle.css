@@ -61,6 +61,18 @@ body {
   color: white;
 }
 
+.indexpage{
+    background-image: url('../images/background4.jpg') ;
+    background-size: cover;
+    padding:50px;
+}
+
+.generalbackground{
+    background-image: url('../images/background4.jpg') ;
+    background-size: cover;
+    height:200px;
+}
+
 #welcome{
     padding-top: 30px;
 }

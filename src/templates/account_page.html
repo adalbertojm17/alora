@@ -15,6 +15,20 @@
 <body>
 {% block content %}
 
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+                <p> Click the "Edit" in order to make changes to your account information. </p>
+                <p> Click "Save" to save your changes. </p>
+                <p> Click "Order History" to view your order history. </p>
+                <p> Click "Change Password" to change your password. </p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
     <div class="accountpage">
     <div id="accountpage">
         <div id="accountdiv">
@@ -59,6 +73,7 @@
 {% endblock %}
 
 {% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -83,10 +98,11 @@
             });
         })
     </script>
+    </div>
+
 {% endblock %}
 
-</div>
+
+
 </body>
-
-
 </html>

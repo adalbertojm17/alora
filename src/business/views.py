@@ -1,16 +1,17 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
+# noinspection PyUnresolvedReferences,PyPackageRequirements
+from core.models import Item
 from core.models import Order
+from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import Store,Service
-# noinspection PyUnresolvedReferences,PyPackageRequirements
-from core.models import Item
-from .forms import ServiceCreationForm
-from .forms import AddingOrderItemForm
+
 from .forms import AddingItemForm
-from django.db.models import Q
+from .forms import AddingOrderItemForm
+from .forms import ServiceCreationForm
 from .models import Service
+from .models import Store
 
 
 def orders_details_view(request, *args, **kwargs):
@@ -22,6 +23,7 @@ def orders_details_view(request, *args, **kwargs):
         'order': order,
         'orderdetails': order.orderitem_set.all()
     }
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
@@ -171,11 +173,12 @@ def services_business_view(request):
 
     return render(request, 'business/services_business.html', context)
 
-def get_order_queryset(query= None):
-    queryset =[]
-    queires = query.split(" ")
-    for q in queires:
-        posts = Order.objects.filter(Q(user__username__icontains =q)|Q(id__icontains=q)).distinct()
+
+def get_order_queryset(query=None):
+    queryset = []
+    queries = query.split(" ")
+    for q in queries:
+        posts = Order.objects.filter(Q(user__username__icontains=q) | Q(id__icontains=q)).distinct()
         for post in posts:
             queryset.append(post)
     return list(set(queryset))

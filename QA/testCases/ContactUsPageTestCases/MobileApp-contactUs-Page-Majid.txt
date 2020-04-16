@@ -1,0 +1,24 @@
+Project name  Alora
+Module name  mobile App contact page
+created date  4/9/2020
+reviewd by    Qa Team
+test date     4/14/2020
+
+
+                                                                                                        contact page
+
+
+Test ID                             Test Case Discription                                    Pre-Condition                                    Test Steps                               Test Data                            Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check response on drop down menu                         company drop down menu should be activated                select compnay                           Bloomfield                           select given company                          Pass
+
+Ts_Alora_02                check response on the comments section                                enter the response on comments                 type response                                                       A                                                           one letter comments should not be admited              Fail                                          
+
+
+
+
+    
+              Remarks: In comments section minimum characters should not be less than 16, but system  accept only one letter without any warning.
+
+              Bugzilla   bug ID # 56

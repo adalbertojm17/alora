@@ -10,6 +10,22 @@
 
 <body>
 {% block content %}
+     <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Navigate using the navigation bar on the left.</p>
+              <p> Click "Current Orders" to view and search orders that have not been completed.</p>
+              <p> Click "Order History" to view and search all company orders. </p>
+              <p> Click "View Services" to add and manage your company services.</p>
+              <p> Click "View Account" to edit and manage your account information.</p>
+              <p> Click "Logout" to sign out of your account.</p>
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
 
     <div class="indexpage">
     <div class="content">
@@ -18,4 +34,9 @@
     </div>
     </div>
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
 </body>

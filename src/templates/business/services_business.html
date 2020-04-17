@@ -49,7 +49,7 @@
                     <form method="post" >
                     {% csrf_token %}
                     {{ form.as_p }}
-                     <button id="addbutton" type="submit">Create</button>
+                     <button name="submit1" id="addbutton" type="submit">Create</button>
                     </form>
                 </div>
 
@@ -58,7 +58,7 @@
                     <form method="post" >
                     {% csrf_token %}
                     {{ form2.as_p }}
-                     <button id="addbutton" type="submit">Add</button>
+                     <button name="submit2" id="addbutton" type="submit">Add</button>
                     </form>
                 </div>
 

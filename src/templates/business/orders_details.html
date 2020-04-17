@@ -74,7 +74,7 @@
             <form method="post" >
                 {% csrf_token %}
                 {{ form.as_p }}
-                 <button id="addbutton" type="submit">Add</button>
+                 <button name="button1" id="addbutton" type="submit">Add</button>
             </form>
         </div>
 
@@ -91,7 +91,7 @@
                      <option value="ER"> Enroute</option>
                      <option value="D"> Delivered</option>
                  </select>
-                <button id="addbutton"  type="submit">Update</button>
+                <button name="button2" id="addbutton"  type="submit">Update</button>
             </form>
              </div>
          </div>

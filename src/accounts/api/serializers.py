@@ -4,7 +4,7 @@ from rest_framework.serializers import (
     CharField,
     EmailField,
     ModelSerializer,
-    ValidationError
+    ValidationError, Serializer
 )
 
 User = get_user_model()
@@ -66,7 +66,6 @@ class UserCreateSerializer(ModelSerializer):
 
 
 class UserProfileSerializer(ModelSerializer):
-
     class Meta:
         model = User
         fields = '__all__'
@@ -109,3 +108,30 @@ class UserLoginSerializer(ModelSerializer):
                 raise ValidationError("Incorrect credentials, please try again.")
 
         return data
+
+
+class ChangePasswordSerializer(Serializer):
+    model = User
+
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = CharField(required=True)
+    new_password = CharField(required=True)
+    new_password2 = CharField(required=True)
+
+    def validate_new_password(self, value):
+        data = self.get_initial()
+        password1 = data.get('password2')
+        password2 = value
+        if password1 != password2:
+            raise ValidationError('Passwords must match')
+        return value
+
+    def validate_new_password2(self, value):
+        data = self.get_initial()
+        password1 = data.get('password')
+        password2 = value
+        if password1 != password2:
+            raise ValidationError('Passwords must match')
+        return value

@@ -1,5 +1,5 @@
 from cities_light.models import Region
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView
@@ -22,12 +22,13 @@ class CreateOrderAPIView(CreateAPIView):
 
 
 class DisplayOrderAPIView(ListAPIView):
-    authentication_classes = [TokenAuthentication]
+    authentication_classes = [SessionAuthentication]
     permission_classes = [IsOwner]
     serializer_class = OrderSerializer
 
-    def get(self, request, *args, **kwargs):
-        return Order.objects.all().filter(user_id=request.user.id)
+    def get_queryset(self):
+        user = self.request.user
+        return Order.objects.all().filter(user_id=user.id)
 
 
 class RegionListAPIView(ListAPIView):

@@ -18,7 +18,6 @@ def orders_details_view(request, *args, **kwargs):
     form = AddingOrderItemForm
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
-    print(request.POST.get('status'))
     my_context = {
         'order': order,
         'orderdetails': order.orderitem_set.all()
@@ -57,14 +56,18 @@ def staffhome_view(request, *args, **kwargs):
 def current_orders_view(request, *args, **kwargs):
 
     my_context = {
-        'orders': Order.objects.all()
+        'orders':  Order.objects.all().filter(store =Store.objects.get(manager= request.user))
     }
     query = " "
+    SearchOrder = []
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
+        SearchOrder = []
+    for order in get_order_queryset(query):
+        if (order.store == Store.objects.get(manager= request.user)):
+            SearchOrder.append(order)
 
-    SearchOrder = get_order_queryset(query)
     my_context['SearchOrder'] =SearchOrder
 
     if not request.user.is_authenticated:
@@ -94,13 +97,19 @@ def staff_view(request, *args, **kwargs):
 
 def store_orderhistory_view(request, *args, **kwargs):
     my_context = {
-        'orders': Order.objects.all()
+        'orders': Order.objects.all().filter(store =Store.objects.get(manager= request.user))
     }
+
     query = " "
+    SearchOrder = []
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
-    SearchOrder = get_order_queryset(query)
+        SearchOrder = []
+    for order in get_order_queryset(query):
+        if (order.store == Store.objects.get(manager=request.user)):
+            SearchOrder.append(order)
+
     my_context['SearchOrder'] = SearchOrder
 
     if not request.user.is_authenticated:
@@ -129,6 +138,7 @@ def services_view(request):
     items = []
     for service in services:
         items.append(Item.objects.all().filter(services=service))
+
     my_context['itemsQuery'] = items
     my_context['services'] = services
     return render(request, 'services.html', my_context)
@@ -166,6 +176,7 @@ def services_business_view(request):
             form2 = AddingItemForm(user=request.user)
 
     else:
+        print("p")
         form2 = AddingItemForm(user=request.user)
 
     context ['form2']=form2

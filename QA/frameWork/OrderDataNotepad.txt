@@ -1,0 +1,2 @@
+UserName|Password|StoreName|Street|APTSuite|City|State|ZipCode|DateTime
+majidmasood|Pass@123|Rust-eze|Bay Street|Suite|MA|Guam|07009|Wed Apr 15, 2020 1:15 pm

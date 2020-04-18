@@ -92,6 +92,7 @@ class ChangePasswordAPIView(UpdateAPIView):
     An endpoint for changing password.
     """
     serializer_class = ChangePasswordSerializer
+    authentication_classes = [TokenAuthentication]
     model = User
 
     def get_object(self, queryset=None):

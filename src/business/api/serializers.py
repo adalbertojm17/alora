@@ -8,9 +8,10 @@ from ..models import Store
 
 
 class ServiceDetailSerializer(ModelSerializer):
+
     class Meta:
         model = Service
-        fields = '__all__'
+        fields = ('id', 'name', 'store')
 
 
 class StoreSerializer(ModelSerializer):

@@ -1,18 +1,16 @@
 from cities_light.models import Region
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView
 )
-from rest_framework.permissions import (
-    IsAuthenticated, AllowAny)
 from rest_framework.response import Response
 
 from .permissions import IsOwner
 from .serializers import (
-    OrderSerializer, RegionSerializer
+    OrderSerializer, RegionSerializer, ItemSerializer
 )
-from ..models import Order
+from ..models import Order, Item
 
 
 class CreateOrderAPIView(CreateAPIView):
@@ -21,8 +19,14 @@ class CreateOrderAPIView(CreateAPIView):
     queryset = Order.objects.all()
 
 
+class ItemListAPIView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
+    queryset = Item.objects.all().order_by('name')
+    serializer_class = ItemSerializer
+
+
 class DisplayOrderAPIView(ListAPIView):
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsOwner]
     serializer_class = OrderSerializer
 
@@ -43,4 +47,3 @@ class RegionListAPIView(ListAPIView):
     def list(self, request, *args, **kwargs):
         serializer = self.get_serializer(self.object_list, many=True)
         return Response({'data': serializer.data})
-

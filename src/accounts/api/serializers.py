@@ -116,13 +116,20 @@ class ChangePasswordSerializer(Serializer):
     """
     Serializer for password change endpoint.
     """
-    old_password = CharField(required=True)
-    new_password = CharField(required=True)
-    new_password2 = CharField(required=True)
+    old_password = CharField(
+        required=True
+    )
+    new_password = CharField(
+        required=True
+    )
+    new_password2 = CharField(
+        label='Confirm Password',
+        required=True
+    )
 
     def validate_new_password(self, value):
         data = self.get_initial()
-        password1 = data.get('password2')
+        password1 = data.get('new_password2')
         password2 = value
         if password1 != password2:
             raise ValidationError('Passwords must match')
@@ -130,7 +137,7 @@ class ChangePasswordSerializer(Serializer):
 
     def validate_new_password2(self, value):
         data = self.get_initial()
-        password1 = data.get('password')
+        password1 = data.get('new_password')
         password2 = value
         if password1 != password2:
             raise ValidationError('Passwords must match')

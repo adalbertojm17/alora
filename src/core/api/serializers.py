@@ -1,15 +1,18 @@
 # noinspection PyUnresolvedReferences
-from accounts.models import Account
-# noinspection PyUnresolvedReferences
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.models import Service, Store
-# noinspection PyUnresolvedReferences,PyPackageRequirements
 from cities_light.models import Region
+# noinspection PyUnresolvedReferences,PyPackageRequirements
+from core.models import Item
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
 from rest_framework.serializers import (
     ModelSerializer
 )
+
+# noinspection PyUnresolvedReferences
+from business.api.serializers import ServiceDetailSerializer
 
 
 class AddressSerializer(ModelSerializer):
@@ -33,7 +36,7 @@ class OrderSerializer(ModelSerializer):
         model = Order
         fields = (
             'pickup_location', 'dropoff_location', 'store',
-            'user', 'pickup_at', 'dropoff_at'
+            'user', 'pickup_at', 'current_status', 'dropoff_at', 'created_at'
         )
 
     def _user(self, obj):
@@ -61,3 +64,11 @@ class RegionSerializer(ModelSerializer):
     class Meta:
         model = Region
         fields = '__all__'
+
+
+class ItemSerializer(ModelSerializer):
+    services = ServiceDetailSerializer()
+
+    class Meta:
+        model = Item
+        fields = ('id', 'name', 'services', 'price')

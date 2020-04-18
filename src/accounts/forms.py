@@ -166,7 +166,7 @@ class AccountAuthenticationForm(forms.ModelForm):
 
 
 class AccountForm(forms.ModelForm):
-    required_css_class = 'required'
+    required_css_class = 'required',
     first_name = forms.CharField(
         max_length=50,
         label=mark_safe('First Name<br />'),

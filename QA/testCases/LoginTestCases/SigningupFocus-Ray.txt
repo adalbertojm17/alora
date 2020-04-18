@@ -1,0 +1,11 @@
+Signing Up (Account)
+
+Steps
+Step 1: User selects tab "sign in" option
+Step 2: user selects sign up option
+Step 3: user is directed to sign page
+
+Expected Results: When you go into sign up page, the focus is automatically on the username field when it should prioritize and focus on the first field which is first name
+
+Actual Results: When user is directed to sign up page, the focus begins to start on the username field which is not the first field when it comes to signing up.
+

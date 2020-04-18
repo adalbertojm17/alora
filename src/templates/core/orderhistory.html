@@ -33,17 +33,17 @@
             <table class="customerOrdersTable">
 
                 <tr>
-                    <th>Order #</th>
-                    <th> Name</th>
+                    <th> Order #</th>
+                    <th> Date / Time </th>
                     <th> Status</th>
                 </tr>
 
                 {% for order in core %}
                     {% if request.user.id == order.user_id %}
                         <tr>
-                            <td>{{ order.pk }}</td>
-                            <td><a href=/customer-details/?order={{ order.id }}> {{ order }} </a></td>
-                            <td> {{ order.current_status}} </td>
+                            <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
+                            <td>{{ order.created_at}}</td>
+                            <td>{{ order.current_status}} </td>
                         </tr>
                     {% endif %}
                 {% endfor %}

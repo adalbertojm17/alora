@@ -1102,7 +1102,7 @@ button:disabled:hover{
 .popup .popuptext {
   visibility: hidden;
   width: 250px;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, .8);
   color: #fff;
   text-align: left;
   border-radius: 6px;

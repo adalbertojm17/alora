@@ -10,6 +10,21 @@
 
 <body>
 {% block content %}
+
+     <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Welcome to General Information!</p>
+              <p> Learn more about how to navigate this website.</p>
+              <p> Tracking: </p>
+              <p> Learn more about our order statuses and what they mean. </p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
     <div class="content">
         <div class="generalbackground">
             <h1 id="h1generalinfo">General Information</h1>
@@ -80,5 +95,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

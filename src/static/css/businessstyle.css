@@ -68,7 +68,6 @@ body {
 }
 
 .generalbackground{
-    background-image: url('../images/background4.jpg') ;
     background-size: cover;
     height:200px;
 }
@@ -472,7 +471,7 @@ input[type=text], input[type=number]{
 .popup .popuptext {
   visibility: hidden;
   width: 250px;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, .8);
   color: #fff;
   text-align: left;
   border-radius: 6px;

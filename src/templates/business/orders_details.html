@@ -10,13 +10,49 @@
 </head>
 <body>
 {% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext"  style="width:500px" id="myPopup">
+
+              <p> Welcome to Order Details</p>
+              <p> View the order details of an order.</p>
+              <p> To add add item: </p>
+              <p> <ol>
+                        <li> Click the "Add Item" button at the top of the page or scroll down to the add item
+                        feature.</li>
+                        <li> In the section labeled "Add Items to Order":</li>
+                        <li> Click the drop down field labeled "Item" to choose the item your will like to add.</li>
+                        <li> Click the drop down labeled "Order" to select to order to add to. </li>
+                        <li> In the field labeled "Quantity" type the quantity of the item you will like
+                            to add or use the up and down buttons on the right side of the field to increase or
+                            decease the quantity.</li>
+                        <li> Click "add" to add the item to the order.</li>
+                  </ol>
+              </p>
+
+              <p> To change the order status: </p>
+              <p> <ol>
+                        <li> Click the "Update Status" button at the top of the page or scroll down to the add item
+                        feature.</li>
+                        <li> In the section labeled "Update Status" in order details:</li>
+                        <li> Click the drop down field labeled "New Status" to choose the status you would like change the order to.</li>
+                        <li> Click "update" to update the status of the order.</li>
+                 </ol>
+              <hr>
+          </span>
+        </div>
+    </div>
+
     <div class="detailspage">
         <div class="detailscontent">
 
         <h1> Order Details </h1>
             <div class="additem" >
-            <p><a href="#contentadd">Add Item</a> </p>
+                 <p><a href="#contentadd">Add Item</a> </p>
+                 <p><a href="#contentadd">Change Status</a> </p>
             </div>
+
 
             <table class="orderDetailsTable">
                 <tr>
@@ -83,7 +119,7 @@
             <form method="post">
                 {% csrf_token %}
                  <select id="status" name="status" >
-                     <option value=""> ------</option>
+                     <option value="" disabled selected hidden>New Status</option>
                      <option value="P"> Processed</option>
                      <option value="PU"> Picked up</option>
                      <option value="CL"> Cleaning</option>
@@ -97,5 +133,10 @@
          </div>
      </div>
 {% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
 </body>
 </html>

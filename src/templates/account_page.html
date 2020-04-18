@@ -15,12 +15,13 @@
 <body>
 {% block content %}
 
+    {% if user.is_manager != True %}
     <div class="moveright">
         <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
           <span class="popuptext" id="myPopup">
 
                 <p> Click the "Edit" in order to make changes to your account information. </p>
-                <p> Click "Save" to save your changes. </p>
+                <p> Click "Save Changes" to save your changes. </p>
                 <p> Click "Order History" to view your order history. </p>
                 <p> Click "Change Password" to change your password. </p>
               <hr>
@@ -28,6 +29,21 @@
           </span>
         </div>
     </div>
+    {% else %}
+     <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+                <p> Click the "Edit" in order to make changes to your account information. </p>
+                <p> Click "Save Changes" to save your changes. </p>
+                <p> Click "Change Password" to change your password. </p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
+    {% endif %}
 
     <div class="accountpage">
     <div id="accountpage">

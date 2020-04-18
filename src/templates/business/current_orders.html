@@ -11,6 +11,25 @@
 <body>
 {% block content %}
 
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Welcome to Current Orders!</p>
+              <p> The table displays a list of your company's orders that have not been completed.</p>
+              <p> To search for an order:</p>
+              <p> <ol>
+                    <li> Click in search field labeled "Search order".</li>
+                    <li> Type in the desired order number or name of the order you would like to find.</li>
+                    <li> Press your enter key or click the search icon to search.</li>
+                  </ol>
+              </p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
     <div class="currentOrders">
         <div class="insidecurrent">
             <h1> Current Orders</h1>
@@ -64,5 +83,9 @@
             </table>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

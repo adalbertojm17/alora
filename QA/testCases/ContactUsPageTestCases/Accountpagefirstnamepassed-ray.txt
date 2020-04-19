@@ -17,3 +17,5 @@ user inputs password
 Expected Result: to deny numeric input.
 
 Actual Result: denied users first and last name, they are required to input only alphabetic.
+
+Test case: Passed

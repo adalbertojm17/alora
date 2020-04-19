@@ -1,10 +1,14 @@
-Order Now 
+Test Case: Order Now 
 version 0.1
 
 Steps: 
-Step 1: User logs into account --passed
-Step 2: User clicks on nav bar, Order Now --passed
-Step 3: User selects quantity and is able to select the down arrow and have negative amount of quantities. --Failed
+User logs in
+User selects on order Now page
+
+Data
+User selects quantity: -1
+input pick up date/time and drop off date/time
+
 
 Expected Results: User should not be able to have negative amount of quantities(items) .
 

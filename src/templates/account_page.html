@@ -93,12 +93,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#buttonstandard").prop('disabled',true)
             $('.toggleenabled').prop('disabled', true);
             $(".toggleenabled").addClass("disabledfield");
 
 
             $('#editbutton').click(function () {
                 // noinspection JSJQueryEfficiency
+                    if ($("#buttonstandard").prop('disabled')){
+                        $("#buttonstandard").prop('disabled',false)
+                    }
+                    else{
+                         $("#buttonstandard").prop('disabled',true)
+                    }
                 if ($('.toggleenabled').prop('disabled')) {
                     $('.toggleenabled').prop('disabled', false);
                     $(".toggleenabled").removeClass("disabledfield");

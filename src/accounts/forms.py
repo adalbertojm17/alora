@@ -120,7 +120,11 @@ class UserAddressForm(forms.ModelForm):
         label='',
         required=False,
         max_length=50,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite'})
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
+            'title': ' alphanumeric '
+                     'characters '
+                     'only '
+                     'please'})
 
     )
     city = forms.CharField(

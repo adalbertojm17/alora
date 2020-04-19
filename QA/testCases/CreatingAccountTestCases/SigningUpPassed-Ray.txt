@@ -15,4 +15,6 @@ Step 6: confirmation password: iknowbecause
 
 Expected Reults: Fail to login because the password did not include these characters- underscores,one numerical character(0-9), uppercase(A-Z), at least one special character(^!@&%$*)..
 
-Actual Result: Directed to the Main page.
+Actual Results: Denied user, informs user to input at least a numeric(0-9), uppercase(A-Z), at least one special character (^!@$#*)
+
+Test Case: Passed

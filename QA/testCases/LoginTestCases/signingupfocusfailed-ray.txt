@@ -18,3 +18,4 @@ Expected Results: When you go into sign up page, the focus is automatically on t
 
 Actual Results: When user is directed to sign up page, the focus begins to start on the username field which is not the first field when it comes to signing up.
 
+test case: Failed

@@ -70,9 +70,13 @@
                 <tr>
                     <th> Items</th>
                     <td>{% for details in orderdetails %}
-                        Item:{{ details.service }} Quantity: {{ details.quantity }}
+                        Item:{{ details.item.name }}, Quantity: {{ details.quantity }}, Price:${{ details.item.price }}
                         <br>
                     {% endfor %}</td>
+                </tr>
+            <tr>
+                    <th> Price </th>
+                    <td>${{ price }}</td>
                 </tr>
             </table>
         </div>

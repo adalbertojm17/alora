@@ -18,9 +18,14 @@ def orders_details_view(request, *args, **kwargs):
     form = AddingOrderItemForm
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
+    price =0
+    for items in  order.orderitem_set.all():
+        price = price + items.quantity*items.item.price
+
     my_context = {
         'order': order,
-        'orderdetails': order.orderitem_set.all()
+        'orderdetails': order.orderitem_set.all(),
+        'price':price
     }
 
     if not request.user.is_authenticated:

@@ -98,9 +98,13 @@
                 <tr>
                     <th> Items</th>
                     <td>{% for details in orderdetails %}
-                        Item:{{ details }}
+                        Item:{{ details }} , ${{ details.item.price }}
                         <br>
                     {% endfor %}</td>
+                </tr>
+            <tr>
+                    <th> Price </th>
+                    <td>${{ price }}</td>
                 </tr>
             </table>
 

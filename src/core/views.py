@@ -105,13 +105,13 @@ def orderhistory_view(request, *args, **kwargs):
         query = request.GET['q']
         my_context['query'] = query
         SearchOrder = []
-    for order in get_order_queryset(query):
-        if (order.user == request.user):
-            SearchOrder.append(order)
-
+        for order in get_order_queryset(query):
+         if (order.user == request.user):
+                SearchOrder.append(order)
+        my_context['SearchOrder'] = SearchOrder
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
-    my_context['SearchOrder'] = SearchOrder
+
     my_context ["core"]= customer_orders
     my_context["address"]= addresses
     my_context ["user"]= user
@@ -164,10 +164,14 @@ def customer_details_view(request, *args, **kwargs):
 
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
+    price =0
+    for items in order.orderitem_set.all():
+        price = price + items.quantity * items.item.price
 
     my_context = {
         'order': order,
-        'orderdetails': order.orderitem_set.all()
+        'orderdetails': order.orderitem_set.all(),
+        'price': price
     }
     return render(request, "core/customer_order_details.html", my_context)
 

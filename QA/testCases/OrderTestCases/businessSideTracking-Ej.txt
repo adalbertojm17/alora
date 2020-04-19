@@ -1,0 +1,18 @@
+Test Case: Update Tracking Status
+
+Steps: 
+1.Login into business account
+2.Click "Order History"
+3.Click on item name
+3.Click add item
+4.Change Tracking Status
+
+Data:
+Login - Admin1, P@ssword12
+Service Name - "Cafeteria"
+Tracking Update - Picked up
+
+Expected: To update Tracking
+Actual results: update worked
+
+Test Case: Passed

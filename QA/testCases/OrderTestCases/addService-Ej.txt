@@ -1,0 +1,17 @@
+Test Case: Add Service
+
+Steps: 
+1.Login into business account
+2.Click "View Services"
+3.Enter data to be used
+4.Click add
+
+Data:
+Login - Admin1, P@ssword12
+Service Name - "Cafeteria"
+New Item - "Chips","Cafeteria",".50"
+
+Expected: To register new table called "Cafeteria" with one item "Chips"
+Actual results: did just as expected
+
+Test Case: Pass

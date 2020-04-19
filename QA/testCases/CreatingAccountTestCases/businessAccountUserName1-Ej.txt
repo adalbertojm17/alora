@@ -1,0 +1,17 @@
+Test Case: Business Account User Name Update
+
+Steps: 
+1.Login into business account
+2.Click "View Account"
+3.Click on Edit Profile
+3.Change User name
+4.Click Save
+
+Data:
+Login - Admin1, P@ssword12
+User Name - "admi"
+
+Expected: To deny 4 character input
+Actual results: saved
+
+Test Case: Failed

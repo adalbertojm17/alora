@@ -1,0 +1,16 @@
+Test Case: Order Now
+
+Steps
+Step 1: User logs in 
+Step 2: selects services on navigation bar 
+
+Data:
+User selects find prices 
+user selects company: Big Bakery
+
+Expected results: User should be able to see an option to select a company to choose from and see prices
+
+Actual Results: user is able to select a store and able to able to see different prices for that specific company
+
+Test Case: Passed
+

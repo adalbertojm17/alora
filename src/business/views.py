@@ -137,17 +137,16 @@ def services_view(request):
     my_context = {}
     stores = Store.objects.all()
     my_context['stores'] = stores
-
-    SerchStore = request.GET.get('company')
-    print(SerchStore)
-    if SerchStore !="":
-        services =Service.objects.all().filter(store__name=SerchStore)
-        items = []
-        for service in services:
+    if request.GET:
+        SerchStore = request.GET.get('company')
+        if SerchStore !="":
+         services =Service.objects.all().filter(store__name=SerchStore)
+         items = []
+         for service in services:
              items.append(Item.objects.all().filter(services=service))
-        my_context['itemsQuery'] = items
-        my_context['services'] = services
-        my_context['company'] = Store.objects.get(name=SerchStore)
+         my_context['itemsQuery'] = items
+         my_context['services'] = services
+         my_context['company'] = Store.objects.get(name=SerchStore)
     return render(request, 'services.html', my_context)
 
 

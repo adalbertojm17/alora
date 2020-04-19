@@ -1,0 +1,9 @@
+Test Case: Search order history
+Steps:
+1. navigate towards "current orders"
+2. enter number/name -"Admin1"
+
+Expected Results: To display all orders pertaining towards "Admin1"
+Actual Results: as expected, displays all 
+
+Testcase: Pass

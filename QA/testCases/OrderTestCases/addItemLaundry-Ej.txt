@@ -1,0 +1,15 @@
+Test Case: Add Items to Laundry Side
+
+Steps: 
+1.log into business account
+2.navigate to "View services"
+3.insert data into "add item Section"
+
+Data:
+Account - admin1, P@ssword12
+Add Item - "Shirts", "Laundry", "7.00"
+
+Expected Results: to register new item(s)
+Actual Results: exactly what it was intended to do
+
+Test Case: Pass

@@ -1,0 +1,9 @@
+Test Case: Search order
+Steps:
+1. navigate towards "current orders"
+2. enter number/name "Admin1"
+
+Expected Results: To display all orders pertaining to that customer 
+Actual Results: as expected, shows all
+
+Testcase: Pass

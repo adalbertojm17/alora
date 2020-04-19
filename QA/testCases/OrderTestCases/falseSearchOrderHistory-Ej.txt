@@ -1,0 +1,9 @@
+Test Case: Search order history
+Steps:
+1. navigate towards "current orders"
+2. enter false number/name -"3", "Micheal"
+
+Expected Results: To not display any order history 
+Actual Results: as expected, does not show any orders 
+
+Testcase: Pass

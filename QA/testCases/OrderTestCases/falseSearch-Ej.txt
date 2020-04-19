@@ -1,0 +1,9 @@
+Test Case: Search order
+Steps:
+1. navigate towards "current orders"
+2. enter  false number/name -"2" , "Eddie"
+
+Expected Results: To not display any orders pertaining to the name/order
+Actual Results: as expected, does not show any orders 
+
+Testcase: Pass

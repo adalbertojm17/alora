@@ -1,0 +1,12 @@
+Services Page
+
+Steps
+
+Step 1: User logs in --passed
+Step 2: User selects on services on the navigation bar --passed
+Step 3: User selects on find cases --passed
+Step 4: User selects on company tab --failed
+
+Expected results: When users selects on company tab, there should be multiple stores displaying to the user various stores and locations where Alora provides our services
+
+Actual Results: Nothing displays to the user to select a company

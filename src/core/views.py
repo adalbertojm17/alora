@@ -11,6 +11,7 @@ from formtools.wizard.views import SessionWizardView
 from alora import settings
 from .forms import DropOffForm, PickupForm, StoreForm
 from .models import Order
+from business.views import get_order_queryset
 
 FORMS = [
     ("store", StoreForm),
@@ -96,12 +97,25 @@ class OrderWizard(SessionWizardView):
 
 # view for user to monitor their order history
 def orderhistory_view(request, *args, **kwargs):
+    my_context = {}
     user = request.user
     if not user.is_authenticated:
         return redirect('login')
+    if request.GET:
+        query = request.GET['q']
+        my_context['query'] = query
+        SearchOrder = []
+    for order in get_order_queryset(query):
+        if (order.user == request.user):
+            SearchOrder.append(order)
+
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
-    my_context = {"core": customer_orders, "address": addresses, "user": user}
+    my_context['SearchOrder'] = SearchOrder
+    my_context ["core"]= customer_orders
+    my_context["address"]= addresses
+    my_context ["user"]= user
+
     return render(request, "core/orderhistory.html", my_context)
 
 

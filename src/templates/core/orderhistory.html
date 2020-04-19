@@ -33,6 +33,31 @@
             <h1 id="headinghistory"> Your Order History</h1>
 
 
+                <form id="searchbar" method="get">
+                    <input type="text" class="form-control" name="q"id="id_q" placeholder="search order"value="{{ query }}">
+                    <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
+                 height=30></button>
+                </form>
+            </div>
+            {% if query %}
+                <table class="customerOrdersTable">
+
+                <tr>
+                    <th> Order #</th>
+                    <th> Date / Time </th>
+                    <th> Status</th>
+                </tr>
+                {% for order in SearchOrder %}
+                    <tr>
+                            <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
+                            <td>{{ order.created_at}}</td>
+                            <td>{{ order.current_status}} </td>
+                        </tr>
+                {% endfor %}
+                </table>
+
+            {% endif %}
+
 
             <table class="customerOrdersTable">
 

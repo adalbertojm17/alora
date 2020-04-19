@@ -11,4 +11,7 @@ select tracking: item is in Order cleaning (3/6 process)
 
 Expected Results: "There are currently no orders in the tracking"
 
-Actual Results: Order has been put through three out of six stages of the tracking order process.
+Actual Results: no orders in process.
+
+Test case: Passed
+

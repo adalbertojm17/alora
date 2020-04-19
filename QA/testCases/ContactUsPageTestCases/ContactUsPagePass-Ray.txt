@@ -1,0 +1,14 @@
+Test case: Contact Us Page
+
+Steps
+Step 1: logs into account 
+step 2: selects Contact us navigation bar
+step 3: fills in require field
+
+Data:
+
+Expected Results: If user is already logged in and would like to submit a feedback, the user should not have to input their name or email
+
+Actual Results: User logs in, selects contact us and there is no requirement for the user to input their name or email, only fields that are required is choose store, enter a subject, and input feed back
+
+Test case: passed

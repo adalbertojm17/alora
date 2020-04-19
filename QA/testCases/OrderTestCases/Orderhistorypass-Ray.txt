@@ -1,0 +1,39 @@
+Test Case: Checking real time against the time i inputted
+
+Steps
+Step
+1. logs in
+2. Click "Order Now"
+3. Fill in schedule pick up date/time
+4. Fills in requirements for drop off date/time
+5. User clicks continue
+6. User selects home
+7. User selects view account
+8. User selects Order History
+9. clicks on "Name"
+
+Data
+user logs in
+Step 2: user inputs apt/suite --failed
+inputs city: lebron 
+inputs state hawaii
+User inputs zip code: 02900
+User selects schedule
+saturday April 18th, 2020 at 02:23AM
+User selects continue and directed to schedule drop off page
+inputs street: jfjfjfjfj
+inputs apt/suite: jf	
+inputs city: lebron
+inputs zip: 10029
+inputs on calander 
+Saturday April 18, 2020 02:34AM
+selects Home and select view account
+selects Order History
+selects name
+User is able to see pick up date/time and dropp off time --passed
+
+Expected results: When user selects on name on order history, user is directed to see their pick up date/time and drop off date/time
+
+Actual results: pick up date/time and drop off date/time and other fields are displayed for user to see their order history.
+
+Test Case: Passed

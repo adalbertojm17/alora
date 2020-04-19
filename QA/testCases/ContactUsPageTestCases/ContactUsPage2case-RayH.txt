@@ -1,0 +1,19 @@
+TEST CASE #4: Contact Us Page
+
+Steps
+Step 1: logs in
+Step 2: User selects on contact us 
+step 3: fills in required fields
+
+Data
+First name: Biggie
+Last name: kobe
+Email: biggie_2@gmail.com
+subject: im not sure
+feedback: Alora is a great website
+
+User has to fill in First/ last name and email to submit a feedback when already logged in
+
+Expected Result: because the user is already signed in the field should require store, subject and feedback.
+
+Actual Result: After filling in required information, when submitting feedback it crashes.

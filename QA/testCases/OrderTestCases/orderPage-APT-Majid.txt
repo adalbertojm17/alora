@@ -1,0 +1,21 @@
+Project name  Alora
+Module name   Order page
+created date  4/10/2020
+reviewd by    Qa Team
+test date     4/19/2020
+
+
+
+  
+          test case order page
+
+
+tesp Id
+
+Ts_Alora_01    Apt/Suite  field accept incomplete address
+
+Ts_Alora_02    APT/Suite   Field aceept only one letter without warning
+
+
+remarks : Field can accept only one letter without warning. it should give waring incomplete address
+   

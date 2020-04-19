@@ -13,4 +13,6 @@ Selects on search bar
 
 Expected Results: See all the stores and different services provided within the state selected.
 
-Actual Results: Displayed no Result
+Actual Results: Provides the different stores that provide our service
+
+Test case: Passed

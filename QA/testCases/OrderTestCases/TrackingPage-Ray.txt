@@ -1,4 +1,4 @@
-TEST CASE #2 Main Page
+TEST CASE #2 Order Now
 
 select place order: we are currently taking orders. please check back later -Passed
 

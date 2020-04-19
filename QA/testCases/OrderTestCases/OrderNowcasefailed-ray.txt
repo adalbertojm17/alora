@@ -17,3 +17,5 @@ Step 8: User is directed to schedule drop off time
 Expected Results: A notification should appear informing the user to input a valid current date. User should not be able to select any dates prior to the actual real time date.
 
 Actual Results: User is directed to a new page called Schedule a drop off time.
+
+Test case: Failed

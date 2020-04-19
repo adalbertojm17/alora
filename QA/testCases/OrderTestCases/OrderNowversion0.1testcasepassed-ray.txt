@@ -1,0 +1,18 @@
+Test Case: Order Now page 
+Version 0.1
+
+Steps
+User logs in 
+user selects order now on the navigation bar
+
+Data
+Step 1: User selects Order Now on the Navigation bar
+Step 2: User selects store: big bakery
+Step 3: user selects on continue bar and directed to schedule pick up date/time
+
+
+Expected Results: User should be able to fill in information in the required fields
+
+Actual Result: User is able to input information in the required field to place a pick up/date and time
+
+Test Case: Failed

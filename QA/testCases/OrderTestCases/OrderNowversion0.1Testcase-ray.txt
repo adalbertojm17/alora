@@ -1,12 +1,15 @@
-Order Now page Test Case
+Test Case: Order Now page 
 Version 0.1
 
 Steps
+User logs in 
+user selects order now on the navigation bar
 
-Step 1: user logs in -- passed
-Step 2: User selects Order Now on the Navigation bar --passed
-Step 3: User selects type: -- Failed
-Step 4: User attempts to input their name: --Failed
+Data
+Step 1: User selects Order Now on the Navigation bar
+Step 2: User selects type: dry clean
+Step 3: User attempts to input their name:
 
-Expected Results: User should be able to fill in those fields
+Expected Results: User should be able to fill in the field to input their first and last name
+
 Actual Result: User is not able to place in the fields, Type, or Name

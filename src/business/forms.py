@@ -32,6 +32,7 @@ class ServiceCreationForm(forms.ModelForm):
 
 class AddingOrderItemForm(forms.ModelForm):
     def __init__(self,user,order,*args, **kwargs):
+        self.order = order
         super(AddingOrderItemForm, self).__init__(*args, **kwargs)
         self.fields['item']=forms.ModelChoiceField(queryset=Item.objects.all().filter(services__store__manager=user))
         self.fields['order']= forms.ModelChoiceField(queryset=Order.objects.all().filter(id=order.id))
@@ -40,6 +41,14 @@ class AddingOrderItemForm(forms.ModelForm):
         model = OrderItem
         fields = '__all__'
 
+    def clean_item(self):
+        if self.is_valid():
+            item = self.cleaned_data["item"]
+            try:
+                OrderItem.objects.get(order = self.order,item=item)
+            except Item.DoesNotExist:
+                return item
+            raise forms.ValidationError('item "%s" is already in the order.' % item)
 
 
 class AddingItemForm(forms.ModelForm):

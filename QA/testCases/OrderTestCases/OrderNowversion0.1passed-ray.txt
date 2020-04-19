@@ -1,0 +1,17 @@
+Test Case: Order Now 
+version 0.1
+
+Steps: 
+User logs in
+User selects on order Now page
+
+Data
+User selects find prices: big bakery
+user selects search bar
+
+
+Expected Results: User should input a valid number of quantity.
+
+Actual Result: Business side handles the amount of quantity to avoid any deffects and user is able to see the prices for each item
+
+Test case: passed

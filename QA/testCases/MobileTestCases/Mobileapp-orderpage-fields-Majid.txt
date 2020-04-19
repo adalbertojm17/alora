@@ -1,0 +1,18 @@
+
+Project name  Alora
+Module name  mobile App contact page
+created date  4/9/2020
+reviewd by    Qa Team
+test date     4/19/2020
+
+          
+                                order page
+
+Ts_Alora_01    when you click on street and APT/Suite field it takes incomplete information
+
+Ts_Alora_02   order page take incomplete information
+
+
+ remarks: Order page take incomplete information
+  
+

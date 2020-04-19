@@ -25,3 +25,5 @@ user selects edit account
 Expected Results: When user selects edit account, the fields should also display the fields street and apt/suite and zip code and their city and their state because it is common people move from different state, move different housing location.
 
 Actual results: the fields that display to the user is first name, last name, phone number, email, and username.
+
+Test Case: Failed

@@ -1,0 +1,16 @@
+
+Project Name Alora
+Module Name  signup 
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/4/2020
+
+
+                  
+                            Mobile App signup 
+
+Ts_Alora_01   Signup page click on continue page..pass
+
+Ts_Alora_02   signup page accept invalid email......Fail
+
+Remarks:      signup page accept invalid email

@@ -1,0 +1,22 @@
+
+Project Name Alora
+Module Name  contact page
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/19/2020
+
+
+                                                                  contact Page
+
+
+Test_ID
+
+Ts_Alora_01    chose store option  unselected...............fail
+
+
+Ts_alora_02     accept subject option........pass
+
+Ts_alora_03       accept comments in comments box...pass 
+
+
+Remarks: System accepts subject and comments without accepting store option

@@ -1,0 +1,22 @@
+Steps
+Step 1: user logs in
+Step 2: user inputs apt/suite --failed
+Step 3: user inputs city: lebron 
+Step 4: User inputs state hawaii
+Step 5: User inputs zip code: 02900
+Step 6: User selects schedule
+
+Data:
+saturday April 18th, 2020 at 02:23AM
+Step 7: User selects continue and directed to schedule drop off page
+Step 8: user inputs street: jfjfjfjfj
+step 9: user inputs apt/suite: jf	
+step 10: user inputs city: lebron
+step 11: user inputs zip: 10029
+step 12: user inputs on calander 
+Data:
+Saturday April 18, 2020 02:34AM
+
+Expected results: Notification notifying customer to select another date on the calander.
+
+Actual Results: Order is confirmed!

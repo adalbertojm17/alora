@@ -33,7 +33,12 @@ class PickupForm(forms.ModelForm):
         label='',
         required=False,
         max_length=50,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite'})
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
+            'title': ' alphanumeric '
+                     'characters '
+                     'only '
+                     'please'})
+
 
     )
     city = forms.CharField(
@@ -90,9 +95,12 @@ class DropOffForm(forms.ModelForm):
     apt = forms.CharField(
         label='',
         required=False,
-        max_length=50,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite'})
-
+        max_length=30,
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
     )
     city = forms.CharField(
         label='',

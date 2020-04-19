@@ -12,6 +12,7 @@ from alora import settings
 from .forms import DropOffForm, PickupForm, StoreForm
 from .models import Order
 from business.views import get_order_queryset
+from django.db.models import Q
 
 FORMS = [
     ("store", StoreForm),
@@ -132,16 +133,28 @@ def orderconfirm_view(request, *args, **kwargs):
 
 # view to allow user to track the progress of their order
 def tracking_view(request, *args, **kwargs):
+    my_context ={}
+
     if not request.user.is_authenticated:
         return redirect("login")
     order_qs = Order.objects.all().filter(user=request.user)
     if not order_qs.exists():
         return redirect('no-order')
+    SearchOrder=None
+    if request.GET:
+        query = request.GET['q']
+        my_context['query'] = query
+
+        for order in tracking_search(query):
+            if order.user == request.user:
+                SearchOrder = order
+
+
 
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
     status = Order.current_status
-    my_context = {"core": customer_orders, "address": addresses, "status": status}
+    my_context = {"core": customer_orders, "address": addresses, "status": status, "SearchOrder":SearchOrder}
 
     return render(request, "core/tracking.html", my_context)
 
@@ -185,3 +198,12 @@ def vieworder_view(request, *args, **kwargs):
     addresses = Address.objects.all()
     my_context = {"core": customer_orders, "address": addresses}
     return render(request, "core/vieworder.html", my_context)
+
+def tracking_search(query=None):
+    queryset = []
+    queries = query.split(" ")
+    for q in queries:
+        posts = Order.objects.filter(Q(id__icontains=q)).distinct()
+        for post in posts:
+            queryset.append(post)
+    return list(set(queryset))

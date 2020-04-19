@@ -3,7 +3,7 @@
 <head>
 
     {% block styles %}
-        <title>Order Confirmation</title>
+        <title>Tracking</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
@@ -13,6 +13,11 @@
 {% block content %}
     <div class="container">
         <h1 id="trackh1"> Track Your Order </h1>
+        <form id="searchbar"  method="get">
+                        <input type="text" class="form-control" name="q"id="id_q" placeholder="search order..."value="{{ query }}">
+                        <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
+                        height=30></button>
+                    </form>
         <div id="stepProgressBar">
             <div class="step">
                 <p class="step-text"> Order processed </p>
@@ -54,44 +59,42 @@
         const bullets= [...document.querySelectorAll('.bullet')];
         var i;
 
-        {% for order in core %}
-            {% if request.user.id == order.user_id %}
-                {% if order.current_status != "C" %}
+                {% if SearchOrder.current_status != "C" %}
 
-                    {% if order.current_status == "P" %}
+                    {% if SearchOrder.current_status == "P" %}
                         const currentBullet= bullets[0];
                         currentBullet.classList.add('completed');
                     {% endif %}
 
-                    {% if order.current_status == "PU" %}
+                    {% if SearchOrder.current_status == "PU" %}
                         for(i=0; i<2;i++) {
                             const currentBullet = bullets[i];
                             currentBullet.classList.add('completed');
                         }
                     {% endif %}
 
-                    {% if order.current_status == "CL" %}
+                    {% if SearchOrder.current_status == "CL" %}
                          for(i=0; i<3;i++) {
                             const currentBullet = bullets[i];
                             currentBullet.classList.add('completed');
                         }
                     {% endif %}
 
-                    {% if order.current_status == "CP" %}
+                    {% if SearchOrder.current_status == "CP" %}
                         for(i=0; i<4;i++) {
                             const currentBullet = bullets[i];
                             currentBullet.classList.add('completed');
                         }
                     {% endif %}
 
-                    {% if order.current_status == "ER" %}
+                    {% if SearchOrder.current_status == "ER" %}
                          for(i=0; i<5;i++) {
                             const currentBullet = bullets[i];
                             currentBullet.classList.add('completed');
                         }
                     {% endif %}
 
-                    {% if order.current_status == "D" %}
+                    {% if SearchOrder.current_status == "D" %}
                          for(i=0; i<6;i++) {
                             const currentBullet = bullets[i];
                             currentBullet.classList.add('completed');
@@ -99,8 +102,8 @@
                     {% endif %}
 
                 {% endif %}
-            {% endif %}
-        {% endfor %}
+
+
 
     </script>
 {% endblock %}

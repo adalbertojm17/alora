@@ -21,3 +21,5 @@ Selects sign up tab
 Expected Results: Notification should appear notifying user to input a valid street name and city.
 
 Actual Results: user is Directed to the main page.
+
+Test case: Failed

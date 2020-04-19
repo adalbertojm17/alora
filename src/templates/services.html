@@ -62,8 +62,8 @@
             </div>
 
             <div class="servicespopup">
-                <h2 id="servicehead">Store: {{company.name}}</h2>
-                <P> Address: {{ company.address }}</P>
+                <h2 id="servicehead">{{company.name}}</h2>
+                <P> {{ company.address }}</P>
            {% for service in services %}
                 <h3 id="servicehead"> {{ service }} </h3>
                 <table class="servicestable">

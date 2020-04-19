@@ -6,8 +6,10 @@ step 2: user selects services on navigation bar
 
 Data
 selects company: Bloomfield 
-Selects search 
+Selects on continue bar
 
 Expected Results: when user selects company it should also display the address besides the location.
 
-Actual Results: Displays laundry and prices of items
+Actual Results: displays the name of the store and not the address
+
+Test Case Failed

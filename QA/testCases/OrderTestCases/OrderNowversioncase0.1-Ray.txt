@@ -1,11 +1,14 @@
-Order Now 
+Test Case: Order Now 
 version 0.1
 
 Steps: 
-Step 1: User logs into account --passed
-Step 2: User clicks on nav bar, Order Now --passed
-Step 3: User does not select any fields that are required, to create order and selects submit -- failed
+Step 1: user logs in
+Step 2: user selects Order Now on navigation bar
 
-Expected Results: Notification appears informing usering to fulfill all required fields in order to complete an order
+Data
+User select company: No company for user to select
+selects submit bar
+
+Expected Results: Different companies for user to select when selecting company for user to submit where they would like there service done and Notification appears informing user to fill in required fields in order to complete an order
 
 Result: System crashes

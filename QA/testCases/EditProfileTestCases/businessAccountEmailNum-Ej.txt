@@ -1,0 +1,17 @@
+Test Case: Business Account Email
+
+Steps: 
+1.Login into business account
+2.Click "View Account"
+3.Click on Edit Profile
+3.Change Email
+4.Click Save
+
+Data:
+Login - Admin1, P@ssword12
+Phone Number - "4564@"
+
+Expected: To deny numbers without "@mail.com"
+Actual results: denied
+
+Test Case: Passed

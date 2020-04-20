@@ -46,7 +46,7 @@ class AddingOrderItemForm(forms.ModelForm):
             item = self.cleaned_data["item"]
             try:
                 OrderItem.objects.get(order = self.order,item=item)
-            except Item.DoesNotExist:
+            except OrderItem.DoesNotExist:
                 return item
             raise forms.ValidationError('item "%s" is already in the order.' % item)
 
@@ -60,11 +60,12 @@ class AddingItemForm(forms.ModelForm):
         model = Item
         fields = '__all__'
 
-    def clean_name(self):
-        if self.is_valid():
-            name = self.cleaned_data["name"]
-            try:
-                Item.objects.get(services__store__manager=self.user, name=name)
-            except Item.DoesNotExist:
-                return name
-            raise forms.ValidationError('item "%s" is already in use.' % name)
+    def clean(self):
+        cleaned_data = super(AddingItemForm, self).clean()
+        name = cleaned_data.get("name")
+        service = cleaned_data.get("services")
+        try:
+             Item.objects.get(services__store__manager=self.user, name=name,services=service)
+        except Item.DoesNotExist:
+             return cleaned_data
+        raise forms.ValidationError('item "%s" is already in use.' % name)

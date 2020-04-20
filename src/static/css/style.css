@@ -42,6 +42,14 @@ h1, h2{
     height:1000px;
 }
 
+.trackingpage{
+    background-image: url('../images/orderbackground.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+    height:1000px;
+}
+
+
 .defaultpage{
     background-size: cover;
     padding-top:50px;
@@ -1026,9 +1034,58 @@ button:disabled:hover{
 	text-align: center;
 }
 
+/****** Search Form for Tracking *******/
+
+.searchpart2 {
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+#searchbar2 input[type=text] {
+    float:left;
+    width: 80%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart2 button {
+    float:right;
+    padding: 3px 7px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #FF5733;
+    border: 0px solid black;
+    border-radius: 5px;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart2 button:hover {
+    background: #FF9920;
+}
+
 .container{
-	max-width:800px;
-	margin: 150px auto 0 auto;
+    border: 0px solid black;
+    border-radius: 10px;
+    background-color:rgba(247,228,152,.8);
+	max-width:80%;
+	margin: 10px auto 0 auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.trackbar{
+    border: 3px solid #FF5733;
+    border-radius: 15px;
+    width: 70%;
+    margin: auto;
 }
 
 #stepProgressBar{
@@ -1077,6 +1134,7 @@ button:disabled:hover{
 	right: -115px;
 	bottom: 10px;
 }
+
 
 
 /*********************Tool tip *************************/

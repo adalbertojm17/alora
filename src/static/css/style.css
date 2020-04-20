@@ -322,7 +322,6 @@ input[type=text], input[type=email], input[type=password] {
     font-size: 80%;
 }
 
-
 #buttonmain {
     position: center;
     background-color: #FF5733;
@@ -336,6 +335,7 @@ input[type=text], input[type=email], input[type=password] {
     border-radius: 4px;
     padding: 1px;
 }
+
 
 #buttonmain p {
     text-align: center;
@@ -802,6 +802,18 @@ select{
 }
 
 /************* Customer order history Table CSS **************/
+
+#track{
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+    width: 20%;
+    margin-bottom: 30px;
+}
+#track a:hover{
+    color:#FF5733;
+}
+
 #headinghistory {
     text-align: center;
     margin: 25px;
@@ -1143,6 +1155,42 @@ button:disabled:hover{
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+/****** Search Form *******/
+
+.searchpart1 {
+    width: 23%;
+    margin-bottom: 50px;
+    margin-left:15%;
+    overflow: hidden;
+}
+
+#searchbar input[type=text] {
+    float:left;
+    width: 80%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart1 button {
+    float:right;
+    padding: 3px 7px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+}
+
+.searchpart1 button:hover {
+    background: #ccc;
+}
+
+
 /********************************Footer Css*************************************/
 
 .footer {

@@ -179,7 +179,8 @@ def services_business_view(request):
         form = ServiceCreationForm(request.user,request.POST)
         if form.is_valid():
             form.save()
-            form = ServiceCreationForm(user= request.user)
+            return HttpResponseRedirect('/services_business/')
+
     else:
         form = ServiceCreationForm(user=request.user)
 
@@ -189,7 +190,8 @@ def services_business_view(request):
         form2 = AddingItemForm(request.user,request.POST)
         if form2.is_valid():
             form2.save()
-            form2 = AddingItemForm(user=request.user)
+            return HttpResponseRedirect('/services_business/')
+
 
     else:
         form2 = AddingItemForm(user=request.user)

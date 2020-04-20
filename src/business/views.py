@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import AddingItemForm
 from .forms import AddingOrderItemForm
 from .forms import ServiceCreationForm
@@ -59,21 +59,25 @@ def staffhome_view(request, *args, **kwargs):
 
 
 def current_orders_view(request, *args, **kwargs):
+    try:
+        my_context = {
+            'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
+        }
+    except ObjectDoesNotExist:
+        return redirect('no_order')
 
-    my_context = {
-        'orders':  Order.objects.all().filter(store =Store.objects.get(manager= request.user))
-    }
-    query = " "
-    SearchOrder = []
+    if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
+        return redirect('no_order')
+
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
         SearchOrder = []
-    for order in get_order_queryset(query):
-        if (order.store == Store.objects.get(manager= request.user)):
-            SearchOrder.append(order)
+        for order in get_order_queryset(query):
+            if (order.store == Store.objects.get(manager= request.user)):
+                SearchOrder.append(order)
+        my_context['SearchOrder'] = SearchOrder
 
-    my_context['SearchOrder'] =SearchOrder
 
     if not request.user.is_authenticated:
         return redirect('login')
@@ -101,21 +105,24 @@ def staff_view(request, *args, **kwargs):
 
 
 def store_orderhistory_view(request, *args, **kwargs):
-    my_context = {
-        'orders': Order.objects.all().filter(store =Store.objects.get(manager= request.user))
-    }
+    try:
+        my_context = {
+            'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
+        }
+    except ObjectDoesNotExist:
+       return redirect('no_order')
 
-    query = " "
-    SearchOrder = []
+    if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
+        return redirect('no_order')
+
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
         SearchOrder = []
-    for order in get_order_queryset(query):
-        if (order.store == Store.objects.get(manager=request.user)):
-            SearchOrder.append(order)
-
-    my_context['SearchOrder'] = SearchOrder
+        for order in get_order_queryset(query):
+            if (order.store == Store.objects.get(manager=request.user)):
+                SearchOrder.append(order)
+                my_context['SearchOrder'] = SearchOrder
 
     if not request.user.is_authenticated:
         return redirect('login')
@@ -157,13 +164,16 @@ def load_service_view(request):
 
 def services_business_view(request):
     context = {}
-    store = Store.objects.get(manager= request.user)
-    services = Service.objects.all().filter(store= store)
-    items =[]
-    for service in services:
-        items.append(Item.objects.all().filter( services = service))
-    context['itemsQuery']=items
-    context['services']=services
+    try:
+        store = Store.objects.get(manager= request.user)
+        services = Service.objects.all().filter(store=store)
+        items = []
+        for service in services:
+            items.append(Item.objects.all().filter(services=service))
+        context['itemsQuery'] = items
+        context['services'] = services
+    except ObjectDoesNotExist:
+        store=[]
 
     if 'submit1'in request.POST:
         form = ServiceCreationForm(request.user,request.POST)
@@ -182,7 +192,6 @@ def services_business_view(request):
             form2 = AddingItemForm(user=request.user)
 
     else:
-        print("p")
         form2 = AddingItemForm(user=request.user)
 
     context ['form2']=form2
@@ -200,3 +209,6 @@ def get_order_queryset(query=None):
             queryset.append(post)
     return list(set(queryset))
 
+def no_order_view(request):
+
+    return render(request,'business/no_orders.html')

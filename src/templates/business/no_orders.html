@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'business/businessbase.html' %}
 {% load static %}
 <head>
     {% block styles %}
-        <title>Order Details</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>No orders</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
 </head>
@@ -15,22 +15,26 @@
         <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
           <span class="popuptext" id="myPopup">
 
-              <p> Welcome to Current Orders!</p>
-              <p> The table displays a list of your company's orders that have not been completed.</p>
-              <p> To search for an order:</p>
-              <p> <ol>
-                    <li> Click in search field labeled "Search order".</li>
-                    <li> Type in the desired order number or name of the order you would like to find.</li>
-                    <li> Press your enter key or click the search icon to search.</li>
-                  </ol>
-              </p>
+              <p> On Orders</p>
+              <p> Please contact Alora customer service if you have any questions.</p>
               <hr>
 
           </span>
         </div>
     </div>
 
-   <h1> no orders</h1>
+     <div class="noorders">
+        <div class=insideorder>
+
+           <h1> No Orders</h1>
+                <div class="confirm">
+                    <img src="{% static 'images/x.png' %}" alt="Logo" class="center" width=10
+                         height=150>
+                    <p> Your company currently has no orders.Please contact Alora customer service if you have any concerns.</p>
+                </div>
+
+        </div>
+     </div>
 
 {% endblock %}
 

@@ -208,6 +208,8 @@ td a{
     text-align: center;
 }
 
+
+
 /****** Table CSS ********/
 
 .currentOrdersTable {
@@ -513,7 +515,38 @@ input[type=text], input[type=number]{
   to {opacity:1 ;}
 }
 
+/* No Orders Pages */
 
+/******************* No order Page ****************************/
+
+.noorders {
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 1000px;
+}
+
+.insideorder {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.insideorder h1 {
+    text-align: center;
+}
+
+.confirm{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 150%;
+}
+
+.confirm p{
+     margin-bottom: 40px;
+}
 
 
 

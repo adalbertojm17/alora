@@ -11,5 +11,4 @@ urlpatterns = [
     path('', home_view, name="home"),
     path('main/', main_view, name="main"),
     path('about-us/', about_view, name="about"),
-
 ]

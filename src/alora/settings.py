@@ -201,3 +201,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
+
+ADMINS = [('admin', 'admin@aloralaundry.com', 'admin', 'admin'), ]

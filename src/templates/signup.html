@@ -18,11 +18,19 @@
 
 
     {% if wizard.steps.step1 == 1 %}
-    <div class="moveright">
-        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-          <span class="popuptext" style="width:350px" id="myPopup">
+        <div class="moveright">
+            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
+                                                           class="center" width=40 height=40>
+                <span class="popuptext" style="width:350px" id="myPopup">
 
-              <p> Sign Up</p>
+              <p>Sign Up</p>
+              <p>
+                  {% if wizard.steps.step1 == 1 %}
+                      Basic Information
+                  {% else %}
+                      Address Information
+                  {% endif %}
+              </p>
               <p> Enter your first name and last name in the appropriate fields. </p>
               <p> Enter your phone number. This is optional. e.g. 999-999-9999</p>
               <p> Enter your email address and confirm your email in the appropriate fields.
@@ -34,14 +42,15 @@
               <hr>
 
           </span>
+            </div>
         </div>
-    </div>
     {% endif %}
 
     {% if wizard.steps.step1 == 2 %}
         <div class="moveright">
-        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-          <span class="popuptext" style="width:350px" id="myPopup">
+            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
+                                                           class="center" width=40 height=40>
+                <span class="popuptext" style="width:350px" id="myPopup">
 
                 <p> Main Address</p>
                 <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
@@ -54,20 +63,39 @@
                 <hr>
 
           </span>
+            </div>
         </div>
-    </div>
-    {%endif %}
+    {% endif %}
 
     <div class="signuppage">
-    <div id="signup">
-        <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
-        <h1> Sign Up </h1>
-        <form method="post">{% csrf_token %}
-            {{ wizard.management_form }}
-            {% if wizard.form.forms %}
-                {{ wizard.form.management_form }}
-                {% for form in wizard.form.forms %}
-                    {% for field in form %}
+        <div id="signup">
+            <img id="signupicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
+            <h1> Sign Up </h1>
+            <h2>
+                {% if wizard.steps.step1 == 1 %}
+                    Basic Information
+                {% else %}
+                    Address Information
+                {% endif %}
+            </h2>
+            <form method="post">{% csrf_token %}
+                {{ wizard.management_form }}
+                {% if wizard.form.forms %}
+                    {{ wizard.form.management_form }}
+                    {% for form in wizard.form.forms %}
+                        {% for field in form %}
+                            <p>
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </p>
+                            <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
+                            {% for error in field.errors %}
+                                <p style="color: red;">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    {% for field in wizard.form %}
                         <p>
                             {{ field.label_tag }}
                             {{ field }}
@@ -77,35 +105,23 @@
                             <p style="color: red;">{{ error }}</p>
                         {% endfor %}
                     {% endfor %}
-                {% endfor %}
-            {% else %}
-                {% for field in wizard.form %}
-                    <p>
-                        {{ field.label_tag }}
-                        {{ field }}
-                    </p>
-                    <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
-                    {% for error in field.errors %}
-                        <p style="color: red;">{{ error }}</p>
-                    {% endfor %}
-                {% endfor %}
-            {% endif %}
-            {% if wizard.steps.prev %}
-                <button formnovalidate="formnovalidate" id="buttonstandard" name="wizard_goto_step" type="submit"
-                        value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
-            {% endif %}
-            <button id="buttonstandard" type="submit">{% trans "Continue" %}</button>
-        </form>
+                {% endif %}
+                {% if wizard.steps.prev %}
+                    <button formnovalidate="formnovalidate" id="buttonstandard" name="wizard_goto_step" type="submit"
+                            value="{{ wizard.steps.prev }}">{% trans "Back" %}</button>
+                {% endif %}
+                <button id="buttonstandard" type="submit">{% trans "Continue" %}</button>
+            </form>
 
 
-        <p><a href="" class="makesmall">By signing up you agree to our Terms &amp; Conditions </a></p>
-    </div>
+            <p><a href="" class="makesmall">By signing up you agree to our Terms &amp; Conditions </a></p>
+        </div>
 
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
     </div>
 {% endblock %}

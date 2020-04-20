@@ -35,7 +35,7 @@ class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
         fields = (
-            'pickup_location', 'dropoff_location', 'store',
+            'id', 'pickup_location', 'dropoff_location', 'store',
             'user', 'pickup_at', 'current_status', 'dropoff_at', 'created_at'
         )
 

@@ -26,7 +26,7 @@ pip-selfcheck.json
 
 # Generated files
 .idea/**/contentModel.xml
-.idea/
+.idea
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids

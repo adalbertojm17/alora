@@ -62,8 +62,21 @@
             </div>
 
             <div class="servicespopup">
-                <h2 id="servicehead">{{company.name}}</h2>
-                <P> {{ company.address }}</P>
+
+            <div>
+                <h3 id="servicehead"> Company Information</h3>
+                <table class="servicestable" >
+                    <tr>
+                        <th> Company Name</th>
+                        <td>{{company.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td> {{ company.address }}</td>
+                    </tr>
+                </table>
+            </div>
+
            {% for service in services %}
                 <h3 id="servicehead"> {{ service }} </h3>
                 <table class="servicestable">
@@ -72,7 +85,7 @@
                              <th> Price</th>
                          </tr>
 
-                    {%  for itemlist in itemsQuery %}
+                    {% for itemlist in itemsQuery %}
                         {% for item in itemlist %}
                             {% if item.services == service %}
                                 <tr>

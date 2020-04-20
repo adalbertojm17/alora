@@ -11,13 +11,36 @@
 
 <body>
 {% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+                <p> Track your Order! </p>
+                <p> Enter the order number of the order you will like to track in the field labeled "Order Number".</p>
+                <p> Press "Enter" on the key board or click the "track" icon to track your order.</p>
+
+              <hr>
+          </span>
+        </div>
+    </div>
+
+    <div class="trackingpage">
     <div class="container">
         <h1 id="trackh1"> Track Your Order </h1>
-        <form id="searchbar"  method="get">
-                        <input type="text" class="form-control" name="q"id="id_q" placeholder="search order..."value="{{ query }}">
-                        <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
-                        height=30></button>
-                    </form>
+
+        <div class="searchpart2">
+            <form id="searchbar2"  method="get">
+                <input type="text" class="form-control" name="q"id="id_q" placeholder="Order Number..."value="{{ query }}">
+                <button type="submit"><img id="=" src="{% static 'images/tracksearch.png' %}" alt="search" width=30 height=30></button>
+            </form>
+        </div>
+
+        {% if SearchOrder.current_status == "C" %}
+            <p id="ordercomplete"> Order is completed. </p>
+        {% endif %}
+
+        <div class="trackbar">
         <div id="stepProgressBar">
             <div class="step">
                 <p class="step-text"> Order processed </p>
@@ -50,11 +73,14 @@
             </div>
 
         </div>
-
+        </div>
     </div>
+    </div>
+
 {% endblock %}
 
 {% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
     <script type="text/javascript">
         const bullets= [...document.querySelectorAll('.bullet')];
         var i;

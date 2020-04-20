@@ -17,7 +17,12 @@
  {% if user.is_manager != True %}
 <header>
     <div id="navbar">
-        <img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70>
+
+        {% if  request.user.is_authenticated %}
+            <a href=/main/><img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70></a>
+        {% else %}
+            <a href="{% url 'home' %}"><img id="icon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=80 height=70></a>
+        {% endif %}
 
         <nav class="mainnav">
             <ul>

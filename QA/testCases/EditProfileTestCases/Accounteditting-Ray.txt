@@ -1,0 +1,13 @@
+Account Page
+
+Steps
+
+Step 1: User logs in
+Step 2: User selects view account
+
+Data
+user selects on the first field (first name) to begin changing their name 
+
+Expected resultls: When user selects on account and is directed on the account page, when the user selects on first name field, the notification should appear informing the user to select on Edit Account first in order to make any changes on their account information
+
+Actual Results: When user is directed to account page and selects on first name field to update information, No changes occur when user selects on first name field.

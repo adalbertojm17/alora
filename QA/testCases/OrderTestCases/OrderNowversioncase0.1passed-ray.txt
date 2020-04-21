@@ -1,0 +1,16 @@
+Test Case: Order Now 
+version 0.1
+
+Steps: 
+Step 1: user logs in
+Step 2: user selects Order Now on navigation bar
+
+Data
+User select company: Big bakery
+selects continue bar and direct to schedule pick up date/time
+
+Expected Results: Different companies for user to select when selecting company for user to submit where they would like there service done and Notification appears informing user to fill in required fields in order to complete an order
+
+Result: User has the option to select a store for user to place an schedule pick up date/time 
+
+Test Case: Passed

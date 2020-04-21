@@ -99,6 +99,7 @@
                     <th> Items</th>
                     <td>{% for details in orderdetails %}
                         Item:{{ details }} , ${{ details.item.price }}
+                        <a href="{% url 'delete_order_item_view' obj_id=details.id %}" >delete<i class="fa fa-trash"></i></a>
                         <br>
                     {% endfor %}</td>
                 </tr>

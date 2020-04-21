@@ -54,6 +54,7 @@
 
                 {% for service in services %}
                     <h3 class="shift"> {{ service }} </h3>
+            <a href="{% url 'delete_service_view' obj_id=service.id %}" >delete<i class="fa fa-trash"></i></a>
                         <table class="servicestable">
                              <tr>
                                  <th>Item</th>
@@ -64,7 +65,9 @@
                                 {% for item in itemlist %}
                                     {% if item.services == service %}
                                         <tr>
-                                            <td>{{item}}</td>
+                                            <td>{{item}}
+                                                <a href="{% url 'delete_item_view' obj_id=item.id %}" >delete<i class="fa fa-trash"></i></a>
+                                            </td>
                                             <td> $ {{ item.price }}</td>
                                          </tr>
                                     {% endif%}

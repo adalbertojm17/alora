@@ -1,4 +1,5 @@
 # noinspection PyUnresolvedReferences
+from django.conf.urls import url
 from business.views import (
     staffhome_view,
     current_orders_view,
@@ -9,6 +10,9 @@ from business.views import (
     orders_details_view,
     services_business_view,
     no_order_view,
+    delete_order_item_function,
+    delete_service_function,
+    delete_item_function,
 
 )
 from django.urls import path
@@ -27,7 +31,9 @@ urlpatterns = [
     path('services/', services_view, name="services"),
     path('ajax/load-names/', load_service_view, name='ajax_load_names'),
     path('services_business/', services_business_view, name="services_business"),
-    path('no_order/',no_order_view,name='no_order')
-
+    path('no_order/',no_order_view,name='no_order'),
+    url(r'^delete/service/(?P<obj_id>[0-9]+)/$', delete_service_function, name='delete_service_view'),
+    url(r'^delete/(?P<obj_id>[0-9]+)/$',delete_order_item_function, name='delete_order_item_view'),
+    url(r'^delete/item/(?P<obj_id>[0-9]+)/$',delete_item_function, name='delete_item_view'),
 
 ]

@@ -2,6 +2,7 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Item
 from core.models import Order
+from core.models import OrderItem
 from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
@@ -212,5 +213,22 @@ def get_order_queryset(query=None):
     return list(set(queryset))
 
 def no_order_view(request):
-
     return render(request,'business/no_orders.html')
+
+def delete_order_item_function(request,obj_id =None):
+    object = OrderItem.objects.get(id=obj_id)
+    id  = object.order.id
+    object.delete()
+    return HttpResponseRedirect('/order_details/?order='+str(id))
+
+def delete_service_function(request,obj_id=None):
+    object = Service.objects.get(id=obj_id)
+    object.delete()
+    return HttpResponseRedirect('/services_business/')
+
+def delete_item_function(request,obj_id=None):
+    object = Item.objects.get(id=obj_id)
+    object.delete()
+    return HttpResponseRedirect('/services_business/')
+
+

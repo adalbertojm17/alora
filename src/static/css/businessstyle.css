@@ -550,3 +550,42 @@ input[type=text], input[type=number]{
 
 
 
+/************** Feedback Page *****************/
+
+.feedbackpage{
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 800px;
+}
+
+.feedbackcontent{
+    width: 70%;
+    margin:auto;
+}
+
+.feedbackcontent h1{
+    text-align: center;
+}
+
+.feedbackTable {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.feedbackTable td, .feedbackTable th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.feedbackTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color:#FF9920;
+}
+
+
+

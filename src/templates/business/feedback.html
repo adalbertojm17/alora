@@ -1,0 +1,55 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>No orders</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Welcome to Feedback !</p>
+              <p> Alora allows your customer to get in contact with you.</p>
+              <p> See the messages your customers have submitted to you.</p>
+              <hr>
+          </span>
+        </div>
+    </div>
+
+    <div class="feedbackpage">
+        <div class="feedbackcontent">
+            <h1> Customer Feedback </h1>
+            <table class="feedbackTable">
+                <tr>
+                    <th>Feedback #</th>
+                    <th>Name</th>
+                    <th>Subject </th>
+                    <th>Message</th>
+                </tr>
+
+                {% for fb in feedback %}
+                    <tr>
+                        <td>{{ fb.pk }}</td>
+                        <td>{{ fb.user_id}}</td>
+                        <td> {{ fb.subject}} </td>
+                        <td> {{ fb.content}} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+</body>

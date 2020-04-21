@@ -1,11 +1,11 @@
 Test Case: Account
 
-Data
+Steps
 user selects on sign in tab
 user selects on sign up tab
-user is directed to the sign up page
+user is directed to the sign up page and focus begins on username
 
-Steps
+Data
 Step 1: user fills in username
 step 2: scrolls up  to fill in field first name
 step 3: user inputs field last name

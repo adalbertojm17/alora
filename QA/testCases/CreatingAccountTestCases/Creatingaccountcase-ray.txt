@@ -14,5 +14,5 @@ Username: Bry
 Password: iknowbecause 
 confirmation password: iknowbecause  
 
-Expected Reults: Fail to login because the password did not include these characters- underscores,one numerical character(0-9), uppercase(A-Z), at least one special character(^!@&%$*)..
+Expected Reults: Fail to signup because the password did not include these characters- underscores,one numerical character(0-9), uppercase(A-Z), at least one special character(^!@&%$*)..
 Actual Result: Directed to the Main page.

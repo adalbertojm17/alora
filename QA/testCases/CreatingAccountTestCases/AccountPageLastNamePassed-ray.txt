@@ -6,8 +6,8 @@ step 2: user selects sign up
 step 3: User fills in required fills in order to sign up
 
 Data
-inputs first name: 03984
-inputs last name: david
+inputs first name: david
+inputs last name: 03984
 Email: lulu@gmail.com
 reconfirms email: lulu@gmail.com
 inputs username: because

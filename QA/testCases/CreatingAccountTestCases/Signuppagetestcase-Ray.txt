@@ -6,9 +6,9 @@ step 2: user selects sign up
 step 3: User fills in required fills
 
 Data
-inputs first name: Capcap --passed
-inputs last name: colada --passed
-inputs Email address: seagrams@gmail.com --passed
+inputs first name: Capcap 
+inputs last name: colada 
+inputs Email address: seagrams@gmail.com
 confirm address: seagrams@gmail.com
 Password: Nysclub22 --passed
 Confirm password: Nysclub22 

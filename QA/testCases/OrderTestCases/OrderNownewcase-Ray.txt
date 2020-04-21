@@ -1,17 +1,17 @@
-Order Now Page
+Test Case: Order Now Page
 
 Steps
 Step 1: user logs in
-Step 2: user inputs apt/suite --failed
-Step 3: user inputs city: lebron 
-Step 4: User inputs state hawaii
-Step 5: User inputs zip code: 02900
-Step 6: User selects schedule
+Step 2: user selects Order Now
 
 Data:
+selects choose store: Dave's laundry
+selects continue bar
+
+
 saturday April 18th, 2020 at 02:23AM
 Step 7: User selects continue and directed to schedule drop off page
 
-Expected Results: The calander should compare witht the users real time and date to the time and date the user inputs which is currently ( 02:31Am, 04/19/2020) and notify the user they cannot select a time that already passed
+Expected Results: The calander should compare with the users real time and date to the time and date the user inputs which is currently ( 02:31Am, 04/19/2020) and notify the user they cannot select a time or date that is before current time/date
 
 Actual Results: Page directed user to the drop off time schedule page.

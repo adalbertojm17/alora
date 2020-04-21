@@ -15,26 +15,31 @@
         <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
           <span class="popuptext" style="width: 500px" id="myPopup">
 
-              <p> Welcome to Services</p>
+              <p> Welcome to Services !</p>
               <p> View the services your company offers.</p>
               <p> Click the "Edit Services" button at the top of the page or scroll down to the add or update your services.</p>
-              <p> To add a new service: </p>
+              <p> In the section labeled "Add new services", to add a new service: </p>
               <p> <ol>
-                        <li> In the section labeled "Add new services":</li>
-                        <li> In the field labeled "Name" type the name of the new service you would like to add.</li>
-                        <li> Click the drop down labeled "Store" to select the name of your store. </li>
+                        <li> Type the name of the new service to be added in the field labeled "Name". </li>
+                        <li> Click the drop down field labeled "Store" to select the name of your store. </li>
                         <li> Click the "Create" button to add the new service.</li>
                   </ol>
               </p>
 
-              <p> To add an item to a service: </p>
+              <p> In the section labeled "Add new item", to add an item to a service:</p>
               <p> <ol>
-                        <li> In the section labeled "Add new item":</li>
-                        <li> In the field labeled "Name" type the name of the new item you would like to add to a service.</li>
-                        <li> Click the drop down labeled "Services" to select the service you would like to add the item to. </li>
-                        <li> In the field labeled "Price" type the price of the item.</li>
+
+                        <li> Type the name of the new item to be added to a service in the field labeled "Name". </li>
+                        <li> Click the drop down field labeled "Services" to select the service you would like to add the item to. </li>
+                        <li> type the price of the item in the field labeled "Price".</li>
+                        <li> Click the "Add" button to add the new item.</li>
                         <li> Click the "Add" button to add the new item.</li>
                  </ol>
+
+              <p> To delete a service: </p>
+              <ol> <li>Click "(Delete)".</li></ol>
+              <p> To delete an item: </p>
+              <ol> <li> Click the <img src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15> beside the new of the item.</li> </ol>
               <hr>
 
           </span>
@@ -53,7 +58,8 @@
             </div>
 
                 {% for service in services %}
-                    <h3 class="shift"> {{ service }} <a href="{% url 'delete_service_view' obj_id=service.id %}" alt="delete service"> delete <i class="fa fa-trash"></i></a></h3>
+                    <h3 class="shift"> {{ service }} ( <a id="deleteme" href="{% url 'delete_service_view' obj_id=service.id %}" alt="delete service">
+                        Delete <i class="fa fa-trash"></i></a> )</h3>
                         <table class="servicestable">
                              <tr>
                                  <th>Item</th>
@@ -65,7 +71,10 @@
                                     {% if item.services == service %}
                                         <tr>
                                             <td>{{item}}
-                                                <a href="{% url 'delete_item_view' obj_id=item.id %}" >delete<i class="fa fa-trash"></i></a>
+                                                <a href="{% url 'delete_item_view' obj_id=item.id %}" >
+                                                    <img id="delete" src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15>
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
                                             </td>
                                             <td> $ {{ item.price }}</td>
                                          </tr>

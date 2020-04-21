@@ -39,7 +39,11 @@
                         <li> Click the drop down field labeled "New Status" to choose the status you would like change the order to.</li>
                         <li> Click "update" to update the status of the order.</li>
                  </ol>
+
+              <p> To delete a item: </p>
+              <p> Click the <img src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15> beside the new of the item. </p>
               <hr>
+
           </span>
         </div>
     </div>
@@ -99,7 +103,9 @@
                     <th> Items</th>
                     <td>{% for details in orderdetails %}
                         Item:{{ details }} , ${{ details.item.price }}
-                        <a href="{% url 'delete_order_item_view' obj_id=details.id %}" >delete<i class="fa fa-trash"></i></a>
+                        <a href="{% url 'delete_order_item_view' obj_id=details.id %}" >
+                            <img id="delete" src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15><i class="fa fa-trash"></i>
+                        </a>
                         <br>
                     {% endfor %}</td>
                 </tr>

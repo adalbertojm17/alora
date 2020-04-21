@@ -23,10 +23,10 @@ def feedback_view(request, *args, **kwargs):
             'feedback': Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))
         }
     except ObjectDoesNotExist:
-        return redirect('no_order')
+        return redirect('no_feedback')
 
     if not (Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))):
-        return redirect('no_order')
+        return redirect('no_feedback')
 
     if not request.user.is_authenticated:
         return redirect('login')
@@ -236,6 +236,9 @@ def get_order_queryset(query=None):
 
 def no_order_view(request):
     return render(request,'business/no_orders.html')
+
+def no_feedback_view(request):
+    return render(request,'business/no_feedback.html')
 
 def delete_order_item_function(request,obj_id =None):
     object = OrderItem.objects.get(id=obj_id)

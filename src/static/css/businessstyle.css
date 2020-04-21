@@ -587,5 +587,9 @@ input[type=text], input[type=number]{
     background-color:#FF9920;
 }
 
+/************* Delete Buttons ****************/
 
+#deleteme {
+    color:red;
+}
 

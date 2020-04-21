@@ -2,7 +2,7 @@
 {% load static %}
 <head>
     {% block styles %}
-        <title>No orders</title>
+        <title>FeedBack</title>
         <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
@@ -34,7 +34,7 @@
                     <th>Message</th>
                 </tr>
 
-                {% for fb in feedback %}
+                {% for fb in feedback|slice:"0:10" %}
                     <tr>
                         <td>{{ fb.pk }}</td>
                         <td>{{ fb.user_id}}</td>

@@ -1,0 +1,14 @@
+Account Page
+
+Steps
+
+Step 1: User logs in
+Step 2: User selects on account and directed to account page
+
+
+Expected results: Save changes should only appear When the user selects on the tab Edit Account
+
+Actual Results: user uses the point to select save changes and theres a ristriction for the user to not select on save changes
+
+Test case: passed
+

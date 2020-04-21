@@ -14,7 +14,7 @@ inputs username: because
 user inputs password
 
 
-Expected Result: to deny numer input for the last name
+Expected Result: to deny numeric input for the last name
 
 Actual Result: denied users last name because of the numerical input, user is required to input alphabetic
 

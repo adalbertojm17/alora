@@ -15,4 +15,6 @@ Password: iknowbecause
 confirmation password: iknowbecause  
 
 Expected Reults: Fail to login because the password did not include these characters- underscores,one numerical character(0-9), uppercase(A-Z), at least one special character(^!@&%$*)..
-Actual Result: Directed to the Main page.
+Actual Result: informs user about their password, they must include one numerical(0-9), an uppercase(A-Z), and at least one special character(*&^%$#)
+
+Test Case: Passed

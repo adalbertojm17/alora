@@ -7,7 +7,7 @@ step 3: User fills in required fills in order to sign up
 
 Data
 inputs first name: 03984
-inputs last name: 09939
+inputs last name: david
 Email: lulu@gmail.com
 reconfirms email: lulu@gmail.com
 inputs username: because
@@ -16,6 +16,6 @@ user inputs password
 
 Expected Result: to deny numeric input.
 
-Actual Result: denied users first and last name, they are required to input only alphabetic.
+Actual Result: denied users first name, they are required to input only alphabetic.
 
 Test Case: Passed

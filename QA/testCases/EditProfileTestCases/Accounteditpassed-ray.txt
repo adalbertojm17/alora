@@ -1,0 +1,13 @@
+Test case: Account Page
+
+Steps
+
+Step 1: User logs in
+Step 2: User selects account
+
+
+Expected Results: A help option that appears to the user describing how to edit their account
+
+Actual Results: There is a help option for user to know how to be to update their information on the account page.
+
+Test case: Passed

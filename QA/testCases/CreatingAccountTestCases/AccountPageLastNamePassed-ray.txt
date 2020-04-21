@@ -1,0 +1,21 @@
+Test case: Sign up
+
+Steps
+Step 1: User selects sign in tab
+step 2: user selects sign up
+step 3: User fills in required fills in order to sign up
+
+Data
+inputs first name: 03984
+inputs last name: david
+Email: lulu@gmail.com
+reconfirms email: lulu@gmail.com
+inputs username: because
+user inputs password
+
+
+Expected Result: to deny numeric input.
+
+Actual Result: denied users first name, they are required to input only alphabetic.
+
+Test Case: Passed

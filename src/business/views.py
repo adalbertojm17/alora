@@ -17,16 +17,17 @@ from .models import Store
 from feedback.models import Feedback
 
 
+
 def feedback_view(request, *args, **kwargs):
     try:
         my_context = {
             'feedback': Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))
         }
     except ObjectDoesNotExist:
-        return redirect('no_feedback')
+        return redirect('nofeedback')
 
     if not (Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))):
-        return redirect('no_feedback')
+        return redirect('nofeedback')
 
     if not request.user.is_authenticated:
         return redirect('login')

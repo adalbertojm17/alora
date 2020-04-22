@@ -30,6 +30,7 @@
                 <tr>
                     <th>Feedback #</th>
                     <th>Name</th>
+                    <th>Email</th>
                     <th>Subject </th>
                     <th>Message</th>
                 </tr>
@@ -37,7 +38,8 @@
                 {% for fb in feedback|slice:"0:10" %}
                     <tr>
                         <td>{{ fb.pk }}</td>
-                        <td>{{ fb.user_id}}</td>
+                        <td>{{ fb.user.first_name}} {{fb.user.last_name}}</td>
+                        <td>{{ fb.user.email }}</td>
                         <td> {{ fb.subject}} </td>
                         <td> {{ fb.content}} </td>
                     </tr>

@@ -1,11 +1,13 @@
 # noinspection PyUnresolvedReferences
 from business.models import Store
 from django import forms
-
 from .models import Feedback
+# noinspection PyUnresolvedReferences
+from accounts.models import Account
 
 
 class FeedBackForm(forms.ModelForm):
+
     store = forms.ModelChoiceField(
         empty_label='Choose a Store (Optional)',
         label='',
@@ -38,5 +40,13 @@ class FeedBackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
-        fields = ['store', 'subject', 'content']
+        fields = ['user','store', 'subject', 'content']
+
+    def __init__(self, user, *args, **kwargs):
+        super(FeedBackForm, self).__init__(*args, **kwargs)
+        self.fields['user'] = forms.ModelChoiceField(label='', queryset=Account.objects.all().filter(id=user),
+                                                    widget=forms.HiddenInput(), initial=user)
+
+
+
 

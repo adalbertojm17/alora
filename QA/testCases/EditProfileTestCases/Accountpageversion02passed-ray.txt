@@ -12,6 +12,6 @@ Step 3: User selects on first name, last name, phone number, email, username tab
 
 Expected Results: When User is directed to account page, if user selects on first name a notification appear to user to select on edit account tab to make any changes to their account profile.
 
-Actual results: No changes occur when user selects on the first field 
+Actual results: Help option is proved to user to assist the user in order to make changes they must click on the field "Edit account"
 
-Test Case: Failed
+Test Case: Passed

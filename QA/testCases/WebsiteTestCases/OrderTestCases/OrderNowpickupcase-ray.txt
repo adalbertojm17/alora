@@ -1,0 +1,19 @@
+Test Case:Order Now page/ schedule date/pick up
+
+Steps:
+Step 1: user logs in
+Step 2: user selects Order Now navigation bar
+Step 3: user fills out requirements
+
+Data
+Step 1: inputs street name: dryclean
+step 2:user inputs apt/suite: *&^%
+Step 3:user inputs city: my feet 
+Step 4: user slects country: Guam 
+Step 5: inputs zipcode: 19289
+step 6: inputs picks up date: Saturday May 07, 2022 05:07pm --passed
+Step 7: User selects on tab continue -passed
+
+Expected Results: Notification pops up user to correct their apt/suite field and not just special characts as we see in step 2.
+
+Actual Results: User is directed to schedule drop-off section

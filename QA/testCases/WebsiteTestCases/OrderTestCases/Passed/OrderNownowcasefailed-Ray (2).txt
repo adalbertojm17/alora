@@ -1,0 +1,27 @@
+Test Case: Order Now
+
+Steps
+Step 1: user logs in
+Step 2: user select order Now on navigation bar
+Step 3: User fills in required field
+
+Data
+inputs apt/suite
+inputs city: lebron 
+inputs state hawaii
+inputs zip code: 02900
+selects schedule
+saturday April 18th, 2020 at 02:23AM
+selects continue and directed to schedule drop off page
+inputs street: jfjfjfjfj
+inputs apt/suite: jf	
+inputs city: lebron
+inputs zip: 10029
+inputs on calander 
+Saturday April 18, 2020 02:34AM
+
+Expected results: Notification notifying customer to the data selected are on the same day and a minute apart and user must select another date on the calander.
+
+Actual Results: Order is confirmed!
+
+Test case: failed

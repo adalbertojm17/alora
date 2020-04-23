@@ -1,0 +1,19 @@
+Test case: Order Now Page
+
+Steps:
+Step 1: User logs in
+Step 2: User selects order now  navigation
+
+Data:
+Step 1: filled in field "Street":  123 
+step 2: filled in field "apt/suite": Austin 23 
+Step 3: filled in field "City":  Broadstreetroom207 
+Step 4: filled in "Country": Alabama 
+Step 5: enter "Zip Code": 11111 
+Step 6: Clicks on calander option: April 03, 2019 
+Step 7: clicks on the tab continue  
+Step 8: User is directed to schedule drop off time
+
+Expected Results: A notification should appear informing the user to input a valid current date. User should not be able to select any dates prior to the actual real time date.
+
+Actual Results: User is directed to a new page called Schedule a drop off time.

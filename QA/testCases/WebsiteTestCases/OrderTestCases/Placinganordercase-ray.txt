@@ -1,0 +1,14 @@
+Test Case: Order
+
+Steps
+step 1: User logs in
+Step 2: user selects order now on navigation bar
+
+Data
+User selects store
+user selects continue bar
+
+
+Expected results: A help option appears when selecting order now page for those users who may need help to understand how to place an order.
+
+Actual results: User is mandated to fill in the required fields that are displayed on the order now page

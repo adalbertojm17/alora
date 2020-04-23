@@ -26,3 +26,5 @@ Expected Results: When user selects edit account, the fields should also display
 
 
 Actual results: the fields that display to the user is first name, last name, phone number, email, and username.
+
+Test case: pass

@@ -14,3 +14,5 @@ Submits
 
 Predicted Result: An error notifcation pops up informing user their first/last name and email does not match 
 Actual Result: System crashes as an error
+
+Test Case: Failed

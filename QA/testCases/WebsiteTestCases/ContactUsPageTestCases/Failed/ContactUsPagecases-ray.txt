@@ -22,3 +22,5 @@ Submits
 Predicted Result: An error notifcation pops up informing user their first/last name and email they entered on the contact us page does not match with their account information.
 
 Actual Result: When user fills in required fields for contact us page and selects submit, System crashes as an error.
+
+Test Case: Failed

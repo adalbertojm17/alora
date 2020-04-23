@@ -13,3 +13,5 @@ select Tracking: Display an item is in process all the way up to Order Cleaning
 Expected Results: "There are currently no order being taken"
 
 Actual Results: Order has been put through three out of six stages of the tracking order process.
+
+Test Case: Passes

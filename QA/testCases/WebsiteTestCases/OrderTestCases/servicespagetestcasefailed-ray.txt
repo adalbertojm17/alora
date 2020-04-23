@@ -12,4 +12,4 @@ Expected Results: when user selects company it should also display the address b
 
 Actual Results: displays the name of the store and not the address
 
-Test Case Failed
+Test Case: Failed

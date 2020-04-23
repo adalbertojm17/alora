@@ -1,0 +1,66 @@
+
+Project Name      Alora
+Module name     Edit Sign up
+creation date 3/26/2020
+Created by        Majid Masood
+Reviewed by     QA Team
+Reviewed Date   4/13/2020
+
+
+                                                                                  Edit  Sign UP Page
+
+
+
+Test ID                         test case discription                                     Pre-condition                                            test steps                                                       test data                                          Expected result                                                   Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                      
+TS_Alora_01              check to see the response on name sapce               name sapce should be activated                                      enter first name                                         majid                                                      user first name is entered                                         yes
+      
+    
+TS_Alora_02             check to see the response on name sapce                  name tab should be activated                                       enter the last name                                       masood                                                   user last name is entered                                       yes
+
+
+TS_Alora_03             check to see the response on name sapce                enter the valid last name less than 16 Characters                    enter last name                                           masood                                                           user last name is entered                                    yes
+
+
+TS_Alora_04             enter the user email address                                    enter valid email address                                      enter email address                                 majid_masood@bloomfield.edu                      valid email address                                                      yes
+
+
+
+TS_Alora_05             reconfirm user email address                                    enter valid email address                                      enter email address                                 majid_masood@bloomfield.edu                      valid email address                                                     yes
+
+
+TS_Alora_06              Click on the name tab                                       name tab should be activated                                       enter user name                                        majid masood                                        user name is entered                                              yes
+
+      
+ TS_Alora_07              Click on thename tab                                    enter the valid last name less than 16 Characters                      enter user name                                      majid  masood                                       user name accepted                                              yes
+
+
+TS_Alora_08              click on the password  tab                              enter valid password less than 32 Characters                                   enter password                                      *****************                                       valid password                                                     yes
+
+
+TS_Alora_09              click on the password  tab                            enter valid password less than 32 Characters                                   enter password                                      ************************                                  invalid password                                                No
+
+TS_Alora_10            Click on the sign up tab                                 sign up tab should send an email to user                                                                                                push sign up tab                                 user did not recieve  email                                      no
+
+Ts_Alora_20            
+
+  
+     Remarks: test Fail
+
+          
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      

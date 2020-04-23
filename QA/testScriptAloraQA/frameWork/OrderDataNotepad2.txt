@@ -1,0 +1,2 @@
+UserName|Password|StoreName|Street|APTSuite|City|State|ZipCode|DateTime|Street|APTSuite|City|State|ZipCode|DateTime
+majid|Pass@1235|Dave's Laundry|B|Suite|MA|Guam|07009|Wed Apr 19, 2020 1:15 pm|Bay Street|Suite|MA|Guam|07009|Wed Apr 20, 2020 1:15 pm

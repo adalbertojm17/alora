@@ -6,7 +6,7 @@ Step 2: user select order Now on navigation bar
 Step 3: User fills in required field
 
 Data
-inputs apt/suite --failed
+inputs apt/suite
 inputs city: lebron 
 inputs state hawaii
 inputs zip code: 02900
@@ -24,4 +24,4 @@ Expected results: Notification notifying customer to the data selected are on th
 
 Actual Results: Order is confirmed!
 
-Test case: Failed
+Test case: failed

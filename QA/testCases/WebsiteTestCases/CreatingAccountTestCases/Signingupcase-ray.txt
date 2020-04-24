@@ -1,0 +1,24 @@
+Test Case: Sign up
+
+Steps 
+User selects sign in
+User selects sign up
+
+Data
+input field first name: tupac
+inputs last name: crash
+inputs email 
+confirms email
+username: Biggie
+inputs password 
+confirms password
+user selects on continue tab
+inputs street name: i forgot
+user enters apt/suite: cap)(
+inputs state: Georgia
+inputs zip code: 30049
+user select continue bar and is redirected to home page 
+
+Expected results: Notification popping up to inform the user there is no special characters included when inputting the Apt/Suite name, only numbers and a name.
+
+Actual results: User is now a member of the Alora website

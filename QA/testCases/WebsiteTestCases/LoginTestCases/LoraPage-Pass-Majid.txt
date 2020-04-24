@@ -1,0 +1,35 @@
+       
+
+                                 Alora test case
+
+Test ID     Test case discription              Pre-Condition                    test steps            test Data             Expected result                           Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ts_Al_01     Check response on sign in tab     Sign in tab should be activated  Press the sign in tab  Sign in tab response    Sign in tab nevigate to sign in page          
+PASS
+ 
+
+Ts_Al_02     Check response on log in tab      Login tab should be activated     Press the login tab     login tab response    Login tab nevigate to sign in page            Pass
+
+
+
+Ts_Al_04     Check response on contactUstab    contact tab should be activate    Press the Contactus tab  Contactus tab response  Contactus tab nevigate to contactus page    Pass
+
+
+
+Ts_Al_06     Check response about us tab       About us tab should be activate    press the About us tab  About us tab response     About us tab nevigate to about us page      Pass
+
+
+Ts_Al_07       Check response on services tab    services tab should be activate    press the services tab  Services tab response     Services tab  nevigate to services option page     Pass
+
+
+  
+Ts_Al_09      Check response on tracking tab     Tracking tab should be activate    Press the tracking tab   Tracking tab response     Tracking servicees tab nevigate to the next page    Pass
+
+
+
+Ts_Al_11        check response on order now tab   order now tab should be activate   press the order now tab  order now tab response     order now tab tab nevigate to order now page          Pass
+
+
+
+
+  Test..Pass

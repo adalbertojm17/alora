@@ -1,5 +1,5 @@
 from cities_light.models import Region
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView
@@ -13,10 +13,13 @@ from .serializers import (
 from ..models import Order, Item
 
 
-class CreateOrderAPIView(CreateAPIView):
+class PlaceOrderAPIView(CreateAPIView):
     authentication_classes = [TokenAuthentication]
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class ItemListAPIView(ListAPIView):

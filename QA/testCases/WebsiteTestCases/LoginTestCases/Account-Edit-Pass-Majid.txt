@@ -1,0 +1,26 @@
+
+Project Name Alora
+Module Name  Account
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/4/2020
+
+
+                                                                  Account
+
+
+Test ID                    Test case Disciption                           Pre-Condition                             Test Steps                        test data                           Expected result                     Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TS_Lora_010               check response on edit account tab              Edit account tab should activate          Push Edit account tab       Edit tab activate                       higlights all fields                  Pass
+
+
+TS_Lora_030               check response on order history tab              order history tab should activate          Push order history tab      order history tab  activate              order tab nevigate to the next page  Pass
+         
+
+TS_Lora_050               check response on Change password tab             change password tab should activate    Push order change password tab   change password tab activate           Change password nevigate to the next page  
+ 
+
+
+    
+
+  Remarks:order history tab nivigate to next page....Pass                          

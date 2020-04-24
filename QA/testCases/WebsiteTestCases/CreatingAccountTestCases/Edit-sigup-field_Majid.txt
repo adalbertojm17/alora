@@ -1,0 +1,37 @@
+
+Project Name      Alora
+Module name     Edit Sign up
+creation date   3/26/2020
+Created by      Majid Masood
+Reviewed by     QA Team
+Reviewed Date   4/13/2020
+
+
+                                                                                  Edit  Sign UP Page
+
+
+Test_ID
+
+Ts_Alora_01    Edit page first name field accept one letter.....Fail
+
+Ts_Alora_02    edit page last name field  accept one letter.....Fail
+
+
+  Remarks:first and last name field accept one letter. when hit save Changes  tab, the system does not give you warning
+
+  for incomplete name.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      

@@ -1,0 +1,26 @@
+Test Case: Sign up
+
+Steps
+User selects sign in
+User selects sign up
+
+Data
+input field first name: tupac
+inputs last name: crash
+inputs email 
+confirms email
+username: Biggie
+inputs password: Lora1_$2
+confirms password: Lora1_$2
+user selects on continue tab
+inputs street name: i forgot
+enters apt/suite: cap)(
+inputs state: Georgia
+inputs zip code: 30049
+select continue bar 
+
+Expected results: Notification popping up to inform the user there is no special characters included when inputting the Apt/Suite name, only numbers and a name.
+
+Actual results: Notification appears to user "Please match the requested format, Alphanumeric characters only please"
+
+Test case: passed

@@ -1,0 +1,83 @@
+
+Project Name      Alora
+Module name     Sign up
+creation date 3/26/2020
+Created by        Majid Masood
+Reviewed by     QA Team
+Reviewed Date   3/27/2020
+
+
+                                                                                    Sign UP Page
+
+
+
+Test ID                         test case discription                                                         Pre-condition                        test steps                                                       test data                                          Expected result                                                   Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                      
+TS_Alora_01              check to see the response on name sapce               name sapce should be activated                                      enter first name                                         majid                                               user first name is entered                                         yes
+      
+    
+TS_Alora_02               check to see the response on name sapce               entered the valid first name less than 16 character      enter first name                                            majid                                               name accepted                                                      yes
+
+
+TS_Alora_02               check to see the response on name sapce               entered the valid first name less than 16 character      enter first name                                         majiisdifdufdfufudfdf                         invalid name                                                              No
+      
+      
+TS_Alora_03             check to see the response on name sapce                  name tab should be activated                                       enter the last name                                       masood                                           user last name is entered                                       yes
+
+
+TS_Alora_04             check to see the response on name sapce                enter the valid last name less than 16 Characters            enter last name                                           masood                                            user last name is entered                                        yes
+
+
+TS_Alora_04             check to see the response on name sapce                enter the valid last name less than 16 Characters            enter last name                                           dsdjhuugususuus                               invalid name                                                         No
+
+
+TS_Alora_-05           click on the phone number space                             enter a valid phone number not more than 10 digits          enter phone numbers                                973-556-6134                                               phone number is entered                                 yes
+
+
+TS_Alora_-06           click on the phone number space                             enter a valid phone number not more than 10 digits          enter phone numbers                               973-556-6134 87                                              invalid phone number                               no
+
+
+TS_Alora_08             enter the user email address                                    enter valid email address                                                     enter email address                                 majid_masood@bloomfield.edu                      valid email address                                yes
+
+
+TS_Alora_08             enter the user email address                                    enter valid email address                                                     enter email address                                 majid_masood@bloomfield.com                     invalid email address                                No
+
+
+TS_Alora_08             reconfirm user email address                                    enter valid email address                                                     enter email address                                 majid_masood@bloomfield.edu                      valid email address                                yes
+
+
+TS_Alora_08             reconfirm the user email address                              enter valid email address                                                     enter email address                                 majidmasood@bloomfield.edu                      email address does not match                  No
+
+
+TS_Alora_05              Click on the name tab                                       name tab should be activated                                                   enter user name                                        majid masood                                        user name is entered                                              yes
+
+      
+ TS_Alora_06              Click on thename tab                                    enter the valid last name less than 16 Characters                               enter user name                                      majid  masood                                       user name accepted                                              yes
+
+
+TS_Alora_07              click on the password  tab                              enter valid password less than 32 Characters                                   enter password                                      *****************                                       valid password                                                           yes
+
+
+TS_Alora_07              click on the password  tab                            enter valid password less than 32 Characters                                   enter password                                      ************************                                  invalid password                                                No
+
+TS_Alora_14             Click on the sign up tab                                 sign up tab should be activated                                                                                                                                  push sign up tab                                 sign up tab nevigate to confirmation page         yes
+
+
+
+          
+      
+Remarks: test pass
+
+
+
+
+
+
+
+
+
+
+
+
+                      

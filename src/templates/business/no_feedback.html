@@ -1,0 +1,44 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>No Feedback</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> No Feedback</p>
+              <p> Please contact Alora customer service if you have any questions.</p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
+     <div class="noorders">
+        <div class=insideorder>
+
+           <h1> No Feedback</h1>
+                <div class="confirm">
+                    <img src="{% static 'images/x.png' %}" alt="Logo" width=100
+                         height=100>
+                    <p> Your company currently has no feedback. Please contact Alora customer service if you have any concerns.</p>
+                </div>
+
+        </div>
+     </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+</body>

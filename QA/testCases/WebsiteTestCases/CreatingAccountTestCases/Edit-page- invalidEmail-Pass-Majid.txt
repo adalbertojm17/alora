@@ -1,0 +1,36 @@
+
+Project Name      Alora
+Module name     Edit Sign up
+creation date   3/26/2020
+Created by      Majid Masood
+Reviewed by     QA Team
+Reviewed Date   4/20/2020
+
+
+                                                                                  Edit  Sign UP P
+
+Test_ID
+
+Ts_Alora_01    email field system accept valid email address....Pass
+
+Ts_Alora_02    inavlid email system still accept it.....Fail
+
+
+  Remarks: when you entered invalid email, systme crash
+
+  for incomplete name.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      

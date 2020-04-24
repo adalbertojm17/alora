@@ -1,0 +1,17 @@
+
+Project Name Alora
+Module Name  order page
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/21/2020
+
+
+                                  Schedule for Pickup
+
+
+Ts_alora_01   street address field does not accept incomplete address...pass
+
+Ts_alora_02   APT/suite address  field accept address  .................pass
+
+
+Remarks : System should not accept street address and APT address all together.....fail

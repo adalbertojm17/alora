@@ -1,0 +1,37 @@
+
+Project Name      Alora
+Module name     Edit Sign up
+creation date   3/26/2020
+Created by      Majid Masood
+Reviewed by     QA Team
+Reviewed Date   4/20/2020
+
+
+                                   Edit  Sign UP Page
+
+
+Test_ID
+
+
+Ts_Alora_01      save changes tab   activate...............  Pass
+
+Ts_Alora_01     Edit account when user click on save changes tab, the edit page freeze  ...Fail. 
+
+
+
+
+  Remarks:When user click on save changes tab, the edit page freeze
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      

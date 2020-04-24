@@ -19,10 +19,12 @@ class FeedbackSerializer(ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
+        user = validated_data['user']
         store = validated_data['store']
         subject = validated_data['subject']
         content = validated_data['content']
         feedback_obj = Feedback(
+            user=user,
             store=store,
             subject=subject,
             content=content,

@@ -1,0 +1,20 @@
+
+Project Name Alora
+Module Name  contact page
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/19/2020
+
+
+                                                                  contact Page
+
+
+Test_ID
+
+Ts_Alora_01   Company option selecttion ........Pass 
+
+
+Ts_alora_02   subject option does not display..fail
+
+
+remarks:  subject option  display  option.....Pass

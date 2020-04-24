@@ -1,0 +1,15 @@
+Test case: Services Page
+
+Steps
+step 1: user logs in
+step 2: user selects services on navigation bar 
+
+Data
+selects company: Bloomfield 
+Selects on continue bar
+
+Expected Results: when user selects company it should also display the address besides the location.
+
+Actual Results: displays the name of the store and not the address
+
+Test Case: Failed

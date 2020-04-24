@@ -1,9 +1,0 @@
-TEST CASE #2 Order Now
-
-select place order: we are currently taking orders. please check back later -Passed
-
-select Tracking: Display an item is in process all the way up to Order Cleaning
-
-
-Expected Results: "There are currently no order being taken"
-Actual Results: Order has been put through three out of six stages of the tracking order process.

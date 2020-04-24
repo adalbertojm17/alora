@@ -41,10 +41,9 @@ class UserListAPIView(ListAPIView):
     authentication_classes = [TokenAuthentication]
 
 
-class MyAuthToken(ObtainAuthToken):
+class ObtainUserAuthToken(ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):
-        authentication_classes = [TokenAuthentication]
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
         serializer.is_valid(raise_exception=True)
@@ -57,6 +56,19 @@ class MyAuthToken(ObtainAuthToken):
             'last_name': user.last_name,
             'username': user.username,
             'email': user.email
+        })
+
+
+class ValidateToken(ObtainUserAuthToken):
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token = Token.objects.get(user_id=user.id)
+        return Response({
+            'token': token.key,
         })
 
 

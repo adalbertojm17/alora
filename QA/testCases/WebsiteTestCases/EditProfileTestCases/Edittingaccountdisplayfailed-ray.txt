@@ -1,0 +1,29 @@
+Test case: Edit Account
+
+Steps
+Step 1: user selects sign in 
+Step 2: user selects sign up edit account page
+Step 3: user is directed to sign up page 
+
+Data
+User inputs first name: Tupac
+user inputs last name: crash
+Phone number: 4349098576
+Email address: Ishotem21@gmail.com	
+inputs username: Biggie
+password:_12Capstone
+User selects continue bar
+User fill in field street: Blessme
+user inputs field apt: 4a
+user inputs field city 207 broad
+user selects city: Georgia
+user selects zip code: 30039
+User selects continue bar and directed to home page
+User selects account and directed to account page
+user selects edit account
+
+Expected Results: When user selects edit account, the fields should also display the fields street and apt/suite and zip code and their city and their state because it is common people move from different state, move different housing location.
+
+Actual results: the fields that display to the user is first name, last name, phone number, email, and username.
+
+test case: failed

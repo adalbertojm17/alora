@@ -1,0 +1,15 @@
+Test Case: Editing Account
+
+Steps
+Step 1: User signs in 
+Step 2: User selects account  
+
+Data
+Selects first name field
+
+
+Expected Results: When User is directed to account page, if user selects on first name a notification appear to user to select on edit account tab to make any changes to their account profile.
+
+Actual results: No changes or ntofication occurs when user selects on the first name field to make any changes to their account
+
+Test Case: Failed

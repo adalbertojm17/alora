@@ -1,0 +1,2 @@
+FirstName|LastName|PhoneNumber|Email|USerName|Password|StreetName|APTSuite|City|State|ZipCOde
+a|B|9735566140|mumojumbo08@gmail.com|majidam1|Abcd@123|Bat Street|APT|MAN|Alabama|07003

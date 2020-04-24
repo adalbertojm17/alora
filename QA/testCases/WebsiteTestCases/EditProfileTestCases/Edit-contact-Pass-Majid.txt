@@ -1,0 +1,42 @@
+Project name  Alora
+Module name  contact page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/14/2020
+
+
+                                                                                                        Edit contact page
+
+
+Test ID                             Test Case Discription                                         Pre-Condition                                    Test Steps                                                         Test Data                                                    Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check response when user name is enterd                              Name space should be activated                enter the first name                                               majidmasood                                                         name enter successfully                      Pass
+
+TS_Alora_02                check response when user name is enterd                              Name space should be activated                enter the first name                                                                                                       name does not enter successfully                          Fail
+
+TS_Alora_03                check response when first name is enterd                              Name space should be activated                enter the first name                                               majid                                                         name enter successfully                             Pass
+   
+TS_Alora_04                check response when Last name is enterd                              Name space should be activated                enter the Last name                                             masood                                                       name enter successfully                                   Pass
+
+TS_Alora_05                enter the user email address                                           Enter the valid email address                enter email                                                           majid_masood@bloomfield.edu                            email address valid                                     pass
+
+TS_Alora_06                enter the user email address                                            Enter the valid email address                 enter email                                                           rtegettg@bloomfield.edu                               email address invalid                                   Fail
+
+TS_Alora_07                check laundry service option                                           click on services option                                                                                            drop down menu does not response                       no services options                                     Fail
+
+TS_Alora_08                check laundry service option                                           click on services option                         drop down menu open                                         laudary                                                            select the option                                   Pass
+
+TS_Alora_09                check laundry service option                                           click on services option                         drop down menu open                                         Wash                                                             select the option                                      Pass
+
+TS_Alora_10                check response on the comments section                                enter the response on comments                 type response                                                      good service                                                 comments admited                                       Pass
+
+TS_Alora_11                check response on the comments section                                enter the response on comments                 type response                                                       A                                                           one letter comments should not be admited              Fail
+
+
+TS_Alora_12                check response on the  submit tab                                        submit tab should response                   push submit tab                                                submit information                                          accepted                                                 Pass   
+
+
+    
+              Remarks: test Pass
+         

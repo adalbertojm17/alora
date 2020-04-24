@@ -1,0 +1,33 @@
+Project name  Alora
+Module name  Contact Page
+created date  2/29/2020
+reviewd by    Qa Team
+test date     3/3/2020
+
+
+                                                                                                         Contact Page
+
+
+Test ID                             Test Case Discription                                                               Pre-Condition                                                    Test Steps                                                         Test Data                                                    Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check response when first name is enterd                              Name space should be activated                                                 enter the first name                                                         majid                                                     name enter successfully                                   Pass
+   
+TS_Alora_02                check response when Last name is enterd                              Name space should be activated                                                enter the Last name                                                     masood                                                           name enter successfully                                    Pass
+
+TS_Alora_03                enter the user email address                                                    Enter the valid email address                                        enter email                                                           majid_masood@bloomfield.edu                                         email address valid                                        pass
+
+TS_Alora_04                enter the user email address                                                    Enter the valid email address                                       enter email                                                           rtegettg@bloomfield.edu                                             email address invalid                                       Fail
+
+TS_Alora_05                check laundry service option                                                    click on services option                                                                                                         drop down menu does not response                                           no services options                                        Fail
+  
+TS_Alora_06                check laundry service option                                                    click on services option                                         drop down menu open                                                       laudary                                                              select the option                                         Pass
+
+TS_Alora_06                check laundry service option                                                    click on services option                                      drop down menu open                                                         Wash                                                                  select the option                                         Pass
+
+TS_Alora_07                check response on the comments section                                enter the response on comments                                           type response                                                             good service                                                           comments admited                                           Pass
+
+TS_Alora_08                check response on the  submit tab                                          submit tab should response                                          push submit tab                                                      submit information                                                           accepted                                                  Pass   
+
+
+Remarks: test pass

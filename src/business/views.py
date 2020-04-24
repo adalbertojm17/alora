@@ -13,6 +13,28 @@ from .forms import AddingOrderItemForm
 from .forms import ServiceCreationForm
 from .models import Service
 from .models import Store
+# noinspection PyUnresolvedReferences
+from feedback.models import Feedback
+
+
+
+def feedback_view(request, *args, **kwargs):
+    try:
+        my_context = {
+            'feedback': Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))
+        }
+    except ObjectDoesNotExist:
+        return redirect('nofeedback')
+
+    if not (Feedback.objects.all().filter(store=Store.objects.get(manager=request.user))):
+        return redirect('nofeedback')
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif not request.user.is_manager:
+        return HttpResponseForbidden()
+
+    return render(request, "business/feedback.html", my_context)
 
 
 def orders_details_view(request, *args, **kwargs):
@@ -212,8 +234,12 @@ def get_order_queryset(query=None):
             queryset.append(post)
     return list(set(queryset))
 
+
 def no_order_view(request):
     return render(request,'business/no_orders.html')
+
+def no_feedback_view(request):
+    return render(request,'business/no_feedback.html')
 
 def delete_order_item_function(request,obj_id =None):
     object = OrderItem.objects.get(id=obj_id)

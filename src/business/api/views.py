@@ -1,4 +1,4 @@
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import (
     ListAPIView,
 )
@@ -14,11 +14,20 @@ from ..models import Service, Store
 
 class StoreListAPIView(ListAPIView):
     authentication_classes = [TokenAuthentication]
+    serializer_class = StoreSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Store.objects.all().order_by('name')
+
+
+class StoreDropDownAPIView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
     queryset = Store.objects.all().order_by('name')
     serializer_class = StoreSerializer
 
     def __init__(self, **kwargs):
-        super(StoreListAPIView).__init__(**kwargs)
+        super(StoreDropDownAPIView).__init__(**kwargs)
         self.object_list = self.filter_queryset(self.get_queryset())
 
     def list(self, request, *args, **kwargs):

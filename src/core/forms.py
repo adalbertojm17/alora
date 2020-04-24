@@ -80,7 +80,7 @@ class PickupForm(forms.ModelForm):
     def clean_pickup_at(self):
         cleaned_data = super(PickupForm, self).clean()
         pickup_date = cleaned_data['pickup_at']
-
+        city = cleaned_data['city']
         if pickup_date < (now() + datetime.timedelta(days=0, hours=1, minutes=0)):
             raise ValidationError("Pick-up date/time must not be earlier than 1 hour from now.")
         return pickup_date

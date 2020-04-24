@@ -1,0 +1,20 @@
+Project name  Alora
+Module name   Order page
+created date  4/10/2020
+reviewd by    Qa Team
+test date     4/24/2020
+QA server Version  1.1
+
+
+  
+          order page pickup 
+ 
+
+tesp Id
+
+Ts_Alora_01    Street address field accept letters........Pass
+
+Ts_Alora_02    street  address field accept more than 32 letter...fail
+
+remarks :   street address field acept more than 32 letters test
+   

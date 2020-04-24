@@ -1,5 +1,9 @@
 # noinspection PyUnresolvedReferences
+from accounts.api.serializers import UserProfileSerializer
+# noinspection PyUnresolvedReferences
 from addresses.models import Address
+# noinspection PyUnresolvedReferences
+from business.api.serializers import ServiceDetailSerializer
 # noinspection PyUnresolvedReferences
 from business.models import Service, Store
 from cities_light.models import Region
@@ -8,11 +12,9 @@ from core.models import Item
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
 from rest_framework.serializers import (
-    ModelSerializer
+    ModelSerializer,
+    DateTimeField
 )
-
-# noinspection PyUnresolvedReferences
-from business.api.serializers import ServiceDetailSerializer
 
 
 class AddressSerializer(ModelSerializer):

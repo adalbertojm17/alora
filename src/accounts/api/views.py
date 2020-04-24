@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.generics import (
@@ -44,7 +44,6 @@ class UserListAPIView(ListAPIView):
 class MyAuthToken(ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):
-        authentication_classes = [TokenAuthentication]
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
         serializer.is_valid(raise_exception=True)

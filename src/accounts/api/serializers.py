@@ -13,7 +13,16 @@ User = get_user_model()
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'phone',
+            'email',
+            'username',
+            'password',
+            'password2'
+        ]
 
 
 class UserCreateSerializer(ModelSerializer):
@@ -68,7 +77,14 @@ class UserCreateSerializer(ModelSerializer):
 class UserProfileSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'phone',
+            'email',
+            'username',
+        ]
 
 
 class UserLoginSerializer(ModelSerializer):

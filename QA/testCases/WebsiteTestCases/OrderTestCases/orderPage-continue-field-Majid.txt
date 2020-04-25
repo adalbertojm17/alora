@@ -1,0 +1,21 @@
+Project name  Alora
+Module name   Order page
+created date  4/24/2020
+reviewd by    Qa Team
+test date     4/24/2020
+
+
+
+  
+          order page schedule pick up
+
+
+tesp Id
+
+Ts_Alora_01    street address field accept valid addrss.....  pass
+
+
+Ts_Alora_02    street address accept invalid address......fail
+
+
+Remarks: street  accept   only digits

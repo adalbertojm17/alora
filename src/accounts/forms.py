@@ -17,6 +17,7 @@ EMAIL_REGEX = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 class UserSignUpForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=50,
+        min_length=3,
         label='',
         widget=forms.TextInput(attrs={
             'placeholder': 'First name*',
@@ -30,6 +31,7 @@ class UserSignUpForm(UserCreationForm):
 
     last_name = forms.CharField(
         max_length=100,
+        min_length=3,
         label='',
         widget=forms.TextInput(attrs={
             'placeholder': 'Last name*',
@@ -172,6 +174,7 @@ class AccountAuthenticationForm(forms.ModelForm):
 class AccountForm(forms.ModelForm):
     required_css_class = 'required',
     first_name = forms.CharField(
+        min_length=3,
         max_length=50,
         label=mark_safe('First Name<br />'),
         label_suffix='',
@@ -187,6 +190,7 @@ class AccountForm(forms.ModelForm):
     )
 
     last_name = forms.CharField(
+        min_length=3,
         max_length=100,
         label=mark_safe('Last Name<br />'),
         label_suffix='',
@@ -220,6 +224,7 @@ class AccountForm(forms.ModelForm):
 
     username = forms.CharField(
         max_length=35,
+        min_length=5,
         label=mark_safe('Username<br />'),
         label_suffix='',
         widget=forms.TextInput(attrs={

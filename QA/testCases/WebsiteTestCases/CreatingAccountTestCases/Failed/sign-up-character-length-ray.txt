@@ -1,0 +1,19 @@
+Test Case: Login
+
+Steps
+Step 1: User selects sign in button
+Step 2: User selects Sign up button
+
+Data
+User inputs first name: R
+User inputs last name: B
+inputs gmail: 3y@gmail.com
+username: capstonecrasher
+inputs password
+Selects continue button
+
+Expected results: Informs user first and last name character minimum length can be 3 characters
+
+Actual Results:User is directed to Address Information
+
+Test case: Failed

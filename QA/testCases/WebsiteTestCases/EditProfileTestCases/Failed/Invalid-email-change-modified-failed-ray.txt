@@ -1,0 +1,15 @@
+Test case: Edit Account
+
+Steps 1: user logs in
+Step 2: User selects on edit account
+
+Data
+User selects edit account
+user changes email from 2g@yahoo.com to 2g@ya.com
+user selects bar save changes
+
+Expected Results: User should be informed their email is invalid, it should be @gmail.com or @yahoo.com @facebook.com @hotmail.com @outlook.com etc...
+
+Actuals Results: Changes were made
+
+case: Failed

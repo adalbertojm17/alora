@@ -12,3 +12,5 @@ user selects continue bar
 Expected results: A help option appears when selecting order now page for those users who may need help to understand how to place an order.
 
 Actual results: An help option appears on the top left corner of order now page describing to the user how to place an order
+
+Test Case: Passed

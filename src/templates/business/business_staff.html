@@ -8,13 +8,44 @@
     {% endblock %}
 </head>
 {% block content %}
-   <div class="servicespage">
-    <form method="post" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button  id="addbutton" type="submit">Create</button>
-    </form>
-    </div>
+
+         <div class="moveright">
+            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
+                                                           class="center" width=40 height=40>
+                <span class="popuptext" style="width:350px" id="myPopup">
+
+                    <p>Create Staff Account</p>
+                    <p> Enter your staff member first name and last name in the field labeled "First Name" & "Last Name" </p>
+                    <p> Enter your staff member phone number. This is optional. e.g. 999-999-9999</p>
+                    <p> Enter your staff member email address and confirm the email in the field labeled "Email Address".
+                    e.g. test@email.com</p>
+                    <p> Create a password and confirm the password for your staff member in the appropriate fields.
+                    Ensure that the password has a capital letter and contains special characters.
+                    e.g. Test!857@H</p>
+                    <p> Click "create" to create the account. Note that your staff member can make changes to their account once they sign in.</p>
+                    <hr>
+
+             </span>
+            </div>
+        </div>
+
+       <div class="noorders">
+            <div class=insideorder>
+                <div class="staff" >
+                    <h1 id="h1general"> Add Staff </h1>
+                    <form id="" method="post" >
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button  id="addbutton" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+       </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 <body>
 

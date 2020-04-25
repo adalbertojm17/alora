@@ -423,7 +423,13 @@ label {
     margin-left: 15%;
 }
 
-input[type=text], input[type=number]{
+help_text {
+    display: block;
+    text-align: left;
+    margin-left: 15%;
+}
+
+input[type=text], input[type=number], input[type=email], input[type=password]{
     position: center;
     background-color: white;
     color: black;
@@ -593,3 +599,38 @@ input[type=text], input[type=number]{
     color:red;
 }
 
+/*****************Staff Page*****************/
+
+#addstaff{
+    position: relative;
+    background-color: #FF9920;
+    display: block;
+    color: white;
+    width: 20%;
+    border: 1px solid #FF9920;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#addstaff a{
+    color:white;
+    text-decoration: none;
+}
+
+#addstaff:hover{
+    background-color:#FF5733;
+}
+
+#h1general{
+    text-align: center;
+    font-size: 200%;
+}
+
+.staff{
+    width: 70%;
+    margin: auto;
+    border: 3px solid black;
+}

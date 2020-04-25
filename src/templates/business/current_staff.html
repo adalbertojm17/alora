@@ -2,7 +2,7 @@
 {% load static %}
 <head xmlns="http://www.w3.org/1999/html">
     {% block styles %}
-        <title>Current Orders</title>
+        <title>Current Staff</title>
         <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
@@ -11,9 +11,28 @@
 <body>
 {% block content %}
 
+    <div class="moveright">
+            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
+                                                           class="center" width=40 height=40>
+                <span class="popuptext" style="width:350px" id="myPopup">
+
+                    <p> Welcome to Current Staff!</p>
+                    <p> View and manage staff at your company. Staff members have the ability to view orders, add items &
+                    change the status of the order. </p>
+                    <p> To create a staff account for your staff member, click the button labeled "Create Staff Account"</p>
+                    <p> To delete a staff account: </p>
+                    <ul> <li> Click the <img src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15> beside the name of the staff
+                    member.</li> </ul>
+                    <hr>
+
+             </span>
+            </div>
+    </div>
+
     <div class="currentOrders">
         <div class="insidecurrent">
             <h1> Current Staff</h1>
+            <button id="addstaff"><a href="/business_staff/" class="makesmall">Create Staff Account  </a></button>
             <table class="currentOrdersTable">
                 <tr>
                     <th>Name</th>
@@ -32,9 +51,12 @@
                         </tr>
                 {% endfor %}
             </table>
-            <button><a href="/business_staff/" class="makesmall">Created Staff Account  </a></button>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 
 </body>

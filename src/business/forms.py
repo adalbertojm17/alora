@@ -111,14 +111,13 @@ class StaffCreationForm(UserCreationForm):
         max_length=12,
         label='',
         widget=forms.TextInput(attrs={'placeholder': 'Phone number (Optional)'}),
-        help_text='Enter a valid phone number (e.g. 999-999-9999)',
         required=False
     )
 
     email = forms.EmailField(
         max_length=254,
         label='',
-        widget=forms.EmailInput(attrs={'placeholder': 'Email addresses*'})
+        widget=forms.EmailInput(attrs={'placeholder': 'Email address*'})
 
     )
 

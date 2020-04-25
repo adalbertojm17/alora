@@ -73,9 +73,9 @@
             <h1> Sign Up </h1>
             <h2>
                 {% if wizard.steps.step1 == 1 %}
-                    Basic Information
+                    <h1>Basic Information</h1>
                 {% else %}
-                    Address Information
+                    <h1>Address Information</h1>
                 {% endif %}
             </h2>
             <form method="post">{% csrf_token %}

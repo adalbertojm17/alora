@@ -1,0 +1,20 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head>
+     {% block styles %}
+        <title>Staff</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+{% block content %}
+   <div class="servicespage">
+    <form method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button  id="addbutton" type="submit">Create</button>
+    </form>
+    </div>
+{% endblock %}
+<body>
+

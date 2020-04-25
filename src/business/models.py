@@ -10,6 +10,7 @@ class Store(models.Model):
     name = models.CharField(max_length=150)
     manager = models.ManyToManyField(Account)
     address = models.OneToOneField(Address, on_delete=models.SET_NULL, null=True)
+    staff = models.ManyToManyField(Account,related_name='staff')
 
     def __str__(self):
         return self.name

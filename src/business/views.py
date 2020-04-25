@@ -13,10 +13,48 @@ from .forms import AddingOrderItemForm
 from .forms import ServiceCreationForm
 from .models import Service
 from .models import Store
+from  .forms import StaffCreationForm
 # noinspection PyUnresolvedReferences
 from feedback.models import Feedback
+from accounts.models import Account
 
+def staff_view(request, *args, **kwargs):
+    try:
+        my_context = {
+            'staff': Store.objects.get(manager=request.user).staff.all
+        }
+    except ObjectDoesNotExist:
+        return redirect('no_order')
 
+    if not (Store.objects.get(manager =request.user).staff):
+        return redirect('no_order')
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif not request.user.is_manager and not request.user.is_staff:
+        return HttpResponseForbidden()
+
+    return render(request, "business/current_staff.html", my_context)
+
+def business_staff_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif not request.user.is_manager:
+        return HttpResponseForbidden()
+    if request.POST:
+        form =StaffCreationForm (request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            form.save()
+            store = Store.objects.get(manager=request.user)
+            store.staff.add(Account.objects.get(username =username))
+            return redirect('currentstaff')
+    else :
+        form = StaffCreationForm()
+    context = {
+       'form': form
+    }
+    return render (request,'business/business_staff.html',context)
 
 def feedback_view(request, *args, **kwargs):
     try:
@@ -53,7 +91,7 @@ def orders_details_view(request, *args, **kwargs):
 
     if not request.user.is_authenticated:
         return redirect('login')
-    elif not request.user.is_manager:
+    elif not request.user.is_manager and not request.user.is_staff :
         return HttpResponseForbidden()
 
     if 'button1'in request.POST:
@@ -76,21 +114,34 @@ def staffhome_view(request, *args, **kwargs):
     my_context = {}
     if not request.user.is_authenticated:
         return redirect('login')
-    elif not request.user.is_manager:
+    elif not request.user.is_manager and not request.user.is_staff  :
         return HttpResponseForbidden()
     return render(request, "business/home.html", my_context)
 
 
 def current_orders_view(request, *args, **kwargs):
-    try:
-        my_context = {
-            'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
-        }
-    except ObjectDoesNotExist:
-        return redirect('no_order')
 
-    if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
-        return redirect('no_order')
+    if request.user.is_manager:
+        try:
+            my_context = {
+                'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
+            }
+        except ObjectDoesNotExist:
+                return redirect('no_order')
+
+        if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
+                return redirect('no_order')
+    elif request.user.is_staff:
+        try:
+            my_context = {
+                'orders': Order.objects.all().filter(store=Store.objects.get(staff=request.user))
+            }
+        except ObjectDoesNotExist:
+            return redirect('no_order')
+
+        if not (Order.objects.all().filter(store=Store.objects.get(staff=request.user))):
+            return redirect('no_order')
+
 
     if request.GET:
         query = request.GET['q']
@@ -104,8 +155,9 @@ def current_orders_view(request, *args, **kwargs):
 
     if not request.user.is_authenticated:
         return redirect('login')
-    elif not request.user.is_manager:
+    elif not request.user.is_manager and not request.user.is_staff :
         return HttpResponseForbidden()
+
     return render(request, "business/current_orders.html", my_context)
 
 
@@ -118,25 +170,27 @@ def general_info_view(request, *args, **kwargs):
     return render(request, "business/general_info.html", my_context)
 
 
-def staff_view(request, *args, **kwargs):
-    my_context = {}
-    if not request.user.is_authenticated:
-        return redirect('login')
-    elif not request.user.is_manager:
-        return HttpResponseForbidden()
-    return render(request, "business/staff.html", my_context)
-
-
 def store_orderhistory_view(request, *args, **kwargs):
-    try:
-        my_context = {
-            'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
-        }
-    except ObjectDoesNotExist:
-       return redirect('no_order')
+    if request.user.is_manager:
+        try:
+            my_context = {
+                'orders': Order.objects.all().filter(store=Store.objects.get(manager=request.user))
+            }
+        except ObjectDoesNotExist:
+            return redirect('no_order')
 
-    if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
-        return redirect('no_order')
+        if not (Order.objects.all().filter(store=Store.objects.get(manager=request.user))):
+            return redirect('no_order')
+    elif request.user.is_staff:
+        try:
+            my_context = {
+                'orders': Order.objects.all().filter(store=Store.objects.get(staff=request.user))
+            }
+        except ObjectDoesNotExist:
+            return redirect('no_order')
+
+        if not (Order.objects.all().filter(store=Store.objects.get(staff=request.user))):
+            return redirect('no_order')
 
     if request.GET:
         query = request.GET['q']
@@ -149,7 +203,7 @@ def store_orderhistory_view(request, *args, **kwargs):
 
     if not request.user.is_authenticated:
         return redirect('login')
-    elif not request.user.is_manager:
+    elif not request.user.is_manager and not request.user.is_staff :
         return HttpResponseForbidden()
     return render(request, "business/store_orderhistory.html", my_context)
 
@@ -257,4 +311,9 @@ def delete_item_function(request,obj_id=None):
     object.delete()
     return HttpResponseRedirect('/services_business/')
 
+
+def delete_staff_function(request,obj_id=None):
+    object = Account.objects.get(id=obj_id)
+    object.delete()
+    return HttpResponseRedirect('/staff/')
 

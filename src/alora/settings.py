@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
+    'pygeocoder',
 
     # Local Apps
     'accounts',
@@ -205,3 +206,4 @@ REST_FRAMEWORK = {
 }
 
 ADMINS = [('admin', 'admin@aloralaundry.com', 'admin', 'admin'), ]
+API_KEY ='AIzaSyAE_yj-AG2fliR1sRSU8iBxtm2U0-etR4g'

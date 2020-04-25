@@ -15,11 +15,14 @@
                     <li> <a href="{% url 'staffhome' %}"> Home </a></li>
                     <li><a href=/currentorders/>Current Orders</a></li>
                     <li><a href=/storeorders/>Order History</a></li>
+                     <li><a href="/account/">View Account</a></li>
+                    {%if request.user.is_manager %}
                     <li><a href="/services_business/">View Services</a></li>
                     <li><a href="/feedback/">Customer Feedback</a></li>
                     <li><a href=/generalinfo/>General Information</a></li>
-                    <li><a href="/account/">View Account</a></li>
+                    <li><a href="/staff/">View Staffs</a></li>
 
+                    {% endif %}
                     {% if request.user.is_authenticated %}
                         <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
 

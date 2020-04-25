@@ -1,0 +1,40 @@
+{% extends 'business/businessbase.html' %}
+{% load static %}
+<head xmlns="http://www.w3.org/1999/html">
+    {% block styles %}
+        <title>Current Orders</title>
+        <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="currentOrders">
+        <div class="insidecurrent">
+            <h1> Current Staff</h1>
+            <table class="currentOrdersTable">
+                <tr>
+                    <th>Name</th>
+                    <th> Username </th>
+                    <th> Email </th>
+                </tr>
+
+                {% for emp in staff %}
+                        <tr>
+                            <td>{{ emp.first_name }} {{ emp.last_name }} <a href="{% url 'delete_staff_view' obj_id=emp.id %}" >
+                                                    <img id="delete" src="{% static 'images/delete.png' %}" alt="Delete" width=15 height=15>
+                                                    <i class="fa fa-trash"></i>
+                                                </a> </td>
+                            <td>{{ emp.username }} </a> </td>
+                            <td> {{ emp.email }} </td>
+                        </tr>
+                {% endfor %}
+            </table>
+            <button><a href="/business_staff/" class="makesmall">Created Staff Account  </a></button>
+        </div>
+    </div>
+{% endblock %}
+
+</body>

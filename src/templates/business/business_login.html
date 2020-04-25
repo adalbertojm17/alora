@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+
+    {% block styles %}
+        <title>Business Login</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+     <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" id="myPopup">
+
+              <p> Enter the correct user name and password to access your account.</p>
+              <p> Click "Sign Up" to create an account if you dont have one.</p>
+              <p> Click "Forgot your password? " to recover your password.</p>
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
+    <div class="signinpage">
+
+    <div id="signin">
+
+        <img id="signinicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=70 height=80>
+        <h1> Sign In </h1>
+
+        <form method="post">{% csrf_token %}
+            {% for field in login_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+
+                {% if login_form.non_field_errors %}
+                    <div style="color: red;">
+                        <p>{{ login_form.non_field_errors }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button id="buttonstandard" type="submit">Log In</button>
+        </form>
+        <p><a href="/password_reset/" class="makesmall">Forgot your password? </a></p>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
+</body>>

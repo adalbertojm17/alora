@@ -12,7 +12,8 @@ from django.core.exceptions import ValidationError
 from django.utils.timezone import now
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
-
+from pygeocoder import Geocoder
+from alora.settings import API_KEY
 
 class StoreForm(forms.Form):
     store = forms.ModelChoiceField(
@@ -76,11 +77,26 @@ class PickupForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+    def clean(self):
+        cleaned_data = super(PickupForm, self).clean()
+        address_validation = Geocoder(api_key=API_KEY)
+        address = str(cleaned_data.get('street') + ", " + str(cleaned_data.get('city')) + ", " + str(
+        cleaned_data.get('state')) + ", " + str(cleaned_data.get('zip_code')) + 'US')
+        if not address_validation.geocode(address).valid_address:
+            raise forms.ValidationError("Address is not valid")
+        else:
+            address = address_validation.geocode(address)
+            cleaned_data['street'] = address.street_number +' '+ address.route
+            cleaned_data['city'] = address.city
+            cleaned_data['zip_code'] = address.postal_code
+            return cleaned_data
+
+
 
     def clean_pickup_at(self):
         cleaned_data = super(PickupForm, self).clean()
         pickup_date = cleaned_data['pickup_at']
-        city = cleaned_data['city']
+
         if pickup_date < (now() + datetime.timedelta(days=0, hours=1, minutes=0)):
             raise ValidationError("Pick-up date/time must not be earlier than 1 hour from now.")
         return pickup_date
@@ -137,6 +153,20 @@ class DropOffForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super(DropOffForm, self).clean()
+        address_validation = Geocoder(api_key=API_KEY)
+        address = str(cleaned_data.get('street') + ", " + str(cleaned_data.get('city')) + ", " + str(
+            cleaned_data.get('state')) + ", " + str(cleaned_data.get('zip_code')) + 'US')
+        if not address_validation.geocode(address).valid_address:
+            raise ValidationError("Address is not valid")
+        else:
+            address = address_validation.geocode(address)
+            cleaned_data['street'] = address.street_number + ' ' + address.route
+            cleaned_data['city'] = address.city
+            cleaned_data['zip_code'] = address.postal_code
+            return cleaned_data
 
     def clean_drop_off_at(self):
         cleaned_data = super(DropOffForm, self).clean()

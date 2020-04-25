@@ -64,6 +64,8 @@ def login_view(request):
     if user.is_authenticated:
         if user.is_manager:
             return redirect('staffhome')
+        if user.is_staff:
+            return redirect('staffhome')
         return redirect('main')
 
     if request.POST:
@@ -77,6 +79,8 @@ def login_view(request):
                 login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
                 if user.is_manager:
                     return redirect('staffhome')
+                if user.is_staff:
+                    return redirect('staffhome')
                 return redirect('main')
 
     else:
@@ -89,6 +93,38 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+def business_login_view(request):
+    context = {}
+    user = request.user
+    if user.is_authenticated:
+        if user.is_manager:
+            return redirect('staffhome')
+        if user.is_staff:
+            return redirect('staffhome')
+
+
+    if request.POST:
+        form = AccountAuthenticationForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+
+            if user:
+                login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
+                if user.is_manager:
+                    return redirect('staffhome')
+                if user.is_staff:
+                    return redirect('staffhome')
+
+
+    else:
+        form = AccountAuthenticationForm()
+
+    context['login_form'] = form
+    return render(request,'business/business_login.html', context)
 
 
 def account_view(request):

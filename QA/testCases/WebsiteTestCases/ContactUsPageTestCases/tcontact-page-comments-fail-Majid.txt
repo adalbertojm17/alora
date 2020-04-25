@@ -1,0 +1,23 @@
+
+Project Name Alora
+Module Name  contact page
+Created name 4/7/2020
+reviewd by QA team
+Test date  4/25/2020
+QA version 1.1
+
+
+                                                                contact Page submit tab
+
+
+
+
+Ts_Alora_01      Enter subject option successfully......pass
+
+Ts_Alora_02      scomments box accept one number  .....fail
+
+
+Remarks:   comments box accept only one digit without entering any comments....Fail
+
+
+

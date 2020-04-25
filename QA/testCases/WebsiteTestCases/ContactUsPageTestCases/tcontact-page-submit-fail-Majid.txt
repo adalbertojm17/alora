@@ -1,0 +1,23 @@
+
+Project Name Alora
+Module Name  contact page
+Created name 4/7/2020
+reviewd by QA team
+Test date  4/25/2020
+QA version 1.1
+
+
+                                                                contact Page submit tab
+
+
+
+
+Ts_Alora_01      submit tab able to response........ pass
+
+Ts_Alora_02      submit tab navigate to opertional error  .....fail
+
+
+Remarks:   submit button navigate to opertional error page
+
+
+

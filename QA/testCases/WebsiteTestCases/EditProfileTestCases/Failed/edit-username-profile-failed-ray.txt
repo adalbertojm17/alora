@@ -1,0 +1,15 @@
+Test Case: Account Page
+
+Steps:
+Step 1: User Logs into account
+Step 2: User selects on view Account button
+Step 3: Selects on edit account button 
+
+Data
+Modifies their username: from Raymond to the letter "n"
+
+Expected result: User should be restricted from having their username to be three letters or more in the same scenario where the user signs up and is informed their username must be three letters or more
+
+Actual Results: Changes were made.
+
+Test case:Failed

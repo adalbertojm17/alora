@@ -4,7 +4,7 @@ from .views import (
     ServiceListAPIView,
     ServiceDetailAPIView,
     StoreListAPIView,
-StoreDropDownAPIView,
+    StoreDropDownAPIView,
 )
 
 urlpatterns = [

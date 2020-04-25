@@ -98,7 +98,7 @@ def orders_details_view(request, *args, **kwargs):
         form = AddingOrderItemForm(request.user,order,request.POST)
         if form.is_valid():
             form.save()
-            form = AddingOrderItemForm(user =request.user,order = order)
+            return HttpResponseRedirect('/order_details/?order='+str(order.id))
     else:
         form = AddingOrderItemForm(user =request.user,order = order)
 

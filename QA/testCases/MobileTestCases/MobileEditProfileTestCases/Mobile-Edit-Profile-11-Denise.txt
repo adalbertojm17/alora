@@ -1,0 +1,29 @@
+Test Case: Edit Profile
+Test Case ID: #11
+
+Steps:
+1.Login into Alora mobile app
+2.Tap "My Profile"
+3.Tap on Edit Profile
+3.Type in old and new password
+4.Tap "Save Changes" Button.
+5.Sign out of the account.
+6.Sign into the account.
+
+Test Scenario: Change password
+
+Data:
+Login - Username: denise, Password: Alora2020!
+
+Old Password: Alora2020!
+New Password: Test2020!
+Confirm New Password: Test2020!
+
+
+Expected: Password should change.
+Actual results: Password did not change. Error message stated "Invalid current password".
+
+Notes: Current password was typed multiple times. However, same results.
+
+Test Case: Failed.
+

@@ -1,0 +1,20 @@
+Test Case: Edit Profile
+Test Case ID: #2
+
+Steps:
+1.Login into Alora mobile app
+2.Click "My Profile"
+3.Click on Edit Profile
+3.Type the new FirstName
+4.Click "Save Changes Button"
+
+Test Scenario: Change account information
+
+Data:
+Login - Username: denise, Password: Alora2020!
+FisrtName- DeniseD
+
+Expected: To accept the first name
+Actual results: First name was changed.
+
+Test Case: Pass

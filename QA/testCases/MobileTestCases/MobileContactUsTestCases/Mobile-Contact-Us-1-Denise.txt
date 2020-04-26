@@ -1,0 +1,24 @@
+Test Case: Contact Us
+Test Case ID: #1
+
+Steps:
+1.Login into Alora mobile app
+2.Tap "Contact Us"
+3.Tap drop down to select store.
+3.Tap "Subject" and type in the subject matter.
+4.Tap "Welcome you feedback" and type the message.
+5.Tap "submit" button.
+
+
+Test Scenario: Contact selected Business or Alora.
+
+Data:
+Login - Username: denise, Password: Alora2020!
+Subject: Laundry
+We welcome back your feedback/ message: Thank you for your service.
+
+
+Expected: Message should be submitted.
+Actual results: No changes. Message did not submit.
+
+Test Case: Failed.

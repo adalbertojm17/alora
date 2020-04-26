@@ -13,6 +13,7 @@ from django.utils.timezone import now
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
 from pygeocoder import Geocoder
+# noinspection PyUnresolvedReferences
 from alora.settings import API_KEY
 
 class StoreForm(forms.Form):

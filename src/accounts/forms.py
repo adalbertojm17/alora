@@ -122,11 +122,11 @@ class UserAddressForm(forms.ModelForm):
         label='',
         required=False,
         max_length=50,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
-            'title': ' alphanumeric '
-                     'characters '
-                     'only '
-                     'please'})
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite', 'pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
 
     )
     city = forms.CharField(
@@ -152,6 +152,11 @@ class UserAddressForm(forms.ModelForm):
 
 
 class AccountAuthenticationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.current_login = kwargs.pop('current_login')
+        self.redirect = False
+        super(AccountAuthenticationForm, self).__init__(*args, **kwargs)
+
     username = forms.CharField(
         max_length=35,
         label='',
@@ -165,10 +170,15 @@ class AccountAuthenticationForm(forms.ModelForm):
         fields = ('username', 'password')
 
     def clean(self):
+
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        if not authenticate(username=username, password=password):
+        user = authenticate(username=username, password=password)
+        if not user:
             raise forms.ValidationError("Invalid login")
+        if user.is_manager and self.current_login == 'customer-login':
+            self.redirect = True
+            raise forms.ValidationError("Please use the business login")
 
 
 class AccountForm(forms.ModelForm):

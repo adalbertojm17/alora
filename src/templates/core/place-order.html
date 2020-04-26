@@ -113,13 +113,14 @@
                                     <p style="color: red;">{{ error }}</p>
                                 {% endfor %}
 
-                            {% if form.non_field_errors %}
-                                <div style="color: red;">
-                                    <p>{{ form.non_field_errors }}</p>
-                                </div>
-                            {% endif %}
+
                         {% endfor %}
                     {% endfor %}
+                    {% if form.non_field_errors %}
+                                <div style="color: red;">
+                                    <p>{{ form.non_field_errors.as_text }}</p>
+                                </div>
+                            {% endif %}
                 {% else %}
                     {% for field in form %}
                         <p>
@@ -130,12 +131,15 @@
                                 <p style="color: red;">{{ error }}</p>
                             {% endfor %}
 
-                        {% if form.non_field_errors %}
-                            <div style="color: red;">
-                                <p>{{ form.non_field_errors }}</p>
-                            </div>
-                        {% endif %}
+
                     {% endfor %}
+                    {% if form.non_field_errors %}
+                        {% for errors in form.non_field_errors %}
+                        <div style="color: red;">
+                                <p>{{ errors }}</p>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
                 {% endif %}
             </table>
             {% if wizard.steps.prev %}

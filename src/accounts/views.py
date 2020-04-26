@@ -1,4 +1,6 @@
 # noinspection PyUnresolvedReferences
+import time
+
 from addresses.models import Address
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
@@ -69,7 +71,7 @@ def login_view(request):
         return redirect('main')
 
     if request.POST:
-        form = AccountAuthenticationForm(request.POST)
+        form = AccountAuthenticationForm(request.POST, current_login='customer-login')
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
@@ -82,9 +84,13 @@ def login_view(request):
                 if user.is_staff:
                     return redirect('staffhome')
                 return redirect('main')
+        # else:
+        #     if form.redirect:
+        #         time.sleep(5)
+        #         return redirect('businesslogin')
 
     else:
-        form = AccountAuthenticationForm()
+        form = AccountAuthenticationForm(current_login='customer-login')
 
     context['login_form'] = form
     return render(request, 'login.html', context)
@@ -104,9 +110,8 @@ def business_login_view(request):
         if user.is_staff:
             return redirect('staffhome')
 
-
     if request.POST:
-        form = AccountAuthenticationForm(request.POST)
+        form = AccountAuthenticationForm(request.POST, current_login='business-login')
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
@@ -119,12 +124,11 @@ def business_login_view(request):
                 if user.is_staff:
                     return redirect('staffhome')
 
-
     else:
-        form = AccountAuthenticationForm()
+        form = AccountAuthenticationForm(current_login='business-login')
 
     context['login_form'] = form
-    return render(request,'business/business_login.html', context)
+    return render(request, 'business/business_login.html', context)
 
 
 def account_view(request):

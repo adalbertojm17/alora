@@ -3,8 +3,8 @@ Test Case ID: #1
 
 Steps:
 1.Login into Alora mobile app
-2.Click "My Profile"
-3.Click on Edit Profile.
+2.Tap "My Profile"
+3.Tap on Edit Profile.
 
 Test Scenario: Change account information
 

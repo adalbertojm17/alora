@@ -1,11 +1,11 @@
 Test Case: Edit Profile
-Test Case ID: #7
+Test Case ID: #10
 
 Steps:
 1.Login into Alora mobile app
 2.Click "My Profile"
 3.Click on Edit Profile
-3.Type in new username
+3.Type in new email
 4.Click "Save Changes" Button
 
 Test Scenario: Change account information (Providing Incorrect data formats)
@@ -13,22 +13,26 @@ Test Scenario: Change account information (Providing Incorrect data formats)
 Data:
 Login - Username: denise, Password: Alora2020!
 
-Username:
-Data1: #deni&
-Data2: 65744
-Data3: den16
-Data4: denisedoesnotwanttochangeherusername
+Emails:
+Data1: test
+Data2: test@.com
+Data3: test.com
+Data4: test.9.com.@
+Data5: test@you@gmail.com
 
 Expected: This data should not be accepted as a change for account information. Error message should rise warning the user.
-Actual results: Username was changed.
+Actual results: Email did not change. No error message.
 
-Suggestions: Add labels to fields.
+Suggestions:
+1) Add labels to fields.
+2) Add error messages.
 
 Test Case:
 
-Data1: Failed.
-Data2: Failed.
-Data3: Failed.
-Data4: Passed.
+Data1: Passed
+Data2: Passed
+Data3: Passed
+Data4: Passed
+Data5: Passed
 
 Final Result: Failed

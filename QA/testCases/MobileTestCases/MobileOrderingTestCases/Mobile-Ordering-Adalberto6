@@ -1,0 +1,17 @@
+Test Case ID: #6
+Steps:
+1.Login into Alora mobile app
+2.Tap "Order Now"
+3.Tap the drop menu of store
+4. select a store.
+5. Tap continue.
+
+
+Test Scenario: .
+Date:
+Login - Username: Adalberto, Password: Ad.12345
+
+Expected: all the fields to have help text to know what to input
+Actual results: the state field  and the date field did not have help text
+
+Test Case: Failed.

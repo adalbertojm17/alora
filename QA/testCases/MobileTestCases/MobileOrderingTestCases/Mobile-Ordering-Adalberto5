@@ -1,0 +1,18 @@
+Test Case ID: #5
+Steps:
+1.Login into Alora mobile app
+2.Tap "Order Now"
+3.Tap the drop menu of store
+4. select a store.
+5. Tap continue.
+6.Tap the date time field selected a date and time
+7. Tap accept
+
+Test Scenario: .
+Date:
+Login - Username: Adalberto, Password: Ad.12345
+date: sunday,26 of april
+Expected: the date that i selected to be visible in the field
+Actual results: the date that i selected was not visible in the field.
+
+Test Case: Failed.

@@ -3,10 +3,10 @@ Test Case ID: #6
 
 Steps:
 1.Login into Alora mobile app
-2.Tap "My Profile"
-3.Tap on Edit Profile
+2.Click "My Profile"
+3.Click on Edit Profile
 3.Type in new username
-4.Tap "Save Changes" Button
+4.Click "Save Changes" Button
 
 Test Scenario: Change account information
 

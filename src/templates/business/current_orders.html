@@ -54,7 +54,7 @@
 
                             <tr>
                                 <td>{{ order.pk }}</td>
-                                <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                                <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
                                 <td> {{ order.current_status }} </td>
                             </tr>
                             <br>
@@ -75,7 +75,7 @@
                     {% if order.status.name != 'Order delivered' %}
                         <tr>
                             <td>{{ order.pk }}</td>
-                            <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                            <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
                             <td> {{ order.current_status }} </td>
                         </tr>
                     {% endif %}

@@ -53,7 +53,7 @@
             {% for order in SearchOrder %}
                 <tr>
                     <td>{{ order.pk }}</td>
-                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>
+                    <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a></td>
                     <td>{{ order.pickup_location }}</td>
                     <td>{{ order.dropoff_location }}</td>
                     <td>{{ order.pickup_at }}</td>
@@ -78,7 +78,7 @@
             {% for order in orders|slice:"0:10" %}
                 <tr>
                     <td>{{ order.pk }}</td>
-                    <td><a href=/order_details/?order={{ order.id }}> {{ order }} </a></td>
+                    <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a></td>
                     <td>{{ order.pickup_location }}</td>
                     <td>{{ order.dropoff_location }}</td>
                     <td>{{ order.pickup_at }}</td>

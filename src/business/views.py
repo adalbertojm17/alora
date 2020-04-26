@@ -98,7 +98,7 @@ def orders_details_view(request, *args, **kwargs):
         form = AddingOrderItemForm(request.user,order,request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/order_details/?order='+str(order.id))
+            return HttpResponseRedirect('/business/order_details/?order='+str(order.id))
     else:
         form = AddingOrderItemForm(user =request.user,order = order)
 
@@ -256,7 +256,7 @@ def services_business_view(request):
         form = ServiceCreationForm(request.user,request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/services_business/')
+            return HttpResponseRedirect('/business/company_services/')
 
     else:
         form = ServiceCreationForm(user=request.user)
@@ -267,7 +267,7 @@ def services_business_view(request):
         form2 = AddingItemForm(request.user,request.POST)
         if form2.is_valid():
             form2.save()
-            return HttpResponseRedirect('/services_business/')
+            return HttpResponseRedirect('/business/company_services/')
 
 
     else:
@@ -299,21 +299,21 @@ def delete_order_item_function(request,obj_id =None):
     object = OrderItem.objects.get(id=obj_id)
     id  = object.order.id
     object.delete()
-    return HttpResponseRedirect('/order_details/?order='+str(id))
+    return HttpResponseRedirect('/business/order_details/?order='+str(id))
 
 def delete_service_function(request,obj_id=None):
     object = Service.objects.get(id=obj_id)
     object.delete()
-    return HttpResponseRedirect('/services_business/')
+    return HttpResponseRedirect('/business/company_services/')
 
 def delete_item_function(request,obj_id=None):
     object = Item.objects.get(id=obj_id)
     object.delete()
-    return HttpResponseRedirect('/services_business/')
+    return HttpResponseRedirect('/business/company_services/')
 
 
 def delete_staff_function(request,obj_id=None):
     object = Account.objects.get(id=obj_id)
     object.delete()
-    return HttpResponseRedirect('/staff/')
+    return HttpResponseRedirect('/business/staff/')
 

@@ -65,6 +65,12 @@ h1, h2{
     padding-top:50px;
 }
 
+.businesssigninpage{
+    background-image: url('../images/businesssignin.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+}
+
 .mainmainpage {
     background-image: url('../images/mainbackground.jpg') ;
     background-size: cover;
@@ -221,6 +227,45 @@ header {
     font-weight: normal;
     padding: 5px;
 }
+
+
+/*
+	CSS for business sign in page
+*/
+
+#bsignin {
+    position: center;
+    background-color: rgba(255,153,32,0.9);
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both;
+    padding: 15px;
+}
+
+#signinicon {
+    padding-top: 15px;
+}
+
+#bsignin p {
+    text-align: center;
+    font-size: 100%;
+    padding: 0;
+}
+
+#bsignin p a {
+    color: grey;
+    font-size: 110%;
+}
+
+#bsignin h1{
+    font-size:130%;
+    text-align: center;
+    font-weight: normal;
+    padding: 5px;
+}
+
 
 .makesmall {
     font-size: 80%;

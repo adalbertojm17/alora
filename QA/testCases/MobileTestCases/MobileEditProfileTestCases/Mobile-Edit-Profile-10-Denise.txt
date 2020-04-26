@@ -35,4 +35,4 @@ Data3: Passed
 Data4: Passed
 Data5: Passed
 
-Final Result: Failed
+Final Result: Passed

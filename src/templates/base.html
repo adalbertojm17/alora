@@ -45,6 +45,7 @@
 
                 {% else %}
                     <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
+                    <li class="homepage"><a href="{% url 'businesslogin' %}">Company Log In</a></li>
                 {% endif %}
             </ul>
             <br/>
@@ -61,15 +62,15 @@
             <ul>
                 {% if request.user.is_authenticated %}
                     <li class="homepage"><a href="{% url 'staffhome' %}">Home</a></li>
-                    <li class="homepage"><a href=/currentorders/>Current Orders</a></li>
-                    <li class="homepage"><a href=/storeorders/>Order History</a></li>
+                    <li class="homepage"><a href=/business/currentorders/>Current Orders</a></li>
+                    <li class="homepage"><a href=/business/storeorders/>Order History</a></li>
                     <li class="homepage"><a href=/account/>View Account</a></li>
                 {% endif %}
                     {% if request.user.is_manager %}
-                <li class="homepage"><a href=/services_business/>View Services</a></li>
-                <li class="homepage"><a href=/generalinfo/>General Information</a></li>
-                <li><a href="/feedback/">Customer Feedback</a></li>
-                <li><a href="/staff/">View Staffs</a></li>
+                <li class="homepage"><a href=/business/company_services/>View Services</a></li>
+                <li class="homepage"><a href=/business/generalinfo/>General Information</a></li>
+                <li><a href="/business/feedback/">Customer Feedback</a></li>
+                <li><a href="/business/staff/">View Staffs</a></li>
 
                         {% endif %}
                 {% if request.user.is_authenticated %}

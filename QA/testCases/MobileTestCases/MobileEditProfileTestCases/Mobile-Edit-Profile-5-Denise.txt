@@ -15,7 +15,7 @@ Login - Username: denise, Password: Alora2020!
 Phone Number: 123-456-7890 & 1234567890
 
 Expected: To accept the new phone number.
-Actual results: Phone number was changed.
+Actual results: Phone number was not changed.
 
 Suggestions: Add labels to fields.
 

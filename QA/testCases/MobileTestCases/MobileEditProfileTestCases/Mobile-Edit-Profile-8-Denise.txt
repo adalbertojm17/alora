@@ -1,0 +1,34 @@
+Test Case: Edit Profile
+Test Case ID: #6
+
+Steps:
+1.Login into Alora mobile app
+2.Click "My Profile"
+3.Click on Edit Profile
+3.Type in new firstname
+4.Click "Save Changes" Button
+
+Test Scenario: Change account information (Providing Incorrect data formats)
+
+Data:
+Login - Username: denise, Password: Alora2020!
+
+First name:
+Data1: #denise&
+Data2: 657444
+Data3: den2020
+Data4: denisedoesnotwanttochangeherusername
+
+Expected: This data should not be accepted as a change for account information. Error message should rise warning the user.
+Actual results: Username was changed.
+
+Suggestions: Add labels to fields.
+
+Test Case:
+
+Data1: Failed.
+Data2: Failed.
+Data3: Failed.
+Data4: Passed.
+
+Final Result: Failed

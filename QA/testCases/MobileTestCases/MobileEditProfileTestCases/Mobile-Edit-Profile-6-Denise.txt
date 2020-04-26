@@ -1,0 +1,26 @@
+Test Case: Edit Profile
+Test Case ID: #6
+
+Steps:
+1.Login into Alora mobile app
+2.Click "My Profile"
+3.Click on Edit Profile
+3.Type in new username
+4.Click "Save Changes" Button
+
+Test Scenario: Change account information
+
+Data:
+Login - Username: denise, Password: Alora2020!
+Username: denise
+First name: denise
+Last name: davis
+Email: denise@gmail.com
+Phone number: 123-456-7890
+
+Expected: To accept all new account information at once.
+Actual results: Nothing changes.
+
+Suggestions: Add labels to fields.
+
+Test Case: Failed.

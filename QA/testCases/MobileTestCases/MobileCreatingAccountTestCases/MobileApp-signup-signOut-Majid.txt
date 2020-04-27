@@ -1,0 +1,17 @@
+
+Project Name Alora
+Module Name  Mobile App signup 
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/27/2020
+
+
+
+                  
+                            Mobile App signup 
+
+Ts_Alora_01   sign up page acceps valid inputs....pass
+
+Ts_Alora_02   Signup page  signout does not response....Fail
+
+

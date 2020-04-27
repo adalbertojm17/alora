@@ -3,7 +3,7 @@ import re
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.utils.safestring import mark_safe
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
@@ -292,3 +292,40 @@ class AccountForm(forms.ModelForm):
             except Account.DoesNotExist:
                 return username
             raise forms.ValidationError('Username "%s" is already in use.' % username)
+
+class EditAddressForm(forms.ModelForm):
+    street = forms.CharField(
+        label='',
+        max_length=120,
+        widget=forms.TextInput(attrs={'placeholder': 'Street*'})
+    )
+    apt = forms.CharField(
+        label='',
+        required=False,
+        max_length=50,
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite', 'pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
+
+    )
+    city = forms.CharField(
+        label='',
+        max_length=120,
+        widget=forms.TextInput(attrs={'placeholder': 'City*'})
+
+    )
+    MODDED_STATE_CHOICES = list(STATE_CHOICES)
+    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State (Optional)'))
+    state = USStateField(
+        label='',
+        widget=forms.Select(choices=MODDED_STATE_CHOICES))
+
+    zip_code = USZipCodeField(
+        label='',
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
+    )
+    class Meta:
+        model = Address
+        fields = '__all__'

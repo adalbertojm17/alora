@@ -1,6 +1,9 @@
 # noinspection PyUnresolvedReferences
 import time
 
+from django.http import HttpResponseRedirect
+
+from .forms import EditAddressForm
 from addresses.models import Address
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
@@ -157,3 +160,28 @@ def account_view(request):
         )
     context["account_form"] = form
     return render(request, "account_page.html", context)
+
+def edit_address_view(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    context= {}
+
+    if request.POST:
+        form = EditAddressForm(request.POST, instance=request.user.address)
+        if form.is_valid():
+            form.save()
+
+
+    else:
+        form =EditAddressForm(instance=request.user.address)
+
+    context["Edit_Address_form"] = form
+    return render(request, "edit_address.html", context)
+
+def delete_account_view(request):
+    return render(request,'Confirm_account_cancelation.html')
+
+def delete_account_function(request):
+    object = request.user
+    object.delete()
+    return HttpResponseRedirect('/home/')

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block styles %}
+        <title>Account </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+
+
+    <div id="accountinfo">
+        <form method="post" id="editform">{% csrf_token %}
+            {% for field in Edit_Address_form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+                <p style="color: gray; font-size: 80%;">{{ field.help_text }}</p>
+
+
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            <div>
+                <button id="buttonstandard" type="submit">Save Changes</button>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+
+
+</body>
+</html>

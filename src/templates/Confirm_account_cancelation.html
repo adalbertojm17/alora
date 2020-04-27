@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    {% block styles %}
+        <title>Account Cancelation</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+<h3> If you are sure you want to delete your account press delete else press cancel </h3>
+    <button id="editbutton" type="submit"><a href="/delete/"> Delete</a></button>
+    <button id="editbutton" type="submit"><a href="/account/"> Cancel</a></button>
+{% endblock %}
+</body>

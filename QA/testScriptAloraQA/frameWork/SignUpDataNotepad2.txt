@@ -1,2 +1,0 @@
-FirstName|LastName|PhoneNumber|Email|USerName|Password|StreetName|APTSuite|City|State|ZipCOde
-Majid|Masood|9735666141|08@gmail.com|majid6787|Abcd@123|bay Street|APT|MAN|New Jersey|07003

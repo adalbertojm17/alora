@@ -1,2 +1,0 @@
-UserName|Password|StoreName|Street|APTSuite|City|State|ZipCode|DateTime|Street|APTSuite|City|State|ZipCode|DateTime
-masood|Pass@12356|Dave's Laundry|Main St|2c|MA|New Jersey|0700000009|Wed Apr 19, 2020 1:15 pm|Bay Street|Suite|MA|Guam|07009|Wed Apr 20, 2020 1:15 pm

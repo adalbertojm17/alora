@@ -1,0 +1,19 @@
+
+Project Name Alora
+Module Name  Signup address information
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/20/2020
+QA version 1.1
+
+
+Test ID             Signup Address information
+
+Ts_Alora_01   street address accept full address....pass
+
+
+Ts_Alora_02   last name can accept only negative sign.....Fail
+
+
+
+remarks:Last name should not accept more than 32 character

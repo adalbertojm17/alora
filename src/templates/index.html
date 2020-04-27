@@ -28,19 +28,27 @@
 
     <div class="indexpage">
 
+    {% load user_agents %}
+    {% if request|is_mobile %}
+
+        <p> download app</p>
+
+    {% else %}
+
     <img id="mainpageicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=500 height=500>
     <br/>
     <br/>
-    {% if  request.user.is_authenticated %}
-        <div id="buttonmain">
-            <p><a href="/account/">View Account</a></p>
-        </div>
-    {% else %}
-        <div id="buttonmain">
-            <p><a href="/login/">Sign In</a></p>
-        </div>
-    {% endif %}
+            {% if  request.user.is_authenticated %}
+                <div id="buttonmain">
+                    <p><a href="/account/">View Account</a></p>
+                </div>
+            {% else %}
+                <div id="buttonmain">
+                    <p><a href="/login/">Sign In</a></p>
+                </div>
+            {% endif %}
 
+    {% endif %}
     </div>
 {% endblock %}
 

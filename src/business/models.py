@@ -8,9 +8,9 @@ from django.db import models
 # model to represent a physical store
 class Store(models.Model):
     name = models.CharField(max_length=150)
-    manager = models.ManyToManyField(Account)
+    manager = models.ForeignKey(Account, on_delete=models.CASCADE)
     address = models.OneToOneField(Address, on_delete=models.SET_NULL, null=True)
-    staff = models.ManyToManyField(Account,related_name='staff')
+    staff = models.ManyToManyField(Account, related_name='staff')
 
     def __str__(self):
         return self.name

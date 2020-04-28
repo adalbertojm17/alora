@@ -163,7 +163,7 @@ class AccountAuthenticationForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Email or Username'})
     )
 
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'data-toggle': 'password'}))
 
     class Meta:
         model = Account

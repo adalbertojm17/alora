@@ -51,13 +51,13 @@ class StoreAdmin(admin.ModelAdmin):
 
     delete_button.allow_tags = True
     delete_button.short_description = 'Delete Store'
-    list_display = ('name', 'get_managers', 'address', 'delete_button')
+    list_display = ('name', 'get_manager', 'address', 'delete_button')
 
-    def get_managers(self, obj):
-        return "\n".join([p.username for p in obj.manager.all()])
+    def get_manager(self, obj):
+        return obj.manager.username
 
-    get_managers.allow_tags = True
-    get_managers.short_description = 'Managers'
+    get_manager.allow_tags = True
+    get_manager.short_description = 'Manager'
 
 
 admin.site.register(Service, ServiceAdmin)

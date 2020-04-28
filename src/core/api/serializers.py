@@ -16,6 +16,8 @@ from rest_framework.serializers import (
     DateTimeField
 )
 
+from business.api.serializers import StoreSerializer
+
 
 class AddressSerializer(ModelSerializer):
     class Meta:
@@ -31,6 +33,7 @@ class AddressSerializer(ModelSerializer):
 
 # noinspection PyCompatibility
 class OrderSerializer(ModelSerializer):
+    store = StoreSerializer()
     pickup_location = AddressSerializer()
     dropoff_location = AddressSerializer()
 

@@ -295,12 +295,14 @@ class AccountForm(forms.ModelForm):
 
 class EditAddressForm(forms.ModelForm):
     street = forms.CharField(
-        label='',
+        label='Street',
+        label_suffix='',
         max_length=120,
         widget=forms.TextInput(attrs={'placeholder': 'Street*'})
     )
     apt = forms.CharField(
-        label='',
+        label='APT/Suite',
+        label_suffix='',
         required=False,
         max_length=50,
         widget=forms.TextInput(attrs={'placeholder': 'APT/Suite', 'pattern': '[0-9A-Za-z ]+',
@@ -311,7 +313,8 @@ class EditAddressForm(forms.ModelForm):
 
     )
     city = forms.CharField(
-        label='',
+        label='City',
+        label_suffix='',
         max_length=120,
         widget=forms.TextInput(attrs={'placeholder': 'City*'})
 
@@ -319,11 +322,13 @@ class EditAddressForm(forms.ModelForm):
     MODDED_STATE_CHOICES = list(STATE_CHOICES)
     MODDED_STATE_CHOICES.insert(0, ('', 'Select a State (Optional)'))
     state = USStateField(
-        label='',
+        label='State',
+        label_suffix='',
         widget=forms.Select(choices=MODDED_STATE_CHOICES))
 
     zip_code = USZipCodeField(
-        label='',
+        label='Zip Code',
+        label_suffix='',
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
     class Meta:

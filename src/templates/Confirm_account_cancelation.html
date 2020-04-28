@@ -9,8 +9,28 @@
 </head>
 <body>
 {% block content %}
-<h3> If you are sure you want to delete your account press delete else press cancel </h3>
-    <button id="editbutton" type="submit"><a href="/delete/"> Delete</a></button>
-    <button id="editbutton" type="submit"><a href="/account/"> Cancel</a></button>
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext"  id="myPopup">
+                <p> Click the "Delete" button to delete your account</p>
+                <p> Click the "Cancel" button to go back.</p>
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
+    <div class="deleteaccount">
+        <img id="confirmicons" src="{% static 'images/delete.png' %}" alt="Logo" class="center" width=80
+         height=80>
+        <p> Are sure you want to delete your account?</p>
+        <button id="editbutton" type="submit" style="width:40%;padding: 5px;"><a href="/delete/"> Delete</a></button>
+        <button id="editbutton" type="submit" style="width:40%;padding: 5px;"><a href="/account/"> Cancel</a></button>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
 {% endblock %}
 </body>

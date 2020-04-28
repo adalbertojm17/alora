@@ -102,6 +102,10 @@ def orderhistory_view(request, *args, **kwargs):
     user = request.user
     if not user.is_authenticated:
         return redirect('login')
+    order_qs = Order.objects.all().filter(user=request.user)
+    if not order_qs.exists():
+        return redirect('no-order')
+
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query

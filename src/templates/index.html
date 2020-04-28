@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 <head>
-
-
     {% block styles %}
         <title>Alora </title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -13,29 +11,34 @@
 <body>
 {% block content %}
     <div class="moveright">
-        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-          <span class="popuptext" id="myPopup">
 
-              <p> Click the "sign in" button to login into your account.</p>
-              <p> Use navigation bar at the TOP RIGHT corner to view our
-              services and learn more about Alora.</p>
-
-              <hr>
-
-          </span>
-        </div>
     </div>
 
     <div class="indexpage">
+        {% load user_agents %}
+        {% if request|is_pc %}
 
-    {% load user_agents %}
-    {% if request|is_mobile %}
+        <div class="indexpageapp">
+            <div class="appinfo">
+                <div class="appfloat">
 
-        <p> download app</p>
+                    <div class="appinfoleft">
+                        <h1>Alora</h1>
+                        <p><img id="" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=100 height=100></p>
+                        <p> Download the Alora App on your mobile phone.</p>
+                        <button id="editbutton"><a href="">Click to download</a></button>
+                    </div>
 
+                     <div class="appinforight">
+                        <p><img id="" src="{% static 'images/apphome.png' %}" alt="Logo" class="center" width=250 height=500></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     {% else %}
 
-    <img id="mainpageicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=500 height=500>
+    <img id="mainpageicon" src="{% static 'images/logo.png' %}" alt="Logo" class="center" width=450 height=500>
     <br/>
     <br/>
             {% if  request.user.is_authenticated %}

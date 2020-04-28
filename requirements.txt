@@ -14,4 +14,6 @@ django-formtools==2.2
 django-multiselectfield==0.1.12
 django-cities-light==3.6.0
 pygeocoder==1.2.5
+django-user-agents==0.4.0
+
 

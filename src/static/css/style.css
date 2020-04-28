@@ -31,12 +31,66 @@ h1, h2{
 .indexpage{
     background-image: url('../images/background4.jpg') ;
     background-size: cover;
-    padding-top:50px;
     padding-bottom:50px;
+    height:800px;
+}
+
+.indexpageapp{
+    background-color: rgba(0,0,0,.8);
+    padding-top: 50px;
+    padding-bottom:50px;
+    height:800px;
+    width:100%;
+}
+
+.appinfo{
+    margin: auto;
+    height: 550px;
+    width: 60%;
+}
+
+.appfloat{
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+.appfloat .appinfoleft{
+    float: left;
+    margin-top: 50px;
+    width: 40%;
+    height: 550px;
+}
+
+.appfloat .appinforight{
+    float:right;
+    width: 40%;
+    margin-top: 60px;
+    margin-right: 50px;
+}
+
+.appinfoleft p, .appinfoleft h1{
+    text-align: center;
+    color: white;
+}
+
+.appinforight p, .appinforight h1{
+    text-align: center;
+}
+
+.appinforight p img{
+    border: 3px solid #FF5733;
 }
 
 .orderpages{
     background-image: url('../images/orderbackground.jpg') ;
+    background-size: cover;
+    padding-top:50px;
+    height:1000px;
+}
+
+.noorderpages{
+    background-image: url('../images/sand.jpg') ;
     background-size: cover;
     padding-top:50px;
     height:1000px;
@@ -429,10 +483,10 @@ input[type=text], input[type=email], input[type=password] {
     width: 70%;
     border: 1px solid #FF5733;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 12px;
+    padding: 4px;
 }
 
 #editbutton a {
@@ -516,6 +570,10 @@ Main page css
     text-align: center;
     font-family: "Lato", sans-serif;
     overflow: hidden;
+}
+
+#mainpageicon{
+    padding-top: 50px;
 }
 
 #mainpagenav {
@@ -1307,4 +1365,38 @@ button:disabled:hover{
 
 .disabledfield {
     background-color: gainsboro !important;
+}
+
+/***************Delete Account**********/
+
+.deleteaccount{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin:auto;
+    margin-top: 150px;
+    width: 40%;
+    padding:10px;
+}
+
+.deleteaccount p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+/*************** Edit Address **********/
+
+.editaddress{
+    margin:auto;
+    margin-top: 80px;
+    width: 60%;
+    padding:10px;
+    padding-top:20px;
+}
+
+.editaddress h1{
+  text-align: center;
 }

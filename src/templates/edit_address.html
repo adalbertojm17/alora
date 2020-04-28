@@ -13,9 +13,27 @@
 <body>
 {% block content %}
 
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" style="width: 400px" id="myPopup">
 
+                <p>Welcome to Edit Address!</p>
+                <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
+                <p> Enter your apt/suite number in the field labeled "APT/Suite". e.g. 100 </p>
+                <p> Enter your the name of your city in the field labeled "City". e.g. Bloomfield </p>
+                <p> Click the drop down field and select a state in the field
+                labeled "Select a State". e.g. New Jersey  </p>
+                <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
+                <p> Click the "Save Changes" button to save your changes. </p>
+                <p> Click the "Back" button to go back to your account. </p>
+              <hr>
 
-    <div id="accountinfo">
+          </span>
+        </div>
+    </div>
+
+    <div class="editaddress">
+        <h1> Edit Your Address</h1>
         <form method="post" id="editform">{% csrf_token %}
             {% for field in Edit_Address_form %}
                 <p>
@@ -30,13 +48,16 @@
             {% endfor %}
             <div>
                 <button id="buttonstandard" type="submit">Save Changes</button>
+                <button id="editbutton" style="width:55%; padding:6px;" type="submit"><a href="/account/">Back</a></button>
             </div>
 
         </form>
 
     </div>
 {% endblock %}
-
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
 
 </body>
 </html>

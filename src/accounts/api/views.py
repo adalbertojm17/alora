@@ -77,6 +77,7 @@ class ObtainUserAuthToken(ObtainAuthToken):
         })
 
 
+
 class ValidateToken(ObtainUserAuthToken):
 
     def post(self, request, *args, **kwargs):

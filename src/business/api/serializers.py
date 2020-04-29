@@ -6,8 +6,13 @@ from rest_framework.serializers import (
 
 from ..models import Store
 
+from addresses.api.serializers import AddressSerializer
+
+
 
 class StoreSerializer(ModelSerializer):
+    address = AddressSerializer()
+
     class Meta:
         model = Store
         exclude = ['manager']

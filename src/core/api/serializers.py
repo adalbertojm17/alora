@@ -4,6 +4,7 @@ from accounts.api.serializers import UserProfileSerializer
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.api.serializers import ServiceDetailSerializer
+from business.api.serializers import StoreSerializer
 # noinspection PyUnresolvedReferences
 from business.models import Service, Store
 from cities_light.models import Region
@@ -12,23 +13,10 @@ from core.models import Item
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from core.models import Order
 from rest_framework.serializers import (
-    ModelSerializer,
-    DateTimeField
+    ModelSerializer
 )
 
-from business.api.serializers import StoreSerializer
-
-
-class AddressSerializer(ModelSerializer):
-    class Meta:
-        model = Address
-        fields = '__all__'
-
-    def create(self, validated_data):
-        address_instance = Address.objects.create(
-            **validated_data
-        )
-        return address_instance
+from addresses.api.serializers import AddressSerializer
 
 
 # noinspection PyCompatibility

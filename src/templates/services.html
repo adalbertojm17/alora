@@ -47,9 +47,9 @@
             <div class="searchprice"  id="findprice" >
                 <form id="searchbar" method="get">
 
-                    <label for="company">Company</label>
-                        <select id="company" name="company" >
-                            <option value="">------</option>
+                        <h1 style="font-size: 180%">Company</h1>
+                        <select id="company" name="company">
+                             <option value="" disabled selected>Select Company</option>
                             {% for store in stores %}
                             <option value="{{ store }}">{{ store }}</option>
                            {% endfor %}

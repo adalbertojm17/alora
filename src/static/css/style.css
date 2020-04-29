@@ -235,7 +235,7 @@ header {
 
 .mainnav li a:hover {
     background-color: #FF9920;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .center {
@@ -588,7 +588,7 @@ Main page css
     border-radius: 20px;
     background-color:rgba(247,228,152,.7);
     width:80%;
-    height: 500px;
+    height: 520px;
     padding-top: 50px;
     margin-top: 30px;
 }
@@ -603,6 +603,8 @@ Main page css
 
 #mainpagecenter #mainpage #miniheader {
     background-color: #FF5733;
+    border: 0px solid black;
+    border-radius: 5px;
     padding-top: 60px;
     padding-bottom: 60px;
     margin-bottom: 10px;
@@ -649,7 +651,7 @@ footer {
 
 .content .section2 {
     background-color: #FF5733;
-    height: 650px;
+    height: 690px;
 }
 
 .section1 img{

@@ -1,0 +1,2 @@
+UserName|Password|StoreName|Street|APTSuite|City|State|ZipCode|DateTime|Street|APTSuite|City|State|ZipCode|DateTime
+majida1|abcD@123|Bloomfield|A|2b|MA|Guam|07009|Wed Apr 26, 2020 1:15 pm|Frankln street|Suite|MA|Guam|07009|Wed Apr 27, 2020 1:15 pm

@@ -26,8 +26,8 @@ class UserSerializer(ModelSerializer):
 
 
 class UserCreateSerializer(ModelSerializer):
-    password = CharField(max_length=32, label='Password', write_only=True)
-    password2 = CharField(max_length=32, label='Confirm Password', write_only=True)
+    password = CharField(max_length=32, label='Password', write_only=True, style={'input_type': 'password'})
+    password2 = CharField(max_length=32, label='Confirm Password', write_only=True, style={'input_type': 'password'})
 
     class Meta:
         model = User
@@ -41,37 +41,22 @@ class UserCreateSerializer(ModelSerializer):
             'password2'
         ]
 
-    def validate_password(self, value):
-        data = self.get_initial()
-        password1 = data.get('password2')
-        password2 = value
-        if password1 != password2:
-            raise ValidationError('Passwords must match')
-        return value
-
-    def validate_password2(self, value):
-        data = self.get_initial()
-        password1 = data.get('password')
-        password2 = value
-        if password1 != password2:
-            raise ValidationError('Passwords must match')
-        return value
-
-    def create(self, validated_data):
-        first_name = validated_data['first_name']
-        last_name = validated_data['last_name']
-        email = validated_data['email']
-        username = validated_data['username']
-        password = validated_data['password']
-        user_obj = User(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            username=username
+    def save(self, **kwargs):
+        account = User(
+            first_name=self.validated_data['first_name'],
+            last_name=self.validated_data['last_name'],
+            phone=self.validated_data['phone'] or None,
+            email=self.validated_data['email'],
+            username=self.validated_data['username'],
         )
-        user_obj.set_password(password)
-        user_obj.save()
-        return validated_data
+        password = self.validated_data['password']
+        password2 = self.validated_data['password2']
+
+        if password != password2:
+            raise serializers.ValidationError({'password': 'Passwords must match'})
+        account.set_password(password)
+        account.save()
+        return account
 
 
 class UserProfileSerializer(ModelSerializer):

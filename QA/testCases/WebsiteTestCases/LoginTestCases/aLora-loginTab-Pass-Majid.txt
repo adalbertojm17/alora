@@ -1,0 +1,18 @@
+       
+Project name  Alora
+Module name  Contact Page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/27/2020
+
+
+
+                                 Alora test case
+
+Test ID 
+                
+Ts_Al_01     Login tab should be activated ...pass
+       
+Ts_Al_02     Login tab does not nevigate to sign in page......Pass
+
+Test Case...pass

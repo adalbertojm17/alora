@@ -1,0 +1,18 @@
+       
+Project name  Alora
+Module name  Contact Page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/27/2020
+
+
+
+                                 Alora test case
+
+Test ID     
+
+Ts_Al_01            About us tab should be activate ...pass
+
+Ts-Al_02            About us tab does not nevigate to about us page...  pass
+
+test case ..pass

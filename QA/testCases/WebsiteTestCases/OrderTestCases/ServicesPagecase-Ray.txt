@@ -14,3 +14,5 @@ Selects on search bar
 Expected Results: See all the stores and different services provided within the state selected.
 
 Actual Results: Displayed no Result
+
+test case: Failed

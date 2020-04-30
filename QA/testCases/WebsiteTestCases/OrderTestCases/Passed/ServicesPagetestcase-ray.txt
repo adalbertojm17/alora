@@ -1,0 +1,15 @@
+Test case: Services Page
+
+Steps
+step 1: user logs in
+step 2: user selects services on navigation bar 
+
+Data
+selects company: Bloomfield 
+Selects search 
+
+Expected Results: when user selects company and selects on the button to search, it should provide the user the store, and its location and prices.
+
+Actual Results: User is able to see the store they selected and the location, address, and prices 
+
+Test case: Passed

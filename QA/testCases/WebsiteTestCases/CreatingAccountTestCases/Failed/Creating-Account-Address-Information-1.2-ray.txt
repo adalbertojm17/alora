@@ -1,0 +1,27 @@
+Test case: Address information
+
+Steps
+Step 1: select sign in
+step 2: sign up
+
+Data
+inputs first name:
+inputs last name:
+email:
+reconfirm email
+username: 
+password:
+direct to address information sign up
+
+inputs street: 3broad 
+inputs APT / Suite: 3broad
+city: idk
+select a state (optional)
+zipcode: 10049
+selects continue button
+
+Expected Results: user should be directed to home page, user filled in all required fields. (select a state is an option).
+
+Actual Results: user is notified to please select an item in the the field select a state
+
+Test case: failed

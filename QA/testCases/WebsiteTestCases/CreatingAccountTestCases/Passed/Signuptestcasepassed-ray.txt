@@ -20,6 +20,6 @@ Selects sign up tab
 
 Expected Results: Notification should appear notifying user to input a valid street name and city.
 
-Actual Results: user is Directed to the main page.
+Actual Results: user is notified "Please match the requested format (alphanumeric characters only)"
 
-Test case:failed
+Test case: Passed

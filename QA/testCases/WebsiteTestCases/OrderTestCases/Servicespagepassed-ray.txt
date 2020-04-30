@@ -1,4 +1,4 @@
-TEST CASE #3 Services Page
+Test Case: Services Page
 
 Steps
 Step 1: User logs in

@@ -1,0 +1,27 @@
+Test Case: Account 
+
+Steps
+Step 1: User selects sign in button
+Step 2: user selects on sign up button
+
+Data
+First name: QA
+Last name: H
+Email: qa@gmail.com	
+reconfirm email: qatester@gmail.com
+username: qaprocrash
+Password: Cr2zy_class@
+select on continue button directed to Address Information
+Street: Alora
+Apt/Suite: 3A
+State: California
+zip code: 10049
+selects continue bar and directed to main page
+User selects view account button
+User selects Order History Button
+
+Expected results: User will be able to see their order history which there should be none since the user just signed up
+
+Actual results: System crashes
+
+Test case: Failed

@@ -1,4 +1,4 @@
-TEST CASE : Order Now
+Test Case: Order Now
 
 Steps: 
 Step 1: user logs in

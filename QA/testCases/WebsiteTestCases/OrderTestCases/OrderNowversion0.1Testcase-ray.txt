@@ -13,3 +13,5 @@ Step 3: User attempts to input their name:
 Expected Results: User should be able to fill in the field to input their first and last name
 
 Actual Result: User is not able to place in the fields, Type, or Name
+
+Test case: Failed

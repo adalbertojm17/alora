@@ -14,5 +14,5 @@ User Name - "admi"
 Expected: To deny 4 character input
 Actual results: saved
 
-Test Case: Failed
-Version 1.1
+Test Case: Passed
+Version 1.2

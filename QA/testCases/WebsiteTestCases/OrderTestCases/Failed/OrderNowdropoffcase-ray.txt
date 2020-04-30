@@ -1,0 +1,26 @@
+Test case: order Now
+
+Steps:
+User logs in 
+User selects order now
+User fills in requirements
+
+Data
+User inputs street name
+inputs apt/suite
+inputs city: lebron -passed
+selects country:Guam -passed
+inputs zipcode: 19289
+inputs picks up date: thursday april 15 05:07pm --passed
+User selects on tab continue: directed to schedule drop-off section-passed
+inputs street name: dryclean
+inputs suite/apt: *&^%
+inputs city: lebron
+selects country: idaho
+inputs zipcode: 19289
+user inputs drop off date: wednesday april 14th 2020, 05:07pm
+
+Expected result: notification should appear to user informing user to select a valid drop off date being that their pick up is april 15th their drop off date cannot be april 14th.
+
+Actual results: Server crashes
+test case: failed version 1.1

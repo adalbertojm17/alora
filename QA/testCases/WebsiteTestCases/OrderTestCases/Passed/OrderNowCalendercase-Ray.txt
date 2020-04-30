@@ -1,0 +1,19 @@
+Test case: Order Now Page
+
+Steps:
+Step 1: User logs in
+Step 2: User selects order now  navigation
+
+Data:
+filled in field "Street":  123 
+filled in field "apt/suite": Austin 23 
+filled in field "City":  Broadstreetroom207 
+filled in "Country": Alabama 
+enter "Zip Code" field: 11111 
+attempts to enter field for date/time option field: April 29th, 1pm
+
+Expected Results: A notification should appear informing the user to input a valid current date. User should not be able to select any dates prior to the actual real time date.
+
+Actual Results: User does not have the option to pick a date/time that is before real time hours or date.
+
+Test case: passed for version 1.2

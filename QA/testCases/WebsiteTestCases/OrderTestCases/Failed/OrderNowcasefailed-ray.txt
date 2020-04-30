@@ -18,4 +18,4 @@ Expected Results: A notification should appear informing the user to input a val
 
 Actual Results: User is directed to a new page called Schedule a drop off time.
 
-Test case: Failed
+Test case: Failed on version 1.1

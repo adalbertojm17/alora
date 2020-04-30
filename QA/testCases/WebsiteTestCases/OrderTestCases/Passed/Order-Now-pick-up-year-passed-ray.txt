@@ -1,0 +1,23 @@
+Test Case: Order Now 
+Schedule pickup
+
+Steps:
+step 1:User logs in
+Step 2:User selects order now 
+Step 3:user selects calander to set a date
+
+Data
+user inputs street name for the field street: dryclean
+inputs apt/suite: *&^%
+inputs city: my feet -passed
+user slects country:Guam -passed
+inputs zipcode: 19289
+selects calander and fills in : day(Thursday), month & day (June 3rd) and time 5pm and year 2026
+selects on tab continue bar
+
+
+Expected Results: Should be required to put valid pick up date based on the actual year and not have the option to input a pick up date 6 years from now.
+
+Actual Results: User is notifeld below the field date/ time that the address is not valid
+
+Test case: passed version 1.2

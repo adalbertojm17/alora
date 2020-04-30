@@ -1,2 +1,0 @@
-FirstName|LastName|PhoneNumber|Email|USerName|Password|StreetName|APTSuite|City|State|ZipCOde
-Jassy|chathreen|9735666241|sam1232@gmail.com|majid6787|Abcd@12486|davey st|2b|Bloomfield|New Jersey|070000003

@@ -1,0 +1,30 @@
+Project name  Alora
+Module name   Order page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/29/2020
+
+version 1.2
+                                                                                       order page
+
+
+Test ID                             Test Case Discription                                        Pre-Condition                                            Test Steps                                                         Test Data                                                    Expected result                                       Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check response when street address address                            street address space should be activated                enter the street address                                        Main st                                                     street address should not be accepted                 Fail
+
+TS_Alora_02                check response when on APT/Suite Address                             APT/Suite space should be activated                     enter APT/Suite address                                           2B                                                           APT/Suite  enter successfully                        Pass
+
+TS_Alora_03                check response when select state                                      drop down menu should be activated                      select the state name                                    New Jersey                                                     state option work as expected                              Pass
+
+TS_Alora_04                check response when you entered zip code                              zip code space should be activated                       enter the zip code                                                07003                                                        zip code enter successfully                          Pass
+   
+TS_Alora_05                check response when Last name is enterd                              Name space should be activated                         enter the Last name                                             masood                                                          name enter successfully                              Pass
+
+TS_Alora_06                check response  when you select date time                            Date time calendar should be activated                    select date and time                                         May 12, 4.00PM                                                  select date and time successfully                    pass
+
+
+ 
+     Remarks: Alora order page  accept incomplete St Address..pass
+     
+     Bugzilla bug ID # 48

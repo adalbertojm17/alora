@@ -14,13 +14,17 @@
 
     <div class="moveright">
         <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-          <span class="popuptext" id="myPopup">
+          <span class="popuptext" style="width: 350px" id="myPopup">
 
               <p>Welcome to Alora!</p>
-              <p> Click on "Account" to view your account information.</p>
+              <p> Click on "Order History" to view your past orders.</p>
               <p> Click on "Order Now" to schedule pick up and delivery for your laundry or drying cleaning</p>
               <p> Click on "Tracking" to track your orders. </p>
+              <p> Click on "About Us" to learn more about Alora and what we provide. </p>
+              <p> Click on "Services" to find stores and their prices. </p>
               <p> Click on "Contact Us" to send our Alora team is a message. </p>
+              <p> Click on "Account" to manage and view your account information </p>
+
 
               <hr>
 
@@ -36,13 +40,13 @@
                  Guest{% endif %}</h1>
                 <div id="mainpage">
                     <div id="miniheader">
-                        <a href=/account/><img id="mainicon" src="{% static 'images/account.png' %}" alt="account" class="center" width=90
+                        <a href=/order-history/><img id="mainicon" src="{% static 'images/orderb.png' %}" alt="account" class="center" width=90
                              height=90></a>
                     </div>
 
                     <div id="info">
-                        <p id="mainb"><a href=/account/> Account </a></p>
-                        <p class="info">Customize your experience!</p>
+                        <p id="mainb"><a href=/order-history/> Order History </a></p>
+                        <p class="info">View your past orders</p>
                     </div>
 
                 </div>

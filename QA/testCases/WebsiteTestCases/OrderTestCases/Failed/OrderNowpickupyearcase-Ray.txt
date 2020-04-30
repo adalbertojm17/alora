@@ -19,3 +19,4 @@ Step 9: user is directed to schedule drop off date/time page
 Expected Results: Should be required to put valid pick up date based on the actual year and not have the option to input a pick up date 6 years from now.
 
 Actual Results: User is directed to schedule drop-off section
+Test case:Failed

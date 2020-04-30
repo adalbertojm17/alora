@@ -23,3 +23,5 @@ selects continue
 Expected Results: A notification should appear informing the user to input a valid City, no numerics to be can be applied field
 
 Actual Results: User is directed to a new page called Schedule a drop off time.
+
+test case: failed

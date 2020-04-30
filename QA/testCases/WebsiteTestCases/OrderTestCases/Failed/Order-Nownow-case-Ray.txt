@@ -23,3 +23,4 @@ Saturday April 18, 2020 02:34AM
 Expected results: Notification notifying customer to the data selected are on the same day and a minute apart and user must select another date on the calander.
 
 Actual Results: Order is confirmed!
+Test case: Failed

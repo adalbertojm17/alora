@@ -17,3 +17,5 @@ Step 7: User selects on tab continue -passed
 Expected Results: Notification pops up user to correct their apt/suite field and not just special characts as we see in step 2.
 
 Actual Results: User is directed to schedule drop-off section
+
+Test case: Failed version 1.1

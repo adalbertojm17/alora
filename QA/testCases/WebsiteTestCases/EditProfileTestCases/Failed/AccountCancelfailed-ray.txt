@@ -13,4 +13,4 @@ Expected Results: User does not see the option to cancel their account with Alor
 
 Actual Results: No option displaying to the user to cancel their account.
 
-Test Case: Failed
+Test Case: Failed verson 1.1

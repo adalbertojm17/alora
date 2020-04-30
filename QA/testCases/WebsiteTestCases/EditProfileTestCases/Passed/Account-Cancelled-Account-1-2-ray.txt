@@ -1,0 +1,13 @@
+Test Case: Account 
+
+Steps 
+Step 1: User signs in
+Step 2: User selects on account tab bar
+Step 3: selects on edit account
+
+
+Expected Results: User should see the option to cancel/ delete their account with Alora.
+
+Actual Results: There is an option on the users account if a user would like to delete their account
+
+Test Case: passed verson 1.2

@@ -1,0 +1,15 @@
+Test Case:Tracking
+
+Steps: 
+Step 1: user logs in
+Step 2: user selects Order Now on nav bar
+Step 3: user selects tracking on nav bar
+
+Data:
+selects order on nav bar: user is able to schedule a pickup date/time
+select tracking on nav bar: "you currently have no orders (view account button)"
+
+Expected Results: There are currently no orders in the tracking since the user did not fill out the requirements to place an order yet
+
+Actual Results: displays to user they have no current orders at the moment and they can view their account
+test case passed: version 1.2

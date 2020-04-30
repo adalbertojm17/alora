@@ -11,3 +11,4 @@ clicks on continue bar
 Expected results: displays to the user the pick up date/time
 
 Actual results: system crashes
+Test case: Failed

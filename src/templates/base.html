@@ -38,6 +38,7 @@
 
                 {% if request.user.is_authenticated %}
                 <li class="homepage"><a href=/contact-us/>Contact Us </a></li>
+                    <li class="homepage"><a href=/account/>Account </a></li>
                 {% endif %}
 
                 {% if request.user.is_authenticated %}
@@ -47,6 +48,7 @@
                     <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
                     <li class="homepage"><a href="{% url 'businesslogin' %}">Business Log In</a></li>
                 {% endif %}
+
             </ul>
             <br/>
         </nav>

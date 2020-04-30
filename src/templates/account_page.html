@@ -22,8 +22,9 @@
 
                 <p> Click the "Edit" in order to make changes to your account information. </p>
                 <p> Click "Save Changes" to save your changes. </p>
-                <p> Click "Order History" to view your order history. </p>
+                <p> Click "Edit Address" to change your address. </p>
                 <p> Click "Change Password" to change your password. </p>
+                <p> Click "Delete your Account" to delete your account. </p>
               <hr>
 
           </span>
@@ -58,7 +59,6 @@
                 <button id="editbutton" type="submit"><a>Edit Account</a></button>
                  {% if user.is_manager != True %}
                 <button id="editbutton" type="submit"><a href="/address/"> Edit Address </a></button>
-                <button id="editbutton" type="submit"><a href="/order-history/"> Order History </a></button>
                  {% endif %}
                 <button id="editbutton" type="submit"><a href="/password_change/"> Change Password</a></button>
                 <button id="editbutton" type="submit"><a href="/account_cancelation/"> Delete your Account</a></button>

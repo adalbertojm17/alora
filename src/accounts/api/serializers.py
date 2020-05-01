@@ -34,7 +34,6 @@ class UserCreateSerializer(ModelSerializer):
         fields = [
             'first_name',
             'last_name',
-            'phone',
             'email',
             'username',
             'password',
@@ -45,7 +44,6 @@ class UserCreateSerializer(ModelSerializer):
         account = User(
             first_name=self.validated_data['first_name'],
             last_name=self.validated_data['last_name'],
-            phone=self.validated_data['phone'] or None,
             email=self.validated_data['email'],
             username=self.validated_data['username'],
         )
@@ -57,7 +55,6 @@ class UserCreateSerializer(ModelSerializer):
         account.set_password(password)
         account.save()
         return account
-
 
 class UserProfileSerializer(ModelSerializer):
     class Meta:

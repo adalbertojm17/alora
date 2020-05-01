@@ -37,17 +37,8 @@ class UserCreateAPIView(CreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        user = self.request.user
-        token, created = Token.objects.get_or_create(user_id=user.id)
 
-        return Response({
-            'token': token.key,
-            'id': user.pk,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'username': user.username,
-            'email': user.email
-        },
+        return Response(
             status=status.HTTP_201_CREATED,
             headers=headers)
 
@@ -75,7 +66,6 @@ class ObtainUserAuthToken(ObtainAuthToken):
             'username': user.username,
             'email': user.email
         })
-
 
 
 class ValidateToken(ObtainUserAuthToken):

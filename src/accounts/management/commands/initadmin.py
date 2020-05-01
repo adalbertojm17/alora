@@ -1,5 +1,3 @@
-__author__ = 'dkarchmer@gmail.com'
-
 from django.conf import settings
 from django.core.management.base import BaseCommand
 

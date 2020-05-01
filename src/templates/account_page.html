@@ -57,7 +57,7 @@
             <div id="info">
                 <p id="movedown"> Account</p>
                 <button id="editbutton" type="submit"><a>Edit Account</a></button>
-                 {% if user.is_manager != True %}
+                 {% if user.is_manager != True and   user.is_staff != True %}
                 <button id="editbutton" type="submit"><a href="/address/"> Edit Address </a></button>
                  {% endif %}
                 <button id="editbutton" type="submit"><a href="/password_change/"> Change Password</a></button>

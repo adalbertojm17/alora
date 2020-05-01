@@ -1,0 +1,17 @@
+
+Project Name Alora
+Module Name  Mobile App signup 
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/30/2020
+version 1.1
+
+
+                  
+                            Mobile App signup 
+
+Ts_Alora_01   First name field takes valid input....pass
+
+Ts_Alora_02   After first name, mobile App does prompt on the last name field.....Pass
+
+remarks:  test Pass

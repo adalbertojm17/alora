@@ -18,17 +18,19 @@ public class signup {
 	//	driver.manage().window().maximize();
 		
 		//step 1: Launch firefox and navigate to URL
-		//driver.get("http://aloradevs.ddns.net/");
+		//driver.get("https://aloradevs.ddns.net/");
 		driver.get("https://aloraqa.ddns.net/");
 		
 		
 		//step 3: Navigate to Signup page
+		String loginXpath1 = "/html/body/header/div/nav/ul/li[4]/a";
+		driver.findElement(By.xpath(loginXpath1)).click();
 		
-		String signUpXpath = "/html/body/div[2]/div/p/a";
+		String signUpXpath = "/html/body/div[2]/div/p[2]/a";
 		driver.findElement(By.xpath(signUpXpath)).click();	
 		
-		String loginXpath = "/html/body/div[2]/div/p[2]/a";
-		driver.findElement(By.xpath(loginXpath)).click();	
+		//String loginXpath = "/html/body/div[2]/div/p[2]/a";
+		//driver.findElement(By.xpath(loginXpath)).click();	
 		
 		String firstNameID = "id_0-first_name";
 		driver.findElement(By.id(firstNameID)).sendKeys(FirstName);

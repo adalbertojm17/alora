@@ -72,7 +72,7 @@
                 </tr>
 
                 {% for order in orders|slice:"0:10" %}
-                    {% if order.status.name != 'Order delivered' %}
+                    {% if order.current_status != 'D' %}
                         <tr>
                             <td>{{ order.pk }}</td>
                             <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a>  </td>

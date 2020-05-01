@@ -37,7 +37,11 @@ class AddingOrderItemForm(forms.ModelForm):
     def __init__(self,user,order,*args, **kwargs):
         self.order = order
         super(AddingOrderItemForm, self).__init__(*args, **kwargs)
-        self.fields['item']=forms.ModelChoiceField(queryset=Item.objects.all().filter(services__store__manager=user))
+        if user.is_manager:
+            self.fields['item']=forms.ModelChoiceField(queryset=Item.objects.all().filter(services__store__manager=user))
+        else:
+            self.fields['item'] = forms.ModelChoiceField(queryset=Item.objects.all().filter(services__store__staff=user))
+
         self.fields['order']= forms.ModelChoiceField(queryset=Order.objects.all().filter(id=order.id))
 
     class Meta:

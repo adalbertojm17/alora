@@ -1,0 +1,18 @@
+Test Case: Order Now
+
+Steps
+Step 1: user logs in
+step 2: user selects on order now page
+
+Data:
+chooses store: Dave's Laundry
+clicks on continue bar
+
+Expected results: displays to the user the pick up date/time
+
+Actual results: Displays to user the pick up schedule
+
+Test Case: Passed
+
+Verison 1.2
+

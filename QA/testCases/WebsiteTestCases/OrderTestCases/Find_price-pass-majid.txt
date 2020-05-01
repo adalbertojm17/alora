@@ -1,0 +1,24 @@
+Project name  Alora
+Module name  Find price
+created date  4/1/2020
+reviewd by    Qa Team
+test date     4/9/2020
+
+version 1.2
+                                                                             Find price
+
+
+Test ID                             Test Case Discription                             Pre-Condition                                      Test Steps                                  Test Data                              Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TS_Alora_01                check rust eze company item price                         Rust company item price should display               select Rust eze company price                no display                           able display Rust eze price                     Fail  
+                 
+   
+Ts_Alora_02              check Bloomfield company item price                         Bloomfield company item price should display               select Bloomfield company price          shirt 10.00 Bloomfield 54.00        display Bloomfield company price                Pass
+
+
+           
+
+            Remarks:Rust-eze company  does not display price
+
+            Bugzila  Bug_ID_13   

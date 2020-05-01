@@ -4,6 +4,6 @@ TEST CASE #2: Reset Password Request
 Email: j.mister12@gmail.com
 
 QA Comments - database error
-Test case: fail
-Version 1
+Test case: PAss
+Version 1.2
 __________________________________________________________________________________________________

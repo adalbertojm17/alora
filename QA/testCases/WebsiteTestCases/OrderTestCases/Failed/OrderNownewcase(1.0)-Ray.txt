@@ -15,3 +15,5 @@ Step 7: User selects continue and directed to schedule drop off page
 Expected Results: The calander should compare with the users real time and date to the time and date the user inputs which is currently ( 02:31Am, 04/19/2020) and notify the user they cannot select a time or date that is before current time/date
 
 Actual Results: Page directed user to the drop off time schedule page.
+
+test case: Failed

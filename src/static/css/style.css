@@ -146,8 +146,9 @@ a {
     font-family: "Lato", sans-serif;
 }
 
-#mainb a{
-
+#mainb{
+    font-size: 120%;
+    font-weight: bold;
 }
 
 #mainb a:hover {

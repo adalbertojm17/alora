@@ -1,0 +1,19 @@
+
+Project Name Alora
+Module Name  Account
+Created name 4/4/2020
+reviewd by QA team
+Test date  4/29/2020
+version 1.2
+
+
+Test ID
+
+Ts_Alora_01   First name  does not accept minimum letters....pass
+
+
+Ts_Alora_02   First name accept more than 32 characters......Fail
+
+
+
+remarks:test pass

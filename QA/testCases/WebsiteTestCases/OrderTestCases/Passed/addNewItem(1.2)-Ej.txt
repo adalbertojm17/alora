@@ -15,5 +15,5 @@ New Item - "Chips","Admin1","Amount - 3"
 Expected: To register new item called "Chips" to current order
 Actual results: page crashed
 
-Test Case: Failed
-Version 1.1
+Test Case: Passed
+Version 1.2

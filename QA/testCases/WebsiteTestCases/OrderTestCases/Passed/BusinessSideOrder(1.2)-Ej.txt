@@ -10,6 +10,6 @@ Steps Took:
 
 Expected Results: to go through and update
 Actual Results: Server crashed, "cannot be left null". nothing was left null
-Test Case: Fail
+Test Case: Passed
 
-Version 1.1
+Version 1.2 : reused same data

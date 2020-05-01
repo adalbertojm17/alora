@@ -1,0 +1,15 @@
+Test Case: Account
+
+Steps
+Step 1: user selects on sign in button
+step 2: user signs
+step 3: user selects on Account on the navigation bar
+
+Data
+selects edit account button
+old username: 2boogie
+new username: 2b
+selects on save changes button
+Expected Results: user should be notified the username length is too short, it must be five characters or longer
+Actual Results: user is not notifed there "This field cannot be null."
+Test case: failed - version 1.2

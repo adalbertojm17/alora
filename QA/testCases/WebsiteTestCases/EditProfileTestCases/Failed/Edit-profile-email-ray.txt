@@ -1,0 +1,15 @@
+Test Case: Edit account
+
+Steps
+step 1: user selects on sign in button 
+step 2: user logs in
+Step 3: user selects on Account on navigation bar
+
+
+Data: 
+user selects on edit account button
+user changes email from raymond@gmail.com TO f@gm.co
+
+Expect results: user should be notified that is not a proper email and should be a "gmail.com"
+Actual results: The change was made, no error notification
+Test case: Production servion- Failed

@@ -63,6 +63,7 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    is_employee = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
@@ -85,12 +86,17 @@ class Account(AbstractBaseUser):
 
 class CustomerManager(models.Manager):
     def get_queryset(self):
-        return super(CustomerManager, self).get_queryset().filter(is_staff=False, is_manager=False)
+        return super(CustomerManager, self).get_queryset().filter(is_staff=False, is_manager=False, is_employee=False)
 
 
 class BusinessOwnerManager(models.Manager):
     def get_queryset(self):
         return super(BusinessOwnerManager, self).get_queryset().filter(is_manager=True)
+
+
+class EmployeeManager(models.Manager):
+    def get_queryset(self):
+        return super(EmployeeManager, self).get_queryset().filter(is_employee=True)
 
 
 class StaffManager(models.Manager):

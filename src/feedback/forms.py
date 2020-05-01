@@ -16,9 +16,12 @@ class FeedBackForm(forms.ModelForm):
     )
 
     content = forms.CharField(
+        min_length=20,
+        max_length=500,
         label='',
         widget=forms.Textarea(attrs={
-            'placeholder': 'We welcome your feedback.',
+            'placeholder': 'We welcome your feedback. '
+                           '(20-100 characters)',
             'rows': 5, 'cols': 20
         })
     )

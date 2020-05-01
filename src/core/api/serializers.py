@@ -20,8 +20,26 @@ from addresses.api.serializers import AddressSerializer
 
 
 # noinspection PyCompatibility
-class OrderSerializer(ModelSerializer):
+class OrderDetailSerializer(ModelSerializer):
     store = StoreSerializer()
+    pickup_location = AddressSerializer()
+    dropoff_location = AddressSerializer()
+
+    class Meta:
+        model = Order
+        fields = (
+            'id', 'pickup_location', 'dropoff_location', 'store',
+            'user', 'pickup_at', 'current_status', 'dropoff_at', 'created_at'
+        )
+
+    def _user(self, obj):
+        request = getattr(self.context, 'request', None)
+        if request:
+            return request.user
+
+
+# noinspection PyCompatibility
+class PlaceOrderSerializer(ModelSerializer):
     pickup_location = AddressSerializer()
     dropoff_location = AddressSerializer()
 
@@ -51,6 +69,8 @@ class OrderSerializer(ModelSerializer):
         return Order.objects.create(
             **validated_data
         )
+
+
 
 
 class RegionSerializer(ModelSerializer):

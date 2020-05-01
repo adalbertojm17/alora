@@ -1,0 +1,24 @@
+Test case: sign up
+
+Steps 
+Step 1: user signs up button
+step 2: User selects sign in button
+
+Data
+first name: boogiee
+last name: santos
+email:bsantos@gmail.com
+reconfirm email: bsantos@gmail.com
+userame: 2boog
+password: 8ecAuse_0
+
+sign up information
+address info: nnjnvne
+apt /suite: 3a
+select a state(optional): 
+zipcode: code: 00039
+selects continue button
+
+expected result: user is directed to main page to see the various features of the page.
+Actual Results: User is notified to please select an item in the last.
+Test cases: Failed version 1.2

@@ -4,6 +4,7 @@
     {% block styles %}
         <title>Order Details</title>
         <title>Current Orders</title>
+        {{ dropform.media }}
         <link rel="stylesheet" href="{% static 'css/businessstyle.css' %}">
         <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
     {% endblock %}
@@ -141,6 +142,16 @@
                 <button name="button2" id="addbutton"  type="submit">Update</button>
             </form>
              </div>
+        <div class="contentadd" id="contentadd">
+            <h2 class="center" > drop off time</h2>
+            <form method="post" >
+                {% csrf_token %}
+                {{ dropform.as_p }}
+                 <button name="button3" id="addbutton" type="submit">Add</button>
+            </form>
+        </div>
+
+
          </div>
      </div>
 {% endblock %}

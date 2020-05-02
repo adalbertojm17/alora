@@ -1,3 +1,4 @@
+from datetimepicker.widgets import DateTimePicker
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
@@ -17,7 +18,16 @@ class ServiceCreationForm(forms.ModelForm):
 
     name = forms.CharField(
         max_length=50,
-        label='name',)
+        label='name',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'First name*',
+            'pattern': '[A-Za-z ]+',
+            'title': ' alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
+    )
 
     class Meta:
         model = Service
@@ -63,6 +73,22 @@ class AddingItemForm(forms.ModelForm):
         self.user = user
         super(AddingItemForm, self).__init__(*args, **kwargs)
         self.fields['services']=forms.ModelChoiceField(queryset=Service.objects.all().filter(store__manager=user))
+
+
+    name = forms.CharField(
+        max_length=50,
+        label='name',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'First name*',
+            'pattern': '[A-Za-z ]+',
+            'title': ' alphabetic '
+                     'characters '
+                     'only '
+                     'please'
+        }),
+    )
+
+
     class Meta:
         model = Item
         fields = '__all__'
@@ -79,8 +105,7 @@ class AddingItemForm(forms.ModelForm):
 
 
 class StaffCreationForm(UserCreationForm):
-
-    is_staff= forms.BooleanField(
+    is_employee = forms.BooleanField(
         label='',
         widget=forms.HiddenInput(), initial=True)
 
@@ -166,7 +191,7 @@ class StaffCreationForm(UserCreationForm):
 
     class Meta:
         model = Account
-        fields = ('is_staff','first_name', 'last_name', 'phone', 'email', 'email2', 'username')
+        fields = ('is_employee','first_name', 'last_name', 'phone', 'email', 'email2', 'username')
 
     def clean_phone(self):
         return self.cleaned_data['phone'] or None
@@ -176,3 +201,25 @@ class StaffCreationForm(UserCreationForm):
         email2 = self.cleaned_data.get('email2')
         if email != email2:
             raise forms.ValidationError('Emails must match')
+
+
+class DropOffUpdateForm(forms.ModelForm):
+
+
+    dropoff_at = forms.DateTimeField(
+        input_formats=("%a %b %d, %Y %I:%M %p",),
+        localize=True,
+        label='',
+        widget=DateTimePicker(
+            options={
+                'validateOnBlur': False,
+                'twelveHoursFormat': True,
+                'format': 'D M d, Y g:i a',
+                'language': 'en-us',
+            },
+        )
+    )
+
+    class Meta:
+        model = Order
+        fields = ('dropoff_at',)

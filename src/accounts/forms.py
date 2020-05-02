@@ -176,7 +176,7 @@ class AccountAuthenticationForm(forms.ModelForm):
         user = authenticate(username=username, password=password)
         if not user:
             raise forms.ValidationError("Invalid login")
-        if user.is_manager and self.current_login == 'customer-login':
+        if user.is_manager  and self.current_login == 'customer-login':
             self.redirect = True
             raise forms.ValidationError("Please use the business login")
 

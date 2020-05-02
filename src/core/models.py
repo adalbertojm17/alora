@@ -7,6 +7,7 @@ from business.models import Service
 # noinspection PyUnresolvedReferences
 from business.models import Store
 # noinspection PyUnresolvedReferences
+from django.core.validators import MinValueValidator
 from django.db import models
 # noinspection PyUnresolvedReferences
 from django.urls import reverse
@@ -28,7 +29,7 @@ STATUS_CHOICES = (
 class Item(models.Model):
     name = models.CharField(max_length=100)
     services = models.ForeignKey(Service, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2,validators=[MinValueValidator(0.0)])
 
     def __str__(self):
         return self.name

@@ -69,7 +69,7 @@ def login_view(request):
     if user.is_authenticated:
         if user.is_manager:
             return redirect('staffhome')
-        if user.is_staff:
+        if user.is_employee:
             return redirect('staffhome')
         return redirect('main')
 
@@ -110,8 +110,8 @@ def business_login_view(request):
     if user.is_authenticated:
         if user.is_manager:
             return redirect('staffhome')
-        if user.is_staff:
-            return redirect('staffhome')
+        if user.is_employee:
+            return redirect('currentorders')
 
     if request.POST:
         form = AccountAuthenticationForm(request.POST, current_login='business-login')
@@ -124,8 +124,8 @@ def business_login_view(request):
                 login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
                 if user.is_manager:
                     return redirect('staffhome')
-                if user.is_staff:
-                    return redirect('staffhome')
+                if user.is_employee:
+                    return redirect('currentorders')
 
     else:
         form = AccountAuthenticationForm(current_login='business-login')

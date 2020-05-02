@@ -15,7 +15,7 @@ from feedback.models import Feedback
 from .forms import AddingItemForm
 from .forms import AddingOrderItemForm
 from .forms import ServiceCreationForm
-from .forms import StaffCreationForm
+from .forms import StaffCreationForm,DropOffUpdateForm
 from .models import Service
 from .models import Store
 
@@ -106,10 +106,27 @@ def orders_details_view(request, *args, **kwargs):
     else:
         form = AddingOrderItemForm(user=request.user, order=order)
 
+
+    if 'button3' in request.POST:
+        dropform = DropOffUpdateForm(request.POST,instance=order)
+        if dropform.is_valid():
+            print('1000000')
+            dropform.save()
+            return HttpResponseRedirect('/business/order_details/?order=' + str(order.id))
+    else:
+        dropform = DropOffUpdateForm()
+
+
+
     if 'button2' in request.POST:
         order.current_status = request.POST.get('status')
         order.save()
+
+
     my_context['form'] = form
+    my_context['dropform'] = dropform
+
+
 
     return render(request, "business/orders_details.html", my_context)
 

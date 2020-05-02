@@ -3,6 +3,7 @@ from accounts.models import Account
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 # model to represent a physical store
@@ -14,6 +15,8 @@ class Store(models.Model):
 
     def __str__(self):
         return self.name
+class ServingAreas(models.Model):
+    store = models.ForeignKey(Store,on_delete=models.SET_NULL,null=True)
 
 
 # model for a service (e.g. Laundry, Dry Cleaning, etc.,)

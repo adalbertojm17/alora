@@ -1,0 +1,30 @@
+Test Case: Edit Profile
+Test Case ID: #15
+
+Steps:
+1.Login into Alora mobile app
+2.Tap "My Profile"
+3.Tap "Edit Profile"
+4.Tap "Change Password"
+5.Type current password
+6.Type new password
+7.Re-Enter password
+8.Tap "Confirm" Button
+
+Test Scenario: Change account information (Providing Incorrect data formats)
+
+Data:
+Login - Username: denise, Password: Alora2020!
+
+Current Password: Alora2020@
+New Password: Alora
+Re-Enter Password: Alora
+
+Expected: Data 2 should be accepted for change password. Data 1,3 &4 should be not change. Error message should rise warning the user.
+Actual results:
+
+Suggestions:
+1) Add error messages.
+
+Test Case:
+Version 1.3: Failed.

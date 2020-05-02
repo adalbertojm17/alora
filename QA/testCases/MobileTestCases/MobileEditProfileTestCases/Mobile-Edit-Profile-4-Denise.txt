@@ -19,4 +19,6 @@ Actual results: Email was changed.
 
 Suggestions: Add labels to fields.
 
-Test Case: Pass
+Test Case:
+Version 1.1: Passed
+Version 1.3: Passed

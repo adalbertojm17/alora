@@ -17,18 +17,23 @@ First name:
 Data1: #denise&
 Data2: 657444
 Data3: den2020
-Data4: denisedoesnotwanttochangeherusername
+Data4: denisedoesnotwanttochangeherfirstname
 
 Expected: This data should not be accepted as a change for account information. Error message should rise warning the user.
-Actual results: First name was changed.
+Actual results: Data 4 First name was changed.
 
 Suggestions: Add labels to fields.
 
 Test Case:
 
+Version 1.1:
 Data1: Failed.
 Data2: Failed.
 Data3: Failed.
 Data4: Passed.
 
-Final Result: Failed
+Version 1.3:
+Data1: Passed.
+Data2: Passed.
+Data3: Passed.
+Data4: Failed.

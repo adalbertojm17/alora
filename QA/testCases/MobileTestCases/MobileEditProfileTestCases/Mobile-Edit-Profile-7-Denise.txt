@@ -19,16 +19,27 @@ Data2: 65744
 Data3: den16
 Data4: denisedoesnotwanttochangeherusername
 
-Expected: This data should not be accepted as a change for account information. Error message should rise warning the user.
-Actual results: Username was changed.
+Expected:  Data1 and Data4 should not be accepted as a change for account information. Error message should rise warning the user.
+
+Actual results:
+Data 1: Username was not changed.
+Data 2: Username was changed.
+Data 3: Username was changed.
+Data 4: Username was not changed. However, no error message.
+
 
 Suggestions: Add labels to fields.
 
 Test Case:
-
+Version 1.1:
 Data1: Failed.
 Data2: Failed.
 Data3: Failed.
 Data4: Passed.
 
-Final Result: Failed
+Version 1.3:
+Data1: Passed.
+Data2: Passed.
+Data3: Passed.
+Data4: Passed.
+

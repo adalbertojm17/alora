@@ -1,0 +1,25 @@
+Test Case: creating account
+
+steps
+step 1) Selects sign in button
+step 2) selects sign up option
+
+Data
+first name: bri
+Last name: san	
+email address: san@gmail.com
+reconfirm address: san@gmail.com
+username: callofduty
+password: (*2020caPstone
+reconfirm password: (*2020caPstone
+selects continue button / directed to address information page
+street: igottahoop
+apt/suite: friday13
+city: lebron
+select a state: 
+zip code: 02293
+selects continue button
+
+Expected results: user is notified they must fill in this field for the select a state field.
+Actual results: User is notified they must fill in the field select a state.
+Test case: versoion 1.3 --passed

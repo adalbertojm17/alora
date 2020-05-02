@@ -1,5 +1,5 @@
 Test Case: Contact Us
-Test Case ID: #1
+Test Case ID: #2
 
 Steps:
 1.Login into Alora mobile app
@@ -14,13 +14,13 @@ Test Scenario: Contact selected Business or Alora.
 
 Data:
 Login - Username: denise, Password: Alora2020!
+Store: Options
 Subject: Laundry
-We welcome back your feedback/ message: Thank you for your service.
+We welcome back your feedback/ message: 502 Characters.
 
 
 Expected: Message should be submitted.
 Actual results: No changes. Message did not submit.
 
 Test Case:
-Version 1.0: Failed.
 Version 1.3: Passed.

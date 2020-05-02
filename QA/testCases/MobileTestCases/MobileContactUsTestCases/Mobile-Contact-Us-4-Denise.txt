@@ -15,15 +15,13 @@ Test Scenario: Contact selected Business or Alora.
 Data:
 Login - Username: denise, Password: Alora2020!
 Store: Wash me
-Subject: #44bsgsv9
-We welcome back your feedback/ message: Thank you.
+Subject: Laundry
+We welcome back your feedback/ message: 68687473 or 666666555555888888999999777777
 
 
 Expected: Message should not be submitted. Error Message should appear.
-Actual results: Feedback was not submitted. Error message was appeared.
-Subject error: " Subject must be alphabetic"
-Message error: "Feedback must be at between 20 and 500 characters long"
+Actual results: Message did not submit.
 
 Test Case:
 Version 1.0: Failed.
-Version 1.3: Passed
+Version 1.3: Passed.

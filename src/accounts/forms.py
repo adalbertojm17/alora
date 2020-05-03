@@ -181,7 +181,6 @@ class UserAddressForm(forms.ModelForm):
                     raise forms.ValidationError(
                         "The address you entered was found but more information is needed "
                         "(such as an apartment, suite, or box number) to match to a specific address.")
-
         return cleaned_data
 
 

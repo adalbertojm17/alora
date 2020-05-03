@@ -10,6 +10,7 @@ from .views import (
     edit_address_view,
     delete_account_view,
     delete_account_function,
+    activate
 )
 
 urlpatterns = [
@@ -19,6 +20,7 @@ urlpatterns = [
     path('account/', account_view, name="account"),
     path('address/', edit_address_view, name='edit_address'),
     path('delete/', delete_account_function, name='delete'),
+    path('activate/<uidb64>/<token>/', activate, name='activate'),
     path('account_cancelation/', delete_account_view, name='delete_account'),
     path('business/login/', business_login_view, name="businesslogin"),
     path('password_change/done/',

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Email Verification Complete</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+
+    <div class="confirm">
+        <div class="d-flex flex-column">
+            <img id="confirmicons" src="{% static 'images/contactcheck.png' %}" alt="Logo" class="center" width=120
+                 height=120>
+            <p class="m-auto">
+                Thank you for confirming your email. You may go ahead and <a href="{% url 'login' %}">sign in</a>
+                to your new account.
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
+</body>
+
+Thank you for confirming your email.
+
+Please proceed to http://{{ domain }}{{% url 'login' uidb64=uid token=token %}} to login to your new account.

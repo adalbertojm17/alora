@@ -17,7 +17,6 @@ from ..models import Address
 
 class CreateAddressAPIView(CreateAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
     serializer_class = AddressSerializer
 
     def create(self, request, *args, **kwargs):

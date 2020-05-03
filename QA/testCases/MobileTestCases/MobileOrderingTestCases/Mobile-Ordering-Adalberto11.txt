@@ -1,0 +1,23 @@
+Test Case ID: # 11
+Steps:
+1.Login into Alora mobile app
+2.Flip the phone 
+3.Tap continue 
+
+
+Test Scenario:
+Date:5/2/2020
+Login - Username: Adalberto, Password: Ad.12345
+
+
+
+Expected:  after taping continue i will be taken to the pick-up page 
+	and all the field and button are visible 
+
+Actual results: buttons and some of the fields are not visible
+
+Test Case: Faild.
+
+
+
+

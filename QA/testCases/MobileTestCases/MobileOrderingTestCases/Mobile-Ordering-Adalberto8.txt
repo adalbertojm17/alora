@@ -1,0 +1,28 @@
+Test Case ID: # 8
+Steps:
+1.Login into Alora mobile app
+2.Tap "Order Now"
+3.Tap the drop menu of store
+4. select a store.
+5. Tap continue.
+6. Tap continue
+
+
+Test Scenario: .
+Date:
+Login - Username: Adalberto, Password: Ad.12345
+Store:Laundry
+
+Expected: when i selected a store and tap the next button it will take me to the
+	to the next page and if i hit  the continue button it should display a error
+	message i have to fill all the fields in that page
+
+Actual results: it does not display the error message and 
+		it lets me continue to the next page
+
+Test Case: Failed.
+
+
+
+
+

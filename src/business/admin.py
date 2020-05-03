@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Service, Store
+from .models import Service, Store,ServingAreas
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -62,3 +62,4 @@ class StoreAdmin(admin.ModelAdmin):
 
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Store, StoreAdmin)
+admin.site.register(ServingAreas)

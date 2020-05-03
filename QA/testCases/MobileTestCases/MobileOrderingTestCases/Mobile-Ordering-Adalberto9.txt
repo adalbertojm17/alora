@@ -1,0 +1,40 @@
+Test Case ID: # 9
+Steps:
+1.Login into Alora mobile app
+2.Tap "Order Now"
+3.Tap the drop menu of store
+4. select a store.
+5. fill all the fields in the pick-up page 
+6. Tap continue
+7.fill all the fields in the drop-off page
+8.Tap place order
+
+
+Test Scenario:
+Date:5/2/2020
+Login - Username: Adalberto, Password: Ad.12345
+store: Laundry
+Street : 100 madison
+apt:
+state:NJ
+zipcode:07201
+Date:5/2/2020
+Time:9:00
+
+Street : 100 madison
+apt:
+state:NJ
+zipcode:07201
+Date:5/3/2020
+Time:9:00
+
+Expected: able to place a order succesfully 
+
+Actual results: able to place a order succesfully 
+
+Test Case: Pass.
+
+
+
+
+

@@ -11,13 +11,16 @@ Steps:
 
 
 Test Scenario: .
-Data:
+Data:5/2/2020
 Login - Username: Adalberto, Password: Ad.12345
+store: Laundry
 Street : 100 madison
 apt:
-state:
+state:NJ
 zipcode:07201
+Date:5/2/2020
+Time:9:00
 Expected: access the next page of the ordering process
-Actual results: the drop down menu for the state did not show ,could not select a state for my address, error message beause the state field was not inputed .
+Actual results: access the next page of the ordering process
 
-Test Case: Failed.
+Test Case: Pass

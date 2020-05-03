@@ -906,6 +906,7 @@ select{
 
 .confirm{
     margin: auto;
+    margin-top: 150px;
     width: 50%;
     text-align: center;
     font-size: 150%;

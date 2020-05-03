@@ -191,10 +191,7 @@ class DropOffForm(forms.ModelForm):
 
         if address_data is not None:
             if 'Error' in address_data:
-                error = address_data['Error']
-
-                if error['Description'] == 'Address Not Found.':
-                    raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please choose a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']

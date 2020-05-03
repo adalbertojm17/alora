@@ -1,5 +1,6 @@
 import re
 
+import usps
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django import forms
@@ -7,7 +8,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.safestring import mark_safe
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
-import usps
 
 from .backends import authenticate
 from .models import Account
@@ -169,10 +169,7 @@ class UserAddressForm(forms.ModelForm):
 
         if address_data is not None:
             if 'Error' in address_data:
-                error = address_data['Error']
-
-                if error['Description'] == 'Address Not Found.':
-                    raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please choose a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']
@@ -389,10 +386,7 @@ class EditAddressForm(forms.ModelForm):
 
         if address_data is not None:
             if 'Error' in address_data:
-                error = address_data['Error']
-
-                if error['Description'] == 'Address Not Found.':
-                    raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please choose a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']

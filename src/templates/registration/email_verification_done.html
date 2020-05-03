@@ -17,13 +17,14 @@
         <div class="d-flex flex-column">
             <img id="confirmicons" src="{% static 'images/ordercheck.png' %}" alt="Logo" class="center" width=120
                  height=120>
-        <p class="m-auto p-2">
-        We've emailed you instructions for confirming your email. If an account exists with the email you entered.
-        You should receive them shortly.
-        </p>
-        <button id="secondmainbutton" type="submit"><a href="{% url 'home' %}"> Return to home page</a></button>
-	</div>
-</div>
+            <p class="m-auto p-2">
+                Request received. We've just emailed you instructions on how to complete your registration.
+                If you own the email that you used to register with us, you should receive them shortly. If not,
+                please check your junk/spam folder.
+            </p>
+            <button id="secondmainbutton" type="submit"><a href="{% url 'signup' %}"> Return to signup page</a></button>
+        </div>
+    </div>
 
 {% endblock %}
 </body>

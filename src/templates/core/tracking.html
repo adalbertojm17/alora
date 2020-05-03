@@ -31,7 +31,22 @@
 
         <div class="searchpart2">
             <form id="searchbar2"  method="get">
+
+                {% comment %}
                 <input type="text" class="form-control" name="q"id="id_q" placeholder="Order Number..."value="{{ query }}">
+                {% endcomment %}
+
+
+                <select class="form-control" name="q"id="id_q" placeholder="Order Number...">
+                    <option value="" disabled selected>Select order number</option>
+                    {% for order in core %}
+                        {% if request.user.id == order.user_id %}
+                        <option value="{{order.id}}"> {{order.id}} </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+
+
                 <button type="submit"><img id="=" src="{% static 'images/tracksearch.png' %}" alt="search" width=30 height=30></button>
             </form>
         </div>

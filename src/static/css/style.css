@@ -1151,6 +1151,17 @@ button:disabled:hover{
     overflow: hidden;
 }
 
+#searchbar2 select{
+    float:left;
+    width: 80%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    font-size: 17px;
+    border: none;
+}
+
 #searchbar2 input[type=text] {
     float:left;
     width: 80%;

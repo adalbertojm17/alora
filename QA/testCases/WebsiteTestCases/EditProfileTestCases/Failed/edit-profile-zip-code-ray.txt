@@ -1,0 +1,17 @@
+Test case: edit profile
+
+steps
+step 1: user sign in button
+step 2: user logs in
+step 3: user selects account 
+step 4: selects edit address button
+step 5: selects on zip code field
+
+Data
+user original zip code was: 22490
+user attempts to create new zip code: xxxxx
+user selects save changes button
+
+Expect results: user should be notifed to enter numerical number format.
+Actual results: user is notified to enter a zip code in the format xxxxx or xxxxx-xxxx.
+test case: version 1.3 - failed

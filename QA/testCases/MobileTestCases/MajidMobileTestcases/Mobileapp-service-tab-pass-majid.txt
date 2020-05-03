@@ -1,0 +1,17 @@
+
+Project name  Alora
+Module name  mobile App contact page
+created date  4/9/2020
+reviewd by    Qa Team
+test date     5/2/2020
+version 1.3
+          
+                                service page
+
+Ts_Alora_01    when you click on the service tab link to store options
+
+Ts_Alora_02    servive tab suceessfully naviate to the store option
+
+
+ remarks: test pass
+

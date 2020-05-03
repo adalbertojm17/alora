@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Email Verification Done</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="container">
+
+        <div class="d-flex flex-column">
+            <img id="confirmicons" src="{% static 'images/ordercheck.png' %}" alt="Logo" class="center" width=120
+                 height=120>
+            <p class="m-auto p-2">
+                Request received. We've just emailed you instructions on how to complete your registration.
+                If you own the email that you used to register with us, you should receive them shortly. If not,
+                please check your junk/spam folder.
+            </p>
+            <button id="secondmainbutton" type="submit"><a href="{% url 'signup' %}"> Return to signup page</a></button>
+        </div>
+    </div>
+
+{% endblock %}
+</body>

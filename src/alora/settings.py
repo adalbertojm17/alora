@@ -53,18 +53,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_user_agents',
 
     # Third-Party Apps
     'bootstrap4',
     'cities_light',
     'datetimepicker',
+    'django_user_agents',
     'formtools',
     'multiselectfield',
     'phonenumber_field',
     'rest_framework',
     'rest_framework.authtoken',
     'pygeocoder',
+    'usps',
 
     # Local Apps
     'accounts',
@@ -207,5 +208,8 @@ REST_FRAMEWORK = {
     ]
 }
 
-ADMINS = [('admin', 'admin@aloralaundry.com', 'admin', 'admin'), ]
+ADMINS = [('admin', 'admin@aloralaundry.com', 'admin', 'admin'),
+          ('manager', 'manager@aloralaundry.com', 'manager', 'manager'),
+          ('employee', 'employee@aloralaundry.com', 'employee', 'employee'),
+          ('customer', 'customer@aloralaundry.com', 'customer', 'customer')]
 API_KEY = 'AIzaSyAE_yj-AG2fliR1sRSU8iBxtm2U0-etR4g'

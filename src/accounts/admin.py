@@ -1,10 +1,11 @@
 from django.contrib import admin
+from django.contrib.auth.admin import Group
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from .models import CustomerAccount, StaffAccount, ManagerAccount
 from rest_framework.authtoken.admin import TokenAdmin
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.admin import Group
+
+from .models import CustomerAccount, StaffAccount, ManagerAccount, EmployeeAccount
 
 
 class AccountAdmin(UserAdmin):
@@ -34,7 +35,6 @@ class CustomerAdmin(AccountAdmin):
     delete_button.short_description = 'Delete Account'
     list_display = ('username', 'email', 'date_joined', 'last_login', 'delete_button')
 
-
 class ManagerAdmin(AccountAdmin):
     def delete_button(self, obj):
         return format_html('<a class="btn" href="/admin/accounts/manageraccount/{}/delete/">Delete</a>', obj.id)
@@ -42,6 +42,14 @@ class ManagerAdmin(AccountAdmin):
     delete_button.allow_tags = True
     delete_button.short_description = 'Delete Account'
 
+    list_display = ('username', 'email', 'date_joined', 'last_login', 'delete_button')
+
+class EmployeeAdmin(AccountAdmin):
+    def delete_button(self, obj):
+        return format_html('<a class="btn" href="/admin/accounts/employeeaccount/{}/delete/">Delete</a>', obj.id)
+
+    delete_button.allow_tags = True
+    delete_button.short_description = 'Delete Account'
     list_display = ('username', 'email', 'date_joined', 'last_login', 'delete_button')
 
 
@@ -73,5 +81,6 @@ admin.site.unregister(Group)
 admin.site.register(CustomerAccount, CustomerAdmin)
 admin.site.register(StaffAccount, StaffAdmin)
 admin.site.register(ManagerAccount, ManagerAdmin)
+admin.site.register(EmployeeAccount, EmployeeAdmin)
 admin.site.unregister(Token)
 admin.site.register(Token, CustomTokenAdmin)

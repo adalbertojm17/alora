@@ -1,0 +1,24 @@
+Test Case: Sign up
+
+steps
+Step 1: user selects on sign in button
+step 2: User selects sign up button
+
+Data
+inputs first: raymond	
+last name: harvey
+email: becau@gmail.com
+reconfirm email: becau@gmail.com
+username: hellllur
+password: Ic8ntbeliev_0
+confirm password: Ic8ntbeliev_0
+selects next button and directed to address information
+street: elm street
+apt/suite: 0kdknvnkd
+city: m3nhattan
+select a state: American Samoa
+zip code: 23110
+
+Expect results: there should've been a notification to appear to user about the city that the user input. The city should only be alphanumeric.
+Actual Results: User is directed to main page.
+Test case: failed version - 1.3

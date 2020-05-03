@@ -124,5 +124,13 @@ class ManagerAccount(Account):
     manager = BusinessOwnerManager()
 
     class Meta:
-        verbose_name = 'Manager'
+        verbose_name = 'Business Manager'
+        proxy = True
+
+
+class EmployeeAccount(Account):
+    customer = EmployeeManager()
+
+    class Meta:
+        verbose_name = 'Employee'
         proxy = True

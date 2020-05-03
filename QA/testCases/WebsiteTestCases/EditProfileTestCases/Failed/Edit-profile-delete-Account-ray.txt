@@ -1,0 +1,14 @@
+Test case: Edit profile
+
+Steps
+Step 1: user selects sign in
+step 2: user logs in
+step 3: user selects account on navigation bar
+step 4: user selects delete account
+
+Data
+selects delete button
+
+Expected results:user is directed to the landing page of Alora
+Actual results: the server crashed
+Test case: version 1.3 failed

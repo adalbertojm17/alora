@@ -15,4 +15,6 @@ Expected: To allow customer to make changes to their account information.
 Actual results: App allows you to make edits. User can type information
 when "Edit Profile" button is tapped.
 
-Test Case: Pass
+Test Case:
+Version 1.1: Passed
+Version 1.3: Passed

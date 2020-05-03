@@ -1,0 +1,16 @@
+Test case: edit profile
+
+steps
+step 1: user logs in
+step 2: user selects on account on navigation bar
+
+Data
+User selects on edit account button
+users current username is: callofduty
+user attempts to change their username to: ca
+user selects save changes button
+
+
+Expected results: User is notified their length is too short and it must be five characters or longer
+Actual results: user is notified to please lengthen thes text 5 characters or more(you are currently using 2 characters)
+Test case: passed version 1.3

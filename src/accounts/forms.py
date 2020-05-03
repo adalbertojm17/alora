@@ -1,9 +1,10 @@
 import re
 
+import usps
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django import forms
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.utils.safestring import mark_safe
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
@@ -136,7 +137,7 @@ class UserAddressForm(forms.ModelForm):
 
     )
     MODDED_STATE_CHOICES = list(STATE_CHOICES)
-    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State (Optional)'))
+    MODDED_STATE_CHOICES.insert(0, ('', 'Select a State'))
     state = USStateField(
         label='',
         widget=forms.Select(choices=MODDED_STATE_CHOICES))
@@ -149,6 +150,35 @@ class UserAddressForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super(UserAddressForm, self).clean()
+        address = usps.Address(
+            name='None',
+            address_1=cleaned_data.get('street'),
+            address_2=cleaned_data.get('apt'),
+            city=cleaned_data.get('city'),
+            state=cleaned_data.get('state'),
+            zipcode=cleaned_data.get('zip_code')
+        )
+
+        validator = usps.USPSApi('161ALORA3737', test=True)
+        validation = validator.validate_address(address)
+
+        address_data = validation.result['AddressValidateResponse']['Address']
+
+        if address_data is not None:
+            if 'Error' in address_data:
+                raise forms.ValidationError("Please choose a valid address.")
+
+            elif 'ReturnText' in address_data:
+                return_text = address_data['ReturnText']
+
+                if 'Default address' in return_text:
+                    raise forms.ValidationError(
+                        "The address you entered was found but more information is needed "
+                        "(such as an apartment, suite, or box number) to match to a specific address.")
+        return cleaned_data
 
 
 class AccountAuthenticationForm(forms.ModelForm):
@@ -163,7 +193,8 @@ class AccountAuthenticationForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Email or Username'})
     )
 
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'data-toggle': 'password'}))
+    password = forms.CharField(label='',
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'data-toggle': 'password'}))
 
     class Meta:
         model = Account
@@ -176,7 +207,7 @@ class AccountAuthenticationForm(forms.ModelForm):
         user = authenticate(username=username, password=password)
         if not user:
             raise forms.ValidationError("Invalid login")
-        if user.is_manager  and self.current_login == 'customer-login':
+        if user.is_manager and self.current_login == 'customer-login':
             self.redirect = True
             raise forms.ValidationError("Please use the business login")
 
@@ -293,6 +324,7 @@ class AccountForm(forms.ModelForm):
                 return username
             raise forms.ValidationError('Username "%s" is already in use.' % username)
 
+
 class EditAddressForm(forms.ModelForm):
     street = forms.CharField(
         label='Street',
@@ -331,6 +363,36 @@ class EditAddressForm(forms.ModelForm):
         label_suffix='',
         widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
     )
+
     class Meta:
         model = Address
         fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super(EditAddressForm, self).clean()
+        address = usps.Address(
+            name='None',
+            address_1=cleaned_data.get('street'),
+            address_2=cleaned_data.get('apt'),
+            city=cleaned_data.get('city'),
+            state=cleaned_data.get('state'),
+            zipcode=cleaned_data.get('zip_code')
+        )
+
+        validator = usps.USPSApi('161ALORA3737', test=True)
+        validation = validator.validate_address(address)
+
+        address_data = validation.result['AddressValidateResponse']['Address']
+
+        if address_data is not None:
+            if 'Error' in address_data:
+                raise forms.ValidationError("Please choose a valid address.")
+
+            elif 'ReturnText' in address_data:
+                return_text = address_data['ReturnText']
+
+                if 'Default address' in return_text:
+                    raise forms.ValidationError(
+                        "The address you entered was found but more information is needed "
+                        "(such as an apartment, suite, or box number) to match to a specific address.")
+        return cleaned_data

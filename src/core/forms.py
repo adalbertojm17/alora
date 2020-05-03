@@ -1,7 +1,10 @@
 import datetime
 
+import usps
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
+# noinspection PyUnresolvedReferences
+from alora.settings import API_KEY
 # noinspection PyUnresolvedReferences
 from business.models import Service
 # noinspection PyUnresolvedReferences
@@ -12,9 +15,7 @@ from django.core.exceptions import ValidationError
 from django.utils.timezone import now
 from localflavor.us.forms import USStateField, USZipCodeField
 from localflavor.us.us_states import STATE_CHOICES
-from pygeocoder import Geocoder
-# noinspection PyUnresolvedReferences
-from alora.settings import API_KEY
+
 
 class StoreForm(forms.Form):
     store = forms.ModelChoiceField(
@@ -35,12 +36,11 @@ class PickupForm(forms.ModelForm):
         label='',
         required=False,
         max_length=50,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
-            'title': ' alphanumeric '
-                     'characters '
-                     'only '
-                     'please'})
-
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite', 'pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
 
     )
     city = forms.CharField(
@@ -78,21 +78,39 @@ class PickupForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = '__all__'
+
     def clean(self):
         cleaned_data = super(PickupForm, self).clean()
-        address_validation = Geocoder(api_key=API_KEY)
-        address = str(cleaned_data.get('street') + ", " + str(cleaned_data.get('city')) + ", " + str(
-        cleaned_data.get('state')) + ", " + str(cleaned_data.get('zip_code')) + 'US')
-        if not address_validation.geocode(address).valid_address:
-            raise forms.ValidationError("Address is not valid")
-        else:
-            address = address_validation.geocode(address)
-            cleaned_data['street'] = address.street_number +' '+ address.route
-            cleaned_data['city'] = address.city
-            cleaned_data['zip_code'] = address.postal_code
-            return cleaned_data
+        address = usps.Address(
+            name='None',
+            address_1=cleaned_data.get('street'),
+            address_2=cleaned_data.get('apt'),
+            city=cleaned_data.get('city'),
+            state=cleaned_data.get('state'),
+            zipcode=cleaned_data.get('zip_code')
+        )
 
+        validator = usps.USPSApi('161ALORA3737', test=True)
+        validation = validator.validate_address(address)
 
+        address_data = validation.result['AddressValidateResponse']['Address']
+
+        if address_data is not None:
+            if 'Error' in address_data:
+                error = address_data['Error']
+
+                if error['Description'] == 'Address Not Found.':
+                    raise forms.ValidationError("Please choose a valid address.")
+
+            elif 'ReturnText' in address_data:
+                return_text = address_data['ReturnText']
+
+                if 'Default address' in return_text:
+                    raise forms.ValidationError(
+                        "The address you entered was found but more information is needed "
+                        "(such as an apartment, suite, or box number) to match to a specific address.")
+
+        return cleaned_data
 
     def clean_pickup_at(self):
         cleaned_data = super(PickupForm, self).clean()
@@ -113,7 +131,7 @@ class DropOffForm(forms.ModelForm):
         label='',
         required=False,
         max_length=30,
-        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite','pattern': '[0-9A-Za-z ]+',
+        widget=forms.TextInput(attrs={'placeholder': 'APT/Suite', 'pattern': '[0-9A-Za-z ]+',
                                       'title': ' alphanumeric '
                                                'characters '
                                                'only '
@@ -157,17 +175,35 @@ class DropOffForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super(DropOffForm, self).clean()
-        address_validation = Geocoder(api_key=API_KEY)
-        address = str(cleaned_data.get('street') + ", " + str(cleaned_data.get('city')) + ", " + str(
-            cleaned_data.get('state')) + ", " + str(cleaned_data.get('zip_code')) + 'US')
-        if not address_validation.geocode(address).valid_address:
-            raise ValidationError("Address is not valid")
-        else:
-            address = address_validation.geocode(address)
-            cleaned_data['street'] = address.street_number + ' ' + address.route
-            cleaned_data['city'] = address.city
-            cleaned_data['zip_code'] = address.postal_code
-            return cleaned_data
+        address = usps.Address(
+            name='None',
+            address_1=cleaned_data.get('street'),
+            address_2=cleaned_data.get('apt'),
+            city=cleaned_data.get('city'),
+            state=cleaned_data.get('state'),
+            zipcode=cleaned_data.get('zip_code')
+        )
+
+        validator = usps.USPSApi('161ALORA3737', test=True)
+        validation = validator.validate_address(address)
+
+        address_data = validation.result['AddressValidateResponse']['Address']
+
+        if address_data is not None:
+            if 'Error' in address_data:
+                error = address_data['Error']
+
+                if error['Description'] == 'Address Not Found.':
+                    raise forms.ValidationError("Please choose a valid address.")
+
+            elif 'ReturnText' in address_data:
+                return_text = address_data['ReturnText']
+
+                if 'Default address' in return_text:
+                    raise forms.ValidationError(
+                        "The address you entered was found but more information is needed "
+                        "(such as an apartment, suite, or box number) to match to a specific address.")
+        return cleaned_data
 
     def clean_drop_off_at(self):
         cleaned_data = super(DropOffForm, self).clean()

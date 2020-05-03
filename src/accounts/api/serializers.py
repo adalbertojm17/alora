@@ -56,6 +56,7 @@ class UserCreateSerializer(ModelSerializer):
         account.save()
         return account
 
+
 class UserProfileSerializer(ModelSerializer):
     class Meta:
         model = User
@@ -67,6 +68,17 @@ class UserProfileSerializer(ModelSerializer):
             'email',
             'username',
         ]
+
+    def clean_phone(self):
+        if self.is_valid():
+            phone = self.cleaned_data["phone"]
+            try:
+                Account.objects.exclude(pk=self.instance.pk).get(phone=phone)
+            except Account.DoesNotExist:
+                if phone == "":
+                    phone = None
+                return phone
+            raise forms.ValidationError('Phone "%s" is already in use.' % phone)
 
 
 class UserLoginSerializer(ModelSerializer):

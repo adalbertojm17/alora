@@ -12,8 +12,8 @@ class Command(BaseCommand):
                 username = user[0].replace(' ', '')
                 email = user[1]
                 first_name = user[2]
-                last_name = user[1]
-                password = 'admin'
+                last_name = user[3]
+                password = username
                 print('Creating account for %s (%s) with the default password "%s"' % (username, email, password))
                 admin = Account.objects.create_superuser(
                     email=email,
@@ -23,7 +23,14 @@ class Command(BaseCommand):
                     last_name=last_name
                 )
                 admin.is_active = True
-                admin.is_admin = True
+                if user[2] == 'manager':
+                    admin.is_manager = True
+                    admin.is_staff = False
+                elif user[2] == 'employee':
+                    admin.is_employee = True
+                    admin.is_staff = False
+                elif user[2] == 'customer':
+                    admin.is_staff = False
                 admin.save()
         else:
             print('Admin accounts can only be initialized if no Accounts exist')

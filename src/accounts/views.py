@@ -1,15 +1,14 @@
 # noinspection PyUnresolvedReferences
 import time
 
-from django.http import HttpResponseRedirect
-
-from .forms import EditAddressForm
 from addresses.models import Address
 from django.contrib.auth import login, logout
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from formtools.wizard.views import SessionWizardView
 
 from .backends import authenticate
+from .forms import EditAddressForm
 from .forms import UserSignUpForm, UserAddressForm, AccountAuthenticationForm, AccountForm
 from .models import Account
 
@@ -87,10 +86,6 @@ def login_view(request):
                 if user.is_staff:
                     return redirect('staffhome')
                 return redirect('main')
-        # else:
-        #     if form.redirect:
-        #         time.sleep(5)
-        #         return redirect('businesslogin')
 
     else:
         form = AccountAuthenticationForm(current_login='customer-login')
@@ -161,10 +156,11 @@ def account_view(request):
     context["account_form"] = form
     return render(request, "account_page.html", context)
 
+
 def edit_address_view(request):
     if not request.user.is_authenticated:
         return redirect("login")
-    context= {}
+    context = {}
 
     if request.POST:
         form = EditAddressForm(request.POST, instance=request.user.address)
@@ -173,13 +169,15 @@ def edit_address_view(request):
 
 
     else:
-        form =EditAddressForm(instance=request.user.address)
+        form = EditAddressForm(instance=request.user.address)
 
     context["Edit_Address_form"] = form
     return render(request, "edit_address.html", context)
 
+
 def delete_account_view(request):
-    return render(request,'Confirm_account_cancelation.html')
+    return render(request, 'Confirm_account_cancelation.html')
+
 
 def delete_account_function(request):
     object = request.user

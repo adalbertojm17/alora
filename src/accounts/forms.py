@@ -155,8 +155,8 @@ class UserAddressForm(forms.ModelForm):
         cleaned_data = super(UserAddressForm, self).clean()
         address = usps.Address(
             name='None',
-            address_1=cleaned_data.get('street'),
-            address_2=cleaned_data.get('apt'),
+            address_2=cleaned_data.get('street'),
+            address_1=cleaned_data.get('apt'),
             city=cleaned_data.get('city'),
             state=cleaned_data.get('state'),
             zipcode=cleaned_data.get('zip_code')
@@ -168,6 +168,7 @@ class UserAddressForm(forms.ModelForm):
         address_data = validation.result['AddressValidateResponse']['Address']
 
         if address_data is not None:
+
             if 'Error' in address_data:
                 raise forms.ValidationError("Please choose a valid address.")
 
@@ -175,9 +176,7 @@ class UserAddressForm(forms.ModelForm):
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError(
-                        "The address you entered was found but more information is needed "
-                        "(such as an apartment, suite, or box number) to match to a specific address.")
+                    raise forms.ValidationError("An APT/Suite is required for this address")
         return cleaned_data
 
 

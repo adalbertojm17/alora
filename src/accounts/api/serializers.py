@@ -21,7 +21,8 @@ class UserSerializer(ModelSerializer):
             'email',
             'username',
             'password',
-            'password2'
+            'password2',
+            'address'
         ]
 
 

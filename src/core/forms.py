@@ -83,8 +83,8 @@ class PickupForm(forms.ModelForm):
         cleaned_data = super(PickupForm, self).clean()
         address = usps.Address(
             name='None',
-            address_1=cleaned_data.get('street'),
-            address_2=cleaned_data.get('apt'),
+            address_2=cleaned_data.get('street'),
+            address_1=cleaned_data.get('apt'),
             city=cleaned_data.get('city'),
             state=cleaned_data.get('state'),
             zipcode=cleaned_data.get('zip_code')
@@ -106,9 +106,7 @@ class PickupForm(forms.ModelForm):
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError(
-                        "The address you entered was found but more information is needed "
-                        "(such as an apartment, suite, or box number) to match to a specific address.")
+                    raise forms.ValidationError("An APT/Suite is required for this address")
 
         return cleaned_data
 
@@ -177,8 +175,8 @@ class DropOffForm(forms.ModelForm):
         cleaned_data = super(DropOffForm, self).clean()
         address = usps.Address(
             name='None',
-            address_1=cleaned_data.get('street'),
-            address_2=cleaned_data.get('apt'),
+            address_2=cleaned_data.get('street'),
+            address_1=cleaned_data.get('apt'),
             city=cleaned_data.get('city'),
             state=cleaned_data.get('state'),
             zipcode=cleaned_data.get('zip_code')
@@ -197,9 +195,7 @@ class DropOffForm(forms.ModelForm):
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError(
-                        "The address you entered was found but more information is needed "
-                        "(such as an apartment, suite, or box number) to match to a specific address.")
+                    raise forms.ValidationError("An APT/Suite is required for this address")
         return cleaned_data
 
     def clean_drop_off_at(self):

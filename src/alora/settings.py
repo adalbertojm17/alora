@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from .email_setting import (
+    EMAIL_BACKEND,
+    EMAIL_HOST,
+    EMAIL_HOST_USER,
+    EMAIL_HOST_PASSWORD,
+    EMAIL_PORT,
+    EMAIL_USE_TLS
+)
+
+from .database_setting import DATABASES
+from .alowed_hosts_setting import ALLOWED_HOSTS
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,25 +36,21 @@ SECRET_KEY = 'fujqy@2re5bsd+s%au0i*br3$twm2$s8!=ul)gtdjzkxr-gcbd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'aloradevs.ddns.net',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = ALLOWED_HOSTS
 
 PHONENUMBER_DB_FORMAT = 'E164'
 PHONENUMBER_DEFAULT_REGION = 'US'
 
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+    EMAIL_BACKEND = EMAIL_BACKEND
 
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During production
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = 'aloralsteam@gmail.com'
-    EMAIL_HOST_PASSWORD = 'euvhgmoixzwkrdth'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = 'Alora LS Team <noreply@aloradevs.ddns.net>'
+    EMAIL_BACKEND = EMAIL_BACKEND
+    EMAIL_HOST = EMAIL_HOST
+    EMAIL_HOST_USER = EMAIL_HOST_USER
+    EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+    EMAIL_PORT = EMAIL_PORT
+    EMAIL_USE_TLS = EMAIL_USE_TLS
 
 # Application definition
 
@@ -128,17 +136,7 @@ WSGI_APPLICATION = 'alora.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aloradb',
-        'USER': 'root',
-        'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
-        'HOST': 'aloradevs.ddns.net',
-        'PORT': '3306',
-        'OPTIONS': {'charset': 'utf8mb4'},
-    }
-}
+DATABASES = DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

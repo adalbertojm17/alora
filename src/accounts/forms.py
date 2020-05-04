@@ -31,7 +31,7 @@ class UserSignUpForm(UserCreationForm):
     )
 
     last_name = forms.CharField(
-        max_length=100,
+        max_length=50,
         min_length=3,
         label='',
         widget=forms.TextInput(attrs={
@@ -170,13 +170,13 @@ class UserAddressForm(forms.ModelForm):
         if address_data is not None:
 
             if 'Error' in address_data:
-                raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please provide a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError("An APT/Suite is required for this address")
+                    raise forms.ValidationError("A valid APT/Suite is required for this address.")
         return cleaned_data
 
 
@@ -231,7 +231,7 @@ class AccountForm(forms.ModelForm):
 
     last_name = forms.CharField(
         min_length=3,
-        max_length=100,
+        max_length=50,
         label=mark_safe('Last Name<br />'),
         label_suffix='',
         widget=forms.TextInput(attrs={
@@ -360,7 +360,11 @@ class EditAddressForm(forms.ModelForm):
     zip_code = USZipCodeField(
         label='Zip Code',
         label_suffix='',
-        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*', 'pattern': '[0-9]+',
+                                      'title': ' numeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
     )
 
     class Meta:
@@ -371,8 +375,8 @@ class EditAddressForm(forms.ModelForm):
         cleaned_data = super(EditAddressForm, self).clean()
         address = usps.Address(
             name='None',
-            address_1=cleaned_data.get('street'),
-            address_2=cleaned_data.get('apt'),
+            address_2=cleaned_data.get('street'),
+            address_1=cleaned_data.get('apt'),
             city=cleaned_data.get('city'),
             state=cleaned_data.get('state'),
             zipcode=cleaned_data.get('zip_code')
@@ -385,13 +389,11 @@ class EditAddressForm(forms.ModelForm):
 
         if address_data is not None:
             if 'Error' in address_data:
-                raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please provide a valid address")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError(
-                        "The address you entered was found but more information is needed "
-                        "(such as an apartment, suite, or box number) to match to a specific address.")
+                    raise forms.ValidationError("A valid APT/Suite is required for this address.")
         return cleaned_data

@@ -57,7 +57,11 @@ class PickupForm(forms.ModelForm):
 
     zip_code = USZipCodeField(
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*', 'pattern': '[0-9]+',
+                                      'title': ' numeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
     )
     pickup_at = forms.DateTimeField(
         input_formats=("%a %b %d, %Y %I:%M %p",),
@@ -100,13 +104,13 @@ class PickupForm(forms.ModelForm):
                 error = address_data['Error']
 
                 if error['Description'] == 'Address Not Found.':
-                    raise forms.ValidationError("Please choose a valid address.")
+                    raise forms.ValidationError("Please provide a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError("An APT/Suite is required for this address")
+                    raise forms.ValidationError("A valid APT/Suite is required for this address")
 
         return cleaned_data
 
@@ -149,7 +153,11 @@ class DropOffForm(forms.ModelForm):
 
     zip_code = USZipCodeField(
         label='',
-        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*'})
+        widget=forms.TextInput(attrs={'placeholder': 'Zip Code*', 'pattern': '[0-9]+',
+                                      'title': ' numeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
     )
     drop_off_at = forms.DateTimeField(
         input_formats=("%a %b %d, %Y %I:%M %p",),
@@ -189,13 +197,13 @@ class DropOffForm(forms.ModelForm):
 
         if address_data is not None:
             if 'Error' in address_data:
-                raise forms.ValidationError("Please choose a valid address.")
+                raise forms.ValidationError("Please provide a valid address.")
 
             elif 'ReturnText' in address_data:
                 return_text = address_data['ReturnText']
 
                 if 'Default address' in return_text:
-                    raise forms.ValidationError("An APT/Suite is required for this address")
+                    raise forms.ValidationError("A valid APT/Suite is required for this address.")
         return cleaned_data
 
     def clean_drop_off_at(self):

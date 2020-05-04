@@ -1,0 +1,23 @@
+Test case:
+
+steps
+step 1: user selects sign in button
+step 2: user selects sign up option
+
+Data
+inputs first name: kobe
+inputs last name: bryant
+email: mamba24@gmail.com
+confirm email: mamba24@gmail.com
+username: gigi2
+password: L0velysw33t_
+reconfirm password: L0velysw33t_
+selects continue button & direct to address information
+street: gethim
+apt / suite: 3qualify
+city: )(*&^%%
+select a state: Georgia
+selected the continue button
+Predicted results: user should be notified the city field is invalid it can only be alphanumeric only.
+Actual Results: the page crashed 
+test case: failed version 1.4 production server

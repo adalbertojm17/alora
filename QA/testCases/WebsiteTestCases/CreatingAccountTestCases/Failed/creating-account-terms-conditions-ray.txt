@@ -1,0 +1,13 @@
+Test case: Create account
+
+Steps 
+step 1: user selects on sign in button
+step 2: user selects sign up option
+step 3: selects the highlighted link terms & conditions
+
+Expected Results: When user selects on the high link a modal(pop up screen) to the user that provides the terms & conditions for the website.
+Actual results: No action occurs.
+
+test case: failed version 1.4 production server
+
+

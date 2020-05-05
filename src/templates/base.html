@@ -45,6 +45,7 @@
                     <li class="homepage"><a href="{% url 'logout' %}">Log out</a></li>
 
                 {% else %}
+                    <li class="homepage"><a href="{% url 'signup' %}">Sign Up </a></li>
                     <li class="homepage"><a href="{% url 'login' %}">Log In</a></li>
                     <li class="homepage"><a href="{% url 'businesslogin' %}">Business Log In</a></li>
                 {% endif %}

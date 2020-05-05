@@ -636,7 +636,19 @@ footer {
     overflow: hidden;
 }
 
+/*termspage css*/
+.termscontent{
+    margin:auto;
+    width: 90%;
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
 
+.termscontent h2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 180%;
+}
 /*about us page css*/
 
 .content{

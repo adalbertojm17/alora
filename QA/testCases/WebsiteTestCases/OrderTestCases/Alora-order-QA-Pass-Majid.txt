@@ -1,0 +1,25 @@
+Project name  Alora
+Module name   Order page
+created date  4/15/2020
+reviewd by    Qa Team
+test date     5/4/2020
+version   1.4
+
+
+                                                                                       order page
+
+
+Test ID                             Test Case Discription                                        Pre-Condition                                            Test Steps                                                         Test Data                                                    Expected result                                       Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+   
+TS_Alora_01                check response when Last name is enterd                              Name space should be activated                         enter the Last name                                             masood                                                          name enter successfully                              Pass
+
+TS_Alora_02                check response  when you select date time                            Date time calendar should be activated                    select date and time                                         Wed April 22,2020 02:26 PM                                         select date and time successfully                    pass
+
+
+ 
+     Remarks: Alora order page  accept valid St Address test ..pass
+     
+     

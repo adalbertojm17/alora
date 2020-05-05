@@ -1,0 +1,13 @@
+Test Case: Creating account
+
+Steps
+Step 1: user selects sign in button
+Step 2: user selects sign up option
+step 3: user selects on terms & conditions option below
+
+
+Expected Results: A pop window that has document of Alora's terms and conditions
+
+Actual Results: No information appears to the user about terms & conditions when user selects on the highlighted link 
+
+test case: failed qa-version 1.5

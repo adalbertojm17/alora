@@ -1,0 +1,27 @@
+       
+Project Name Lora
+
+Module Nmae Alora
+Module Name  Login Page
+Created By   Majid Masood
+Created Date 3/24/2020
+Reviewed by QA team
+Reviewed date  5/4/2020    
+                                
+Version 1.3
+
+
+                                                          Alora App test case
+
+
+Test ID     Test case discription                  Pre-Condition                                test steps                   test Data                         Expected result                           Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Ts_Al_01     Check response on login tab         login tab should be activated             Push login tab              login tab activated                     login tab activated                            Pass                        
+
+Ts_Al-02     Check response on login tab         login tab should be activated             Push login tab              login tab activated                     nevigate to the next page                       Pass                       
+
+
+
+  Remarks: no problem found

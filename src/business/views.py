@@ -14,9 +14,9 @@ from feedback.models import Feedback
 
 from .forms import AddingItemForm
 from .forms import AddingOrderItemForm
-from .forms import ServiceCreationForm
+from .forms import ServiceCreationForm,ServiceAreasForm
 from .forms import StaffCreationForm,DropOffUpdateForm
-from .models import Service
+from .models import Service,ServingAreas
 from .models import Store
 
 
@@ -181,10 +181,24 @@ def current_orders_view(request, *args, **kwargs):
 
 def general_info_view(request, *args, **kwargs):
     my_context = {}
+
     if not request.user.is_authenticated:
         return redirect('login')
     elif not request.user.is_manager:
         return HttpResponseForbidden()
+    store = Store.objects.get(manager=request.user)
+
+    my_context['seviceareas']= store.servingareas.all
+    if request.POST:
+        form = ServiceAreasForm(request.POST)
+        if form.is_valid():
+            zip = form.cleaned_data['zipcode']
+            form.save()
+            store.servingareas.add(ServingAreas.objects.filter(zipcode =zip).first())
+            return HttpResponseRedirect('/business/generalinfo/')
+    else:
+        form = ServiceAreasForm()
+    my_context['form'] = form
     return render(request, "business/general_info.html", my_context)
 
 

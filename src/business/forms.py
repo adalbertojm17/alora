@@ -8,6 +8,7 @@ from core.models import OrderItem
 from core.models import Item
 from core.models import Order
 from accounts.models import Account
+from .models import ServingAreas
 
 
 class ServiceCreationForm(forms.ModelForm):
@@ -223,3 +224,9 @@ class DropOffUpdateForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('dropoff_at',)
+
+
+class ServiceAreasForm(forms.ModelForm):
+    class Meta:
+        model = ServingAreas
+        fields = '__all__'

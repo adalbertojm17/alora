@@ -77,7 +77,23 @@
                 <br>
 
                 <p> Click the question mark on the upper left corner of a page to view tips on using our site.</p>
+                 <table >
+                <tr>
+                    <th>Zipcodes</th>
+                </tr>
+                     {% for zip in seviceareas %}
+                     <tr>
+                         <th>{{ zip }}</th>
+                     </tr>
+                     {% endfor %}
+                 </table>
 
+
+                <form method="post" >
+                {% csrf_token %}
+                {{ form.as_p }}
+                 <button name="button1" id="addbutton" type="submit">Add</button>
+            </form>
             </div>
         </div>
 

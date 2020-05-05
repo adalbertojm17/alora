@@ -1,0 +1,26 @@
+       
+Project Name Lora
+
+Module Nmae Alora
+Module Name  Login Page
+Created By   Majid Masood
+Created Date 3/24/2020
+Reviewed by QA team
+Reviewed date  5/4/2020  
+version 1.3  
+                                
+
+
+
+                                                          Alora App test case
+
+
+Test ID     Test case discription                  Pre-Condition                                     test steps                   test Data                         Expected result                           Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ts_Al_01     Check response on sign in space     Sign in space should be activated         sign in sapce activate     Virtual keyborad activate               virtual keyboard activate                           PASS
+
+Ts_Al_02     Check response on sign in sapce     Sign in tab should be activated           sign in space activate     No virtual keyborad                      virtual keyboard does not activate                 Fail 
+
+
+
+  Remarks: no problem found test ....Pass

@@ -1,0 +1,26 @@
+test case:
+
+Steps
+step 1: user selects on sign in button
+step 2: selects sign up 
+
+Data
+first name: ginobli
+last name: pauly
+email address: spyrs@gmail.com
+reconfirmation address: spyrs@gmail.com
+username: miami
+password: Millwauk33_
+confirm password: Millwauk33_
+selects on continue button
+street: 147 west 145th street
+apt: 4A
+city: Ny
+select a state: New York
+zip code: 10039
+select continue button
+
+
+Expected Results: User account is directed and  should be directed to the home page of alora
+Actual Results: User is notified to please choose a valid address.
+Test case: failed--version 1.4 

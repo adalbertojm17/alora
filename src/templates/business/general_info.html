@@ -17,6 +17,12 @@
 
               <p> Welcome to General Information!</p>
               <p> Learn more about how to navigate this website.</p>
+              <p> Locations:</p>
+              <p> To add a zip code that your company offers services for:</p>
+              <ol>
+                    <li> In the field labeled ' Zip Code' type the zip code number.</li>
+                    <li> Click the "Add" button to add the zip code.</li>
+              </ol>
               <p> Tracking: </p>
               <p> Learn more about our order statuses and what they mean. </p>
               <hr>
@@ -31,7 +37,7 @@
             <p id="pcenter">More about how Alora helps you meet your company goals.</p>
         </div>
 
-        <div class="section2">
+        <div class="section1">
             <div class="insidecontent">
                 <h1> Company Information </h1>
 
@@ -80,6 +86,32 @@
 
             </div>
         </div>
+
+
+        <div class="section2">
+            <div class="insidecontent">
+                <h1> Company Service Locations </h1>
+                <p> These zip codes indicate where your customers are able to place orders with your company.
+                    Add a zip code using the form provided.</p>
+                  <table class="zipcodes" >
+                <tr>
+                    <th>Zip Codes</th>
+                </tr>
+                     {% for zip in seviceareas %}
+                     <tr>
+                         <td>{{ zip }}</td>
+                     </tr>
+                     {% endfor %}
+                 </table>
+
+                <form method="post" style="width: 35%; margin: auto">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                     <button name="button1" id="addbutton" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+
 
         <div class="section3">
             <div class="insidecontent">

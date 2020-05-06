@@ -100,7 +100,7 @@ body {
 
 .content .section2{
     background-color: #FFE081;
-    height: 650px;
+    height: auto;
 }
 
 .content .section3{
@@ -125,6 +125,30 @@ body {
 .insidecontent h1{
     text-align: left;
     margin-bottom: 30px;
+}
+
+
+/******* Locations Info **********/
+.zipcodes{
+    width: 30%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.zipcodes td, .zipcodes th {
+    border: 2px solid black;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.zipcodes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color:#FF9920;
 }
 
 /******* Tracking Info **********/

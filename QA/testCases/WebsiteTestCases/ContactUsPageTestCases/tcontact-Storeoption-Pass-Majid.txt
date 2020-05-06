@@ -1,0 +1,25 @@
+
+Project Name Alora
+Module Name  contact page
+Created name 4/7/2020
+reviewd by QA team
+Test date  4/25/2020
+QA version 1.4
+
+
+                                                                contact Page submit tab
+
+
+
+
+Ts_Alora_01      Enter subject options......pass
+
+Ts_Alora_02      chose store option........Pass
+
+Ts_Alora_03      submit tab accept  accept all information whithout selecting store option...Pass
+
+
+Remarks: ...contact page  does not submit incomplete information without chosing store option...test pass
+
+
+

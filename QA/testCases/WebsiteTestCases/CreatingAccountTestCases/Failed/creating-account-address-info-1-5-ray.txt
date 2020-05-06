@@ -1,0 +1,23 @@
+Test case: creating account
+
+steps:
+step 1: user selects sign in
+step 2: user selects sign up 
+
+data:
+first name: paul
+last name: lakers
+email address:lakers@gmail.com
+username: kobeforever
+password:0ngOd_beli
+reconfirm password: 0ngOd_beli
+selects continue button
+street: 147 west 145th street
+apt / suite: 147 west 145th street
+city: New York
+zip code: 10039
+selects continue button
+
+expected results: User is notified the their apt / suite cannot be the same as the street name, please enter another apt / suite.
+actual results: the server crashes
+Test case: failed version1.5qa

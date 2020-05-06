@@ -6,6 +6,11 @@ def home_view(request, *args, **kwargs):
     return render(request, "index.html", my_context)
 
 
+def terms_view(request, *args, **kwargs):
+    my_context = {}
+    return render(request, "terms.html", my_context)
+
+
 def main_view(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login")

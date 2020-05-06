@@ -209,4 +209,4 @@ def delete_account_view(request):
 def delete_account_function(request):
     object = request.user
     object.delete()
-    return HttpResponseRedirect('/home/')
+    return redirect("login")

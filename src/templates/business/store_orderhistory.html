@@ -75,7 +75,7 @@
                 <th> Order Status</th>
             </tr>
 
-            {% for order in orders|slice:"0:10" %}
+            {% for order in orders %}
                 <tr>
                     <td>{{ order.pk }}</td>
                     <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a></td>
@@ -87,6 +87,9 @@
                 </tr>
             {% endfor %}
         </table>
+
+        {% include 'business/order_pagination.html' with orders=orders %}
+
     </div>
 {% endblock %}
 {% block script %}

@@ -1,4 +1,3 @@
-# noinspection PyUnresolvedReferences
 from operator import attrgetter
 
 from accounts.models import Account

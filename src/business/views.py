@@ -1,22 +1,25 @@
-# noinspection PyUnresolvedReferences,PyPackageRequirements
+from operator import attrgetter
+
 from accounts.models import Account
 from core.models import Item
 from core.models import Order
 from core.models import OrderItem
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-# noinspection PyUnresolvedReferences
 from feedback.models import Feedback
 
 from .forms import AddingItemForm
 from .forms import AddingOrderItemForm
-from .forms import ServiceCreationForm,ServiceAreasForm
-from .forms import StaffCreationForm,DropOffUpdateForm
-from .models import Service,ServingAreas
+from .forms import ServiceCreationForm, ServiceAreasForm
+from .forms import StaffCreationForm, DropOffUpdateForm
+from .models import Service, ServingAreas
 from .models import Store
+
+ORDERS_PER_PAGE = 10
 
 
 def staff_view(request, *args, **kwargs):
@@ -105,9 +108,8 @@ def orders_details_view(request, *args, **kwargs):
     else:
         form = AddingOrderItemForm(user=request.user, order=order)
 
-
     if 'button3' in request.POST:
-        dropform = DropOffUpdateForm(request.POST,instance=order)
+        dropform = DropOffUpdateForm(request.POST, instance=order)
         if dropform.is_valid():
             print('1000000')
             dropform.save()
@@ -115,17 +117,12 @@ def orders_details_view(request, *args, **kwargs):
     else:
         dropform = DropOffUpdateForm()
 
-
-
     if 'button2' in request.POST:
         order.current_status = request.POST.get('status')
         order.save()
 
-
     my_context['form'] = form
     my_context['dropform'] = dropform
-
-
 
     return render(request, "business/orders_details.html", my_context)
 
@@ -139,7 +136,9 @@ def staffhome_view(request, *args, **kwargs):
     return render(request, "business/home.html", my_context)
 
 
+# noinspection DuplicatedCode
 def current_orders_view(request, *args, **kwargs):
+    my_context = {}
     if request.user.is_manager:
         try:
             my_context = {
@@ -161,6 +160,7 @@ def current_orders_view(request, *args, **kwargs):
         if not (Order.objects.all().filter(store=Store.objects.get(staff=request.user))):
             return redirect('no_order')
 
+    query = ""
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
@@ -175,6 +175,30 @@ def current_orders_view(request, *args, **kwargs):
     elif not request.user.is_manager and not request.user.is_employee:
         return HttpResponseForbidden()
 
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif not request.user.is_manager and not request.user.is_employee:
+        return HttpResponseForbidden()
+
+    orders = []
+    for order in get_order_queryset(query):
+        if order.store == Store.objects.get(manager=request.user):
+            orders.append(order)
+
+    orders = sorted(orders, key=attrgetter('created_at'), reverse=True)
+
+    page = request.GET.get('page', 1)
+    order_paginator = Paginator(orders, ORDERS_PER_PAGE)
+
+    try:
+        orders = order_paginator.page(page)
+    except PageNotAnInteger:
+        orders = order_paginator.page(ORDERS_PER_PAGE)
+    except EmptyPage:
+        orders = order_paginator.page(order_paginator.num_pages)
+
+    my_context["orders"] = orders
+
     return render(request, "business/current_orders.html", my_context)
 
 
@@ -187,13 +211,13 @@ def general_info_view(request, *args, **kwargs):
         return HttpResponseForbidden()
     store = Store.objects.get(manager=request.user)
 
-    my_context['seviceareas']= store.servingareas.all
+    my_context['seviceareas'] = store.servingareas.all
     if request.POST:
         form = ServiceAreasForm(request.POST)
         if form.is_valid():
             zip = form.cleaned_data['zipcode']
             form.save()
-            store.servingareas.add(ServingAreas.objects.filter(zipcode =zip).first())
+            store.servingareas.add(ServingAreas.objects.filter(zipcode=zip).first())
             return HttpResponseRedirect('/business/generalinfo/')
     else:
         form = ServiceAreasForm()
@@ -201,7 +225,9 @@ def general_info_view(request, *args, **kwargs):
     return render(request, "business/general_info.html", my_context)
 
 
+# noinspection DuplicatedCode
 def store_orderhistory_view(request, *args, **kwargs):
+    my_context = {}
     if request.user.is_manager:
         try:
             my_context = {
@@ -223,8 +249,9 @@ def store_orderhistory_view(request, *args, **kwargs):
         if not (Order.objects.all().filter(store=Store.objects.get(staff=request.user))):
             return redirect('no_order')
 
+    query = ""
     if request.GET:
-        query = request.GET['q']
+        query = request.GET.get('q', '')
         my_context['query'] = query
         search_order = []
         for order in get_order_queryset(query):
@@ -236,6 +263,25 @@ def store_orderhistory_view(request, *args, **kwargs):
         return redirect('login')
     elif not request.user.is_manager and not request.user.is_employee:
         return HttpResponseForbidden()
+
+    orders = []
+    for order in get_order_queryset(query):
+        if order.store == Store.objects.get(manager=request.user):
+            orders.append(order)
+
+    orders = sorted(orders, key=attrgetter('created_at'), reverse=True)
+
+    page = request.GET.get('page', 1)
+    order_paginator = Paginator(orders, ORDERS_PER_PAGE)
+
+    try:
+        orders = order_paginator.page(page)
+    except PageNotAnInteger:
+        orders = order_paginator.page(ORDERS_PER_PAGE)
+    except EmptyPage:
+        orders = order_paginator.page(order_paginator.num_pages)
+
+    my_context["orders"] = orders
     return render(request, "business/store_orderhistory.html", my_context)
 
 

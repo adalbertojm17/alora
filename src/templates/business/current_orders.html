@@ -12,8 +12,9 @@
 {% block content %}
 
     <div class="moveright">
-        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-          <span class="popuptext" id="myPopup">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center"
+                                                       width=40 height=40>
+            <span class="popuptext" id="myPopup">
 
               <p> Welcome to Current Orders!</p>
               <p> The table displays a list of your company's orders that have not been completed.</p>
@@ -23,8 +24,8 @@
                     <li> Type in the order number or name of the order you would like to find.</li>
                     <li> Press your enter key or click the search icon to search.</li>
                   </ol>
-              </p>
-              <hr>
+                </p>
+                <hr>
 
           </span>
         </div>
@@ -35,52 +36,55 @@
             <h1> Current Orders</h1>
             <div class="searchadd">
                 <div class="searchpart1">
-                    <form id="searchbar"  method="get">
-                        <input type="text" class="form-control" name="q"id="id_q" placeholder="search order..."value="{{ query }}">
+                    <form id="searchbar" method="get">
+                        <input type="text" class="form-control" name="q" id="id_q" placeholder="search order..."
+                               value="{{ query }}">
                         <button type="submit"><img id="=" src="{% static 'images/search.png' %}" alt="search" width=30
-                        height=30></button>
+                                                   height=30></button>
                     </form>
                 </div>
             </div>
 
-                {% if query %}
-                    <table class="currentOrdersTable">
+            {% if query %}
+                <table class="currentOrdersTable">
+                    <tr>
+                        <th>Order #</th>
+                        <th> Name</th>
+                        <th> Status</th>
+                    </tr>
+                    {% for order in search_order %}
+
                         <tr>
-                            <th>Order #</th>
-                            <th> Name </th>
-                            <th> Status </th>
+                            <td>{{ order.pk }}</td>
+                            <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a></td>
+                            <td> {{ order.current_status }} </td>
                         </tr>
-                        {% for order in search_order %}
+                        <br>
 
-                            <tr>
-                                <td>{{ order.pk }}</td>
-                                <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
-                                <td> {{ order.current_status }} </td>
-                            </tr>
-                            <br>
+                    {% endfor %}
+                </table>
 
-                         {% endfor %}
-                    </table>
-
-                {% endif %}
+            {% endif %}
 
             <table class="currentOrdersTable">
                 <tr>
                     <th>Order #</th>
-                    <th> Name </th>
-                    <th> Status </th>
+                    <th> Name</th>
+                    <th> Status</th>
                 </tr>
 
-                {% for order in orders|slice:"0:10" %}
+                {% for order in orders %}
                     {% if order.current_status != 'D' %}
                         <tr>
                             <td>{{ order.pk }}</td>
-                            <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a>  </td>
+                            <td><a href=/business/order_details/?order={{ order.id }}> {{ order }} </a></td>
                             <td> {{ order.current_status }} </td>
                         </tr>
                     {% endif %}
                 {% endfor %}
             </table>
+            {% include 'business/order_pagination.html' with orders=orders %}
+
         </div>
     </div>
 {% endblock %}

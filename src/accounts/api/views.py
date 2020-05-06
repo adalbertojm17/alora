@@ -22,6 +22,7 @@ from .serializers import (
     UserCreateSerializer,
     UserProfileSerializer,
     UserSerializer, ChangePasswordSerializer,
+    RegionSerializer
 )
 
 User = get_user_model()
@@ -64,7 +65,8 @@ class ObtainUserAuthToken(ObtainAuthToken):
             'first_name': user.first_name,
             'last_name': user.last_name,
             'username': user.username,
-            'email': user.email
+            'email': user.email,
+            'address': user.address
         })
 
 
@@ -141,3 +143,10 @@ class ChangePasswordAPIView(UpdateAPIView):
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RegionListAPIView(ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = User.objects.all().order_by('name')
+    serializer_class = RegionSerializer
+    authentication_classes = [TokenAuthentication]

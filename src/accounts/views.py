@@ -97,9 +97,7 @@ def login_view(request):
     context = {}
     user = request.user
     if user.is_authenticated:
-        if user.is_manager:
-            return redirect('staffhome')
-        if user.is_employee:
+        if user.is_manager or user.is_employee:
             return redirect('staffhome')
         return redirect('main')
 
@@ -112,9 +110,7 @@ def login_view(request):
 
             if user:
                 login(request, user, backend='accounts.backends.EmailOrUsernameModelBackend')
-                if user.is_manager:
-                    return redirect('staffhome')
-                if user.is_staff:
+                if user.is_manager or user.is_employee:
                     return redirect('staffhome')
                 return redirect('main')
 

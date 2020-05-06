@@ -1,5 +1,4 @@
 # noinspection PyUnresolvedReferences,PyPackageRequirements
-# noinspection PyUnresolvedReferences,PyPackageRequirements
 from accounts.models import Account
 from core.models import Item
 from core.models import Order
@@ -165,11 +164,11 @@ def current_orders_view(request, *args, **kwargs):
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
-        SearchOrder = []
+        search_order = []
         for order in get_order_queryset(query):
-            if (order.store == Store.objects.get(manager=request.user)):
-                SearchOrder.append(order)
-        my_context['SearchOrder'] = SearchOrder
+            if order.store == Store.objects.get(manager=request.user):
+                search_order.append(order)
+        my_context['search_order'] = search_order
 
     if not request.user.is_authenticated:
         return redirect('login')
@@ -213,11 +212,11 @@ def store_orderhistory_view(request, *args, **kwargs):
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
-        SearchOrder = []
+        search_order = []
         for order in get_order_queryset(query):
-            if (order.store == Store.objects.get(manager=request.user)):
-                SearchOrder.append(order)
-                my_context['SearchOrder'] = SearchOrder
+            if order.store == Store.objects.get(manager=request.user):
+                search_order.append(order)
+                my_context['search_order'] = search_order
 
     if not request.user.is_authenticated:
         return redirect('login')

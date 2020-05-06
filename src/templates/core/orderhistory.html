@@ -15,9 +15,10 @@
 {% block content %}
 
 
-        <div class="moveright">
-            <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
-              <span class="popuptext" id="myPopup">
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center"
+                                                       width=40 height=40>
+            <span class="popuptext" id="myPopup">
 
                     <p> This page lists all of your orders. </p>
                     <p> Click on the order number to view the order details of that order.</p>
@@ -26,66 +27,69 @@
                   <hr>
 
               </span>
-            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content">
+        <h1 id="headinghistory"> Your Order History</h1>
+
+
+        <div class="searchpart1">
+            <form id="searchbar" method="get">
+                <input type="text" class="form-control" name="q" id="id_q" placeholder="Search Order"
+                       value="{{ query }}">
+                <button type="submit"><img id="" src="{% static 'images/search.png' %}" alt="search" width=30
+                                           height=30></button>
+            </form>
         </div>
 
 
+    </div>
+    {% if query %}
 
-        <div class="content">
-            <h1 id="headinghistory"> Your Order History</h1>
+        <table class="customerOrdersTable">
 
-
-              <div class="searchpart1">
-                    <form id="searchbar" method="get">
-                        <input type="text" class="form-control" name="q"id="id_q" placeholder="Search Order"value="{{ query }}">
-                        <button type="submit"><img id="" src="{% static 'images/search.png' %}" alt="search" width=30
-                     height=30></button>
-                    </form>
-              </div>
-
-
-                </div>
-                {% if query %}
-
-                    <table class="customerOrdersTable">
-
-                    <tr>
-                        <th> Order #</th>
-                        <th> Date / Time </th>
-                        <th> Status</th>
-                    </tr>
-                    {% for order in SearchOrder %}
-                        <tr>
-                                <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
-                                <td>{{ order.created_at}}</td>
-                                <td>{{ order.current_status}} </td>
-                            </tr>
-                    {% endfor %}
-                    </table>
-
-                {% endif %}
+            <tr>
+                <th> Order #</th>
+                <th> Date / Time</th>
+                <th> Status</th>
+            </tr>
+            {% for order in search_order %}
+                <tr>
+                    <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
+                    <td>{{ order.created_at }}</td>
+                    <td>{{ order.current_status }} </td>
+                </tr>
+            {% endfor %}
+        </table>
 
 
-                <table class="customerOrdersTable">
+    {% endif %}
 
-                    <tr>
-                        <th> Order #</th>
-                        <th> Date / Time </th>
-                        <th> Status</th>
-                    </tr>
 
-                    {% for order in core %}
-                        {% if request.user.id == order.user_id %}
-                            <tr>
-                                <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
-                                <td>{{ order.created_at}}</td>
-                                <td>{{ order.current_status}} </td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </table>
-       </div>
+    <table class="customerOrdersTable">
 
+        <tr>
+            <th> Order #</th>
+            <th> Date / Time</th>
+            <th> Status</th>
+        </tr>
+
+        {% for order in core %}
+            <tr>
+                <td><a href=/customer-details/?order={{ order.pk }}> {{ order.pk }} </a>
+                <td>{{ order.created_at }}</td>
+                <td>{{ order.current_status }} </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    </div>
+
+    {% include 'core/order_pagination.html' with core=core %}
 
     <div id="buttonmain">
         <p><a href="/main/"> Back </a></p>

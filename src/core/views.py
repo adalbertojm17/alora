@@ -1,9 +1,14 @@
 # noinspection PyUnresolvedReferences
+from operator import attrgetter
+
 from accounts.models import Account
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
 from business.models import Store, Service
+from business.views import get_order_queryset
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from formtools.wizard.views import SessionWizardView
 
@@ -11,8 +16,8 @@ from formtools.wizard.views import SessionWizardView
 from alora import settings
 from .forms import DropOffForm, PickupForm, StoreForm
 from .models import Order
-from business.views import get_order_queryset
-from django.db.models import Q
+
+ORDERS_PER_PAGE = 10
 
 FORMS = [
     ("store", StoreForm),
@@ -106,20 +111,39 @@ def orderhistory_view(request, *args, **kwargs):
     if not order_qs.exists():
         return redirect('no-order')
 
+    query = ""
     if request.GET:
-        query = request.GET['q']
-        my_context['query'] = query
-        SearchOrder = []
+        query = request.GET.get('q', '')
+        my_context['query'] = str(query)
+        search_order = []
         for order in get_order_queryset(query):
-         if (order.user == request.user):
-                SearchOrder.append(order)
-        my_context['SearchOrder'] = SearchOrder
-    customer_orders = Order.objects.all()
+            if order.user == request.user:
+                search_order.append(order)
+        my_context['search_order'] = search_order
     addresses = Address.objects.all()
 
-    my_context ["core"]= customer_orders
-    my_context["address"]= addresses
-    my_context ["user"]= user
+    customer_orders = sorted(get_order_queryset(query), key=attrgetter('created_at'), reverse=True)
+
+    filtered_orders = []
+    for order in customer_orders:
+        if order.user_id == request.user.id:
+            filtered_orders.insert(1, order)
+
+    filtered_orders = sorted(filtered_orders, key=attrgetter('created_at'), reverse=True)
+    my_context["address"] = addresses
+    my_context["user"] = user
+
+    page = request.GET.get('page', 1)
+    order_paginator = Paginator(filtered_orders, ORDERS_PER_PAGE)
+
+    try:
+        filtered_orders = order_paginator.page(page)
+    except PageNotAnInteger:
+        filtered_orders = order_paginator.page(ORDERS_PER_PAGE)
+    except EmptyPage:
+        filtered_orders = order_paginator.page(order_paginator.num_pages)
+
+    my_context["core"] = filtered_orders
 
     return render(request, "core/orderhistory.html", my_context)
 
@@ -137,14 +161,14 @@ def orderconfirm_view(request, *args, **kwargs):
 
 # view to allow user to track the progress of their order
 def tracking_view(request, *args, **kwargs):
-    my_context ={}
+    my_context = {}
 
     if not request.user.is_authenticated:
         return redirect("login")
     order_qs = Order.objects.all().filter(user=request.user)
     if not order_qs.exists():
         return redirect('no-order')
-    SearchOrder=None
+    SearchOrder = None
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
@@ -153,12 +177,10 @@ def tracking_view(request, *args, **kwargs):
             if order.user == request.user:
                 SearchOrder = order
 
-
-
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
     status = Order.current_status
-    my_context = {"core": customer_orders, "address": addresses, "status": status, "SearchOrder":SearchOrder}
+    my_context = {"core": customer_orders, "address": addresses, "status": status, "SearchOrder": SearchOrder}
 
     return render(request, "core/tracking.html", my_context)
 
@@ -181,7 +203,7 @@ def customer_details_view(request, *args, **kwargs):
 
     order_id = request.GET.get('order')
     order = Order.objects.get(id=order_id)
-    price =0
+    price = 0
     for items in order.orderitem_set.all():
         price = price + items.quantity * items.item.price
 
@@ -202,6 +224,7 @@ def vieworder_view(request, *args, **kwargs):
     addresses = Address.objects.all()
     my_context = {"core": customer_orders, "address": addresses}
     return render(request, "core/vieworder.html", my_context)
+
 
 def tracking_search(query=None):
     queryset = []

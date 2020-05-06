@@ -162,10 +162,15 @@ class UserAddressForm(forms.ModelForm):
             zipcode=cleaned_data.get('zip_code')
         )
 
-        validator = usps.USPSApi('161ALORA3737', test=True)
-        validation = validator.validate_address(address)
+        try:
+            validator = usps.USPSApi('161ALORA3737', test=True)
+            validation = validator.validate_address(address)
+        except usps.USPSApiError:
+            raise forms.ValidationError("Please provide a valid address.")
 
         address_data = validation.result['AddressValidateResponse']['Address']
+
+        print(address_data)
 
         if address_data is not None:
 
@@ -382,8 +387,11 @@ class EditAddressForm(forms.ModelForm):
             zipcode=cleaned_data.get('zip_code')
         )
 
-        validator = usps.USPSApi('161ALORA3737', test=True)
-        validation = validator.validate_address(address)
+        try:
+            validator = usps.USPSApi('161ALORA3737', test=True)
+            validation = validator.validate_address(address)
+        except usps.USPSApiError:
+            raise forms.ValidationError("Please provide a valid address.")
 
         address_data = validation.result['AddressValidateResponse']['Address']
 

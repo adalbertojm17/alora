@@ -6,6 +6,7 @@ from rest_framework.serializers import (
     ModelSerializer,
     ValidationError, Serializer
 )
+from cities_light.models import Region
 
 User = get_user_model()
 
@@ -153,3 +154,13 @@ class ChangePasswordSerializer(Serializer):
         if password1 != password2:
             raise ValidationError('Passwords must match')
         return value
+
+
+class RegionSerializer(ModelSerializer):
+    class Meta:
+        model = Region
+        fields = [
+            'id',
+            'geoname_code',
+            'name',
+        ]

@@ -397,3 +397,8 @@ def delete_staff_function(request, obj_id=None):
     object = Account.objects.get(id=obj_id)
     object.delete()
     return HttpResponseRedirect('/business/staff/')
+
+def delete_servicearea_function(request, obj_id=None):
+    object = ServingAreas.objects.get(id=obj_id)
+    object.delete()
+    return HttpResponseRedirect('/business/generalinfo/')

@@ -17,6 +17,7 @@ from business.views import (
     delete_staff_function,
     business_staff_view,
     staff_view,
+    delete_servicearea_function,
 
 )
 from django.urls import path
@@ -42,6 +43,7 @@ urlpatterns = [
     url(r'^delete/service/(?P<obj_id>[0-9]+)/$', delete_service_function, name='delete_service_view'),
     url(r'^delete/(?P<obj_id>[0-9]+)/$',delete_order_item_function, name='delete_order_item_view'),
     url(r'^delete/item/(?P<obj_id>[0-9]+)/$',delete_item_function, name='delete_item_view'),
-    url(r'^delete/staff/(?P<obj_id>[0-9]+)/$',delete_staff_function, name='delete_staff_view')
+    url(r'^delete/staff/(?P<obj_id>[0-9]+)/$',delete_staff_function, name='delete_staff_view'),
+    url(r'^delete/serviceareas/(?P<obj_id>[0-9]+)/$',delete_servicearea_function, name='delete_serviceareas_view'),
 
 ]

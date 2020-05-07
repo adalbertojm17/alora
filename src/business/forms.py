@@ -227,6 +227,14 @@ class DropOffUpdateForm(forms.ModelForm):
 
 
 class ServiceAreasForm(forms.ModelForm):
+    zipcode= forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Zip Code', 'pattern': '[0-9]+',
+                                      'title': ' numeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
+    )
+
+
     class Meta:
         model = ServingAreas
         fields = '__all__'

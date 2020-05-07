@@ -334,7 +334,11 @@ class EditAddressForm(forms.ModelForm):
         label='Street',
         label_suffix='',
         max_length=120,
-        widget=forms.TextInput(attrs={'placeholder': 'Street*'})
+        widget=forms.TextInput(attrs={'placeholder': 'Street*', 'pattern': '[0-9A-Za-z ]+',
+                                      'title': ' alphanumeric '
+                                               'characters '
+                                               'only '
+                                               'please'})
     )
     apt = forms.CharField(
         label='APT/Suite',

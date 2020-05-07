@@ -1,3 +1,4 @@
+from cities_light.models import Region
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework.serializers import (
@@ -6,12 +7,15 @@ from rest_framework.serializers import (
     ModelSerializer,
     ValidationError, Serializer
 )
-from cities_light.models import Region
+
+from addresses.api.serializers import AddressSerializer
 
 User = get_user_model()
 
 
 class UserSerializer(ModelSerializer):
+    address = AddressSerializer()
+
     class Meta:
         model = User
         fields = [

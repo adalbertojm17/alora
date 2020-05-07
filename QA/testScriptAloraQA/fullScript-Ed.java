@@ -3,6 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 /**
@@ -18,6 +19,7 @@ public class seleniumScript {
 	//businssAccountScripts b = new businssAccountScripts();
 	WebDriver driver;
 	JavascriptExecutor jse;
+	
 	//this method is setting up the browser you wish to use, and window size
 	public void invokeBrowser() {
  		
@@ -27,8 +29,12 @@ public class seleniumScript {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-			driver.get("http://aloraqa.ddns.net");
-			loginBusinessSide();
+			driver.get("http://alora.ddns.net");
+			logIn();
+			for(int i = 0; i < 10; i++) {
+				orderUp();
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,24 +43,46 @@ public class seleniumScript {
 	//this script is for placing an order
 	public void orderUp() {
 		try {
-			driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/p[1]/a")).click();
+			driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/p[1]/a")).click();
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("/html/body/div/form/p/select")).click();
-			driver.findElement(By.xpath("/html/body/div/form/p/select/option[3]")).click();
-			driver.findElement(By.xpath("/html/body/div/form/button")).click();
-			driver.findElement(By.id("id_pickup-street")).sendKeys("Siebe Street");
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p/select")).click();
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p/select/option[2]")).click();
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/button")).click();
+			driver.findElement(By.id("id_pickup-street")).sendKeys("Siebel Street");
 			driver.findElement(By.id("id_pickup-apt")).sendKeys("40");
 			driver.findElement(By.id("id_pickup-city")).sendKeys("Bridgeton");
 			Thread.sleep(4000);
 			driver.findElement(By.id("id_pickup-state")).click();
-			driver.findElement(By.xpath("/html/body/div/form/p[4]/select/option[37]")).click();
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[4]/select/option[37]")).click();
+			Thread.sleep(1000);
+			//driver.findElement(By.xpath("/html/body/div[2]/div/form/p[4]/select/option[37]")).sendKeys(Keys.ENTER);
+			//Thread.sleep(2000);
+			jse = (JavascriptExecutor)driver;
+			jse.executeScript("scroll(0,1000)");
+			//Thread.sleep(2000);
+			driver.findElement(By.id("id_pickup-zip_code")).sendKeys("08302");
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[7]/input")).sendKeys("Fri May 15, 2020 6:00 pm");
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[7]/input")).sendKeys(Keys.ENTER);
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/button[2]")).click();
+			Thread.sleep(2000);
+			//Drop-off
+			driver.findElement(By.id("id_dropoff-street")).sendKeys("130 Pamphylia Ave");
+			driver.findElement(By.id("id_dropoff-apt")).sendKeys("43");
+			driver.findElement(By.id("id_dropoff-city")).sendKeys("Bridgeton");
+			Thread.sleep(4000);
+			driver.findElement(By.id("id_dropoff-state")).click();
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[4]/select/option[37]")).click();
 			Thread.sleep(2000);
 			jse = (JavascriptExecutor)driver;
 			jse.executeScript("scroll(0,1100)");
 			Thread.sleep(3000);
-			driver.findElement(By.id("id_pickup-zip_code")).sendKeys("08302");
-			driver.findElement(By.xpath("/html/body/div/form/div/input")).sendKeys("April 15, 2020 5:23");
-			driver.findElement(By.xpath("/html/body/div/form/button[2]")).click();
+			driver.findElement(By.id("id_dropoff-zip_code")).sendKeys("08302");
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[7]/input")).sendKeys("Sun May 17, 2020 7:00 pm");
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/p[7]/input")).sendKeys(Keys.ENTER);
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("/html/body/div[2]/div/form/button[2]")).click();
+			driver.findElement(By.xpath("/html/body/header/div/nav/ul/li[2]/a")).click();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,6 +117,8 @@ public class seleniumScript {
 				driver.findElement(By.xpath("/html/body/div/form/p[7]/select/option[28]")).click();
 				Thread.sleep(2000);
 				driver.findElement(By.id("id_1-zip_code")).sendKeys("08302");
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("/html/body/div[2]/div/form/button")).click();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -98,10 +128,10 @@ public class seleniumScript {
 	public void logIn() {
 			try {
 				Thread.sleep(2000);
-				driver.findElement(By.xpath("/html/body/div/p/a")).click();
+				driver.findElement(By.xpath("/html/body/div[2]/div/p/a")).click();
 				Thread.sleep(2000);
-				driver.findElement(By.id("id_username")).sendKeys("tester");
-				driver.findElement(By.id("id_password")).sendKeys("tester");
+				driver.findElement(By.id("id_username")).sendKeys("customer");
+				driver.findElement(By.id("id_password")).sendKeys("customer");
 				driver.findElement(By.id("buttonstandard")).click();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

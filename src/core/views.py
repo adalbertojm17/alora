@@ -167,19 +167,19 @@ def tracking_view(request, *args, **kwargs):
     order_qs = Order.objects.all().filter(user=request.user)
     if not order_qs.exists():
         return redirect('no-order')
-    SearchOrder = None
+    search_order = None
     if request.GET:
         query = request.GET['q']
         my_context['query'] = query
 
         for order in tracking_search(query):
             if order.user == request.user:
-                SearchOrder = order
+                search_order = order
 
     customer_orders = Order.objects.all()
     addresses = Address.objects.all()
     status = Order.current_status
-    my_context = {"core": customer_orders, "address": addresses, "status": status, "SearchOrder": SearchOrder}
+    my_context = {"core": customer_orders, "address": addresses, "status": status, "search_order": search_order}
 
     return render(request, "core/tracking.html", my_context)
 

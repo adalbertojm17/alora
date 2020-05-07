@@ -182,7 +182,11 @@ class UserAddressForm(forms.ModelForm):
 
                 if 'Default address' in return_text:
                     raise forms.ValidationError("A valid APT/Suite is required for this address.")
-        return cleaned_data
+            cleaned_data['street'] = address.address_2.title()
+            cleaned_data['apt'] = address.address_1
+            cleaned_data['city'] = address.city.title()
+            cleaned_data['zip_code'] = address.zipcode
+            return cleaned_data
 
 
 class AccountAuthenticationForm(forms.ModelForm):
@@ -408,4 +412,9 @@ class EditAddressForm(forms.ModelForm):
 
                 if 'Default address' in return_text:
                     raise forms.ValidationError("A valid APT/Suite is required for this address.")
-        return cleaned_data
+
+            cleaned_data['street'] = address.address_2.title()
+            cleaned_data['apt'] = address.address_1
+            cleaned_data['city'] = address.city.title()
+            cleaned_data['zip_code'] = address.zipcode
+            return cleaned_data

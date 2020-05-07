@@ -115,6 +115,10 @@ class PickupForm(forms.ModelForm):
                 if 'Default address' in return_text:
                     raise forms.ValidationError("A valid APT/Suite is required for this address")
 
+            cleaned_data['street'] = address.address_2.title()
+            cleaned_data['apt'] = address.address_1
+            cleaned_data['city'] = address.city.title()
+            cleaned_data['zip_code'] = address.zipcode
         return cleaned_data
 
     def clean_pickup_at(self):
@@ -210,6 +214,11 @@ class DropOffForm(forms.ModelForm):
 
                 if 'Default address' in return_text:
                     raise forms.ValidationError("A valid APT/Suite is required for this address.")
+
+            cleaned_data['street'] = address.address_2.title()
+            cleaned_data['apt'] = address.address_1
+            cleaned_data['city'] = address.city.title()
+            cleaned_data['zip_code'] = address.zipcode
         return cleaned_data
 
     def clean_drop_off_at(self):

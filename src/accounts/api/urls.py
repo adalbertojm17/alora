@@ -10,7 +10,6 @@ from .views import (
     ChangePasswordAPIView
 )
 
-from accounts.api.views import RegionListAPIView
 
 urlpatterns = [
     path('', UserListAPIView.as_view(), name='api-user-list'),
@@ -19,6 +18,5 @@ urlpatterns = [
     path('logout/', UserLogoutAPIView.as_view(), name='api-logout'),
     path('register/', UserCreateAPIView.as_view(), name='api-register'),
     path('profile/', UserProfileAPIView.as_view(), name='api-profile'),
-    path('regions/', RegionListAPIView.as_view(), name='api-region'),
     path('change-password/', ChangePasswordAPIView.as_view(), name='api-password-change'),
 ]

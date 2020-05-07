@@ -259,6 +259,11 @@ input[type=text], input[type=email], input[type=password] {
     padding-left: 20px;
 }
 
+form input[type=password] ul{
+   list-style-type: none;
+}
+
+
 /********************* CSS for sign up page ********************/
 
 #signup {

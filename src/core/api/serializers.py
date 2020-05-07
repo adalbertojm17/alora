@@ -1,5 +1,6 @@
 # noinspection PyUnresolvedReferences
 from accounts.api.serializers import UserProfileSerializer
+from addresses.api.serializers import AddressSerializer
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 # noinspection PyUnresolvedReferences
@@ -15,8 +16,6 @@ from core.models import Order
 from rest_framework.serializers import (
     ModelSerializer
 )
-
-from addresses.api.serializers import AddressSerializer
 
 
 # noinspection PyCompatibility
@@ -69,8 +68,6 @@ class PlaceOrderSerializer(ModelSerializer):
         return Order.objects.create(
             **validated_data
         )
-
-
 
 
 class RegionSerializer(ModelSerializer):

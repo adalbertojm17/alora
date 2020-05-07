@@ -96,7 +96,7 @@ def activate(request, uidb64, token):
 def login_view(request):
     context = {}
     user = request.user
-    if user.is_authenticated:
+    if user.is_authenticated and user.is_active:
         if user.is_manager or user.is_employee:
             return redirect('staffhome')
         return redirect('main')

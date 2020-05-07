@@ -14,7 +14,7 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.generics import get_object_or_404
 from .permissions import (
     IsOwner,
 )
@@ -23,6 +23,8 @@ from .serializers import (
     UserProfileSerializer,
     UserSerializer, ChangePasswordSerializer
 )
+from addresses.models import Address
+from rest_framework.decorators import api_view
 
 User = get_user_model()
 
@@ -51,12 +53,13 @@ class UserListAPIView(ListAPIView):
 
 
 class ObtainUserAuthToken(ObtainAuthToken):
-
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
+
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
+        address = get_object_or_404(Address, pk=user.address.pk)
         token, created = Token.objects.get_or_create(user_id=user.id)
         return Response({
             'token': token.key,
@@ -65,7 +68,14 @@ class ObtainUserAuthToken(ObtainAuthToken):
             'last_name': user.last_name,
             'username': user.username,
             'email': user.email,
-            'address': user.address
+            'address': {
+                'id': address.id,
+                'street': address.street,
+                'apt': address.apt,
+                'city': address.city,
+                'state': address.state,
+                'zip_code': address.zip_code,
+            }
         })
 
 

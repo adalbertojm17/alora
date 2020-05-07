@@ -1,0 +1,17 @@
+Test Case: Business Account First Name Update
+
+Steps: 
+1.Login into business account
+2.Click "View Account"
+3.Click on Edit Profile
+3.Change First name
+4.Click Save
+
+Data:
+Login - employee, employee
+First Name - "AloraManager"
+
+Expected: To accept
+Actual results: pass
+
+Test Case: Passed

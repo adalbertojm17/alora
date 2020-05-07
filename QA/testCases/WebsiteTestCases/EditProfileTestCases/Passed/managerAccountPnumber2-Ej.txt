@@ -1,0 +1,17 @@
+Test Case: Business Account Phone number Update
+
+Steps: 
+1.Login into business account
+2.Click "View Account"
+3.Click on Edit Profile
+3.Change Phone number
+4.Click Save
+
+Data:
+Login - manager, manager
+Phone number - "@"
+
+Expected: To deny special characters input
+Actual results: denied input
+
+Test Case: Passed

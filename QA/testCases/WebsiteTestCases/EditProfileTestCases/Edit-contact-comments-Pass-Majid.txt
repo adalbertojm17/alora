@@ -1,0 +1,27 @@
+Project name  Alora
+Module name  contact page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     4/14/2020
+Version  1.5
+
+                                                                                                        Edit contact page
+
+
+Test ID                             Test Case Discription                                         Pre-Condition                                    Test Steps                            Test Data                                         Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+TS_Alora_01                check response on the comments section                                enter the response on comments                 type response                           good service                                      comments admited                                       Pass
+
+TS_Alora_02                check response on the comments section                                enter the response on comments                 type response                            A                                                 one letter comments should not be admited              Pass
+
+
+Ts_alora_03                 check response on the comments section                               enter the response on comments                 type response                            Abccd                                           one letter comments should not be admited              Pass                             
+
+
+    
+ Remarks: In comments section minimum characters should not be less than 16, but system  does not accept only one letter.test...........pass
+
+         

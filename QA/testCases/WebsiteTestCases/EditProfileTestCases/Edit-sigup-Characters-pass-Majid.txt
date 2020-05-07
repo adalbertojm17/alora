@@ -1,0 +1,44 @@
+
+Project Name      Alora
+Module name     Edit Sign up
+creation date 3/26/2020
+Created by        Majid Masood
+Reviewed by     QA Team
+Reviewed Date   5/6/2020
+version 1.5
+
+
+                                                                                  Edit  Sign UP Page
+
+
+
+Test ID                         test case discription                                     Pre-condition                                            test steps                                                       test data                                          Expected result                                                   Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                      
+
+TS_Alora_01              click on the password  tab                              enter valid password less than 32 Characters                                   enter password                                      *****************                                       valid password                                                     yes
+
+
+TS_Alora_02              click on the password  tab                            enter valid password less than 32 Characters                                   enter password                                      ************************                                  invalid password                                                No
+
+        
+
+  
+     Remarks: system does not accept more than 32 characters.....test  Passed
+
+    Bugzilla bug ID # 41       
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      

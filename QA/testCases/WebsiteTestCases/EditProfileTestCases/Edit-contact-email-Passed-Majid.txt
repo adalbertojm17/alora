@@ -1,0 +1,23 @@
+Project name  Alora
+Module name  contact page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     5/6/2020
+version   1.5
+
+                                                                                                        Edit contact page
+
+
+Test ID                             Test Case Discription                                         Pre-Condition                                    Test Steps                                                         Test Data                                                    Expected result                               Pass/Fail
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+TS_Alora_05                enter the user email address                                           Enter the valid email address                enter email                                                           majid_masood@bloomfield.edu                            email address valid                                     pass
+
+TS_Alora_06                enter the user email address                                            Enter the valid email address                 enter email                                                           rtegettg@bloomfield.edu                               email address invalid                                   Fail
+
+
+
+    
+              Remarks: system does not takes invalid email address...test Passed

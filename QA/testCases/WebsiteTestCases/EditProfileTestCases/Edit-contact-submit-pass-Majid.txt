@@ -1,0 +1,22 @@
+Project name  Alora
+Module name  contact page
+created date  3/29/2020
+reviewd by    Qa Team
+test date     5/15/2020
+Version 1.5
+
+
+                                                                                                        Edit contact page
+
+
+Test ID                             Test Case Discription                                         Pre-Condition                                    Test Steps                                             Test Data                                     Expected result                               Pass/Fail
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------
+
+
+
+TS_Alora_01                check response on the  submit tab                                 submit tab activate                              push submit tab                                         submit information                                 accepted                                        Pass   
+
+Ts_Alora_02                check response on the submit tab                                   submit tab response                             puh submit tab                                           neviagte  to next page                           nevigate to next page                            pass
+                                                  
+
+  Remarks: Submit tab is submitting information....test passed      

@@ -37,8 +37,9 @@
                 {% endcomment %}
 
 
+
                 <select class="form-control" name="q"id="id_q" placeholder="Order Number...">
-                    <option value="" disabled selected>Select order number</option>
+                    <option value="" disabled selected> Select order number</option>
                     {% for order in core %}
                         {% if request.user.id == order.user_id %}
                         <option value="{{order.id}}"> {{order.id}} </option>

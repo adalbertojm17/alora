@@ -1,0 +1,17 @@
+Test Case: Business Account Username Update
+
+Steps: 
+1.Login into business account
+2.Click "View Account"
+3.Click on Edit Profile
+3.Change Username
+4.Click Save
+
+Data:
+Login - manager, manager
+Username - "5689"
+
+Expected: To deny, less than 5 characters
+Actual results: denied input
+
+Test Case: Passed

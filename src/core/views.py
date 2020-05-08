@@ -46,11 +46,14 @@ class OrderWizard(SessionWizardView):
         return [TEMPLATES[self.steps.current]]
 
     def get_form_initial(self, step):
+        initial = self.initial_dict.get(step, {})
         if step == 'dropoff':
             step2 = self.get_cleaned_data_for_step('pickup')
             res = super(OrderWizard, self).get_form_initial(step)
             res['context'] = {}
             res['context']['pickup_date'] = step2['pickup_at']
+            address = Address.objects.get(self.kwargs['invitation_key'])
+            initial.update({'email': email})
             return res
 
     def done(self, form_list, **kwargs):

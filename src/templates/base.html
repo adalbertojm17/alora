@@ -70,10 +70,10 @@
                     <li class="homepage"><a href=/account/>View Account</a></li>
                 {% endif %}
                     {% if request.user.is_manager %}
-                <li class="homepage"><a href=/business/company_services/>View Services</a></li>
+                <li class="homepage"><a href=/business/company_services/>Services</a></li>
                 <li class="homepage"><a href=/business/generalinfo/>General Information</a></li>
                 <li><a href="/business/feedback/">Customer Feedback</a></li>
-                <li><a href="/business/staff/">View Staffs</a></li>
+                <li><a href="/business/staff/">Staff</a></li>
 
                         {% endif %}
                 {% if request.user.is_authenticated %}

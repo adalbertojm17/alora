@@ -373,6 +373,14 @@ input[type=text], input[type=email], input[type=password] {
     padding-left: 20px;
 }
 
+.changepass label{
+    text-align: left;
+    font-size: 120%;
+    font-weight: bold;
+    margin-left: 23%;
+    margin-top: 20px;
+}
+
 /********************* CSS for sign up page ********************/
 
 #signup {

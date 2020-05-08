@@ -158,13 +158,3 @@ class ChangePasswordSerializer(Serializer):
         if password1 != password2:
             raise ValidationError('Passwords must match')
         return value
-
-
-class RegionSerializer(ModelSerializer):
-    class Meta:
-        model = Region
-        fields = [
-            'id',
-            'geoname_code',
-            'name',
-        ]

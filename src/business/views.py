@@ -182,8 +182,12 @@ def current_orders_view(request, *args, **kwargs):
 
     orders = []
     for order in get_order_queryset(query):
-        if order.store == Store.objects.get(manager=request.user):
-            orders.append(order)
+        if request.user.is_manager:
+            if order.store == Store.objects.get(manager=request.user):
+                 orders.append(order)
+        else:
+            if order.store == Store.objects.get(staff=request.user):
+                orders.append(order)
 
     orders = sorted(orders, key=attrgetter('created_at'), reverse=True)
 
@@ -266,9 +270,12 @@ def store_orderhistory_view(request, *args, **kwargs):
 
     orders = []
     for order in get_order_queryset(query):
-        if order.store == Store.objects.get(manager=request.user):
-            orders.append(order)
-
+        if request.user.is_manager:
+            if order.store == Store.objects.get(manager=request.user):
+                orders.append(order)
+        else:
+            if order.store == Store.objects.get(staff=request.user):
+                orders.append(order)
     orders = sorted(orders, key=attrgetter('created_at'), reverse=True)
 
     page = request.GET.get('page', 1)

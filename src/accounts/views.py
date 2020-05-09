@@ -194,11 +194,6 @@ def edit_address_view(request):
     return render(request, "edit_address.html", context)
 
 
-def delete_account_view(request):
-    return render(request, 'Confirm_account_cancelation.html')
 
 
-def delete_account_function(request):
-    object = request.user
-    object.delete()
-    return redirect("login")
+

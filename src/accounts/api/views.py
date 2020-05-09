@@ -59,23 +59,27 @@ class ObtainUserAuthToken(ObtainAuthToken):
 
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        address = get_object_or_404(Address, pk=user.address.pk)
         token, created = Token.objects.get_or_create(user_id=user.id)
+
+        address = None
+        if user.address is not None:
+            address = {
+                'id': user.address.id,
+                'street': user.address.street,
+                'apt': user.address.apt,
+                'city': user.address.city,
+                'state': user.address.state,
+                'zip_code': user.address.zip_code,
+            }
+
         return Response({
             'token': token.key,
-            'user_id': user.pk,
+            'user_id': user.id,
             'first_name': user.first_name,
             'last_name': user.last_name,
             'username': user.username,
             'email': user.email,
-            'address': {
-                'id': address.id,
-                'street': address.street,
-                'apt': address.apt,
-                'city': address.city,
-                'state': address.state,
-                'zip_code': address.zip_code,
-            }
+            'address': address
         })
 
 

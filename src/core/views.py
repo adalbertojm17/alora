@@ -47,14 +47,28 @@ class OrderWizard(SessionWizardView):
 
     def get_form_initial(self, step):
         initial = self.initial_dict.get(step, {})
+        if step == 'pickup':
+            initial.update({
+                'street': self.request.user.address.street,
+                'apt': self.request.user.address.apt,
+                'city': self.request.user.address.city,
+                'state': self.request.user.address.state,
+                'zip_code': self.request.user.address.zip_code,
+            })
+
         if step == 'dropoff':
+            initial.update({
+                'street': self.request.user.address.street,
+                'apt': self.request.user.address.apt,
+                'city': self.request.user.address.city,
+                'state': self.request.user.address.state,
+                'zip_code': self.request.user.address.zip_code,
+            })
             step2 = self.get_cleaned_data_for_step('pickup')
-            res = super(OrderWizard, self).get_form_initial(step)
-            res['context'] = {}
-            res['context']['pickup_date'] = step2['pickup_at']
-            address = Address.objects.get(self.kwargs['invitation_key'])
-            initial.update({'email': email})
-            return res
+            initial['context'] = {}
+            print()
+            initial['context']['pickup_date'] = step2['pickup_at']
+        return initial
 
     def done(self, form_list, **kwargs):
         form_dict1 = self.get_cleaned_data_for_step('store')

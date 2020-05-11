@@ -3,23 +3,23 @@ from accounts.models import Account
 # noinspection PyUnresolvedReferences
 from addresses.models import Address
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
-from multiselectfield import MultiSelectField
 
 
 # model to represent a physical store
 
 class ServingAreas(models.Model):
-    zipcode = models.CharField(max_length=6)
+    zip_code = models.CharField(max_length=6)
+
     def __str__(self):
-        return self.zipcode
+        return self.zip_code
+
 
 class Store(models.Model):
     name = models.CharField(max_length=150)
     manager = models.ForeignKey(Account, on_delete=models.CASCADE)
     address = models.OneToOneField(Address, on_delete=models.SET_NULL, null=True)
     staff = models.ManyToManyField(Account, related_name='staff')
-    servingareas = models.ManyToManyField(ServingAreas)
+    serving_areas = models.ManyToManyField(ServingAreas)
 
     def __str__(self):
         return self.name

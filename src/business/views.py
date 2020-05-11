@@ -30,7 +30,7 @@ def staff_view(request, *args, **kwargs):
     except ObjectDoesNotExist:
         return redirect('no_order')
 
-    if not (Store.objects.get(manager=request.user).staff):
+    if not Store.objects.get(manager=request.user).staff:
         return redirect('no_order')
 
     if not request.user.is_authenticated:
@@ -215,13 +215,13 @@ def general_info_view(request, *args, **kwargs):
         return HttpResponseForbidden()
     store = Store.objects.get(manager=request.user)
 
-    my_context['seviceareas'] = store.servingareas.all
+    my_context['seviceareas'] = store.serving_areas.all
     if request.POST:
         form = ServiceAreasForm(request.POST)
         if form.is_valid():
-            zip = form.cleaned_data['zipcode']
+            zip = form.cleaned_data['zip_code']
             form.save()
-            store.servingareas.add(ServingAreas.objects.filter(zipcode=zip).first())
+            store.serving_areas.add(ServingAreas.objects.filter(zipcode=zip).first())
             return HttpResponseRedirect('/business/generalinfo/')
     else:
         form = ServiceAreasForm()

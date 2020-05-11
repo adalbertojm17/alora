@@ -234,6 +234,6 @@ class DropOffForm(forms.ModelForm):
 
         if dropoff_date < min_date_limit:
             raise ValidationError("Drop-off date/time must not be earlier than 1 day after the Pick-up date/time")
-        if pickup_date > max_date_limit:
+        if dropoff_date > max_date_limit:
             raise ValidationError("Drop-off date/time can be at latest 15 days from the Pick-up date/time")
         return dropoff_date

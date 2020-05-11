@@ -68,7 +68,6 @@ body {
 }
 
 .generalbackground{
-    background-image: url('../images/background4.jpg') ;
     background-size: cover;
     height:200px;
 }
@@ -96,17 +95,17 @@ body {
 
 .content .section1{
     background-color: #FFD555;
-    height: 650px;
+    height: auto;
 }
 
-.content .section2{
+.content .section2 {
     background-color: #FFE081;
-    height: 650px;
+    height: auto;
 }
 
-.content .section3{
+.content .section3 {
     background-color: #FFD555;
-    height: 650px;
+    height: auto;
 }
 
 .content h1 {
@@ -118,14 +117,38 @@ body {
 .insidecontent{
     padding-top: 20px;
     padding-bottom: 20px;
-    margin:auto;
+    margin: auto;
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.insidecontent h1{
+.insidecontent h1 {
     text-align: left;
     margin-bottom: 30px;
+}
+
+
+/******* Locations Info **********/
+.zipcodes {
+    width: 30%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.zipcodes td, .zipcodes th {
+    border: 2px solid black;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.zipcodes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color: #FF9920;
 }
 
 /******* Tracking Info **********/
@@ -208,6 +231,7 @@ td a{
 .insidecurrent h1 {
     text-align: center;
 }
+
 
 /****** Table CSS ********/
 
@@ -422,7 +446,13 @@ label {
     margin-left: 15%;
 }
 
-input[type=text], input[type=number]{
+help_text {
+    display: block;
+    text-align: left;
+    margin-left: 15%;
+}
+
+input[type=text], input[type=number], input[type=email], input[type=password] {
     position: center;
     background-color: white;
     color: black;
@@ -436,7 +466,201 @@ input[type=text], input[type=number]{
 }
 
 
+/*********************Tool tip *************************/
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 40px;
+    padding-top: 20px;
+
+}
+
+.popuptext p {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.moveright {
+    text-align: right;
+    position: fixed;
+    padding-top: 0;
+    padding-right: 10%;
+    margin-left: 20%;
+}
+
+.popuptext ul {
+    list-style-type: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: rgba(0, 0, 0, .8);
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 100%;
+    margin-left: -20px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* No Orders Pages */
+
+/******************* No order Page ****************************/
+
+.noorders {
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 1000px;
+}
+
+.insideorder {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.insideorder h1 {
+    text-align: center;
+}
+
+.confirm {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 150%;
+}
+
+.confirm p {
+    margin-bottom: 40px;
+}
 
 
+/************** Feedback Page *****************/
 
+.feedbackpage {
+    margin-left: 20%;
+    padding: 1px 0px;
+    height: 800px;
+}
 
+.feedbackcontent {
+    width: 70%;
+    margin: auto;
+}
+
+.feedbackcontent h1 {
+    text-align: center;
+}
+
+.feedbackTable {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+}
+
+.feedbackTable td, .feedbackTable th {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.feedbackTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black;
+    background-color: #FF9920;
+}
+
+/************* Delete Buttons ****************/
+
+#deleteme {
+    color: red;
+}
+
+/*****************Staff Page*****************/
+
+#addstaff {
+    position: relative;
+    background-color: #FF9920;
+    display: block;
+    color: white;
+    width: 20%;
+    border: 1px solid #FF9920;
+    margin: auto;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#addstaff a {
+    color: white;
+    text-decoration: none;
+}
+
+#addstaff:hover {
+    background-color: #FF5733;
+}
+
+#h1general {
+    text-align: center;
+    font-size: 200%;
+}
+
+.staff {
+    width: 70%;
+    margin: auto;
+    border: 3px solid black;
+}

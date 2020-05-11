@@ -82,3 +82,42 @@ class ItemSerializer(ModelSerializer):
     class Meta:
         model = Item
         fields = ('id', 'name', 'services', 'price')
+
+
+class AddressValidationSerializer(ModelSerializer):
+    def clean(self):
+        cleaned_data = super(UserAddressForm, self).clean()
+        address = usps.Address(
+            name='None',
+            address_2=cleaned_data.get('street'),
+            address_1=cleaned_data.get('apt'),
+            city=cleaned_data.get('city'),
+            state=cleaned_data.get('state'),
+            zipcode=cleaned_data.get('zip_code')
+        )
+
+        try:
+            validator = usps.USPSApi('161ALORA3737', test=True)
+            validation = validator.validate_address(address)
+        except usps.USPSApiError:
+            raise forms.ValidationError("Please provide a valid address.")
+
+        address_data = validation.result['AddressValidateResponse']['Address']
+
+        print(address_data)
+
+        if address_data is not None:
+
+            if 'Error' in address_data:
+                raise forms.ValidationError("Please provide a valid address.")
+
+            elif 'ReturnText' in address_data:
+                return_text = address_data['ReturnText']
+
+                if 'Default address' in return_text:
+                    raise forms.ValidationError("A valid APT/Suite is required for this address.")
+            cleaned_data['street'] = address.address_2.title()
+            cleaned_data['apt'] = address.address_1
+            cleaned_data['city'] = address.city.title()
+            cleaned_data['zip_code'] = address.zipcode
+            return cleaned_data

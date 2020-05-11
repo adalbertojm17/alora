@@ -7,7 +7,7 @@
 
 <head>
     {% block styles %}
-        {{ form.media }}
+            {{ form.media }}
         <title>Place Your Order</title>
 
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -19,16 +19,16 @@
 <body>
 
 {% block content %}
-    {% if wizard.steps.step1 == 3 %}
+    {% if wizard.steps.step1 == 1 %}
         <div class="moveright">
             <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
                                                            class="center" width=40 height=40>
                 <span class="popuptext" id="myPopup">
 
-
+              <p> Welcome to our order page!</p>
+              <p> Schedule pick and delivery for your laundry and dry cleaning. </p>
               <p> Click on the drop down bar labeled "Choose a store" to select a store for your intended order.</p>
-              <p> Click the "confirm" button to place your order or the "back" button to change your drop-off information </p>
-
+              <p> Click "Continue" to progress in creating your order. </p>
 
               <hr>
 
@@ -37,15 +37,13 @@
         </div>
     {% endif %}
 
-    {% if wizard.steps.step1 == 1 %}
+    {% if wizard.steps.step1 == 2 %}
         <div class="moveright">
             <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
                                                            class="center" width=40 height=40>
                 <span class="popuptext" id="myPopup" style="width: 350px">
 
-              <p> Welcome to our order page!</p>
-              <p> Schedule Pick Up</p>
-              <p> Schedule pick and delivery for your laundry and dry cleaning. </p>
+            <p> Schedule Pick Up</p>
                 <p> Enter your street name in the field labeled "Street". e.g. 467 Bloomfield Ave </p>
                 <p> Enter your apt/suite number in the field labeled "APT/Suite". e.g. 100 </p>
                 <p> Enter your the name of your city in the field labeled "City". e.g. Bloomfield </p>
@@ -53,7 +51,7 @@
                     labeled "Select a State". e.g. New Jersey  </p>
                 <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
                 <p> Click the field labeled "Date/Time" to select a date and time for pick up. e.g. Thu Apr 16, 2020 12:00 pm</p>
-                <p> Click the "continue" button to schedule your drop-off information. </p>
+                <p> Click the "continue" button to schedule your drop off date and time or the "back" button to change the store. </p>
             <hr>
 
             </span>
@@ -61,7 +59,7 @@
         </div>
     {% endif %}
 
-    {% if wizard.steps.step1 == 2 %}
+    {% if wizard.steps.step1 == 3 %}
         <div class="moveright">
             <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo"
                                                            class="center" width=40 height=40>
@@ -75,8 +73,7 @@
                     labeled "Select a State". e.g. New Jersey  </p>
                 <p> Enter your zip code in the field labeled "Zip Code". e.g. 07003  </p>
                 <p> Click the field labeled "Date/Time" to select a date and time for drop off. e.g. Thu Apr 16, 2020 12:00 pm</p>
-                <p> Click the "continue" button to select a store or the "back" button to change your pick up date and time. </p>
-
+                <p> Click the "confirm" button to place your order or the "back" button to change your pick up date and time. </p>
             <hr>
 
             </span>
@@ -87,17 +84,17 @@
     <div class="orderpages">
         <div class="ordering">
             <h1 id="orderingheading">
-                {% if wizard.steps.step1 == 3 %}
+                {% if wizard.steps.step1 == 1 %}
                     Please select a store
                     <img id="confirmicons" src="{% static 'images/store.png' %}" alt="Logo" class="center" width=80
                          height=80>
                 {% endif %}
-                {% if wizard.steps.step1 == 1 %}
+                {% if wizard.steps.step1 == 2 %}
                     Schedule Your Pickup
                     <img id="confirmicons" src="{% static 'images/location.png' %}" alt="Logo" class="center" width=80
                          height=80>
                 {% endif %}
-                {% if wizard.steps.step1 == 2 %}
+                {% if wizard.steps.step1 == 3 %}
                     Schedule Your Drop-off
                     <img id="confirmicons" src="{% static 'images/location.png' %}" alt="Logo" class="center" width=80
                          height=80>

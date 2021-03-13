@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import  django_heroku
+import dj_database_url
+from decouple import config
 
 from .custom_settings import (
     # allowed host settings
@@ -107,6 +110,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'alora.urls'
@@ -187,6 +191,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 REST_FRAMEWORK = {
@@ -212,3 +217,5 @@ ADMINS = [('admin', 'admin@aloralaundry.com', 'admin', 'admin'),
           ('employee', 'employee@aloralaundry.com', 'employee', 'employee'),
           ('customer', 'customer@aloralaundry.com', 'customer', 'customer')]
 API_KEY = 'AIzaSyAE_yj-AG2fliR1sRSU8iBxtm2U0-etR4g'
+
+django_heroku.settings(locals())

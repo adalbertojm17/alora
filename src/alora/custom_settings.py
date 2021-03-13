@@ -14,14 +14,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aloradb',
-        'USER': 'root',
-        'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
-        'HOST': 'aloradevs.ddns.net',
-        'PORT': '3306',
-        'OPTIONS': {'charset': 'utf8mb4'},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR + 'db.sqlite3',
     }
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+     #3   'NAME': 'aloradb',
+       # 'USER': 'root',
+        #'PASSWORD': '3xtr4S3cur3P455@NoCrackAlora',
+        #'HOST': 'aloradevs.ddns.net',
+        #'PORT': '3306',
+        #'OPTIONS': {'charset': 'utf8mb4'},
+    #}
 }
 
 # configure the email backend to send emails through Alora

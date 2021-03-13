@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+<head>
+
+    {% block styles %}
+        <title>Main Page </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="icon" href="{% static 'images/alorafavicon.ico' %}" type="image/x-icon">
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+    <div class="moveright">
+        <div class="popup" onclick="myFunction()"><img src="{% static 'images/help.png' %}" alt="Logo" class="center" width=40 height=40>
+          <span class="popuptext" style="width: 350px" id="myPopup">
+
+              <p>Welcome to Alora!</p>
+              <p> Click on "Order History" to view your past orders.</p>
+              <p> Click on "Order Now" to schedule pick up and delivery for your laundry or drying cleaning</p>
+              <p> Click on "Tracking" to track your orders. </p>
+              <p> Click on "About Us" to learn more about Alora and what we provide. </p>
+              <p> Click on "Services" to find stores and their prices. </p>
+              <p> Click on "Contact Us" to send our Alora team is a message. </p>
+              <p> Click on "Account" to manage and view your account information </p>
+
+
+              <hr>
+
+          </span>
+        </div>
+    </div>
+
+    <div class="mainmainpage">
+
+        <div id="mainpagenav" class="center">
+            <div id="mainpagecenter">
+                <h1 id="welcome"> Welcome to Alora, {% if user.is_authenticated %} {{ request.user.first_name }} {% else %}
+                 Guest{% endif %}</h1>
+                <div id="mainpage">
+                    <div id="miniheader">
+                        <a href=/order-history/><img id="mainicon" src="{% static 'images/orderb.png' %}" alt="account" class="center" width=90
+                             height=90></a>
+                    </div>
+
+                    <div id="info">
+                        <p id="mainb"><a href=/order-history/> Order History </a></p>
+                        <p class="info">View your past orders</p>
+                    </div>
+
+                </div>
+
+                <div id="mainpage">
+                    <div id="miniheader">
+                        <a href=/place-order/> <img id="mainicon" src="{% static 'images/order.png' %}" alt="account" class="center" width=80
+                                                    height=80></a>
+                    </div>
+
+                    <div id="info">
+                        <p id="mainb" ><a href=/place-order/> Order Now </a></p>
+                        <p class="info">We would love to do your dry cleaning and laundry. Place an order today
+                            and schedule your pick up and drop off.</p>
+                    </div>
+
+                </div>
+
+                <div id="mainpage">
+                    <div id="miniheader">
+                       <a href=/tracking/> <img id="mainicon" src="{% static 'images/tracking.png' %}" alt="account" class="center" width=85
+                                                height=85></a>
+                    </div>
+
+                    <div id="info">
+                        <p id="mainb" ><a href=/tracking/>Tracking </a></p>
+                        <p class="info">Track your dry cleaning and laundry order. Alora keeps you up to date.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'script/popup.js' %}"></script>
+{% endblock %}
+
+</body>
